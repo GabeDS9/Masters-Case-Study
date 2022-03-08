@@ -20,17 +20,24 @@ public static class EnergyAPIScript
 
         String task = GetMeterListResponse(url);
         List<MeterList> meterlist = JsonConvert.DeserializeObject<List<MeterList>>(task);
-        //System.Random rand = new System.Random();
+        int pos = 0;
         foreach(var record in meterlist)
         {
-            record.longitude = UnityEngine.Random.Range(18.8500f, 18.8700f);
-            record.latitude = UnityEngine.Random.Range(-33.9400f, -33.9000f);
+            if (record.meterid == 8656)
+            {
+                Debug.Log("Meter " + record.meterid + " removed");
+                pos = meterlist.IndexOf(record);
+            }
+            else
+            {
+                record.longitude = (UnityEngine.Random.Range(18.8650f, 18.8700f)).ToString().Replace(',', '.');
+                record.latitude = (UnityEngine.Random.Range(-33.9400f, -33.9450f)).ToString().Replace(',', '.');
+            }           
 
-            Debug.Log(record.meterid + " new coordinates - Lat: " + record.latitude + " - Long: " + record.longitude);
+            //Debug.Log(record.meterid + " new coordinates - Lat: " + record.latitude + " - Long: " + record.longitude);
         }
 
-        meterlist[0].latitude = -33.9277f;
-        meterlist[0].longitude = 18.8670f;
+        meterlist.RemoveAt(pos);
 
         return meterlist;
     }

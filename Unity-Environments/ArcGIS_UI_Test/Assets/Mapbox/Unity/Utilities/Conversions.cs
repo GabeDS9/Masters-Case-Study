@@ -105,10 +105,6 @@ namespace Mapbox.Unity.Utilities
 
 		public static Vector2d GeoToWorldPosition(Vector2d latLong, Vector2d refPoint, float scale = 1)
 		{
-			Debug.Log("LatLong x: " + latLong.x);
-			Debug.Log("LatLong y: " + latLong.y);
-			Debug.Log("Ref point: " + refPoint);
-				Debug.Log("Scale: " + scale);
 			return GeoToWorldPosition(latLong.x, latLong.y, refPoint, scale);
 		}
 

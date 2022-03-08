@@ -13,7 +13,7 @@ public class MeterData
     public string building_no { get; set; }
     public string floor { get; set; }
     public string room_no { get; set; }
-    public float latitude { get; set; }
-    public float longitude { get; set; }
+    public string latitude { get; set; }
+    public string longitude { get; set; }
     public List<Data> data { get; set; }
 }

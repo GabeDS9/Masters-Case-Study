@@ -1084,6 +1084,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Map: {fileID: 786433027}
   MarkerPrefab: {fileID: 5317113767025326050, guid: 8e09c31ffb6c2344a9c0ade8c6f600cc, type: 3}
+--- !u!114 &786433030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786433026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c699b8e1864b4b248acb7a04ede9480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panSpeed: 1.5
+  _zoomSpeed: 0.25
+  _referenceCamera: {fileID: 963194227}
+  _mapManager: {fileID: 786433027}
+  _useDegreeMethod: 0
 --- !u!1 &829214962
 GameObject:
   m_ObjectHideFlags: 0

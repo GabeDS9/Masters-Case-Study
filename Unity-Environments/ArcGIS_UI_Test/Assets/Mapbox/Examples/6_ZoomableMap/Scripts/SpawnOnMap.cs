@@ -53,10 +53,11 @@
 			_locations = new Vector2d[_meterList.Count];
 			_spawnedObjects = new List<GameObject>();
 			_meterData = new List<MeterData>();
-			int i = 0;
+			int i = 0;			
 
-			//var locationString = _meterList[0].latitude + " " + _meterList[0].longitude;
-			var locationString = "-33.9277, 18.8670";
+		foreach (var record in _meterList)
+		{
+			var locationString = record.latitude + ", " + record.longitude;
 			Debug.Log(locationString);
 			_locations[i] = Conversions.StringToLatLon(locationString);
 			var instance = Instantiate(MarkerPrefab);
@@ -66,30 +67,12 @@
 			/*MeterData meterData = GetMeterData(record.meterid.ToString());
 			Debug.Log("MeterData: " + meterData.description);
 			_meterData.Add(meterData);*/
-			_meterData.Add(GetMeterData(_meterList[0].meterid.ToString()));
-			instance.transform.localScale = new Vector3(1, (float)_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 2, 1);
-			instance.transform.localPosition = new Vector3(instance.transform.localPosition.x, (float) Math.Abs(_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 4), instance.transform.localPosition.z);
-			_spawnedObjects.Add(instance);
-			i++;
-
-		/*foreach (var record in _meterList)
-		{
-			var locationString = record.latitude + " " + record.longitude;
-			Debug.Log(locationString);
-			_locations[i] = Conversions.StringToLatLon(locationString);
-			var instance = Instantiate(MarkerPrefab);
-			Debug.Log(_locations[i]);
-			instance.transform.localPosition = Map.GeoToWorldPosition(_locations[i], true);
-			Debug.Log("Local instance pos: " + instance.transform.localPosition);
-			/*MeterData meterData = GetMeterData(record.meterid.ToString());
-			Debug.Log("MeterData: " + meterData.description);
-			_meterData.Add(meterData);
 			_meterData.Add(GetMeterData(record.meterid.ToString()));
-			instance.transform.localScale = new Vector3(1, (float)_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 2, 1);
-			instance.transform.localPosition = new Vector3(instance.transform.localPosition.x, (float) Math.Abs(_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 4), instance.transform.localPosition.z);
+			instance.transform.localScale = new Vector3(1, (float)Math.Abs(_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 4), 1);
+			instance.transform.localPosition = new Vector3(instance.transform.localPosition.x, (float) Math.Abs(_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 8), instance.transform.localPosition.z);
 			_spawnedObjects.Add(instance);
 			i++;
-		}*/
+		}
 		}
 
 		private MeterData GetMeterData(string meterID)
