@@ -65,10 +65,15 @@ public class WaterAPIScript : APICaller
     // Output: Current Water Data (WaterData)
     public static WaterData GetCurrentMeterData(String meterid)
     {
+        WaterData temp = new WaterData();
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
         WaterMeterData meterData = GetMeterData(from_date, to_date, meterid);
-        Debug.Log("Water meter timestamp: " + meterData.data[0].timestamp);
-        return meterData.data[0];
+        if(meterData.data.Count > 0)
+        {
+            temp = meterData.data[meterData.data.Count - 1];
+        }
+
+        return temp;
     }
 }

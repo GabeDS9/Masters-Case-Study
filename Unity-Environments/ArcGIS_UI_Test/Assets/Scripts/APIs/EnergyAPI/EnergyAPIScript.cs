@@ -65,10 +65,15 @@ public class EnergyAPIScript : APICaller
     // Output: Current Energy Data (EnergyData)
     public static EnergyData GetCurrentMeterData(String meterid)
     {
+        EnergyData temp = new EnergyData();
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
         EnergyMeterData meterData = GetMeterData(from_date, to_date, meterid);
+        if (meterData.data.Count > 0)
+        {
+            temp = meterData.data[meterData.data.Count - 1];
+        }
 
-        return meterData.data[0];
+        return temp;
     }
 }
