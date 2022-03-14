@@ -18,11 +18,16 @@
 
 		float _spawnScale = 1f;
 
-		public GameObject MarkerPrefab;
-
-		List<MeterData> _meterData;
+		public List<GameObject> MarkerPrefab;
 		List<GameObject> _spawnedObjects;
-		List<MeterList> _meterList;		
+
+		List<EnergyMeterData> _energyMeterData;
+		List<EnergyMeterList> _energyMeterList;
+
+		List<WaterMeterData> _waterMeterData;
+		List<WaterMeterList> _waterMeterList;
+
+		WaterData waterData;
 
 		private string fromDate;
 		private string toDate;
@@ -40,47 +45,79 @@
 						var spawnedObject = _spawnedObjects[i];
 						var location = _locations[i];
 						spawnedObject.transform.localPosition = Map.GeoToWorldPosition(location, true);
-						spawnedObject.transform.localScale = new Vector3(1, (float)_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 2, 1);
+						spawnedObject.transform.localScale = new Vector3(1, (float)_energyMeterData[i].data[_energyMeterData[i].data.Count - 1].ptot_kw / 2, 1);
 					}
 				}
 			}
 			
 		}
 
-		public void PopulateObjects(List<MeterList> mList)
+		public void PopulateEnergyObjects(List<EnergyMeterList> mList)
         {
-			_meterList = mList;
-			_locations = new Vector2d[_meterList.Count];
+			_energyMeterList = mList;
+			_locations = new Vector2d[_energyMeterList.Count];
 			_spawnedObjects = new List<GameObject>();
-			_meterData = new List<MeterData>();
+			_energyMeterData = new List<EnergyMeterData>();
 			int i = 0;			
 
-		foreach (var record in _meterList)
+		foreach (var record in _energyMeterList)
 		{
-			var locationString = record.latitude + ", " + record.longitude;
-			Debug.Log(locationString);
-			_locations[i] = Conversions.StringToLatLon(locationString);
-			var instance = Instantiate(MarkerPrefab);
-			Debug.Log(_locations[i]);
-			instance.transform.localPosition = Map.GeoToWorldPosition(_locations[i], true);
-			Debug.Log("Local instance pos: " + instance.transform.localPosition);
-			/*MeterData meterData = GetMeterData(record.meterid.ToString());
-			Debug.Log("MeterData: " + meterData.description);
-			_meterData.Add(meterData);*/
-			_meterData.Add(GetMeterData(record.meterid.ToString()));
-			instance.transform.localScale = new Vector3(1, (float)Math.Abs(_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 4), 1);
-			instance.transform.localPosition = new Vector3(instance.transform.localPosition.x, (float) Math.Abs(_meterData[i].data[_meterData[i].data.Count - 1].ptot_kw / 8), instance.transform.localPosition.z);
-			_spawnedObjects.Add(instance);
-			i++;
+				if (i < _waterMeterList.Count)
+				{
+					var locationString = record.latitude + ", " + record.longitude;
+					_locations[i] = Conversions.StringToLatLon(locationString);
+					var instance = Instantiate(MarkerPrefab[0]);
+					instance.transform.localPosition = Map.GeoToWorldPosition(_locations[i], true);
+					_energyMeterData.Add(GetEnergyMeterData(record.meterid.ToString()));
+					float currUse = (float)Math.Abs(_energyMeterData[i].data[_energyMeterData[i].data.Count - 1].ptot_kw);
+					instance.transform.localScale = new Vector3(1, currUse, 1);
+					instance.transform.position = new Vector3(instance.transform.localPosition.x, currUse/2, instance.transform.localPosition.z);
+					_spawnedObjects.Add(instance);
+					i++;
+				}
 		}
 		}
 
-		private MeterData GetMeterData(string meterID)
+		public void PopulateWaterObjects(List<WaterMeterList> mList)
+		{
+			_waterMeterList = mList;
+			_locations = new Vector2d[_waterMeterList.Count];
+			_spawnedObjects = new List<GameObject>();
+			_waterMeterData = new List<WaterMeterData>();
+			int i = 0;
+
+			foreach (var record in _waterMeterList)
+			{
+                if (i < _waterMeterList.Count)
+                {
+					var locationString = record.latitude + ", " + record.longitude;
+					_locations[i] = Conversions.StringToLatLon(locationString);
+					var instance = Instantiate(MarkerPrefab[1]);
+					instance.transform.localPosition = Map.GeoToWorldPosition(_locations[i], true);
+					//_waterMeterData.Add(GetWaterMeterData(record.meterid.ToString()));
+					//float currUse = (float)Math.Abs(_waterMeterData[i].data[_waterMeterData[i].data.Count - 1].ptot_kw);
+					waterData = WaterAPIScript.GetCurrentMeterData(record.meterid.ToString());
+					float currUse = (float)Math.Abs(waterData.ptot_kw);
+					instance.transform.localScale = new Vector3(1, currUse, 1);
+					instance.transform.position = new Vector3(instance.transform.localPosition.x, currUse / 2, instance.transform.localPosition.z);
+					_spawnedObjects.Add(instance);
+					i++;
+				}
+			}
+		}
+
+		private EnergyMeterData GetEnergyMeterData(String meterID)
         {
-			string fromDate = "2022-03-07%2009:25:00";
+			String fromDate = "2022-03-07%2009:25:00";
 			string currDate = "2022-03-07%2009:35:00";
-			string interval = "ts_5min";
-			return EnergyAPIScript.GetMeterData(fromDate, currDate, meterID, interval);
+			return EnergyAPIScript.GetMeterData(fromDate, currDate, meterID);
         }
+
+		private WaterMeterData GetWaterMeterData(String meterID)
+        {
+			String fromDate = "2022-03-07%2009:25:00";
+			String currDate = "2022-03-07%2009:35:00";
+			return WaterAPIScript.GetMeterData(fromDate, currDate, meterID);
+		}
 	}
 }

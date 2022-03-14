@@ -93,9 +93,9 @@ namespace Building_DT
         }
 
         // Gives current date and time for current meter readings
-        private string GetCurrentDateTime()
+        private String GetCurrentDateTime()
         {
-            string date = "";
+            String date = "";
             DateTime currDate = DateTime.Now;
 
             date = currDate.Year + "-" + currDate.Month + "-" + currDate.Day + "%20" + currDate.Hour + ":" + currDate.Minute + ":00";
