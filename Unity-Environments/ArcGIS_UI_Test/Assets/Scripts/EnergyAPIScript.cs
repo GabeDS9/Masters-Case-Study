@@ -30,8 +30,8 @@ public static class EnergyAPIScript
             }
             else
             {
-                record.longitude = (UnityEngine.Random.Range(18.8650f, 18.8700f)).ToString().Replace(',', '.');
-                record.latitude = (UnityEngine.Random.Range(-33.9400f, -33.9450f)).ToString().Replace(',', '.');
+                record.longitude = (UnityEngine.Random.Range(18.8600f, 18.8700f)).ToString().Replace(',', '.');
+                record.latitude = (UnityEngine.Random.Range(-33.9400f, -33.9500f)).ToString().Replace(',', '.');
             }           
 
             //Debug.Log(record.meterid + " new coordinates - Lat: " + record.latitude + " - Long: " + record.longitude);
