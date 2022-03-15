@@ -3,24 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class DisplayInfo : MonoBehaviour
 {
-    private List<EnergyMeterList> energyMeterList = new List<EnergyMeterList>();
+    private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
     private List<WaterMeterList> waterMeterList = new List<WaterMeterList>();
     public Mapbox.Examples.SpawnOnMap spawnOnMap;
+    public EnergyAPIScript energyManager = new EnergyAPIScript();
+    public Button energyButton;
 
+    private bool isPopulated = false;
+
+    private void Start()
+    {
+        energyButton.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (isPopulated)
+        {
+            energyButton.enabled = true;
+        }
+        else
+        {
+            energyButton.enabled = false;
+        }
+    }
+    
     public void PopulateMeters()
     {
-        energyMeterList = EnergyAPIScript.GetEnergyMeterList();
-        waterMeterList = WaterAPIScript.GetWaterMeterList();
-        //spawnOnMap.PopulateMeters();
+        isPopulated = energyManager.InitialiseEnergyMetersAsync().Result;
     }
     public void PopulateEnergyMeters()
     {
-        if (energyMeterList != null)
+        foreach(var record in energyManager.EnergyMeters)
         {
-            spawnOnMap.PopulateCurrentEnergyObjects(energyMeterList);
+            Task.Run(() => spawnOnMap.PopulateEnergyObjects(record.meterid, energyManager));
         }
     }
 
@@ -32,4 +53,5 @@ public class DisplayInfo : MonoBehaviour
             spawnOnMap.PopulateCurrentWaterObjects(waterMeterList);
         }
     }
+
 }

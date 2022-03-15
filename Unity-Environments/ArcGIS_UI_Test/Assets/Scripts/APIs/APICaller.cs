@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
 public class APICaller
 {
@@ -38,9 +39,4 @@ public class APICaller
         return (to_date, from_date);
     }
 
-    // Water API Caller
-
-    // Occupancy API Caller
-
-    // Solar API Caller
 }

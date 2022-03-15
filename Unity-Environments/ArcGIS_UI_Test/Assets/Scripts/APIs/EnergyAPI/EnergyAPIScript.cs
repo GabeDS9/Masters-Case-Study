@@ -10,16 +10,35 @@ using Mapbox.Json;
 
 public class EnergyAPIScript : APICaller
 {
+    public List<EnergyMeterData> EnergyMeters = new List<EnergyMeterData>();
+
+    // Initialise the energy meters
+    // This function will initialise the energy meters with their historic information
+    // Input: None
+    // Output: Stored all energy meter data over time period
+    public async Task<bool> InitialiseEnergyMetersAsync()
+    {
+        EnergyMeters = GetEnergyMeterListAsync().Result;
+
+        Debug.Log("Populated energy meters");
+
+        var result = await StoreEnergyMeterDataAsync();
+
+        //Debug.Log("Energy Meters Initialised - " + result);
+       
+        return true;
+    }
+
     // Energy MeterList API Caller
     // This function will make an API call to receive the energy meters availabe
     // Input: None
     // Output: Meter List (List<MeterList>)
-    public static List<EnergyMeterList> GetEnergyMeterList()
+    public static async Task<List<EnergyMeterData>> GetEnergyMeterListAsync()
     {
         String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
         String url = "https://api.indivo.co.za/Energy/MeterList?key=" + apikey;
-
-        List<EnergyMeterList> meterlist = JsonConvert.DeserializeObject<List<EnergyMeterList>>(CallAPI(url));
+        var result = await Task.Run(() => CallAPI(url));
+        List<EnergyMeterData> meterlist = JsonConvert.DeserializeObject<List<EnergyMeterData>>(result);
 
         // Temporary solution to remove meter 8656 because it returns an error when accessing it
         int pos = 0;
@@ -33,8 +52,8 @@ public class EnergyAPIScript : APICaller
             else
             {
                 // Generate random coordinates until receive actual data with real coordinates
-                record.longitude = (UnityEngine.Random.Range(18.8600f, 18.8800f)).ToString().Replace(',', '.');
-                record.latitude = (UnityEngine.Random.Range(-33.9400f, -33.9600f)).ToString().Replace(',', '.');
+                record.longitude = (NextFloat(18.8600f, 18.8800f)).ToString().Replace(',', '.');
+                record.latitude = (NextFloat(-33.9400f, -33.9600f)).ToString().Replace(',', '.');
             }
         }
 
@@ -48,13 +67,13 @@ public class EnergyAPIScript : APICaller
     // This function will make an API call to receive an energy meter's information over a specified time period
     // Input: Energy Meter ID (string), time frame (string)
     // Output: Energy Data (MeterData)
-    public static EnergyMeterData GetMeterData(String from_date, String to_date, String meterid)
+    public static async Task<EnergyMeterData> GetMeterDataAsync(String from_date, String to_date, int meterid)
     {
         String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
         String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
-
-        EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(CallAPI(url));
-        List<EnergyData> data = meterdata.data;
+        Debug.Log("Meter " + meterid + " is being populated");
+        var result = await Task.Run(() => CallAPI(url));
+        EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
 
         return meterdata;
     }
@@ -63,17 +82,71 @@ public class EnergyAPIScript : APICaller
     // This function will make an API call to receive an energy meter's current information
     // Input: Energy Meter ID (string)
     // Output: Current Energy Data (EnergyData)
-    public static EnergyData GetCurrentMeterData(String meterid)
+    public static EnergyMeterData GetCurrentMeterData(int meterid)
     {
         EnergyData temp = new EnergyData();
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
-        EnergyMeterData meterData = GetMeterData(from_date, to_date, meterid);
+        EnergyMeterData meterData = GetMeterDataAsync(from_date, to_date, meterid).Result;
         if (meterData.data.Count > 0)
         {
             temp = meterData.data[meterData.data.Count - 1];
         }
 
-        return temp;
+        return meterData;
+    }
+
+    // Store energy meter data
+    // This function will make API calls to receive and store all energy information
+    // Input: None
+    // Output: Stored all energy meter data over time period
+    public async Task<bool> StoreEnergyMeterDataAsync()
+    {
+        String to_date, from_date;
+        (to_date, from_date) = GetCurrentDateTime();
+        from_date = "2022-03-15%2000:00:00";
+        List<Task<EnergyMeterData>> tasks = new List<Task<EnergyMeterData>>();
+
+        foreach (var record in EnergyMeters)
+        {
+            tasks.Add(Task.Run(() => GetMeterDataAsync(from_date, to_date, record.meterid)));
+            Debug.Log("Adding energy meter task for: " + record.meterid);
+        }
+
+        var results = await Task.WhenAll(tasks);
+        Debug.Log("Energy Meters Stored");
+
+        if(results != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public EnergyMeterData ReturnEnergyMeterData(int meterid)
+    {
+        EnergyMeterData energyMeter = new EnergyMeterData();
+
+        foreach(var item in EnergyMeters)
+        {
+            if(item.meterid == meterid)
+            {
+                energyMeter = item;
+            }
+        }
+
+        return energyMeter;
+    }
+
+    static float NextFloat(float min, float max)
+    {
+        System.Random random = new System.Random();
+        double val = (random.NextDouble() * (max - min) + min);
+        return (float)val;
     }
 }
+
+
