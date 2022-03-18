@@ -25,24 +25,26 @@
 		List<WaterMeterList> _waterMeterList;
 
 		private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
-		private List<WaterMeterData> waterMeterData = new List<WaterMeterData>();
+		private List<WaterMeterData> waterMeterData = new List<WaterMeterData>();		
 
-		private void Update()
-		{
-
-		}
-
-		public void PopulateEnergyObjects(int meterid, EnergyAPIScript energyManager)
+		public void PopulateEnergyObject(int meterid, EnergyAPIScript energyManager)
         {
 			EnergyMeterData tempEnergyMeter = energyManager.ReturnEnergyMeterData(meterid);
 
-			var locationString = tempEnergyMeter.latitude + ", " + tempEnergyMeter.longitude;
-			var instance = Instantiate(MarkerPrefab[0]);
-			instance.transform.localPosition = Map.GeoToWorldPosition(Conversions.StringToLatLon(locationString), true);
+            Vector2d[] locations = new Vector2d[1];
 
+			var locationString = tempEnergyMeter.latitude + "," + tempEnergyMeter.longitude;
+			locations[0] = Conversions.StringToLatLon(locationString);
+			var instance = Instantiate(MarkerPrefab[0]);			
+			instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
+			Debug.Log(tempEnergyMeter.meterid + " has been instantiated at: " + instance.transform.localPosition);
+
+			if(tempEnergyMeter.data != null)
+            {
 				float currUse = (float)Math.Abs(tempEnergyMeter.data[tempEnergyMeter.data.Count - 1].ptot_kw);
 				instance.transform.localScale = new Vector3(1, currUse, 1);
 				instance.transform.position = new Vector3(instance.transform.localPosition.x, currUse / 2, instance.transform.localPosition.z);
+			}			
 		}
 
 		public async void PopulateCurrentEnergyObjects(List<EnergyMeterData> mList)

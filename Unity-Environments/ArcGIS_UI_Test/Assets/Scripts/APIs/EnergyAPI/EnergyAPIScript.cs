@@ -11,6 +11,7 @@ using Mapbox.Json;
 public class EnergyAPIScript : APICaller
 {
     public List<EnergyMeterData> EnergyMeters = new List<EnergyMeterData>();
+    public static System.Random random = new System.Random();
 
     // Initialise the energy meters
     // This function will initialise the energy meters with their historic information
@@ -18,13 +19,13 @@ public class EnergyAPIScript : APICaller
     // Output: Stored all energy meter data over time period
     public async Task<bool> InitialiseEnergyMetersAsync()
     {
-        EnergyMeters = GetEnergyMeterListAsync().Result;
+        EnergyMeters = GetEnergyMeterListAsync();
 
         Debug.Log("Populated energy meters");
 
         var result = await StoreEnergyMeterDataAsync();
 
-        //Debug.Log("Energy Meters Initialised - " + result);
+        Debug.Log("Energy Meters Initialised - " + result);
        
         return true;
     }
@@ -33,13 +34,14 @@ public class EnergyAPIScript : APICaller
     // This function will make an API call to receive the energy meters availabe
     // Input: None
     // Output: Meter List (List<MeterList>)
-    public static async Task<List<EnergyMeterData>> GetEnergyMeterListAsync()
+    public List<EnergyMeterData> GetEnergyMeterListAsync()
     {
         String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
         String url = "https://api.indivo.co.za/Energy/MeterList?key=" + apikey;
-        var result = await Task.Run(() => CallAPI(url));
-        List<EnergyMeterData> meterlist = JsonConvert.DeserializeObject<List<EnergyMeterData>>(result);
+        var result = Task.Run(() => CallAPI(url));
+        List<EnergyMeterData> meterlist = JsonConvert.DeserializeObject<List<EnergyMeterData>>(result.Result);
 
+        Debug.Log($"Meterlist count: {meterlist.Count}");
         // Temporary solution to remove meter 8656 because it returns an error when accessing it
         int pos = 0;
         foreach (var record in meterlist)
@@ -52,8 +54,9 @@ public class EnergyAPIScript : APICaller
             else
             {
                 // Generate random coordinates until receive actual data with real coordinates
-                record.longitude = (NextFloat(18.8600f, 18.8800f)).ToString().Replace(',', '.');
-                record.latitude = (NextFloat(-33.9400f, -33.9600f)).ToString().Replace(',', '.');
+                record.longitude = NextFloat(18.8600f, 18.8800f).ToString().Replace(',', '.');
+                record.latitude = NextFloat(-33.9400f, -33.9600f).ToString().Replace(',', '.');
+                Debug.Log($"{record.meterid} has coordinates: {record.latitude}, {record.longitude}");
             }
         }
 
@@ -71,7 +74,6 @@ public class EnergyAPIScript : APICaller
     {
         String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
         String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
-        Debug.Log("Meter " + meterid + " is being populated");
         var result = await Task.Run(() => CallAPI(url));
         EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
 
@@ -110,10 +112,22 @@ public class EnergyAPIScript : APICaller
         foreach (var record in EnergyMeters)
         {
             tasks.Add(Task.Run(() => GetMeterDataAsync(from_date, to_date, record.meterid)));
-            Debug.Log("Adding energy meter task for: " + record.meterid);
         }
 
         var results = await Task.WhenAll(tasks);
+
+        foreach(var record in results)
+        {
+            foreach(var item in EnergyMeters)
+            {
+                if(record.meterid == item.meterid)
+                {
+                    EnergyMeters[EnergyMeters.IndexOf(item)].data = record.data;
+                    break;
+                }
+            }
+        }
+
         Debug.Log("Energy Meters Stored");
 
         if(results != null)
@@ -135,15 +149,15 @@ public class EnergyAPIScript : APICaller
             if(item.meterid == meterid)
             {
                 energyMeter = item;
+                break;
             }
         }
-
+        Debug.Log("Energy data returned for: " + meterid);
         return energyMeter;
     }
 
-    static float NextFloat(float min, float max)
+    private float NextFloat(float min, float max)
     {
-        System.Random random = new System.Random();
         double val = (random.NextDouble() * (max - min) + min);
         return (float)val;
     }

@@ -29,19 +29,19 @@ public class DisplayInfo : MonoBehaviour
         }
         else
         {
-            energyButton.enabled = false;
+            energyButton.enabled = true;
         }
     }
     
     public void PopulateMeters()
     {
-        isPopulated = energyManager.InitialiseEnergyMetersAsync().Result;
+        Task.Run(() => energyManager.InitialiseEnergyMetersAsync());
     }
     public void PopulateEnergyMeters()
     {
         foreach(var record in energyManager.EnergyMeters)
         {
-            Task.Run(() => spawnOnMap.PopulateEnergyObjects(record.meterid, energyManager));
+            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager);
         }
     }
 
