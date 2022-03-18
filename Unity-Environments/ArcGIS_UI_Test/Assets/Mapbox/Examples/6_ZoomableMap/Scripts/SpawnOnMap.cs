@@ -18,7 +18,7 @@
 		Vector2d[] _locations;
 
 		public List<GameObject> MarkerPrefab;
-		List<GameObject> _spawnedEnergyObjects;
+		List<GameObject> _spawnedEnergyObjects = new List<GameObject>();
 		List<GameObject> _spawnedWaterObjects;
 
 		List<EnergyMeterData> _energyMeterList;
@@ -27,9 +27,26 @@
 		private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
 		private List<WaterMeterData> waterMeterData = new List<WaterMeterData>();		
 
-		public void PopulateEnergyObject(int meterid, EnergyAPIScript energyManager)
+		public void PopulateEnergyObject(int meterid, EnergyAPIScript energyManager, String date)
         {
 			EnergyMeterData tempEnergyMeter = energyManager.ReturnEnergyMeterData(meterid);
+			String tempYear, tempMonth, tempDay;
+			String year, month, day;
+			(year, month, day) = energyManager.GetDate(date);
+			//Debug.Log($"Requested date: {year}-{month}-{day}");
+			double energy = 0;
+
+			foreach(var record in tempEnergyMeter.data)
+            {
+				(tempYear, tempMonth, tempDay) = energyManager.GetDate(record.timestamp);
+				//Debug.Log($"Record timestamp: {tempYear}-{tempMonth}-{tempDay}");
+
+				if((year == tempYear) && (month == tempMonth) && (day == tempDay)){
+					energy = record.ptot_kw;
+					//Debug.Log($"{tempEnergyMeter.meterid} timestamp was: {record.timestamp} with energy {energy}");
+					break;
+                }
+            }
 
             Vector2d[] locations = new Vector2d[1];
 
@@ -37,15 +54,27 @@
 			locations[0] = Conversions.StringToLatLon(locationString);
 			var instance = Instantiate(MarkerPrefab[0]);			
 			instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
-			Debug.Log(tempEnergyMeter.meterid + " has been instantiated at: " + instance.transform.localPosition);
+			Debug.Log("Object instantiated for meter " + tempEnergyMeter.meterid);
 
 			if(tempEnergyMeter.data != null)
             {
-				float currUse = (float)Math.Abs(tempEnergyMeter.data[tempEnergyMeter.data.Count - 1].ptot_kw);
+				float currUse = (float)Math.Abs(energy);
 				instance.transform.localScale = new Vector3(1, currUse, 1);
 				instance.transform.position = new Vector3(instance.transform.localPosition.x, currUse / 2, instance.transform.localPosition.z);
+				//_spawnedEnergyObjects.Add(instance);
 			}			
 		}
+
+		public void ClearEnergyObjects()
+        {
+			if(_spawnedEnergyObjects != null)
+            {
+				foreach(var item in _spawnedEnergyObjects)
+                {
+					Destroy(item);
+                }
+            }
+        }
 
 		public async void PopulateCurrentEnergyObjects(List<EnergyMeterData> mList)
 		{

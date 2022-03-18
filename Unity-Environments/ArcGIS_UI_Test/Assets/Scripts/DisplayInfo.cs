@@ -39,18 +39,19 @@ public class DisplayInfo : MonoBehaviour
     }
     public void PopulateEnergyMeters()
     {
+        spawnOnMap.ClearEnergyObjects();
         foreach(var record in energyManager.EnergyMeters)
         {
-            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager);
+            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-17");
         }
     }
 
     public void PopulateWaterMeters()
     {
-        Debug.Log("Populating water meters");
-        if (waterMeterList != null)
+        spawnOnMap.ClearEnergyObjects();
+        foreach (var record in energyManager.EnergyMeters)
         {
-            spawnOnMap.PopulateCurrentWaterObjects(waterMeterList);
+            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-15");
         }
     }
 

@@ -25,6 +25,8 @@ public class EnergyAPIScript : APICaller
 
         var result = await StoreEnergyMeterDataAsync();
 
+        await Task.Run(() => CalculateDayAverage());
+
         Debug.Log("Energy Meters Initialised - " + result);
        
         return true;
@@ -41,7 +43,6 @@ public class EnergyAPIScript : APICaller
         var result = Task.Run(() => CallAPI(url));
         List<EnergyMeterData> meterlist = JsonConvert.DeserializeObject<List<EnergyMeterData>>(result.Result);
 
-        Debug.Log($"Meterlist count: {meterlist.Count}");
         // Temporary solution to remove meter 8656 because it returns an error when accessing it
         int pos = 0;
         foreach (var record in meterlist)
@@ -56,7 +57,6 @@ public class EnergyAPIScript : APICaller
                 // Generate random coordinates until receive actual data with real coordinates
                 record.longitude = NextFloat(18.8600f, 18.8800f).ToString().Replace(',', '.');
                 record.latitude = NextFloat(-33.9400f, -33.9600f).ToString().Replace(',', '.');
-                Debug.Log($"{record.meterid} has coordinates: {record.latitude}, {record.longitude}");
             }
         }
 
@@ -140,6 +140,38 @@ public class EnergyAPIScript : APICaller
         }
     }
 
+    private void CalculateDayAverage()
+    {
+        foreach(var item in EnergyMeters)
+        {
+            String day, month, year;
+            double tempEnergy = 0;
+            int count = 0;
+
+            for(int i = 0; i < item.data.Count; i++)
+            {
+                (year, month, day) = GetDate(item.data[i].timestamp);
+
+                foreach (var data in item.data)
+                {
+                    String tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
+                    {
+                        tempEnergy += data.ptot_kw;
+                        count++;
+                    }
+                    EnergyAverage tempData = new EnergyAverage();
+                    tempData.timestamp = year + "-" + month + "-" + day;
+                    tempData.ptot_kw = tempEnergy / count;
+                    item.day_average.Add(tempData);
+                    Debug.Log($"{item.meterid} average energy for {tempData.timestamp} was {tempData.ptot_kw}");
+                }
+            }
+            
+        }
+    }
+
     public EnergyMeterData ReturnEnergyMeterData(int meterid)
     {
         EnergyMeterData energyMeter = new EnergyMeterData();
@@ -152,7 +184,7 @@ public class EnergyAPIScript : APICaller
                 break;
             }
         }
-        Debug.Log("Energy data returned for: " + meterid);
+
         return energyMeter;
     }
 

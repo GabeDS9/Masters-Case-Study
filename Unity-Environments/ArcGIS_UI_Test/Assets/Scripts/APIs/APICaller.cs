@@ -39,4 +39,21 @@ public class APICaller
         return (to_date, from_date);
     }
 
+    public (String, String, String) GetDate(String date)
+    {
+        String[] temp = date.Split('-');
+
+        String year = temp[0];
+        String month = temp[1];
+        String day = temp[2];
+
+        if(day.Length > 2)
+        {
+            String[] daytemp = day.Split(' ');
+            day = daytemp[0];
+        }
+
+        return (year, month, day); 
+    }
+
 }
