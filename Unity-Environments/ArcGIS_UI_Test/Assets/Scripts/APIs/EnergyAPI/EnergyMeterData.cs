@@ -17,4 +17,5 @@ public class EnergyMeterData
     public string longitude { get; set; }
     public List<EnergyData> data { get; set; }
     public List<EnergyAverage> day_average { get; set; }
+    public List<EnergyAverage> month_average { get; set; }
 }

@@ -42,7 +42,7 @@ public class DisplayInfo : MonoBehaviour
         spawnOnMap.ClearEnergyObjects();
         foreach(var record in energyManager.EnergyMeters)
         {
-            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-17");
+            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-21");
         }
     }
 

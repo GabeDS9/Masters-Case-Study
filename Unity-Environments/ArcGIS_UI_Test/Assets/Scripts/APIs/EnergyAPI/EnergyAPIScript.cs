@@ -27,8 +27,19 @@ public class EnergyAPIScript : APICaller
 
         await Task.Run(() => CalculateDayAverage());
 
-        Debug.Log("Energy Meters Initialised - " + result);
-       
+        await Task.Run(() => CalculateMonthAverage());
+
+        foreach (var item in EnergyMeters)
+        {
+            Debug.Log($"{item.meterid} has day average of {item.day_average[3].ptot_kw} on {item.day_average[3].timestamp}");
+        }        
+
+        foreach (var item in EnergyMeters)
+        {
+            Debug.Log($"{item.meterid} has month average of {item.month_average[0].ptot_kw} on {item.month_average[0].timestamp}");
+        }
+
+        Debug.Log("Energy meters initialised");
         return true;
     }
 
@@ -106,7 +117,7 @@ public class EnergyAPIScript : APICaller
     {
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
-        from_date = "2022-03-15%2000:00:00";
+        from_date = "2022-02-27%2000:00:00";
         List<Task<EnergyMeterData>> tasks = new List<Task<EnergyMeterData>>();
 
         foreach (var record in EnergyMeters)
@@ -140,35 +151,103 @@ public class EnergyAPIScript : APICaller
         }
     }
 
+    // Calculate daily energy average
+    // This function will calculate the average energy use for each day and store it in the energy meter
+    // Input: None
+    // Output: Stored all energy meter daily average
     private void CalculateDayAverage()
     {
+        // Loops through the list of energy meters
         foreach(var item in EnergyMeters)
         {
-            String day, month, year;
+            item.day_average = new List<EnergyAverage>();
+
+            String day, month, year, prevDay = "", prevMonth = "", prevYear = "";
             double tempEnergy = 0;
             int count = 0;
+            EnergyAverage tempData = new EnergyAverage();
 
-            for(int i = 0; i < item.data.Count; i++)
+            for (int i = 0; i < item.data.Count; i++)
             {
-                (year, month, day) = GetDate(item.data[i].timestamp);
+            (year, month, day) = GetDate(item.data[i].timestamp);
+                    //Debug.Log($"Current time: {year}-{month}-{day}");
 
-                foreach (var data in item.data)
-                {
-                    String tempDay, tempMonth, tempYear;
-                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
-                    if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
+                    if ((year != prevYear) || (month != prevMonth) || (day != prevDay))
                     {
-                        tempEnergy += data.ptot_kw;
-                        count++;
+                        //Debug.Log($"Timestamp is not equal: {year}-{month}-{day} is current -- {prevYear}-{prevMonth}-{prevDay} is prev");
+                        
+                        foreach (var data in item.data)
+                        {
+                            String tempDay, tempMonth, tempYear;
+                            (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                            if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
+                            {
+                                tempEnergy += data.ptot_kw;
+                                count++;
+                            }
+
+                        }
+
+                        //Debug.Log($"{year}-{month}-{day} has average energy of {tempEnergy/count}");
+                        tempData.timestamp = year + "-" + month + "-" + day;
+                        tempData.ptot_kw = tempEnergy / count;
+                        item.day_average.Add(tempData);
+                        //Debug.Log($"{item.meterid} average energy for {tempData.timestamp} was {tempData.ptot_kw}");
+                        prevYear = year;
+                        prevMonth = month;
+                        prevDay = day;
                     }
-                    EnergyAverage tempData = new EnergyAverage();
-                    tempData.timestamp = year + "-" + month + "-" + day;
-                    tempData.ptot_kw = tempEnergy / count;
-                    item.day_average.Add(tempData);
-                    Debug.Log($"{item.meterid} average energy for {tempData.timestamp} was {tempData.ptot_kw}");
                 }
             }
-            
+    }
+
+    // Calculate monthly energy average
+    // This function will calculate the average energy use for each month and store it in the energy meter
+    // Input: None
+    // Output: Stored all energy meter monthly average
+    private void CalculateMonthAverage()
+    {
+        
+        // Loops through the list of energy meters
+        foreach (var item in EnergyMeters)
+        {
+            item.month_average = new List<EnergyAverage>();
+
+            String day, month, year, prevMonth = "", prevYear = "";
+            double tempEnergy = 0;
+            int count = 0;
+            EnergyAverage tempData = new EnergyAverage();
+
+            for (int i = 0; i < item.day_average.Count; i++)
+            {
+                (year, month, day) = GetDate(item.day_average[i].timestamp);
+                //Debug.Log($"Current time: {year}-{month}-{day}");
+
+                if ((year != prevYear) || (month != prevMonth))
+                {
+                    //Debug.Log($"Timestamp is not equal: {year}-{month}-{day} is current -- {prevYear}-{prevMonth}-01 is prev for {item.meterid}");
+
+                    foreach (var data in item.day_average)
+                    {
+                        String tempDay, tempMonth, tempYear;
+                        (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                        if ((year == tempYear) && (month == tempMonth))
+                        {
+                            tempEnergy += data.ptot_kw;
+                            count++;
+                        }
+
+                    }
+
+                    //Debug.Log($"{year}-{month}-{day} has average energy of {tempEnergy/count}");
+                    tempData.timestamp = year + "-" + month + "-01";
+                    tempData.ptot_kw = tempEnergy / count;
+                    item.month_average.Add(tempData);
+                    //Debug.Log($"{item.meterid} average energy for {tempData.timestamp} was {tempData.ptot_kw}");
+                    prevYear = year;
+                    prevMonth = month;
+                }
+            }
         }
     }
 
@@ -193,6 +272,7 @@ public class EnergyAPIScript : APICaller
         double val = (random.NextDouble() * (max - min) + min);
         return (float)val;
     }
+
 }
 
 
