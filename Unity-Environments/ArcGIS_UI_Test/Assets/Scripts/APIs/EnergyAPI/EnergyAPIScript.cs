@@ -29,17 +29,18 @@ public class EnergyAPIScript : APICaller
 
         await Task.Run(() => CalculateMonthAverage());
 
-        foreach (var item in EnergyMeters)
+        /*foreach (var item in EnergyMeters)
         {
             Debug.Log($"{item.meterid} has day average of {item.day_average[3].ptot_kw} on {item.day_average[3].timestamp}");
         }        
 
-        foreach (var item in EnergyMeters)
+        /*foreach (var item in EnergyMeters)
         {
             Debug.Log($"{item.meterid} has month average of {item.month_average[0].ptot_kw} on {item.month_average[0].timestamp}");
-        }
+        }*/
 
         Debug.Log("Energy meters initialised");
+
         return true;
     }
 
@@ -117,7 +118,7 @@ public class EnergyAPIScript : APICaller
     {
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
-        from_date = "2022-02-27%2000:00:00";
+        from_date = "2022-03-20%2000:00:00";
         List<Task<EnergyMeterData>> tasks = new List<Task<EnergyMeterData>>();
 
         foreach (var record in EnergyMeters)
@@ -199,6 +200,8 @@ public class EnergyAPIScript : APICaller
                     }
                 }
             }
+
+        Debug.Log("Day Average Calculation complete");
     }
 
     // Calculate monthly energy average
@@ -207,7 +210,6 @@ public class EnergyAPIScript : APICaller
     // Output: Stored all energy meter monthly average
     private void CalculateMonthAverage()
     {
-        
         // Loops through the list of energy meters
         foreach (var item in EnergyMeters)
         {
@@ -249,6 +251,8 @@ public class EnergyAPIScript : APICaller
                 }
             }
         }
+
+        Debug.Log("Month Average Calculation complete");
     }
 
     public EnergyMeterData ReturnEnergyMeterData(int meterid)

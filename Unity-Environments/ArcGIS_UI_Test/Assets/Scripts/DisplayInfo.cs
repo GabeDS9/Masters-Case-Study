@@ -42,16 +42,26 @@ public class DisplayInfo : MonoBehaviour
         spawnOnMap.ClearEnergyObjects();
         foreach(var record in energyManager.EnergyMeters)
         {
-            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-21");
+            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-23");
         }
     }
 
     public void PopulateWaterMeters()
     {
-        spawnOnMap.ClearEnergyObjects();
-        foreach (var record in energyManager.EnergyMeters)
+        foreach (var item in energyManager.EnergyMeters)
         {
-            spawnOnMap.PopulateEnergyObject(record.meterid, energyManager, "2022-03-15");
+            if(item.day_average.Count > 0)
+            {
+                Debug.Log($"{item.meterid} has day average of {item.day_average[0].ptot_kw} on {item.day_average[0].timestamp}");
+            } 
+        }
+
+        foreach (var item in energyManager.EnergyMeters)
+        {
+            if (item.month_average.Count > 0)
+            {
+                Debug.Log($"{item.meterid} has month average of {item.month_average[0].ptot_kw} on {item.month_average[0].timestamp}");
+            }
         }
     }
 
