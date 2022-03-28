@@ -17,13 +17,13 @@ public class EnergyAPIScript : APICaller
     // This function will initialise the energy meters with their historic information
     // Input: None
     // Output: Stored all energy meter data over time period
-    public async Task<bool> InitialiseEnergyMetersAsync()
+    public async Task<List<EnergyMeterData>> InitialiseEnergyMetersAsync()
     {
         EnergyMeters = GetEnergyMeterListAsync();
 
         Debug.Log("Populated energy meters");
 
-        var result = await StoreEnergyMeterDataAsync();
+        /*var result = await StoreEnergyMeterDataAsync();
 
         await Task.Run(() => CalculateDayAverage());
 
@@ -41,7 +41,7 @@ public class EnergyAPIScript : APICaller
 
         Debug.Log("Energy meters initialised");
 
-        return true;
+        return EnergyMeters;
     }
 
     // Energy MeterList API Caller
