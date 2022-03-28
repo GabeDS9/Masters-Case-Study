@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,7 @@ public class MenuManager : MonoBehaviour
     public TMP_Text temp;
 
     public ApplicationManager appManager;
+    public Mapbox.Examples.SpawnOnMap mapSpawnner;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +33,6 @@ public class MenuManager : MonoBehaviour
         
     }
 
-
-
     #region EnergyFields
     public void EnergyMeters()
     {
@@ -42,7 +42,20 @@ public class MenuManager : MonoBehaviour
     }
     public void PopulateEnergyDropdown(List<EnergyMeterData> EnergyMeterList)
     {
-        
+        List<String> options = new List<String>();
+
+        foreach(var item in EnergyMeterList)
+        {
+            options.Add(item.meterid.ToString());
+        }
+
+        EnergyMeterListDropDown.AddOptions(options);
+    }
+
+    public void SpawnEnergyObjects()
+    {
+        int meterid = Int32.Parse(EnergyMeterListDropDown.options[EnergyMeterListDropDown.value].text);
+        mapSpawnner.PopulateEnergyObject(meterid, appManager.energyManager, "2022-03-25");
     }
 
     #endregion
