@@ -385,6 +385,7 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\PolylineToGeoCoordinateListConverter.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\Logging\LocationLogWriter.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\VertexDebuggerGizmo.cs" />
+    <Compile Include="Assets\Scripts\APIs\EnergyAPI\EnergyAverage.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\SQLiteCache\Tiles.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerFantasyStyle.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\LoadingPanelController.cs" />
@@ -433,15 +434,6 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationSmoothing\KalmanFilter.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyle.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\DatePicker.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\TimePicker.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\DayToggle.cs" />
-    <Compile Include="Assets\Calender\Assets\RSToolKit\Scripts\General\Helpers\DateTimeHelpers.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\DateTimePicker.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\MinuteSecondOptionData.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\TimeOptionData.cs" />
-    <Compile Include="Assets\Calender\Assets\CalendarUI\scripts\HourOptionData.cs" />
-    <Compile Include="Assets\Scripts\APIs\EnergyAPI\EnergyAverage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -462,7 +454,6 @@
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\sqlite\x86\sqlite3.dll" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\MapboxAccounts\net35\MapboxAccountsUnity.dll" />
-    <None Include="Assets\Calender\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\portable-net45+uap10\Mapbox.VectorTile.Geometry.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Mapbox\Shaders\MapboxStyles.shader" />

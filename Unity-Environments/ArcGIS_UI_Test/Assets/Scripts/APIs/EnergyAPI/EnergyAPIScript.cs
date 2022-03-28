@@ -88,7 +88,7 @@ public class EnergyAPIScript : APICaller
         String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
         var result = await Task.Run(() => CallAPI(url));
         EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
-
+        Debug.Log($"{meterdata.meterid} data received");
         return meterdata;
     }
 
@@ -118,7 +118,7 @@ public class EnergyAPIScript : APICaller
     {
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
-        from_date = "2022-03-20%2000:00:00";
+        from_date = "2022-02-25%2000:00:00";
         List<Task<EnergyMeterData>> tasks = new List<Task<EnergyMeterData>>();
 
         foreach (var record in EnergyMeters)
@@ -171,12 +171,9 @@ public class EnergyAPIScript : APICaller
             for (int i = 0; i < item.data.Count; i++)
             {
             (year, month, day) = GetDate(item.data[i].timestamp);
-                    //Debug.Log($"Current time: {year}-{month}-{day}");
 
                     if ((year != prevYear) || (month != prevMonth) || (day != prevDay))
-                    {
-                        //Debug.Log($"Timestamp is not equal: {year}-{month}-{day} is current -- {prevYear}-{prevMonth}-{prevDay} is prev");
-                        
+                    {                        
                         foreach (var data in item.data)
                         {
                             String tempDay, tempMonth, tempYear;
@@ -189,11 +186,10 @@ public class EnergyAPIScript : APICaller
 
                         }
 
-                        //Debug.Log($"{year}-{month}-{day} has average energy of {tempEnergy/count}");
+                        tempData = new EnergyAverage();
                         tempData.timestamp = year + "-" + month + "-" + day;
                         tempData.ptot_kw = tempEnergy / count;
                         item.day_average.Add(tempData);
-                        //Debug.Log($"{item.meterid} average energy for {tempData.timestamp} was {tempData.ptot_kw}");
                         prevYear = year;
                         prevMonth = month;
                         prevDay = day;
@@ -223,11 +219,9 @@ public class EnergyAPIScript : APICaller
             for (int i = 0; i < item.day_average.Count; i++)
             {
                 (year, month, day) = GetDate(item.day_average[i].timestamp);
-                //Debug.Log($"Current time: {year}-{month}-{day}");
 
                 if ((year != prevYear) || (month != prevMonth))
                 {
-                    //Debug.Log($"Timestamp is not equal: {year}-{month}-{day} is current -- {prevYear}-{prevMonth}-01 is prev for {item.meterid}");
 
                     foreach (var data in item.day_average)
                     {
@@ -241,13 +235,13 @@ public class EnergyAPIScript : APICaller
 
                     }
 
-                    //Debug.Log($"{year}-{month}-{day} has average energy of {tempEnergy/count}");
+                    tempData = new EnergyAverage();
                     tempData.timestamp = year + "-" + month + "-01";
                     tempData.ptot_kw = tempEnergy / count;
                     item.month_average.Add(tempData);
-                    //Debug.Log($"{item.meterid} average energy for {tempData.timestamp} was {tempData.ptot_kw}");
                     prevYear = year;
                     prevMonth = month;
+
                 }
             }
         }

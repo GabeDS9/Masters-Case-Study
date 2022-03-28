@@ -48,11 +48,11 @@ public class DisplayInfo : MonoBehaviour
 
     public void PopulateWaterMeters()
     {
-        foreach (var item in energyManager.EnergyMeters)
+        /*foreach (var item in energyManager.EnergyMeters)
         {
             if(item.day_average.Count > 0)
             {
-                Debug.Log($"{item.meterid} has day average of {item.day_average[0].ptot_kw} on {item.day_average[0].timestamp}");
+                Debug.Log($"{item.meterid} has day average of {item.day_average[1].ptot_kw} on {item.day_average[1].timestamp}");
             } 
         }
 
@@ -60,8 +60,20 @@ public class DisplayInfo : MonoBehaviour
         {
             if (item.month_average.Count > 0)
             {
-                Debug.Log($"{item.meterid} has month average of {item.month_average[0].ptot_kw} on {item.month_average[0].timestamp}");
+                Debug.Log($"{item.meterid} has month average of {item.month_average[1].ptot_kw} on {item.month_average[1].timestamp}");
             }
+        }*/
+
+        var meter = energyManager.EnergyMeters[0];
+
+        for (int i=0; i < meter.day_average.Count; i++)
+        {
+            Debug.Log($"{meter.meterid} has day average of {meter.day_average[i].ptot_kw} on {meter.day_average[i].timestamp}");
+        }
+
+        for (int i = 0; i < meter.month_average.Count; i++)
+        {
+            Debug.Log($"{meter.meterid} has month average of {meter.month_average[i].ptot_kw} on {meter.month_average[i].timestamp}");
         }
     }
 
