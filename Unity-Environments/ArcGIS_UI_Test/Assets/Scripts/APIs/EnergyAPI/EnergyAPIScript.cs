@@ -13,37 +13,6 @@ public class EnergyAPIScript : APICaller
     public List<EnergyMeterData> EnergyMeters = new List<EnergyMeterData>();
     public static System.Random random = new System.Random();
 
-    // Initialise the energy meters
-    // This function will initialise the energy meters with their historic information
-    // Input: None
-    // Output: Stored all energy meter data over time period
-    public async Task<List<EnergyMeterData>> InitialiseEnergyMetersAsync()
-    {
-        EnergyMeters = GetEnergyMeterListAsync();
-
-        Debug.Log("Populated energy meters");
-
-        /*var result = await StoreEnergyMeterDataAsync();
-
-        await Task.Run(() => CalculateDayAverage());
-
-        await Task.Run(() => CalculateMonthAverage());
-
-        /*foreach (var item in EnergyMeters)
-        {
-            Debug.Log($"{item.meterid} has day average of {item.day_average[3].ptot_kw} on {item.day_average[3].timestamp}");
-        }        
-
-        /*foreach (var item in EnergyMeters)
-        {
-            Debug.Log($"{item.meterid} has month average of {item.month_average[0].ptot_kw} on {item.month_average[0].timestamp}");
-        }*/
-
-        Debug.Log("Energy meters initialised");
-
-        return EnergyMeters;
-    }
-
     // Energy MeterList API Caller
     // This function will make an API call to receive the energy meters availabe
     // Input: None
@@ -76,6 +45,19 @@ public class EnergyAPIScript : APICaller
         meterlist.RemoveAt(pos);
 
         return meterlist;
+    }
+
+    // Load Energy Meter List
+    // This function will populate a energy meter list with data froma CSV configuration file for the energy meters
+    // Input: None
+    // Output: Energy Meter List (List<EnergyMeterData>)
+    public List<EnergyMeterData> LoadEnergyMeterList()
+    {
+        LoadEnergyExcel excel = new LoadEnergyExcel();
+
+        EnergyMeters = excel.LoadEnergyMeterData();
+
+        return EnergyMeters;
     }
 
     // Energy MeterUsage API Caller

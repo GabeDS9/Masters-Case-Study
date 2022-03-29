@@ -12,7 +12,7 @@ public class ApplicationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnergyMeterList = Task.Run(() => energyManager.InitialiseEnergyMetersAsync()).Result;
+        EnergyMeterList = energyManager.LoadEnergyMeterList();
     }
 
     // Update is called once per frame

@@ -33,10 +33,6 @@ public class DisplayInfo : MonoBehaviour
         }
     }
     
-    public void PopulateMeters()
-    {
-        Task.Run(() => energyManager.InitialiseEnergyMetersAsync());
-    }
     public void PopulateEnergyMeters()
     {
         spawnOnMap.ClearEnergyObjects();

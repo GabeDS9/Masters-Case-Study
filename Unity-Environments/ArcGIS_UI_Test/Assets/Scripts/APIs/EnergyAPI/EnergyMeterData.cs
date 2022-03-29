@@ -7,8 +7,10 @@ public class EnergyMeterData
     public int meterid { get; set; }
     public string description { get; set; }
     public string make { get; set; }
+    public string manufacturer { get; set; }
     public string type { get; set; }
     public string serial_no { get; set; }
+    public string model { get; set; }
     public string yard_no { get; set; }
     public string building_no { get; set; }
     public string floor { get; set; }
