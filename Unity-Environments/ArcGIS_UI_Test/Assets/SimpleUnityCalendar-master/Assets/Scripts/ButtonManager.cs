@@ -19,11 +19,11 @@ public class ButtonManager : MonoBehaviour
 
 	#region Public Methods
 
-	public void Initialize(string label, Action<(string, string)> clickEventHandler)
+	public void Initialize(string label, string month, string year, Action<(string, string, string, string)> clickEventHandler)
 	{
 		this.label.text = label;
 
-		buttonAction += () => clickEventHandler((label, label));
+		buttonAction += () => clickEventHandler((label, month, year, label));
 		button.onClick.AddListener(buttonAction);
 	}
 

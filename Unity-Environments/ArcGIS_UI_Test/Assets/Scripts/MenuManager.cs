@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -13,7 +14,6 @@ public class MenuManager : MonoBehaviour
     public GameObject EndCalendar;
     public GameObject EnergyMetersButton;
     public TMP_Dropdown EnergyMeterListDropDown;
-    public TMP_Text temp;
 
     public ApplicationManager appManager;
     public Mapbox.Examples.SpawnOnMap mapSpawnner;
@@ -52,10 +52,11 @@ public class MenuManager : MonoBehaviour
         EnergyMeterListDropDown.AddOptions(options);
     }
 
-    public void SpawnEnergyObjects()
+    public async void SpawnEnergyObjectsAsync()
     {
+        Debug.Log("Spawning object");
         int meterid = Int32.Parse(EnergyMeterListDropDown.options[EnergyMeterListDropDown.value].text);
-        mapSpawnner.PopulateEnergyObject(meterid, appManager.energyManager, "2022-03-25");
+        await mapSpawnner.PopulateEnergyObjectAsync(meterid, appManager.energyManager, "2022-03-27");
     }
 
     #endregion

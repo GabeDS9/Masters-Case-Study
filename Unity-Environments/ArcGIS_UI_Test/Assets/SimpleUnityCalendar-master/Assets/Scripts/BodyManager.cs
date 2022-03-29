@@ -18,7 +18,7 @@ public class BodyManager : MonoBehaviour
 
 	#region Public Methods
 
-	public void Initialize(int year, int month, Action<(string, string)> clickEventHandler)
+	public void Initialize(int year, int month, Action<(string, string, string, string)> clickEventHandler)
 	{
 		var dateTime = new DateTime(year, month, 1);
 		var daysInMonth = DateTime.DaysInMonth(year, month);
@@ -48,7 +48,7 @@ public class BodyManager : MonoBehaviour
 			var buttonManager = instance.GetComponent<ButtonManager>();
 
 			if (buttonManager != null)
-				buttonManager.Initialize(a.ToString(), clickEventHandler);
+				buttonManager.Initialize(a.ToString(), month.ToString(), year.ToString(), clickEventHandler);
 
 			cells.Add(instance);
 		}

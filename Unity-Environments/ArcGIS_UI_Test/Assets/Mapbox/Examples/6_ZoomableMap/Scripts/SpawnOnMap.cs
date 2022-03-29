@@ -27,9 +27,9 @@
 		private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
 		private List<WaterMeterData> waterMeterData = new List<WaterMeterData>();		
 
-		public void PopulateEnergyObject(int meterid, EnergyAPIScript energyManager, String date)
+		public async Task PopulateEnergyObjectAsync(int meterid, EnergyAPIScript energyManager, String date)
         {
-			EnergyMeterData tempEnergyMeter = energyManager.ReturnEnergyMeterData(meterid);
+			EnergyMeterData tempEnergyMeter = await energyManager.GetMeterDataAsync("2022-03-25", "2022-03-28", meterid);
 			String tempYear, tempMonth, tempDay;
 			String year, month, day;
 			(year, month, day) = energyManager.GetDate(date);
@@ -76,7 +76,7 @@
             }
         }
 
-		public async void PopulateCurrentEnergyObjects(List<EnergyMeterData> mList)
+		/*public async void PopulateCurrentEnergyObjects(List<EnergyMeterData> mList)
 		{
 			_energyMeterList = mList;
 			_locations = new Vector2d[_energyMeterList.Count];
@@ -109,7 +109,7 @@
 					}
 
 					i++;
-				}*/
+				}
 			}
 
 			var results = await Task.WhenAll(tasks);
@@ -128,19 +128,6 @@
 					_spawnedEnergyObjects.Add(instance);
 				}
 			}
-		}
-
-		/*private async Task<EnergyData> DisplayEnergyAsync(String meterID)
-        {
-			EnergyData tempEnergy = await Task.Run(() => EnergyAPIScript.GetCurrentMeterData(meterID));
-			return tempEnergy;
-		}*/
-
-		private Task<EnergyMeterData> GetCurrentEnergyParallelAsync(EnergyMeterData record)
-		{
-			EnergyMeterData energyData = EnergyAPIScript.GetCurrentMeterData(record.meterid);
-			//Debug.Log("Getting energy meter at: " + record.meterid + " - Coord: " + record.latitude + ", " + record.longitude);
-			return Task.FromResult(energyData);
 		}
 
 		public void PopulateCurrentWaterObjects(List<WaterMeterList> mList)
@@ -169,6 +156,6 @@
 					}
 				}
 			}
-		}
+		}*/
 	}
 }

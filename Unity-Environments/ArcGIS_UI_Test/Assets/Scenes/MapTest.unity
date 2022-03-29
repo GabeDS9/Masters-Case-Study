@@ -2717,6 +2717,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4604196706354879236, guid: 59740217838a3e54a82d3d8e5e553c18, type: 3}
+      propertyPath: textBox
+      value: 
+      objectReference: {fileID: 156161145}
+    - target: {fileID: 4604196706354879236, guid: 59740217838a3e54a82d3d8e5e553c18, type: 3}
+      propertyPath: dateInput
+      value: 
+      objectReference: {fileID: 64189148}
     - target: {fileID: 4604196706844701897, guid: 59740217838a3e54a82d3d8e5e553c18, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3258,23 +3266,6 @@ MonoBehaviour:
   MarkerPrefab:
   - {fileID: 5317113767025326050, guid: 8e09c31ffb6c2344a9c0ade8c6f600cc, type: 3}
   - {fileID: 7228671149945930138, guid: 4a10afcda95a144438517d2c1808a23a, type: 3}
---- !u!114 &786433030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786433026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c699b8e1864b4b248acb7a04ede9480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _panSpeed: 1.5
-  _zoomSpeed: 0.25
-  _referenceCamera: {fileID: 963194227}
-  _mapManager: {fileID: 786433027}
-  _useDegreeMethod: 0
 --- !u!1 &829214962
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,7 +3991,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1178999671}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: SpawnEnergyObjectsAsync
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1138197270
 MonoBehaviour:
@@ -4075,9 +4078,8 @@ MonoBehaviour:
   EndCalendar: {fileID: 624301988}
   EnergyMetersButton: {fileID: 81809596}
   EnergyMeterListDropDown: {fileID: 1138197269}
-  temp: {fileID: 0}
   appManager: {fileID: 363713580}
-  mapSpawnner: {fileID: 0}
+  mapSpawnner: {fileID: 786433028}
 --- !u!4 &1178999672
 Transform:
   m_ObjectHideFlags: 0
@@ -4310,6 +4312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4604196706354879236, guid: 59740217838a3e54a82d3d8e5e553c18, type: 3}
+      propertyPath: dateInput
+      value: 
+      objectReference: {fileID: 491772642}
     - target: {fileID: 4604196706844701897, guid: 59740217838a3e54a82d3d8e5e553c18, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

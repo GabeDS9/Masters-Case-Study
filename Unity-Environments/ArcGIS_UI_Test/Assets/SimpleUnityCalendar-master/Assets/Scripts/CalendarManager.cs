@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using UnityEngine;
+using TMPro;
 
 public class CalendarManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class CalendarManager : MonoBehaviour
 	private BodyManager bodyManager;
 
 	[SerializeField]
-	private TailManager tailManager;
+	private TMP_InputField dateInput;
 
 	private DateTime targetDateTime;
 	private CultureInfo cultureInfo;
@@ -49,9 +50,9 @@ public class CalendarManager : MonoBehaviour
 		bodyManager.Initialize(year, month, OnButtonClicked);
 	}
 
-	private void OnButtonClicked((string day, string legend) param)
+	private void OnButtonClicked((string day, string month, string year, string legend) param)
 	{
-		tailManager.SetLegend($"You have clicked day {param.day}.");
+		dateInput.text = param.year + "-" + param.month + "-" + param.day;
 	}
 
 	#endregion
