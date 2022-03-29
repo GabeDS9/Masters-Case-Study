@@ -64,48 +64,32 @@ public class EnergyAPIScript : APICaller
     // This function will make an API call to receive an energy meter's information over a specified time period
     // Input: Energy Meter ID (string), time frame (string)
     // Output: Energy Data (MeterData)
-    public async Task<EnergyMeterData> GetMeterDataAsync(String from_date, String to_date, int meterid)
+    public async Task<List<EnergyData>> GetMeterDataAsync(String from_date, String to_date, int meterid)
     {
         String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
         String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
         var result = await Task.Run(() => CallAPI(url));
+        Debug.Log("result obtained");
         EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
 
-        foreach(var item in EnergyMeters)
+        foreach (var item in EnergyMeters)
         {
-            if(item.meterid == meterid)
+            if (item.meterid == meterid)
             {
                 item.data = meterdata.data;
                 meterdata = item;
                 break;
             }
         }
-        return meterdata;
+
+        return meterdata.data;
     }
-
-    // Current Energy MeterUsage API Caller
-    // This function will make an API call to receive an energy meter's current information
-    // Input: Energy Meter ID (string)
-    // Output: Current Energy Data (EnergyData)
-    /*public static EnergyMeterData GetCurrentMeterData(int meterid)
-    {
-        EnergyData temp = new EnergyData();
-        String to_date, from_date;
-        (to_date, from_date) = GetCurrentDateTime();
-        EnergyMeterData meterData = GetMeterDataAsync(from_date, to_date, meterid).Result;
-        if (meterData.data.Count > 0)
-        {
-            temp = meterData.data[meterData.data.Count - 1];
-        }
-
-        return meterData;
-    }*/
 
     // Store energy meter data
     // This function will make API calls to receive and store all energy information
     // Input: None
     // Output: Stored all energy meter data over time period
-    public async Task<bool> StoreEnergyMeterDataAsync()
+    /*public async Task<bool> StoreEnergyMeterDataAsync()
     {
         String to_date, from_date;
         (to_date, from_date) = GetCurrentDateTime();
@@ -141,33 +125,36 @@ public class EnergyAPIScript : APICaller
         {
             return false;
         }
-    }
+    }*/
 
-    // Calculate daily energy average
-    // This function will calculate the average energy use for each day and store it in the energy meter
-    // Input: None
-    // Output: Stored all energy meter daily average
-    private void CalculateDayAverage()
+    public void CalculateDayAverage(string startDate, string endDate, int meterid)
     {
-        // Loops through the list of energy meters
-        foreach(var item in EnergyMeters)
+        foreach (var item in EnergyMeters)
         {
-            item.day_average = new List<EnergyAverage>();
-
-            String day, month, year, prevDay = "", prevMonth = "", prevYear = "";
-            double tempEnergy = 0;
-            int count = 0;
-            EnergyAverage tempData = new EnergyAverage();
-
-            for (int i = 0; i < item.data.Count; i++)
+            if (item.meterid == meterid)
             {
-            (year, month, day) = GetDate(item.data[i].timestamp);
+                item.data = GetMeterDataAsync(startDate, endDate, meterid).Result;
+                item.day_average = new List<EnergyAverage>();
 
-                    if ((year != prevYear) || (month != prevMonth) || (day != prevDay))
-                    {                        
+                int day, month, year, prevDay = 0, prevMonth = 0, prevYear = 0;
+                int startDay, startMonth, startYear;
+                (startDay, startMonth, startYear) = GetDate(startDate);
+                int endDay, endMonth, endYear;
+                (endDay, endMonth, endYear) = GetDate(endDate);
+                double tempEnergy = 0;
+                int count = 0;
+                EnergyAverage tempData = new EnergyAverage();
+
+                for (int i = 0; i < item.data.Count; i++)
+                {
+                    (year, month, day) = GetDate(item.data[i].timestamp);
+
+                    if (((year != prevYear) || (month != prevMonth) || (day != prevDay)) && ((year > startYear) || (month > startMonth) || (day > startDay))
+                        && ((year < endYear) || (month < endMonth) || (day < endDay)))
+                    {
                         foreach (var data in item.data)
                         {
-                            String tempDay, tempMonth, tempYear;
+                            int tempDay, tempMonth, tempYear;
                             (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
                             if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
                             {
@@ -187,73 +174,64 @@ public class EnergyAPIScript : APICaller
                     }
                 }
             }
-
-        Debug.Log("Day Average Calculation complete");
+        }
     }
 
     // Calculate monthly energy average
     // This function will calculate the average energy use for each month and store it in the energy meter
     // Input: None
     // Output: Stored all energy meter monthly average
-    private void CalculateMonthAverage()
+    public void CalculateMonthAverage(string startDate, string endDate, int meterid)
     {
         // Loops through the list of energy meters
         foreach (var item in EnergyMeters)
         {
-            item.month_average = new List<EnergyAverage>();
-
-            String day, month, year, prevMonth = "", prevYear = "";
-            double tempEnergy = 0;
-            int count = 0;
-            EnergyAverage tempData = new EnergyAverage();
-
-            for (int i = 0; i < item.day_average.Count; i++)
+            if (item.meterid == meterid)
             {
-                (year, month, day) = GetDate(item.day_average[i].timestamp);
 
-                if ((year != prevYear) || (month != prevMonth))
+                item.data = GetMeterDataAsync(startDate, endDate, meterid).Result;
+                item.month_average = new List<EnergyAverage>();
+
+                int day, month, year, prevMonth = 0, prevYear = 0;
+                double tempEnergy = 0;
+                int count = 0;
+                int startDay, startMonth, startYear;
+                (startDay, startMonth, startYear) = GetDate(startDate);
+                int endDay, endMonth, endYear;
+                (endDay, endMonth, endYear) = GetDate(endDate);
+                EnergyAverage tempData = new EnergyAverage();
+
+                for (int i = 0; i < item.day_average.Count; i++)
                 {
+                    (year, month, day) = GetDate(item.day_average[i].timestamp);
 
-                    foreach (var data in item.day_average)
+                    if ((year != prevYear) || (month != prevMonth) && ((year > startYear) || (month > startMonth))
+                            && ((year < endYear) || (month < endMonth)))
                     {
-                        String tempDay, tempMonth, tempYear;
-                        (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
-                        if ((year == tempYear) && (month == tempMonth))
+
+                        foreach (var data in item.day_average)
                         {
-                            tempEnergy += data.ptot_kw;
-                            count++;
+                            int tempDay, tempMonth, tempYear;
+                            (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                            if ((year == tempYear) && (month == tempMonth))
+                            {
+                                tempEnergy += data.ptot_kw;
+                                count++;
+                            }
+
                         }
 
+                        tempData = new EnergyAverage();
+                        tempData.timestamp = year + "-" + month + "-01";
+                        tempData.ptot_kw = tempEnergy / count;
+                        item.month_average.Add(tempData);
+                        prevYear = year;
+                        prevMonth = month;
+
                     }
-
-                    tempData = new EnergyAverage();
-                    tempData.timestamp = year + "-" + month + "-01";
-                    tempData.ptot_kw = tempEnergy / count;
-                    item.month_average.Add(tempData);
-                    prevYear = year;
-                    prevMonth = month;
-
                 }
             }
         }
-
-        Debug.Log("Month Average Calculation complete");
-    }
-
-    public EnergyMeterData ReturnEnergyMeterData(int meterid)
-    {
-        EnergyMeterData energyMeter = new EnergyMeterData();
-
-        foreach(var item in EnergyMeters)
-        {
-            if(item.meterid == meterid)
-            {
-                energyMeter = item;
-                break;
-            }
-        }
-
-        return energyMeter;
     }
 
     private float NextFloat(float min, float max)

@@ -29,14 +29,26 @@
 
 		public async Task PopulateEnergyObjectAsync(int meterid, EnergyAPIScript energyManager, String date)
         {
-			EnergyMeterData tempEnergyMeter = await energyManager.GetMeterDataAsync("2022-03-25", "2022-03-28", meterid);
-			String tempYear, tempMonth, tempDay;
-			String year, month, day;
+			List<EnergyData> tempEnergyData = await energyManager.GetMeterDataAsync("2022-03-25", "2022-03-28", meterid);
+			String latitude="", longitude="";
+			
+			foreach(var item in energyManager.EnergyMeters)
+            {
+				if(item.meterid == meterid)
+                {
+					latitude = item.latitude;
+					longitude = item.longitude;
+					break;
+                }
+            }
+
+			int tempYear, tempMonth, tempDay;
+			int year, month, day;
 			(year, month, day) = energyManager.GetDate(date);
 			//Debug.Log($"Requested date: {year}-{month}-{day}");
 			double energy = 0;
 
-			foreach(var record in tempEnergyMeter.data)
+			foreach(var record in tempEnergyData)
             {
 				(tempYear, tempMonth, tempDay) = energyManager.GetDate(record.timestamp);
 				//Debug.Log($"Record timestamp: {tempYear}-{tempMonth}-{tempDay}");
@@ -50,13 +62,13 @@
 
             Vector2d[] locations = new Vector2d[1];
 
-			var locationString = tempEnergyMeter.latitude + "," + tempEnergyMeter.longitude;
+			var locationString = latitude + "," + longitude;
 			locations[0] = Conversions.StringToLatLon(locationString);
 			var instance = Instantiate(MarkerPrefab[0]);			
 			instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
-			Debug.Log("Object instantiated for meter " + tempEnergyMeter.meterid);
+			Debug.Log("Object instantiated for meter " + meterid);
 
-			if(tempEnergyMeter.data != null)
+			if(tempEnergyData != null)
             {
 				float currUse = (float)Math.Abs(energy);
 				instance.transform.localScale = new Vector3(1, currUse, 1);

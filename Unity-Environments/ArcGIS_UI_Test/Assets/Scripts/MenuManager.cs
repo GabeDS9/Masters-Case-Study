@@ -14,6 +14,8 @@ public class MenuManager : MonoBehaviour
     public GameObject EndCalendar;
     public GameObject EnergyMetersButton;
     public TMP_Dropdown EnergyMeterListDropDown;
+    public TMP_InputField startDate;
+    public TMP_InputField endDate;
 
     public ApplicationManager appManager;
     public Mapbox.Examples.SpawnOnMap mapSpawnner;
@@ -79,5 +81,36 @@ public class MenuManager : MonoBehaviour
     public void DisableEndCalendar()
     {
         EndCalendar.SetActive(false);
+    }
+
+    public async void VisualiseDataAsync()
+    {
+        String startdate = startDate.text;
+        String enddate = endDate.text;
+        int meterID = Int32.Parse(EnergyMeterListDropDown.options[EnergyMeterListDropDown.value].text);
+
+        Debug.Log("Obtaining data from " + startdate + " to " + enddate + " for " + meterID);
+
+        await Task.Run(() => appManager.energyManager.CalculateDayAverage(startdate, enddate, meterID));
+
+        await Task.Run(() => appManager.energyManager.CalculateMonthAverage(startdate, enddate, meterID));
+
+        foreach (var item in appManager.energyManager.EnergyMeters)
+        {
+            if (item.meterid == meterID)
+            {
+                foreach (var res in item.day_average)
+                {
+                    Debug.Log($"Day average for {meterID} on {res.timestamp} is {res.ptot_kw}");
+                }
+
+                foreach (var res in item.month_average)
+                {
+                    Debug.Log($"Month average for {meterID} on {res.timestamp} is {res.ptot_kw}");
+                }
+
+                break;
+            }
+        }
     }
 }
