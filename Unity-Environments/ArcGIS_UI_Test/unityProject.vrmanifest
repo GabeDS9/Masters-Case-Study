@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.arcgis_ui_test.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Unity-Environments\\ArcGIS_UI_Test\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "ArcGIS_UI_Test [Testing]"
+        }
+      }
+    }
+  ]
+}

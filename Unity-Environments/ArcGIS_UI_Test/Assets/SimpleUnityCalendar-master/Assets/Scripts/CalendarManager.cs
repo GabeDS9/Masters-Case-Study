@@ -53,6 +53,7 @@ public class CalendarManager : MonoBehaviour
 	private void OnButtonClicked((string day, string month, string year, string legend) param)
 	{
 		dateInput.text = param.year + "-" + param.month + "-" + param.day;
+		Debug.Log(dateInput.text);
 	}
 
 	#endregion
