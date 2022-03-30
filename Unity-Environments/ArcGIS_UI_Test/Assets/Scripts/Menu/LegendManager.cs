@@ -7,7 +7,7 @@ public class LegendManager : MonoBehaviour
 {
     public List<SpawnedObject> spawnedEnergyObjects = new List<SpawnedObject>();
     public GameObject legendPanel;
-    public bool isDisplayedPanel = false;
+    private bool isDisplayedPanel = false;
 
     private void Start()
     {

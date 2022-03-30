@@ -32,6 +32,7 @@ public class MenuManager : MonoBehaviour
     private List<EnergyAverage> monthAverage;
     private bool isDayButtonPressed = false;
     private bool isMonthButtonPressed = false;
+    private List<Toggle> legendList;
 
     // Start is called before the first frame update
     void Start()
@@ -108,14 +109,14 @@ public class MenuManager : MonoBehaviour
 
         await Task.Run(() => appManager.energyManager.CalculateMonthAverage(startdate, enddate, meterid));
 
-        /*foreach (var item in appManager.energyManager.EnergyMeters)
+        foreach (var item in appManager.energyManager.EnergyMeters)
         {
             if (item.meterid == meterid)
             {
 
                 tempEnergyMeter = item;
 
-                foreach (var res in item.day_average)
+                /*foreach (var res in item.day_average)
                 {
                     Debug.Log($"Day average for {meterid} on {res.timestamp} is {res.ptot_kw}");
                 }
@@ -125,9 +126,9 @@ public class MenuManager : MonoBehaviour
                     Debug.Log($"Month average for {meterid} on {res.timestamp} is {res.ptot_kw}");
                 }
 
-                break;
+                break;*/
             }
-        }*/
+        }
 
         Debug.Log("Information is obtained");
     }

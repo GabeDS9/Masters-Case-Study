@@ -342,6 +342,7 @@
     <Compile Include="Assets\Mapbox\Examples\Scripts\PositionWithLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\RasterTileExample.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\TextureModifier.cs" />
+    <Compile Include="Assets\Scripts\Menu\LegendManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\DescriptionAttribute.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryIos.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\Tile.cs" />
@@ -441,7 +442,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationSmoothing\KalmanFilter.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyle.cs" />
-    <Compile Include="Assets\Scripts\Menu\LegendManager.cs" />
+    <Compile Include="Assets\Scripts\Menu\ToggleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
