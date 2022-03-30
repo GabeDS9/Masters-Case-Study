@@ -33,14 +33,14 @@ public class DisplayInfo : MonoBehaviour
         }
     }
     
-    public void PopulateEnergyMeters()
+    /*public void PopulateEnergyMeters()
     {
         spawnOnMap.ClearEnergyObjects();
         foreach(var record in energyManager.EnergyMeters)
         {
             _ = spawnOnMap.PopulateEnergyObjectAsync(record.meterid, energyManager, "2022-03-23");
         }
-    }
+    }*/
 
     public void PopulateWaterMeters()
     {

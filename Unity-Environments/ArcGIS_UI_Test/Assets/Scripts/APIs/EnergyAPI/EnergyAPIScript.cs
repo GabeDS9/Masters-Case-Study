@@ -69,7 +69,6 @@ public class EnergyAPIScript : APICaller
         String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
         String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
         var result = await Task.Run(() => CallAPI(url));
-        Debug.Log("result obtained");
         EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
 
         foreach (var item in EnergyMeters)
@@ -149,8 +148,8 @@ public class EnergyAPIScript : APICaller
                 {
                     (year, month, day) = GetDate(item.data[i].timestamp);
 
-                    if (((year != prevYear) || (month != prevMonth) || (day != prevDay)) && ((year > startYear) || (month > startMonth) || (day > startDay))
-                        && ((year < endYear) || (month < endMonth) || (day < endDay)))
+                    if (((year != prevYear) || (month != prevMonth) || (day != prevDay)) && ((year >= startYear) || (month >= startMonth) || (day >= startDay))
+                        && ((year <= endYear) || (month <= endMonth) || (day <= endDay)))
                     {
                         foreach (var data in item.data)
                         {
@@ -205,8 +204,8 @@ public class EnergyAPIScript : APICaller
                 {
                     (year, month, day) = GetDate(item.day_average[i].timestamp);
 
-                    if ((year != prevYear) || (month != prevMonth) && ((year > startYear) || (month > startMonth))
-                            && ((year < endYear) || (month < endMonth)))
+                    if ((year != prevYear) || (month != prevMonth) && ((year >= startYear) || (month >= startMonth))
+                            && ((year <= endYear) || (month <= endMonth)))
                     {
 
                         foreach (var data in item.day_average)
