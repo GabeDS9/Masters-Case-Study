@@ -116,7 +116,7 @@ public class MenuManager : MonoBehaviour
 
                 tempEnergyMeter = item;
 
-                /*foreach (var res in item.day_average)
+                foreach (var res in item.day_average)
                 {
                     Debug.Log($"Day average for {meterid} on {res.timestamp} is {res.ptot_kw}");
                 }
@@ -126,7 +126,7 @@ public class MenuManager : MonoBehaviour
                     Debug.Log($"Month average for {meterid} on {res.timestamp} is {res.ptot_kw}");
                 }
 
-                break;*/
+                break;
             }
         }
 

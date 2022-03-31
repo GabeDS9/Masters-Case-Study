@@ -261,7 +261,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4604196706354879235}
-  - component: {fileID: 4604196706354879237}
   - component: {fileID: 4604196706354879236}
   m_Layer: 5
   m_Name: Calendar
@@ -291,14 +290,6 @@ RectTransform:
   m_AnchoredPosition: {x: 8.181, y: -407.489}
   m_SizeDelta: {x: 784.3621, y: 865.8979}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4604196706354879237
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4604196706354879234}
-  m_CullTransparentMesh: 0
 --- !u!114 &4604196706354879236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerManager: {fileID: 4604196706043337177}
   bodyManager: {fileID: 4604196706967481306}
-  tailManager: {fileID: 0}
+  dateInput: {fileID: 0}
 --- !u!1 &4604196706844701896
 GameObject:
   m_ObjectHideFlags: 0

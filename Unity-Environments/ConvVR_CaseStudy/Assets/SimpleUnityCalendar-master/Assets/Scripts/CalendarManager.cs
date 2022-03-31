@@ -25,6 +25,7 @@ public class CalendarManager : MonoBehaviour
 
 	public void OnGoToPreviousOrNextMonthButtonClicked(string param)
 	{
+		Debug.Log("Other month pressed");
 		targetDateTime = targetDateTime.AddMonths(param == "Prev" ? -1 : 1);
 		Refresh(targetDateTime.Year, targetDateTime.Month);
 	}
