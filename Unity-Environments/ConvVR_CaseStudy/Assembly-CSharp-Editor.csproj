@@ -388,11 +388,8 @@
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.7\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
-    <Reference Include="Mapbox.VectorTile.ExtensionMethods">
-      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.Json">
       <HintPath>Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Net35\Mapbox.Json.dll</HintPath>
@@ -409,17 +406,20 @@
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.7\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Mapbox.VectorTile.PbfReader">
-      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll</HintPath>
+    <Reference Include="Mapbox.VectorTile.ExtensionMethods">
+      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.7\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
+    <Reference Include="Mapbox.VectorTile.PbfReader">
+      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll</HintPath>
+    </Reference>
     <Reference Include="Mapbox.VectorTile.Geometry">
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.Geometry.dll</HintPath>
-    </Reference>
-    <Reference Include="Valve.Newtonsoft.Json">
-      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -781,6 +781,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.OpenVR">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -826,6 +829,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.OpenVR.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.CoreUtils.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
     </Reference>
@@ -862,12 +868,6 @@
     <Reference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.XR.OpenVR">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.OpenVR.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
@@ -878,10 +878,6 @@
       <Project>{979F4DAB-5FF4-6C03-6B4A-313E2FB32DD7}</Project>
       <Name>SteamVR_Input_Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="SteamVR_Editor.csproj">
-      <Project>{B2A5E41C-027F-19A9-DEC9-3AFD75C9AE4F}</Project>
-      <Name>SteamVR_Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="SteamVR.csproj">
       <Project>{0EC1881F-CA46-C715-5EAE-EF7BEABABFA0}</Project>
       <Name>SteamVR</Name>
@@ -889,6 +885,10 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{E0BB44B5-5DD5-F5E8-17CF-52119DA57ED8}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{B2A5E41C-027F-19A9-DEC9-3AFD75C9AE4F}</Project>
+      <Name>SteamVR_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Actions.csproj">
       <Project>{7B4F8E7F-898D-F3F1-CFD4-267DBBECB17C}</Project>

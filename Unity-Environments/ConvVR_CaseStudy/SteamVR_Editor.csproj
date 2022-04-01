@@ -56,16 +56,16 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\SteamVR\Editor\SteamVR_UpdateModeEditor.cs" />
-    <Compile Include="Assets\SteamVR\Editor\SteamVR_SkyboxEditor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_AutoEnableVR_2018to2019.cs" />
-    <Compile Include="Assets\SteamVR\Editor\SteamVR_AutoEnableVR_2019plus.cs" />
-    <Compile Include="Assets\SteamVR\Editor\SteamVR_Update.cs" />
-    <Compile Include="Assets\SteamVR\Editor\SteamVR_Preferences.cs" />
-    <Compile Include="Assets\SteamVR\Editor\SteamVR_UnitySettingsWindow.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Editor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_UnitySettingsWindow.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_RenderModelEditor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_Update.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_AutoEnableVR_5.4to2018.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_UpdateModeEditor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_Preferences.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_SkyboxEditor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_AutoEnableVR_2019plus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SteamVR\Editor\SteamVR_Editor.asmdef" />
@@ -308,11 +308,8 @@
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.7\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
-    <Reference Include="Mapbox.VectorTile.ExtensionMethods">
-      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.Json">
       <HintPath>Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Net35\Mapbox.Json.dll</HintPath>
@@ -329,17 +326,20 @@
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.7\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Mapbox.VectorTile.PbfReader">
-      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll</HintPath>
+    <Reference Include="Mapbox.VectorTile.ExtensionMethods">
+      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.7\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
+    <Reference Include="Mapbox.VectorTile.PbfReader">
+      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll</HintPath>
+    </Reference>
     <Reference Include="Mapbox.VectorTile.Geometry">
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.Geometry.dll</HintPath>
-    </Reference>
-    <Reference Include="Valve.Newtonsoft.Json">
-      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

@@ -53,7 +53,7 @@ public class EnergyAPIScript : APICaller
     // Output: Energy Meter List (List<EnergyMeterData>)
     public List<EnergyMeterData> LoadEnergyMeterList()
     {
-        LoadEnergyExcel excel = new LoadEnergyExcel();
+        LoadExcel excel = new LoadExcel();
 
         EnergyMeters = excel.LoadEnergyMeterData();
 

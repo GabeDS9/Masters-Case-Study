@@ -67,6 +67,7 @@
     <Compile Include="Assets\Mapbox\Unity\Location\ILocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\PrefabModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\IImageryLayer.cs" />
+    <Compile Include="Assets\Scripts\Movement\VR_Movement.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerRealisticStyle.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SnapTerrainRaycastModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\SQLiteCache\Tilesets.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Mapbox\Examples\Scripts\PoiLabelTextSetter.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\ObjectPool.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TileProcessFinishedEventArgs.cs" />
+    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyData.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyleTiled.cs" />
     <Compile Include="Assets\SimpleUnityCalendar-master\Assets\Scripts\BodyManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\FeatureBehaviour.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\LayerVisualizers\VectorLayerVisualizer.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\Location.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyleAtlasWithColorPallete.cs" />
+    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarAPIScript.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\LayerProperties.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\LoftModifier.cs" />
     <Compile Include="Assets\SimpleUnityCalendar-master\Assets\Scripts\HeaderManager.cs" />
@@ -173,7 +176,7 @@
     <Compile Include="Assets\Mapbox\Examples\7_Globe\Scripts\SpawnOnGlobeExample.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\PolylineUtils.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TileStatsFetcher.cs" />
-    <Compile Include="Assets\Scripts\CSV Reader\LoadEnergyExcel.cs" />
+    <Compile Include="Assets\Scripts\CSV Reader\LoadExcel.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\EditorLocationProviderLocationLog.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerDarkStyle.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ReverseGeocodeUserInput.cs" />
@@ -273,6 +276,7 @@
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ITerrainLayer.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\TelemetryConfigurationButton.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\UnwrappedTileId.cs" />
+    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyMeterData.cs" />
     <Compile Include="Assets\Mapbox\Unity\Styling\ScriptablePalette.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\ReverseGeocoderExample.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IUnifiedMap.cs" />
@@ -300,6 +304,7 @@
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryFactory.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSONObjectVectorLayer.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\ClassicRasterTile.cs" />
+    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyAPIScript.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Enums\TilePropertyState.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IMap.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\MapMatching\MapMatchingResponse.cs" />
@@ -320,6 +325,7 @@
     <Compile Include="Assets\Mapbox\Unity\DataContainers\UnifiedMapOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorEntity.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SmoothLineModifier.cs" />
+    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarData.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\KDTree.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\JsonConverters.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\DirectionsExample.cs" />
@@ -327,8 +333,8 @@
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\IAngleSmoothing.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\IResource.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\RoutingProfile.cs" />
-    <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\FlatTerrainStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\PolygonUtils.cs" />
+    <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\FlatTerrainStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerLineGeometryOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\GeoCoordinateBounds.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\VectorFilterOptions.cs" />
@@ -364,6 +370,7 @@
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryWebgl.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshGenerationBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\TextureSelector.cs" />
+    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarMeterData.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\AbstractMap.cs" />
     <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\CheapRuler.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SnapTerrainModifier.cs" />
@@ -443,7 +450,6 @@
     <Compile Include="Assets\Mapbox\Examples\1_DataExplorer\HighlightBuildings.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\DeviceLocationProviderAndroidNative.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
-    <Compile Include="Assets\Scripts\Movement\VR_Movement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -725,11 +731,8 @@
     <Reference Include="MapboxAccountsUnity">
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\MapboxAccounts\net35\MapboxAccountsUnity.dll</HintPath>
     </Reference>
-    <Reference Include="Mapbox.VectorTile.ExtensionMethods">
-      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.Json">
       <HintPath>Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.Json\Net35\Mapbox.Json.dll</HintPath>
@@ -740,14 +743,17 @@
     <Reference Include="Mapbox.IO.Compression">
       <HintPath>Assets\Mapbox\Core\Plugins\ThirdParty\Mapbox.IO.Compression\net35\Mapbox.IO.Compression.dll</HintPath>
     </Reference>
+    <Reference Include="Mapbox.VectorTile.ExtensionMethods">
+      <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Mapbox.VectorTile.PbfReader">
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.PbfReader.dll</HintPath>
     </Reference>
     <Reference Include="Mapbox.VectorTile.Geometry">
       <HintPath>Assets\Mapbox\Core\Plugins\Mapbox\vector-tile-cs\net46\Mapbox.VectorTile.Geometry.dll</HintPath>
-    </Reference>
-    <Reference Include="Valve.Newtonsoft.Json">
-      <HintPath>Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.26f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -1097,6 +1103,9 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.OpenVR">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -1142,6 +1151,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.OpenVR.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.CoreUtils.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
     </Reference>
@@ -1178,21 +1190,11 @@
     <Reference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.XR.OpenVR">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.OpenVR.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenVR.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
       <Project>{979F4DAB-5FF4-6C03-6B4A-313E2FB32DD7}</Project>
       <Name>SteamVR_Input_Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR_Editor.csproj">
-      <Project>{B2A5E41C-027F-19A9-DEC9-3AFD75C9AE4F}</Project>
-      <Name>SteamVR_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR.csproj">
       <Project>{0EC1881F-CA46-C715-5EAE-EF7BEABABFA0}</Project>
@@ -1201,6 +1203,10 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{E0BB44B5-5DD5-F5E8-17CF-52119DA57ED8}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{B2A5E41C-027F-19A9-DEC9-3AFD75C9AE4F}</Project>
+      <Name>SteamVR_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Actions.csproj">
       <Project>{7B4F8E7F-898D-F3F1-CFD4-267DBBECB17C}</Project>

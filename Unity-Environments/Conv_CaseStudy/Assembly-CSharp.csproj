@@ -298,7 +298,7 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Overview.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\PolylineUtils.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TileStatsFetcher.cs" />
-    <Compile Include="Assets\Scripts\CSV Reader\LoadEnergyExcel.cs" />
+    <Compile Include="Assets\Scripts\CSV Reader\LoadExcel.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\EditorLocationProviderLocationLog.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerDarkStyle.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ReverseGeocodeUserInput.cs" />
@@ -443,6 +443,12 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationSmoothing\KalmanFilter.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyle.cs" />
+    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyAPIScript.cs" />
+    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyMeterData.cs" />
+    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyData.cs" />
+    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarAPIScript.cs" />
+    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarData.cs" />
+    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarMeterData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

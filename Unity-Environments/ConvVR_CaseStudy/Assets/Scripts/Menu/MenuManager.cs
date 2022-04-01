@@ -16,7 +16,9 @@ public class MenuManager : MonoBehaviour
     public GameObject StartCalendar;
     public GameObject EndCalendar;
     public GameObject EnergyMetersButton;
-    public TMP_Dropdown EnergyMeterListDropDown;
+    public GameObject OccupancyMetersButton;
+    public GameObject SolarMetersButton;
+    public TMP_Dropdown MeterListDropDown;
     public TMP_InputField startDate;
     public TMP_InputField endDate;
     public Slider visualisationSlider;
@@ -45,6 +47,8 @@ public class MenuManager : MonoBehaviour
         StartCalendar.SetActive(false);
         EndCalendar.SetActive(false);
         EnergyMetersButton.SetActive(false);
+        OccupancyMetersButton.SetActive(false);
+        SolarMetersButton.SetActive(false);
         VisualisationMenu.SetActive(false);
         VisualisationUI.SetActive(false);
     }
@@ -82,7 +86,7 @@ public class MenuManager : MonoBehaviour
             options.Add(item.meterid.ToString());
         }
 
-        EnergyMeterListDropDown.AddOptions(options);
+        MeterListDropDown.AddOptions(options);
     }
 
     public void SpawnEnergyObjects(string date, List<EnergyAverage> averageList, string visualisation_type)
@@ -90,6 +94,58 @@ public class MenuManager : MonoBehaviour
         mapSpawnner.PopulateEnergyObject(tempEnergyMeter, averageList, date, visualisation_type);
     }
 
+    #endregion
+
+    #region OccupancyFields
+    public void OccupancyMeters()
+    {
+        MeterMenu.SetActive(true);
+        currentMenu = MeterMenu;
+        MainMenu.SetActive(false);
+        PopulateOccupancyDropdown(appManager.OccupancyMeterList);
+    }
+    public void PopulateOccupancyDropdown(List<OccupancyMeterData> OccupancyMeterList)
+    {
+        List<String> options = new List<String>();
+
+        foreach (var item in OccupancyMeterList)
+        {
+            options.Add(item.meterid.ToString());
+        }
+
+        MeterListDropDown.AddOptions(options);
+    }
+
+    public void SpawnOccupancyObjects(string date, List<EnergyAverage> averageList, string visualisation_type)
+    {
+        mapSpawnner.PopulateEnergyObject(tempEnergyMeter, averageList, date, visualisation_type);
+    }
+    #endregion
+
+    #region SolarFields
+    public void SolarMeters()
+    {
+        MeterMenu.SetActive(true);
+        currentMenu = MeterMenu;
+        MainMenu.SetActive(false);
+        PopulateSolarDropdown(appManager.SolarMeterList);
+    }
+    public void PopulateSolarDropdown(List<SolarMeterData> SolarMeterList)
+    {
+        List<String> options = new List<String>();
+
+        foreach (var item in SolarMeterList)
+        {
+            options.Add(item.meterid.ToString());
+        }
+
+        MeterListDropDown.AddOptions(options);
+    }
+
+    public void SpawnSolarObjects(string date, List<EnergyAverage> averageList, string visualisation_type)
+    {
+        mapSpawnner.PopulateEnergyObject(tempEnergyMeter, averageList, date, visualisation_type);
+    }
     #endregion
 
     #region Visualisations
@@ -109,7 +165,7 @@ public class MenuManager : MonoBehaviour
     {
         String startdate = startDate.text;
         String enddate = endDate.text;
-        meterid = Int32.Parse(EnergyMeterListDropDown.options[EnergyMeterListDropDown.value].text);
+        meterid = Int32.Parse(MeterListDropDown.options[MeterListDropDown.value].text);
 
         Debug.Log("Obtaining data from " + startdate + " to " + enddate + " for " + meterid);
 
