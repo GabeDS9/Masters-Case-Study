@@ -20,6 +20,9 @@ public class MenuManager : MonoBehaviour
     public TMP_InputField startDate;
     public TMP_InputField endDate;
     public Slider visualisationSlider;
+    public TMP_Text readyIndicator;
+    public Button dayVisualisationButton;
+    public Button monthVisualisationButton;
 
     public ApplicationManager appManager;
     public Mapbox.Examples.SpawnOnMap mapSpawnner;
@@ -32,6 +35,7 @@ public class MenuManager : MonoBehaviour
     private List<EnergyAverage> monthAverage;
     private bool isDayButtonPressed = false;
     private bool isMonthButtonPressed = false;
+    private bool visIsReady = false;
     private List<Toggle> legendList;
 
     // Start is called before the first frame update
@@ -48,7 +52,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void DisplayMainMenu()
@@ -58,6 +62,7 @@ public class MenuManager : MonoBehaviour
         currentMenu = MeterMenu;
         isDayButtonPressed = false;
         isMonthButtonPressed = false;
+        visIsReady = false;
     }
 
     #region EnergyFields
@@ -95,6 +100,9 @@ public class MenuManager : MonoBehaviour
         VisualisationMenu.SetActive(true);
         currentMenu = VisualisationMenu;
         VisualisationDataCalculations();
+        dayVisualisationButton.enabled = visIsReady;
+        monthVisualisationButton.enabled = visIsReady;
+        readyIndicator.text = "retrieving information....";
     }
 
     private async void VisualisationDataCalculations()
@@ -116,7 +124,7 @@ public class MenuManager : MonoBehaviour
 
                 tempEnergyMeter = item;
 
-                foreach (var res in item.day_average)
+                /*foreach (var res in item.day_average)
                 {
                     Debug.Log($"Day average for {meterid} on {res.timestamp} is {res.ptot_kw}");
                 }
@@ -124,12 +132,16 @@ public class MenuManager : MonoBehaviour
                 foreach (var res in item.month_average)
                 {
                     Debug.Log($"Month average for {meterid} on {res.timestamp} is {res.ptot_kw}");
-                }
+                }*/
 
                 break;
             }
         }
 
+        readyIndicator.text = "Visualisation ready";
+        visIsReady = true;
+        dayVisualisationButton.enabled = visIsReady;
+        monthVisualisationButton.enabled = visIsReady;
         Debug.Log("Information is obtained");
     }
 
