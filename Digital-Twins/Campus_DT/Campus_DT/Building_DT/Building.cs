@@ -6,12 +6,12 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Building_DT
-{    class Building
+{    public class Building
     {
         // Intialise building specific info
-        public string Name { get; set; }
-        public int Latitude { get; set; }
-        public int Longitude { get; set; }
+        public string Building_name { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public List<EnergyMeterData> EnergyMeters { get; set; }
         public List<OccupancyMeterData> OccupancyMeters { get; set; }
         public List<SolarMeterData> SolarMeters { get; set; }
@@ -20,38 +20,20 @@ namespace Building_DT
         private OccupancyMeters occupancyManager = new OccupancyMeters();
         private SolarMeters solarManager = new SolarMeters();
 
-        public Building(string name, int latitude, int longitude, List<EnergyMeterData> energyMeterList)
+        public Building(string name, string latitude, string longitude)
         {
-            Name = name;
+            Building_name = name;
             Latitude = latitude;
             Longitude = longitude;
-            EnergyMeters = energyMeterList;
+            InitialiseBuilding();
         }
 
         // Get available energy meters in the building
-        public void GetMeterLists()
+        public void InitialiseBuilding()
         {
-            EnergyMeters = energyManager.LoadEnergyMeterList();
+            EnergyMeters = energyManager.LoadEnergyMeterList(Building_name);
             OccupancyMeters = occupancyManager.LoadOccupancyMeterList();
             SolarMeters = solarManager.LoadSolarMeterList();
-        }
-
-        public void SendMeterList(SocketServer server)
-        {
-            foreach(var record in EnergyMeters)
-            {
-                server.SendMessage(record.description);
-                string temp = server.ReceiveMessage();
-
-                Console.WriteLine(temp);
-            }
-
-            if(server.ReceiveMessage() == "<EOF>")
-            {
-                server.SendMessage("<EOF>");
-                server.CloseServer();
-            }
-            
         }
     }
 }

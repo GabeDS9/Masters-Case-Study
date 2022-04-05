@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Building_DT
 {
-    class BuildingManager
+    public class BuildingManager
     {
-        private void InitialiseBuilding()
+        public List<Building> InitialiseBuildings(string precinct_name)
         {
-            Building tempBuilding = new Building("test", 0, 0, null);
-            tempBuilding.GetMeterLists();
+            LoadExcel excel = new LoadExcel();
+            List<Building> buildingList = new List<Building>();
+            buildingList = excel.LoadBuildingData(precinct_name);
+            
+            return buildingList;
         }
     }
 }
