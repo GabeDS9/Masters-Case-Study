@@ -13,7 +13,6 @@ namespace Precinct_DT
             LoadExcel excel = new LoadExcel();
             List<Precinct> precinctList = new List<Precinct>();
             precinctList = excel.LoadPrecinctData(campus_name);
-
             return precinctList;
         }
     }

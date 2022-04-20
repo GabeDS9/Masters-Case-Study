@@ -6,7 +6,8 @@ namespace DT_Services
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ServiceGateway myGateway = new ServiceGateway();
+            myGateway.StartGateway();
         }
     }
 }

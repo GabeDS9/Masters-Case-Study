@@ -18,6 +18,8 @@ namespace Precinct_DT
         private Energy_Reticulation_DT.EnergyReticulationManager energyManager = new Energy_Reticulation_DT.EnergyReticulationManager();
         private Solar_Reticulation_DT.SolarReticulationManager solarManager = new Solar_Reticulation_DT.SolarReticulationManager();
         private Building_DT.BuildingManager buildingManager = new Building_DT.BuildingManager();
+
+        Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
         public Precinct(string name, string latitude, string longitude)
         {
             Precinct_name = name;

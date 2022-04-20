@@ -1,0 +1,16 @@
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.AssemblyInfo.cs
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\DT_Services.exe
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\DT_Services.deps.json
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\DT_Services.runtimeconfig.json
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\DT_Services.runtimeconfig.dev.json
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\DT_Services.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\ref\DT_Services.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\DT_Services.pdb
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\ref\DT_Services.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.pdb
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.genruntimeconfig.cache

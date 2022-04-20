@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services_Communication
+namespace Services
 {
-    class ServicesCommunication
+    class ExploratoryAnalysisService
     {
     }
 }

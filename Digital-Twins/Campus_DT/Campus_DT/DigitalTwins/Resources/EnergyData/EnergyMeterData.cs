@@ -16,4 +16,6 @@ using System.Collections.Generic;
         public string latitude { get; set; }
         public string longitude { get; set; }
         public List<EnergyData> data { get; set; }
-    }
+        public List<EnergyAverageData> day_average { get; set; }
+        public List<EnergyAverageData> month_average { get; set; }
+}

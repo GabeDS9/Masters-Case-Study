@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Campus_DT
 {
@@ -12,13 +14,28 @@ namespace Campus_DT
 
         private static Precinct_DT.PrecinctManager precinctManager = new Precinct_DT.PrecinctManager();
 
-        public static void Main(string[] args)
+        private Stopwatch stopWatch = new Stopwatch();
+
+        Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
+
+        public CampusManager()
         {
+
+        }
+        
+        public void InitialiseCampus()
+        {
+            Console.WriteLine("DT Thread started");
+
+            /*Services_Communication.ServicesCommunication servicesCommunicator = new Services_Communication.ServicesCommunication();
+            servicesCommunicator.StartClient();*/
             Campus_name = "Stellenbosch";
-            InitialiseCampus();
+            Precincts = precinctManager.InitialisePrecincts(Campus_name);
             
             foreach(var item in Precincts)
             {
+                Console.WriteLine("Campus: " + Campus_name);
+                
                 Console.WriteLine("Precinct: " + item.Precinct_name);
 
                 foreach(var record in item.Buildings)
@@ -51,11 +68,22 @@ namespace Campus_DT
                     Console.WriteLine(item.Precinct_name + " - " + record.Reticulation_name);
                 }*/
             }
-        }
 
-        private static void InitialiseCampus()
+            RunCampusDT();
+        }
+    
+        public void RunCampusDT()
         {
-            Precincts = precinctManager.InitialisePrecincts(Campus_name);
+            stopWatch.Start();
+            while (true)
+            {
+                double ts = stopWatch.Elapsed.TotalSeconds;
+                if (ts >= 3)
+                {
+                    Console.WriteLine(Campus_name + " running");
+                    stopWatch.Restart();
+                }
+            }
         }
     }
 }

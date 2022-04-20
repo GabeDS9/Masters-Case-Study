@@ -1,8 +1,3 @@
-C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.csproj.AssemblyReference.cache
-C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.AssemblyInfoInputs.cache
-C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.AssemblyInfo.cs
-C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\Debug\net5.0\Campus_DT.exe
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\Debug\net5.0\Campus_DT.deps.json
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\Debug\net5.0\Campus_DT.runtimeconfig.json
@@ -11,8 +6,13 @@ C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\D
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\Debug\net5.0\ref\Campus_DT.dll
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\Debug\net5.0\Campus_DT.pdb
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.AssemblyInfo.cs
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.csproj.CopyComplete
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.dll
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\ref\Campus_DT.dll
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.pdb
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.genruntimeconfig.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\Campus_DT\obj\Debug\net5.0\Campus_DT.csproj.AssemblyReference.cache
