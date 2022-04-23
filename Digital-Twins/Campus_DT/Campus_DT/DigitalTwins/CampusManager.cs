@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using DataAccess;
+using DataAccess.Models;
 
 namespace Campus_DT
 {
     class CampusManager
     {
         public static string Campus_name { get; set; }
-        public int Latitude { get; set; }
-        public int Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public static List<Precinct_DT.Precinct> Precincts { get; set; }
 
         private static Precinct_DT.PrecinctManager precinctManager = new Precinct_DT.PrecinctManager();
 
         private Stopwatch stopWatch = new Stopwatch();
+
+        private CampusDBDataAccess db;
 
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
 
@@ -30,9 +34,14 @@ namespace Campus_DT
             /*Services_Communication.ServicesCommunication servicesCommunicator = new Services_Communication.ServicesCommunication();
             servicesCommunicator.StartClient();*/
             Campus_name = "Stellenbosch";
-            Precincts = precinctManager.InitialisePrecincts(Campus_name);
             
-            foreach(var item in Precincts)
+            Precincts = precinctManager.InitialisePrecincts(Campus_name);
+
+            /*db = new CampusDBDataAccess(Campus_name);
+            var campus = new CampusModel(Campus_name, Latitude, Longitude, Precincts);
+            db.CreateCampus(campus);*/
+
+            foreach (var item in Precincts)
             {
                 Console.WriteLine("Campus: " + Campus_name);
                 
@@ -46,7 +55,7 @@ namespace Campus_DT
                     {
                         Console.WriteLine(record.Building_name + " - " + rec.description);
                     }
-                    Console.WriteLine(record.Building_name + " occupancy meters");
+                    /*Console.WriteLine(record.Building_name + " occupancy meters");
                     foreach (var rec in record.OccupancyMeters)
                     {
                         Console.WriteLine(record.Building_name + " - " + rec.description);
@@ -55,7 +64,7 @@ namespace Campus_DT
                     foreach (var rec in record.SolarMeters)
                     {
                         Console.WriteLine(record.Building_name + " - " + rec.description);
-                    }
+                    }*/
                 }
 
                 /*foreach (var record in item.SolarMeters)

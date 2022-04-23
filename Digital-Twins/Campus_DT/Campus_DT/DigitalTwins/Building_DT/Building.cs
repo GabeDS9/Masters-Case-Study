@@ -5,6 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
+using DataAccess;
+using DataAccess.Models;
 
 namespace Building_DT
 {
@@ -23,13 +28,18 @@ namespace Building_DT
         private SolarMeters solarManager = new SolarMeters();
         private APICaller apiCaller = new APICaller();
         private Stopwatch stopWatch = new Stopwatch();
+        private BuildingDBDataAccess db;
+        private bool isInitialised = false;
 
-        Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
+        private string startingDate = "2022-04-01 00:00:00";
+
+        //Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
         public Building(string name, string latitude, string longitude)
         {
             Building_name = name;
             Latitude = latitude;
             Longitude = longitude;
+            db = new BuildingDBDataAccess(Building_name.Replace(" ", "_"));
             _ = InitialiseBuildingAsync();
         }
 
@@ -38,17 +48,29 @@ namespace Building_DT
         public async Task InitialiseBuildingAsync()
         {
             EnergyMeters = energyManager.LoadEnergyMeterList(Building_name);
+            var energymeters = new List<EnergyMeterModel>();
+
+            foreach (var item in EnergyMeters)
+            {
+                var tempMeter = new EnergyMeterModel(item.description, item.meterid, 0, null);
+                energymeters.Add(tempMeter);
+                await db.CreateEnergyMeter(tempMeter);
+            }
+
             OccupancyMeters = occupancyManager.LoadOccupancyMeterList();
             SolarMeters = solarManager.LoadSolarMeterList();
+
+            var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);
+            await db.CreateBuilding(building);
             await Task.Run(() => InitialPopulateDataBase());
-            await Task.Run(() => RunBuildingDT());
+            await Task.Run(() => RunBuildingDTAsync());
         }
 
         private void InitialPopulateDataBase()
         {
             InitialiseMeterData();
-            ContextGeneration("2022-04-01 00:00:00", apiCaller.GetCurrentDateTime().Item2);
-            SaveToDataBase();
+            InitialContextGeneration(startingDate, apiCaller.GetCurrentDateTime().Item1);
+            _ = SaveToDataBaseAsync();
         }
 
 
@@ -56,14 +78,13 @@ namespace Building_DT
         {
             foreach (var item in EnergyMeters)
             {
-                item.data = energyManager.GetMeterData("2022-04-18", apiCaller.GetCurrentDateTime().Item2, item.meterid);
+                item.data = energyManager.GetMeterData(startingDate, apiCaller.GetCurrentDateTime().Item1, item.meterid);
             }
         }
 
         private void InitialContextGeneration(String startDate, String endDate)
         {
             CalculateInitialDayAverage(startDate, endDate);
-            Console.WriteLine("Average Energy Reading for " + EnergyMeters[0].description + " was " + EnergyMeters[0].day_average[0].timestamp + " - " + EnergyMeters[0].day_average[0].ptot_kw);
             //CalculateMonthAverage();
         }
 
@@ -114,21 +135,40 @@ namespace Building_DT
         }
         #endregion
 
-        private void SaveToDataBase()
+        private async Task SaveToDataBaseAsync()
         {
+            foreach (var item in EnergyMeters)
+            {
+                for (int i = 0; i < item.day_average.Count; i++)
+                {
+                    var tempMeter = new EnergyMeterModel(item.description, item.meterid, item.day_average[i].ptot_kw, item.day_average[i].timestamp);
+                    await db.CreateEnergyMeter(tempMeter);
+                }
+            }
 
+            isInitialised = true;
+            Console.WriteLine($"{Building_name} DT has been initialised");
         }
 
-        public void RunBuildingDT()
+        public async Task RunBuildingDTAsync()
         {
             stopWatch.Start();
             while (true)
             {
                 double ts = stopWatch.Elapsed.TotalSeconds;
-                if (ts >= 3)
+                if (ts >= 5)
                 {
-                    GetCurrentMeterData();
-                    ContextGeneration(apiCaller.GetCurrentDateTime().Item1);
+                    //GetCurrentMeterData();
+                    //ContextGeneration(apiCaller.GetCurrentDateTime().Item1);
+                    Console.WriteLine(Building_name + " DT running");
+                    if (isInitialised)
+                    {
+                        foreach (var item in EnergyMeters)
+                        {
+                            var temp = await db.GetEnergyMeterReading(item.meterid, "2022-4-20");
+                            Console.WriteLine($"{temp[0].Meter_ID} - {temp[0].EnergyMeter_name} had an average of {temp[0].Power_Tot} kW on {temp[0].Timestamp}");
+                        }
+                    }
                     stopWatch.Restart();
                 }
             }

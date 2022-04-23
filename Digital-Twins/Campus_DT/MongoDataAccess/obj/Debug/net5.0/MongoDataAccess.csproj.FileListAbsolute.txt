@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\bin\Debug\net5.0\MongoDataAccess.deps.json
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\bin\Debug\net5.0\MongoDataAccess.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\bin\Debug\net5.0\ref\MongoDataAccess.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\bin\Debug\net5.0\MongoDataAccess.pdb
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.AssemblyInfo.cs
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\ref\MongoDataAccess.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.pdb
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.csproj.AssemblyReference.cache

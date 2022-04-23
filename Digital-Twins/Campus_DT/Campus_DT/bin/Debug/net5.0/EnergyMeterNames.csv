@@ -1,19 +1,19 @@
 ﻿Campus,Precinct,Reticulation,Building,Meter, meter_id, description, make, manufacturer, type, Serial Number, model, yard_number, Building_No, Floor, Room_No, Meter_Description, Latitude, Longitude
-Stellenbosch,Coetzenburg 11 kV,-,-,-,3025, Coetzenburg 11 kV, Elster, Kocos, A1700,51500272, LiMo-DIN,306,745,1,1002, Coetzenburg 11kv,-33.93943714,18.86822311
-Stellenbosch,Coetzenburg 11 kV, Swembad Minisub,-,-,2856, Swembad Minisub, Elster, Kocos, A1140,78520491, LiMo R2, 306/2,0,1, Outside, Swembad minisub,-33.94067001,18.87089593
-Stellenbosch,Coetzenburg 11 kV, Swembad Minisub,-, Swembadpompe,2639, Swembadpompe, Elster, Kocos, A1140,58500661, LiMo R2, 306/2,171,1,1002, Swembad pompe,-33.94064265,18.87086229
-Stellenbosch,Coetzenburg 11 kV, Swembad Minisub,-, Coetzenburg Sentrum,2848, Coetzenburg Sentrum, Elster, Kocos, A1140,58500669, LiMo R2, 306/2,171,1,1002, Coetzenburg sentrum,-33.94064548,18.87086475
-Stellenbosch,Coetzenburg 11 kV, Sportwetenskap Toevoer,-,-,2753, Sportwetenskap Toevoer, Elster, Kocos, A1140,58500442, LiMo R2, 306/2,87,1,114, Sportwetenskap toevoer,-33.94128796,18.87177592
-Stellenbosch,Coetzenburg 11 kV, Sportwetenskap Toevoer,-, Sport Wetenskap - VM Remainder,3904, VM, VM, VM, VM,0, VM, -,0,0, -, -,0,0
-Stellenbosch,Coetzenburg 11 kV, Sportwetenskap Toevoer,-, Sport Gimnasium,2754, Sport Gimnasium, Elster, Kocos, A1140,58500444, LiMo R2, 306/2,87,1,114, Sport gimnasium,-33.94129853,18.8717833
-Stellenbosch,Coetzenburg 11 kV, Sportburo - Jannie Marais Klubhuis,-,-,2746, Sportburo - Jannie Marais Klubhuis, Elster, Kocos, A1140,58500447, LiMo R2,313,165,1,1003, Sportburo - Jannie Marais Klubhuis,-33.93854041,18.87367101
-Stellenbosch,Coetzenburg 11 kV, Krieket Onderwaterhokkie Klubhuis,-,-,2954, Krieket Onderwaterhokkie Klubhuis, Elster, Kocos, A1140,78520566, LiMo R2, -,0,0, -, -,0,0
-Stellenbosch,Coetzenburg 11 kV,-, Danie Craven Rugby Stadion,-,2955, Danie Craven Rugby Stadion, Elster, Kocos, A1140,88500423, LiMo R2,312,138,1,1020, Danie Craven Rugby Stadion,-33.94052152,18.87291597
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie,-,2964, Coetzenburg Atletiek Substasie, Elster, Kocos, A1140,58500468, LiMo R2, -,0,0, -, -,0,0
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Coetzenburg Woonhuis 01,3965, Coetzenburg Woonhuis 01, Elster, Kocos, A1140,48101653, LiMo R2, 306/1,904,1, Outside, Coetzenburg Woonhuis 01,-33.93853935,18.87088319
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Coetzenburg Vodacom,2849, Coetzenburg Vodacom , Elster, Kocos, A1140,68905747, LiMo R2, 306/2,171,1,1002, Coetzenburg vodacom,-33.94064168,18.87085704
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Coetzenburg Tennisbaan,2950, Coetzenburg Tennisbaan, Elster, Kocos, A1140,58500667, LiMo R2, 306/2,137,1,1010, Coetzenburg Tennisbaan,-33.93906043,18.86918915
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Coetzenburg MTN,2947, Coetzenburg MTN, Elster, Kocos, A1140,98129683, LiMo R2, 306/2,137,1,1010, Coetzenburg MTN,-33.93906349,18.86919049
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Coetzenburg Imaging Centre,2949, Coetzenburg Imaging Centre , Elster, Kocos, A1140,98154635, LiMo R2, 306/2,137,1,1010, Coetzenburg Imaging Centre,-33.93907239,18.86918982
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Coetzenburg Cell C,2948, Coetzenburg Cell C, Elster, Kocos, A1140,98129682, LiMo R2, 306/2,137,1,1010, Coetzenburg Cell C,-33.93906627,18.86919016
-Stellenbosch,Coetzenburg 11 kV,-, Coetzenburg Atletiek Substasie, Atletiek Stadion - VM Remainder,3903, VM, VM, VM, VM,0, VM, -,0,0, -, -,0,0
+Stellenbosch,Coetzenburg 11kV,-,-,-,3025, Coetzenburg 11 kV, Elster, Kocos, A1700,51500272, LiMo-DIN,306,745,1,1002, Coetzenburg 11kv,-33.93943714,18.86822311
+Stellenbosch,Coetzenburg 11kV,Swembad Minisub,-,-,2856, Swembad Minisub, Elster, Kocos, A1140,78520491, LiMo R2, 306/2,0,1, Outside, Swembad minisub,-33.94067001,18.87089593
+Stellenbosch,Coetzenburg 11kV,Swembad Minisub,-, Swembadpompe,2639, Swembadpompe, Elster, Kocos, A1140,58500661, LiMo R2, 306/2,171,1,1002, Swembad pompe,-33.94064265,18.87086229
+Stellenbosch,Coetzenburg 11kV,Swembad Minisub,-, Coetzenburg Sentrum,2848, Coetzenburg Sentrum, Elster, Kocos, A1140,58500669, LiMo R2, 306/2,171,1,1002, Coetzenburg sentrum,-33.94064548,18.87086475
+Stellenbosch,Coetzenburg 11kV,Sportwetenskap Toevoer,-,-,2753, Sportwetenskap Toevoer, Elster, Kocos, A1140,58500442, LiMo R2, 306/2,87,1,114, Sportwetenskap toevoer,-33.94128796,18.87177592
+Stellenbosch,Coetzenburg 11kV,Sportwetenskap Toevoer,-, Sport Wetenskap - VM Remainder,3904, VM, VM, VM, VM,0, VM, -,0,0, -, -,0,0
+Stellenbosch,Coetzenburg 11kV,Sportwetenskap Toevoer,-, Sport Gimnasium,2754, Sport Gimnasium, Elster, Kocos, A1140,58500444, LiMo R2, 306/2,87,1,114, Sport gimnasium,-33.94129853,18.8717833
+Stellenbosch,Coetzenburg 11kV,Sportburo - Jannie Marais Klubhuis,-,-,2746, Sportburo - Jannie Marais Klubhuis, Elster, Kocos, A1140,58500447, LiMo R2,313,165,1,1003, Sportburo - Jannie Marais Klubhuis,-33.93854041,18.87367101
+Stellenbosch,Coetzenburg 11kV,Krieket Onderwaterhokkie Klubhuis,-,-,2954, Krieket Onderwaterhokkie Klubhuis, Elster, Kocos, A1140,78520566, LiMo R2, -,0,0, -, -,0,0
+Stellenbosch,Coetzenburg 11kV,-,Danie Craven Rugby Stadion,-,2955, Danie Craven Rugby Stadion, Elster, Kocos, A1140,88500423, LiMo R2,312,138,1,1020, Danie Craven Rugby Stadion,-33.94052152,18.87291597
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie,-,2964, Coetzenburg Atletiek Substasie, Elster, Kocos, A1140,58500468, LiMo R2, -,0,0, -, -,0,0
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Coetzenburg Woonhuis 01,3965, Coetzenburg Woonhuis 01, Elster, Kocos, A1140,48101653, LiMo R2, 306/1,904,1, Outside, Coetzenburg Woonhuis 01,-33.93853935,18.87088319
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Coetzenburg Vodacom,2849, Coetzenburg Vodacom , Elster, Kocos, A1140,68905747, LiMo R2, 306/2,171,1,1002, Coetzenburg vodacom,-33.94064168,18.87085704
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Coetzenburg Tennisbaan,2950, Coetzenburg Tennisbaan, Elster, Kocos, A1140,58500667, LiMo R2, 306/2,137,1,1010, Coetzenburg Tennisbaan,-33.93906043,18.86918915
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Coetzenburg MTN,2947, Coetzenburg MTN, Elster, Kocos, A1140,98129683, LiMo R2, 306/2,137,1,1010, Coetzenburg MTN,-33.93906349,18.86919049
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Coetzenburg Imaging Centre,2949, Coetzenburg Imaging Centre , Elster, Kocos, A1140,98154635, LiMo R2, 306/2,137,1,1010, Coetzenburg Imaging Centre,-33.93907239,18.86918982
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Coetzenburg Cell C,2948, Coetzenburg Cell C, Elster, Kocos, A1140,98129682, LiMo R2, 306/2,137,1,1010, Coetzenburg Cell C,-33.93906627,18.86919016
+Stellenbosch,Coetzenburg 11kV,-,Coetzenburg Atletiek Substasie, Atletiek Stadion - VM Remainder,3903, VM, VM, VM, VM,0, VM, -,0,0, -, -,0,0

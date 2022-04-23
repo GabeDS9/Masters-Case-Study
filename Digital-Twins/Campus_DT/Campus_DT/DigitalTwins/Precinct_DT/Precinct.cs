@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess;
+using DataAccess.Models;
 
 namespace Precinct_DT
 {
@@ -19,18 +21,23 @@ namespace Precinct_DT
         private Solar_Reticulation_DT.SolarReticulationManager solarManager = new Solar_Reticulation_DT.SolarReticulationManager();
         private Building_DT.BuildingManager buildingManager = new Building_DT.BuildingManager();
 
+        private PrecinctDBDataAccess db;
+
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
         public Precinct(string name, string latitude, string longitude)
         {
             Precinct_name = name;
             Latitude = latitude;
             Longitude = longitude;
-            InitialisePrecinct();
+            db = new PrecinctDBDataAccess(Precinct_name.Replace(" ","_"));
+            _ = InitialisePrecinctAsync();
         }
 
-        public void InitialisePrecinct()
-        {
+        public async Task InitialisePrecinctAsync()
+        {            
             Buildings = buildingManager.InitialiseBuildings(Precinct_name);
+            //var precinct = new PrecinctModel(Precinct_name, Latitude, Longitude, Buildings);
+            //await db.CreatePrecinct(precinct);
         }
     }
 }
