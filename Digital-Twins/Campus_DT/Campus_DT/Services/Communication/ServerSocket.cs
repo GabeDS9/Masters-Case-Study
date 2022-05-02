@@ -31,7 +31,7 @@ namespace Communication
 
         private async Task HandleTcpClientAsync(TcpClient client)
         {
-            Console.WriteLine("Service gateway connected on port: " + ((IPEndPoint)server.LocalEndpoint).Port);
+            Console.WriteLine("UI connected on port: " + ((IPEndPoint)server.LocalEndpoint).Port);
         }
 
         /*private static Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
