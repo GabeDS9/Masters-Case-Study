@@ -8,5 +8,9 @@ namespace Services
 {
     class ExploratoryAnalyticsService
     {
+        public void InitialiseEAService()
+        {
+            Console.WriteLine("Exploratory Analytics service initialised");
+        }
     }
 }

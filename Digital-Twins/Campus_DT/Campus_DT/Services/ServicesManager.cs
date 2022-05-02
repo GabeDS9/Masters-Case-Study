@@ -9,9 +9,13 @@ namespace Services
     class ServicesManager
     {
         ServiceGateway myGateway = new ServiceGateway();
+        DirectoryService directoryService = new DirectoryService();
+        ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
         public void InitialiseServices()
         {
-            myGateway.StartGateway();
+            myGateway.StartGatewayAsync();
+            directoryService.InitialiseDirectoryService();
+            exploratoryService.InitialiseEAService();
         }
     }
 }

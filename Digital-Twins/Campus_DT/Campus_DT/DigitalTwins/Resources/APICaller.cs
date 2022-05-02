@@ -33,7 +33,7 @@ using System.Threading.Tasks;
             String to_date = "";
             String from_date = "";
             DateTime currDate = DateTime.Now;
-            DateTime fromDate = currDate.AddMinutes(-15);
+            DateTime fromDate = currDate.AddMinutes(-20);
 
             to_date = currDate.Year + "-" + currDate.Month + "-" + currDate.Day + " " + currDate.Hour + ":" + currDate.Minute + ":00";
             from_date = fromDate.Year + "-" + fromDate.Month + "-" + fromDate.Day + " " + fromDate.Hour + ":" + fromDate.Minute + ":00";

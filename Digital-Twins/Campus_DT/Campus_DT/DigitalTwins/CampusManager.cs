@@ -29,19 +29,17 @@ namespace Campus_DT
         
         public void InitialiseCampus()
         {
-            Console.WriteLine("DT Thread started");
-
             /*Services_Communication.ServicesCommunication servicesCommunicator = new Services_Communication.ServicesCommunication();
             servicesCommunicator.StartClient();*/
             Campus_name = "Stellenbosch";
             
             Precincts = precinctManager.InitialisePrecincts(Campus_name);
 
-            /*db = new CampusDBDataAccess(Campus_name);
-            var campus = new CampusModel(Campus_name, Latitude, Longitude, Precincts);
-            db.CreateCampus(campus);*/
+            //db = new CampusDBDataAccess(Campus_name);
+            //var campus = new CampusModel(Campus_name, Latitude, Longitude, Precincts);
+            //db.CreateCampus(campus);
 
-            foreach (var item in Precincts)
+            /*foreach (var item in Precincts)
             {
                 Console.WriteLine("Campus: " + Campus_name);
                 
@@ -64,7 +62,7 @@ namespace Campus_DT
                     foreach (var rec in record.SolarMeters)
                     {
                         Console.WriteLine(record.Building_name + " - " + rec.description);
-                    }*/
+                    }
                 }
 
                 /*foreach (var record in item.SolarMeters)
@@ -75,8 +73,8 @@ namespace Campus_DT
                 foreach (var record in item.EnergyMeters)
                 {
                     Console.WriteLine(item.Precinct_name + " - " + record.Reticulation_name);
-                }*/
-            }
+                }
+            }*/
 
             RunCampusDT();
         }
@@ -89,7 +87,7 @@ namespace Campus_DT
                 double ts = stopWatch.Elapsed.TotalSeconds;
                 if (ts >= 3)
                 {
-                    Console.WriteLine(Campus_name + " running");
+                    //Console.WriteLine(Campus_name + " running");
                     stopWatch.Restart();
                 }
             }

@@ -9,4 +9,3 @@ C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.dll
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\ref\MongoDataAccess.dll
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.pdb
-C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Campus_DT\MongoDataAccess\obj\Debug\net5.0\MongoDataAccess.csproj.AssemblyReference.cache

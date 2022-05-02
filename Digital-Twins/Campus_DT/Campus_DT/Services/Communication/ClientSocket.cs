@@ -3,89 +3,63 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Text;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace Communication
 {
     class ClientSocket
     {
-        // ExecuteClient() Method
-        public String CommunicateWithGateway(String name)
-        {
-            String message = "";
-            try
-            {               
+        private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
+        public async Task LoopConnectAsync(int port)
+        {
+            int attempts = 0;
+            TcpClient client = new TcpClient();
+
+            while (!client.Connected)
+            {
                 try
                 {
-                    // Establish the remote endpoint
-                    // for the socket. This example
-                    // uses port 11111 on the local
-                    // computer.
-                    IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-                    IPAddress ipAddr = ipHost.AddressList[0];
-                    IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 11111);
 
-                    // Creation TCP/IP Socket using
-                    // Socket Class Constructor
-                    Socket sender = new Socket(ipAddr.AddressFamily,
-                               SocketType.Stream, ProtocolType.Tcp);
-                    // Connect Socket to the remote
-                    // endpoint using method Connect()
-                    sender.Connect(localEndPoint);
+                    attempts++;
 
-                    // We print EndPoint information
-                    // that we are connected
-                    Console.WriteLine("Socket connected to -> {0} ",
-                                  sender.RemoteEndPoint.ToString());
+                    await client.ConnectAsync(IPAddress.Loopback, port);
+                    Console.WriteLine("Connected to DT on port " + port);
 
-                    // Creation of message that
-                    // we will send to Server
-                    byte[] messageSent = Encoding.ASCII.GetBytes(name + " Waiting for request<EOF>");
-                    int byteSent = sender.Send(messageSent);
+                    /*NetworkStream ns = client.GetStream();
 
-                    // Data buffer
-                    byte[] messageReceived = new byte[1024];
+                    StreamWriter sw = new StreamWriter(ns);
+                    await sw.WriteLineAsync("Client sending message");
 
-                    // We receive the message using
-                    // the method Receive(). This
-                    // method returns number of bytes
-                    // received, that we'll use to
-                    // convert them to string
-                    int byteRecv = sender.Receive(messageReceived);
-                    message = Encoding.ASCII.GetString(messageReceived, 0, byteRecv);
-                    Console.WriteLine("Message from Server -> {0}", message);
+                    await ns.FlushAsync();
 
-                    // Close Socket using
-                    // the method Close()
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
+                    StreamReader sr = new StreamReader(ns);
+
+                    string message = await sr.ReadToEndAsync();
+
+                    Console.WriteLine(message);*/
                 }
-
-                // Manage of Socket's Exceptions
-                catch (ArgumentNullException ane)
+                catch (SocketException)
                 {
-
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-
-                catch (SocketException se)
-                {
-
-                    Console.WriteLine("SocketException : {0}", se.ToString());
-                }
-
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                    Console.WriteLine($"Connecting attempts to {port}: " + attempts.ToString());
                 }
             }
 
-            catch (Exception e)
-            {
+            //Console.WriteLine("Connected to server");
+        }
 
-                Console.WriteLine(e.ToString());
-            }
-            return message;
+        public void SendMessageToServer(string name)
+        {
+            string req = "get time";
+            byte[] buffer = Encoding.ASCII.GetBytes(req);
+            clientSocket.Send(buffer);
+
+            byte[] receivedBuf = new byte[1024];
+            int rec = clientSocket.Receive(receivedBuf);
+            byte[] data = new byte[rec];
+            Array.Copy(receivedBuf, data, rec);
+            Console.WriteLine("Received: " + Encoding.ASCII.GetString(data) + " for " + name);
         }
     }
 }

@@ -10,20 +10,21 @@ namespace Campus_DT
     class Bootstrap
     {
         static CampusManager myCampus = new CampusManager();
-        static Services.ServicesManager myServices = new Services.ServicesManager();
+        static Services.ServiceGateway myServices = new Services.ServiceGateway();
         public static void Main(String[] args)
         {
             Thread DTsThread = new Thread(myCampus.InitialiseCampus)
             {
                 Name = "DT Thread"
             };
-            /*Thread ServicesThread = new Thread(myServices.InitialiseServices)
+            
+            Thread ServicesThread = new Thread(myServices.InitialiseServices)
             {
                 Name = "Services Thread"
             };
 
-            ServicesThread.Start();*/
-            DTsThread.Start();            
+            DTsThread.Start();
+            ServicesThread.Start();
         }
     }
 }

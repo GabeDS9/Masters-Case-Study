@@ -1,34 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Services
 {
-    class ServiceGateway
+    public class ServiceGateway
     {
-        Communication.ServerSocket myServer = new Communication.ServerSocket();
+        DirectoryService directoryService = new DirectoryService();
+        ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
 
-        public void StartGateway()
+        Communication.ServerSocket myServer = new Communication.ServerSocket();
+        Communication.ClientSocket myClient = new Communication.ClientSocket();
+
+        private int ServerPort = 9000;
+
+        public void InitialiseServices()
         {
-            myServer.StartServer();
-            RunGatewayService();
+            StartGatewayServer();
+            directoryService.InitialiseDirectoryService();
+            //exploratoryService.InitialiseEAService();
         }
 
-        public void RunGatewayService()
+        public async Task StartGatewayAsync()
         {
-            String message = "";
-            Socket clientSocket;
-            (message, clientSocket) = myServer.ListenForMessages();
-            ProcessMessage(message, clientSocket);
+            await myClient.LoopConnectAsync(8005);
+            await myClient.LoopConnectAsync(8006);
+        }
+
+        private void StartGatewayServer()
+        {
+            myServer.SetupServer(ServerPort);
+        }
+
+        /*public void RunGatewayService()
+        {
+            while (true)
+            {
+                String message = "";
+                Socket clientSocket;
+                (message, clientSocket) = myServer.ListenForMessages();
+                //ProcessMessage(message, clientSocket);
+            }
         }
         public void ProcessMessage(String message, Socket clientSocket)
         {
             String information = "Hello";
 
             myServer.SendMessage(information, clientSocket);
-        }
+        }*/
     }
 }

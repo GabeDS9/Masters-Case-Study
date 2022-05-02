@@ -14,18 +14,20 @@ public class LoadExcel
 
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
+    private string DTConfigurationFile = "DTArchitectureConfiguration.csv";
+
     #region EnergyMeters
     public List<EnergyMeterData> LoadEnergyMeterData(string buildRecName)
     {
         energyMeterList.Clear();
 
-        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "EnergyMeterNames.csv");
+        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
 
         List<Dictionary<string, object>> data = CSVReader.Read(filepath);
 
         for (var i = 0; i < data.Count; i++)
         {
-            if ((data[i]["Reticulation"].ToString() == buildRecName) || (data[i]["Building"].ToString() == buildRecName))
+            if ((data[i]["Reticulation"].ToString() == buildRecName) || (data[i]["Building"].ToString() == buildRecName) && (data[i]["Meter Type"].ToString() == "Energy"))
             {
                 int id = int.Parse(data[i][" meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
                 string description = data[i][" description"].ToString();
@@ -72,30 +74,33 @@ public class LoadExcel
     #endregion
 
     #region OccupancyMeters
-    public List<OccupancyMeterData> LoadOccupancyMeterData()
+    public List<OccupancyMeterData> LoadOccupancyMeterData(string buildingName)
     {
         occupancyMeterList.Clear();
 
-        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OccupancyMeterNames.csv");
+        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
         List<Dictionary<string, object>> data = CSVReader.Read(filepath);
 
         for (var i = 0; i < data.Count; i++)
         {
-            int id = int.Parse(data[i][" meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
-            string description = data[i][" Meter_Description"].ToString();
-            string make = data[i][" make"].ToString();
-            string manufacturer = data[i][" manufacturer"].ToString();
-            string type = data[i][" type"].ToString();
-            string serialno = data[i][" Serial Number"].ToString();
-            string model = data[i][" model"].ToString();
-            string yard_number = data[i][" yard_number"].ToString();
-            string building_no = data[i][" Building_No"].ToString();
-            string floor = data[i][" Floor"].ToString();
-            string room_no = data[i][" Room_No"].ToString();
-            string latitude = data[i][" Latitude"].ToString();
-            string longitude = data[i][" Longitude"].ToString();
+            if ((data[i]["Building"].ToString() == buildingName) && (data[i]["Meter Type"].ToString() == "Occupancy"))
+            {
+                int id = int.Parse(data[i][" meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
+                string description = data[i][" description"].ToString();
+                string make = data[i][" make"].ToString();
+                string manufacturer = data[i][" manufacturer"].ToString();
+                string type = data[i][" type"].ToString();
+                string serialno = data[i][" Serial Number"].ToString();
+                string model = data[i][" model"].ToString();
+                string yard_number = data[i][" yard_number"].ToString();
+                string building_no = data[i][" Building_No"].ToString();
+                string floor = data[i][" Floor"].ToString();
+                string room_no = data[i][" Room_No"].ToString();
+                string latitude = data[i][" Latitude"].ToString();
+                string longitude = data[i][" Longitude"].ToString();
 
-            AddOccupancyMeter(id, description, make, manufacturer, type, serialno, model, yard_number, building_no, floor, room_no, latitude, longitude);
+                AddOccupancyMeter(id, description, make, manufacturer, type, serialno, model, yard_number, building_no, floor, room_no, latitude, longitude);
+            }
         }
 
         return occupancyMeterList;
@@ -125,30 +130,33 @@ public class LoadExcel
     #endregion
 
     #region SolarMeters
-    public List<SolarMeterData> LoadSolarMeterData()
+    public List<SolarMeterData> LoadSolarMeterData(string buildRecName)
     {
         solarMeterList.Clear();
 
-        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SolarMeterNames.csv");
+        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
         List<Dictionary<string, object>> data = CSVReader.Read(filepath);
 
         for (var i = 0; i < data.Count; i++)
         {
-            int id = int.Parse(data[i][" meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
-            string description = data[i][" Meter_Description"].ToString();
-            string make = data[i][" make"].ToString();
-            string manufacturer = data[i][" manufacturer"].ToString();
-            string type = data[i][" type"].ToString();
-            string serialno = data[i][" Serial Number"].ToString();
-            string model = data[i][" model"].ToString();
-            string yard_number = data[i][" yard_number"].ToString();
-            string building_no = data[i][" Building_No"].ToString();
-            string floor = data[i][" Floor"].ToString();
-            string room_no = data[i][" Room_No"].ToString();
-            string latitude = data[i][" Latitude"].ToString();
-            string longitude = data[i][" Longitude"].ToString();
+            if ((data[i]["Reticulation"].ToString() == buildRecName) || (data[i]["Building"].ToString() == buildRecName) && (data[i]["Meter Type"].ToString() == "Solar"))
+            {
+                int id = int.Parse(data[i][" meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
+                string description = data[i][" description"].ToString();
+                string make = data[i][" make"].ToString();
+                string manufacturer = data[i][" manufacturer"].ToString();
+                string type = data[i][" type"].ToString();
+                string serialno = data[i][" Serial Number"].ToString();
+                string model = data[i][" model"].ToString();
+                string yard_number = data[i][" yard_number"].ToString();
+                string building_no = data[i][" Building_No"].ToString();
+                string floor = data[i][" Floor"].ToString();
+                string room_no = data[i][" Room_No"].ToString();
+                string latitude = data[i][" Latitude"].ToString();
+                string longitude = data[i][" Longitude"].ToString();
 
-            AddSolarMeter(id, description, make, manufacturer, type, serialno, model, yard_number, building_no, floor, room_no, latitude, longitude);
+                AddSolarMeter(id, description, make, manufacturer, type, serialno, model, yard_number, building_no, floor, room_no, latitude, longitude);
+            }
         }
 
         return solarMeterList;
@@ -182,28 +190,29 @@ public class LoadExcel
     {
         buildingList.Clear();
 
-        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "EnergyMeterNames.csv");
+        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
 
         List<Dictionary<string, object>> data = CSVReader.Read(filepath);
 
         for (var i = 0; i < data.Count; i++)
         {
-            if ((data[i]["Precinct"].ToString() == precinct_name) && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter"].ToString() == "-"))
+            if ((data[i]["Precinct"].ToString() == precinct_name) && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-"))
             {
                 string name = data[i]["Building"].ToString();
                 string latitude = data[i][" Latitude"].ToString();
                 string longitude = data[i][" Longitude"].ToString();
+                int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer); ;
 
-                AddBuilding(name, latitude, longitude);
+                AddBuilding(name, latitude, longitude, port);
             }
         }
 
         return buildingList;
     }
 
-    void AddBuilding(string name, string latitude, string longitude)
+    void AddBuilding(string name, string latitude, string longitude, int port)
     {
-        Building_DT.Building tempBuilding = new Building_DT.Building(name, latitude, longitude);
+        Building_DT.Building tempBuilding = new Building_DT.Building(name, latitude, longitude, port);
 
         buildingList.Add(tempBuilding);
     }
@@ -214,7 +223,7 @@ public class LoadExcel
     {
         precinctList.Clear();
 
-        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "EnergyMeterNames.csv");
+        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
 
         List<Dictionary<string, object>> data = CSVReader.Read(filepath);
 

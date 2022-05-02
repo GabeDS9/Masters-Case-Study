@@ -8,13 +8,13 @@ namespace Services
 {
     class DirectoryService
     {
-        Communication.ClientSocket myClient = new Communication.ClientSocket();
-        public void RunDirectoryService()
+        private List<DigitalTwin> digitalTwinsList = new List<DigitalTwin>();
+        private LoadExcel loadExcel = new LoadExcel();
+        
+        public void InitialiseDirectoryService()
         {
-            while (true)
-            {
-                myClient.CommunicateWithGateway("DirectoryService");
-            }
+            digitalTwinsList = loadExcel.LoadDigitalTwins();
         }
+
     }
 }

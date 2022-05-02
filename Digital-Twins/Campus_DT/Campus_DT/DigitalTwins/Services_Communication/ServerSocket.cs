@@ -1,62 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Communication
+namespace Services_Communication
 {
     class ServerSocket
     {
-        private TcpListener server = null;
+        private static Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        TcpListener server = null;
+        private static List<Socket> clientSockets = new List<Socket>();
+        private static byte[] buffer = new byte[1024];
+        private static int clientPort;
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        private TcpListener listener = null;
 
         public void SetupServer(int port)
         {
-            server = new TcpListener(IPAddress.Any, port);
-            server.Start();
-            Console.WriteLine($"Setting up gateway server on {((IPEndPoint)server.LocalEndpoint).Port}...");
+            listener = new TcpListener(IPAddress.Any, port);
+            listener.Start();
+            Console.WriteLine($"Setting up DT server on {((IPEndPoint)listener.LocalEndpoint).Port}...");
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
+            _ = Task.Run(async () => {
+                while (!cancellationTokenSource.IsCancellationRequested)
+                {
+                    var tcpClient = await listener.AcceptTcpClientAsync();
+                    _ = this.HandleTcpClientAsync(tcpClient);
+                }
+            });
+
+            /*server = new TcpListener(IPAddress.Any, port);
+            server.Start();
+            Console.WriteLine($"Setting up DT server on {((IPEndPoint)server.LocalEndpoint).Port}...");
             _ = Task.Run(async () => {
                 while (!cancellationTokenSource.IsCancellationRequested)
                 {
                     var tcpClient = await server.AcceptTcpClientAsync();
                     _ = this.HandleTcpClientAsync(tcpClient);
                 }
-            });
+            });*/
+            //server.AcceptTcpClientAsync(new AsyncCallback(AcceptCallback), null);
+            //serverSocket.Bind(new IPEndPoint(IPAddress.Any, port));
+            //Console.WriteLine($"Setting up DT server on {((IPEndPoint)serverSocket.LocalEndPoint).Port}...");
+            //serverSocket.Listen(1);
+            //serverSocket.BeginAccept(new AsyncCallback(AcceptCallback), null);
         }
 
         private async Task HandleTcpClientAsync(TcpClient client)
         {
-            Console.WriteLine("Service gateway connected on port: " + ((IPEndPoint)server.LocalEndpoint).Port);
+            Console.WriteLine("Service gateway connected on port: " + ((IPEndPoint)listener.LocalEndpoint).Port);
+
+            /*NetworkStream ns = client.GetStream();
+
+            StreamReader sr = new StreamReader(ns);
+            string message = await sr.ReadToEndAsync();
+
+            Console.WriteLine($"Message received from client on {((IPEndPoint)listener.LocalEndpoint).Port}: {message}");
+
+            StreamWriter sw = new StreamWriter(ns);
+            await sw.WriteLineAsync("YO DAWG WASSAP?");
+
+            await ns.FlushAsync();*/
         }
 
-        /*private static Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static List<Socket> clientSockets = new List<Socket>();
-        private static byte[] buffer = new byte[1024];
-        public int port = 0;
-
-        public void SetupServer()
-        {
-            Console.WriteLine("Setting up server...");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Any, 100));
-            serverSocket.Listen(10);
-            serverSocket.BeginAccept(new AsyncCallback(AcceptCallback), null);
-        }
-
-        private void AcceptCallback(IAsyncResult AR)
+        private static void AcceptCallback(IAsyncResult AR)
         {
             Socket socket = serverSocket.EndAccept(AR);
             clientSockets.Add(socket);
-            Console.WriteLine("Gateway: Client connected on port: " + ((IPEndPoint)socket.LocalEndPoint).Port.ToString());
+            clientPort = ((IPEndPoint)socket.RemoteEndPoint).Port;
+            Console.WriteLine("Service gateway connected on port: " + ((IPEndPoint)socket.RemoteEndPoint).Port.ToString());
             socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
             serverSocket.BeginAccept(new AsyncCallback(AcceptCallback), null);
         }
 
-        private void ReceiveCallback(IAsyncResult AR)
+        private static void ReceiveCallback(IAsyncResult AR)
         {
             Socket socket = (Socket)AR.AsyncState;
             int received = socket.EndReceive(AR);
@@ -66,15 +88,16 @@ namespace Communication
             string text = Encoding.ASCII.GetString(dataBuf);
             Console.WriteLine("Text received: " + text);
 
-            foreach(var item in clientSockets)
-            {
-                    Console.WriteLine(item.RemoteEndPoint);
-            }
-
             string response = string.Empty;
 
-            response = text;
-            port = Int32.Parse(response);
+            if (text.ToLower() == "dt")
+            {
+                response = "From DT";
+            }
+            else if (text.ToLower() == "ui")
+            {
+                response = "From UI";
+            }
 
             byte[] data = Encoding.ASCII.GetBytes(response);
             socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
@@ -182,6 +205,5 @@ namespace Communication
             clientSocket.Close();
         }
     }*/
-
     }
 }

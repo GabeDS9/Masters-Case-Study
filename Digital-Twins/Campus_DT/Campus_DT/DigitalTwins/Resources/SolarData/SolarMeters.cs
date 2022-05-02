@@ -13,11 +13,11 @@ using Newtonsoft.Json;
         // This function will populate a energy meter list with data froma CSV configuration file for the energy meters
         // Input: None
         // Output: Energy Meter List (List<EnergyMeterData>)
-        public List<SolarMeterData> LoadSolarMeterList()
+        public List<SolarMeterData> LoadSolarMeterList(string buildRecName)
         {
             LoadExcel excel = new LoadExcel();
 
-            solarMeters = excel.LoadSolarMeterData();
+            solarMeters = excel.LoadSolarMeterData(buildRecName);
 
             return solarMeters;
         }
