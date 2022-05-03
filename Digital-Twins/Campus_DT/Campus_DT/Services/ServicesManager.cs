@@ -8,7 +8,7 @@ namespace Services
 {
     class ServicesManager
     {
-        ServiceGateway myGateway = new ServiceGateway();
+        /*ServiceGateway myGateway = new ServiceGateway();
         DirectoryService directoryService = new DirectoryService();
         ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
         public void InitialiseServices()
@@ -16,6 +16,6 @@ namespace Services
             myGateway.StartGatewayAsync();
             directoryService.InitialiseDirectoryService();
             exploratoryService.InitialiseEAService();
-        }
+        }*/
     }
 }

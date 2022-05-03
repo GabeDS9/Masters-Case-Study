@@ -5,14 +5,80 @@ using System.Threading;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Communication
 {
-    class ClientSocket
+    public class ClientSocket
     {
-        private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        public async Task<string> sendMessageAsync(string message, int port)
+        {
+            string response = "";
+            try
+            {
+                TcpClient client = new TcpClient(); // Create a new connection
+                await client.ConnectAsync(IPAddress.Loopback, port);
+                client.NoDelay = true; // please check TcpClient for more optimization
+                                       // messageToByteArray- discussed later
+                byte[] messageBytes = messageToByteArray(message);
 
-        public async Task LoopConnectAsync(int port)
+                using (NetworkStream stream = client.GetStream())
+                {
+                    stream.Write(messageBytes, 0, messageBytes.Length);
+
+                    // Message sent!  Wait for the response stream of bytes...
+                    // streamToMessage - discussed later
+                    response = streamToMessage(stream);
+                    var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
+                    Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
+                }
+                client.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+            return response;
+        }
+
+        // using UTF8 encoding for the messages
+        static Encoding encoding = Encoding.UTF8;
+        private static byte[] messageToByteArray(string message)
+        {
+            // get the size of original message
+            byte[] messageBytes = encoding.GetBytes(message);
+            int messageSize = messageBytes.Length;
+            // add content length bytes to the original size
+            int completeSize = messageSize + 4;
+            // create a buffer of the size of the complete message size
+            byte[] completemsg = new byte[completeSize];
+
+            // convert message size to bytes
+            byte[] sizeBytes = BitConverter.GetBytes(messageSize);
+            // copy the size bytes and the message bytes to our overall message to be sent 
+            sizeBytes.CopyTo(completemsg, 0);
+            messageBytes.CopyTo(completemsg, 4);
+            return completemsg;
+        }
+
+        private static string streamToMessage(Stream stream)
+        {
+            // size bytes have been fixed to 4
+            byte[] sizeBytes = new byte[4];
+            // read the content length
+            stream.Read(sizeBytes, 0, 4);
+            int messageSize = BitConverter.ToInt32(sizeBytes, 0);
+            // create a buffer of the content length size and read from the stream
+            byte[] messageBytes = new byte[messageSize];
+            stream.Read(messageBytes, 0, messageSize);
+            // convert message byte array to the message string using the encoding
+            string message = encoding.GetString(messageBytes);
+            string result = null;
+            foreach (var c in message)
+                if (c != '\0')
+                    result += c;
+
+            return result;
+        }
+
+        /*public async Task LoopConnectAsync(int port)
         {
             int attempts = 0;
             TcpClient client = new TcpClient();
@@ -38,7 +104,7 @@ namespace Communication
 
                     string message = await sr.ReadToEndAsync();
 
-                    Console.WriteLine(message);*/
+                    Console.WriteLine(message);
                 }
                 catch (SocketException)
                 {
@@ -60,6 +126,6 @@ namespace Communication
             byte[] data = new byte[rec];
             Array.Copy(receivedBuf, data, rec);
             Console.WriteLine("Received: " + Encoding.ASCII.GetString(data) + " for " + name);
-        }
+        }*/
     }
 }

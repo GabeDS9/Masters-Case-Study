@@ -12,7 +12,7 @@
     public class SpawnOnMap : MonoBehaviour
     {
         public AbstractMap Map;
-        public LegendManager legendManager;
+        
 
         [Geocode]
         string[] _locationStrings;

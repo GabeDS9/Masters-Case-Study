@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Models;
 
 namespace Services
 {
@@ -16,21 +18,14 @@ namespace Services
         ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
 
         Communication.ServerSocket myServer = new Communication.ServerSocket();
-        Communication.ClientSocket myClient = new Communication.ClientSocket();
 
         private int ServerPort = 9000;
 
         public void InitialiseServices()
-        {
-            StartGatewayServer();
+        {            
             directoryService.InitialiseDirectoryService();
+            StartGatewayServer();
             //exploratoryService.InitialiseEAService();
-        }
-
-        public async Task StartGatewayAsync()
-        {
-            await myClient.LoopConnectAsync(8005);
-            await myClient.LoopConnectAsync(8006);
         }
 
         private void StartGatewayServer()

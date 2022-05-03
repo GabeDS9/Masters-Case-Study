@@ -10,6 +10,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using DataAccess;
 using DataAccess.Models;
+using Newtonsoft.Json;
 
 namespace Building_DT
 {
@@ -64,7 +65,7 @@ namespace Building_DT
             SolarMeters = solarManager.LoadSolarMeterList(Building_name);
 
             var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);
-            myServer.SetupServer(Port);
+            myServer.SetupServer(Port, this, null, null);
             await db.CreateBuilding(building);
             await Task.Run(() => InitialPopulateDataBase());
             await Task.Run(() => RunBuildingDTAsync());
@@ -76,7 +77,6 @@ namespace Building_DT
             InitialContextGeneration(startingDate, apiCaller.GetCurrentDateTime().Item1);
             _ = SaveToDataBaseInitialAsync();
         }
-
 
         private void InitialiseMeterData()
         {
@@ -165,19 +165,16 @@ namespace Building_DT
                 {
 
                     await GetCurrentMeterDataAsync();
-                    //myClient.SendMessageToServer(port.ToString());
-                    /*foreach (var item in EnergyMeters)
-                    {
-                        var temp = await db.GetEnergyMeterReading(item.meterid, "2022-4-20");
-                        Console.WriteLine($"{temp[0].Meter_ID} - {temp[0].EnergyMeter_name} had an average of {temp[0].Power_Tot} kW on {temp[0].Timestamp}");
-                    }*/
                     stopWatch.Restart();
                 }
             }
         }
-        private float AccessDatabase()
+        
+        public async Task<string> AccessDatabaseAsync(int meterid, string date)
         {
-            return 0;
+            var temp = await db.GetEnergyMeterReading(meterid, date);
+            var info = JsonConvert.SerializeObject(temp[0]);
+            return info;
         }
 
         private async Task GetCurrentMeterDataAsync()
