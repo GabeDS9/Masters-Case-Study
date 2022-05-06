@@ -9,31 +9,31 @@ namespace Campus_DT
 {
     class CampusManager
     {
-        public static string Campus_name { get; set; }
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
-        public static List<Precinct_DT.Precinct> Precincts { get; set; }
-
-        private static Precinct_DT.PrecinctManager precinctManager = new Precinct_DT.PrecinctManager();
-
+        private string startingDate = "2022-05-01 00:00:00";
+        private Campus campus;
         private Stopwatch stopWatch = new Stopwatch();
-
-        private CampusDBDataAccess db;
-
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
-
-        public CampusManager()
-        {
-
-        }
         
         public void InitialiseCampus()
         {
-            /*Services_Communication.ServicesCommunication servicesCommunicator = new Services_Communication.ServicesCommunication();
-            servicesCommunicator.StartClient();*/
-            Campus_name = "Stellenbosch";
-            
-            Precincts = precinctManager.InitialisePrecincts(Campus_name);
+            LoadExcel excel = new LoadExcel();
+            string Campus_name = "Stellenbosch";
+
+            var camp = excel.LoadCampusData(Campus_name, startingDate);
+
+            campus = camp[0];
+
+            stopWatch.Start();
+
+            while (true)
+            {
+                double ts = stopWatch.Elapsed.TotalSeconds;
+                if (ts >= 60)
+                {
+                    campus.GetUpdatedData();
+                    stopWatch.Restart();
+                }
+            }
 
             //db = new CampusDBDataAccess(Campus_name);
             //var campus = new CampusModel(Campus_name, Latitude, Longitude, Precincts);
@@ -75,22 +75,6 @@ namespace Campus_DT
                     Console.WriteLine(item.Precinct_name + " - " + record.Reticulation_name);
                 }
             }*/
-
-            RunCampusDT();
-        }
-    
-        public void RunCampusDT()
-        {
-            stopWatch.Start();
-            while (true)
-            {
-                double ts = stopWatch.Elapsed.TotalSeconds;
-                if (ts >= 3)
-                {
-                    //Console.WriteLine(Campus_name + " running");
-                    stopWatch.Restart();
-                }
-            }
         }
     }
 }

@@ -13,9 +13,8 @@ namespace DataAccess.Models
         public string Longitude { get; set; }
         //public List<Energy_Reticulation_DT.EnergyReticulation> EnergyMeters { get; set; }
         //public List<Solar_Reticulation_DT.SolarReticulation> SolarMeters { get; set; }
-        public List<Building_DT.Building> Buildings { get; set; }
-
-        public PrecinctModel(string precinctName, string latitude, string longitude, List<Building_DT.Building> buildings)
+        public List<string> Buildings { get; set; }
+        public PrecinctModel(string precinctName, string latitude, string longitude, List<string> buildings)
         {
             Precinct_name = precinctName;
             Latitude = latitude;

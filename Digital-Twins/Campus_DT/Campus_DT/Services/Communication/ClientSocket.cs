@@ -29,8 +29,9 @@ namespace Communication
                     // Message sent!  Wait for the response stream of bytes...
                     // streamToMessage - discussed later
                     response = streamToMessage(stream);
-                    var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
-                    Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
+                    //Console.WriteLine(response);
+                    //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
+                    //Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
                 }
                 client.Close();
             }
@@ -77,55 +78,5 @@ namespace Communication
 
             return result;
         }
-
-        /*public async Task LoopConnectAsync(int port)
-        {
-            int attempts = 0;
-            TcpClient client = new TcpClient();
-
-            while (!client.Connected)
-            {
-                try
-                {
-
-                    attempts++;
-
-                    await client.ConnectAsync(IPAddress.Loopback, port);
-                    Console.WriteLine("Connected to DT on port " + port);
-
-                    /*NetworkStream ns = client.GetStream();
-
-                    StreamWriter sw = new StreamWriter(ns);
-                    await sw.WriteLineAsync("Client sending message");
-
-                    await ns.FlushAsync();
-
-                    StreamReader sr = new StreamReader(ns);
-
-                    string message = await sr.ReadToEndAsync();
-
-                    Console.WriteLine(message);
-                }
-                catch (SocketException)
-                {
-                    Console.WriteLine($"Connecting attempts to {port}: " + attempts.ToString());
-                }
-            }
-
-            //Console.WriteLine("Connected to server");
-        }
-
-        public void SendMessageToServer(string name)
-        {
-            string req = "get time";
-            byte[] buffer = Encoding.ASCII.GetBytes(req);
-            clientSocket.Send(buffer);
-
-            byte[] receivedBuf = new byte[1024];
-            int rec = clientSocket.Receive(receivedBuf);
-            byte[] data = new byte[rec];
-            Array.Copy(receivedBuf, data, rec);
-            Console.WriteLine("Received: " + Encoding.ASCII.GetString(data) + " for " + name);
-        }*/
     }
 }

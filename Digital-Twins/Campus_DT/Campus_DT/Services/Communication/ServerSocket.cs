@@ -8,6 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Models;
 using Newtonsoft.Json;
+using Services;
+using Resources;
 
 namespace Communication
 {
@@ -16,12 +18,14 @@ namespace Communication
         private TcpListener server = null;
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         Communication.ClientSocket myClient = new Communication.ClientSocket();
+        ServiceGateway serviceGateway = null;
 
-        public void SetupServer(int port)
+        public void SetupServer(int port, ServiceGateway myGateway)
         {
+            serviceGateway = myGateway;
             server = new TcpListener(IPAddress.Any, port);
             server.Start();
-            Console.WriteLine($"Setting up DT server on {((IPEndPoint)server.LocalEndpoint).Port}...");
+            Console.WriteLine($"Setting up Gateway service server on {((IPEndPoint)server.LocalEndpoint).Port}...");
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             _ = Task.Run(async () => {
@@ -38,7 +42,7 @@ namespace Communication
             Console.WriteLine("UI connected on port: " + ((IPEndPoint)server.LocalEndpoint).Port);
 
             string request = streamToMessage(client.GetStream());
-
+            
             if (request != null)
             {
                 string responseMessage = await MessageHandlerAsync(request);
@@ -53,13 +57,10 @@ namespace Communication
             client.GetStream().Write(bytes, 0, bytes.Length);
         }
 
-        public async Task<string> MessageHandlerAsync(string message)
+        public async Task<string> MessageHandlerAsync(string mes)
         {
-            Console.WriteLine("Gateway Received message from UI: " + message);
-            Console.WriteLine("Gateway sending message on port 8005");
-            var mesModel = new MessageModel { MessageType = "Energy", MeterID = 2955, Date = "2022-4-20" };
-            string mes = JsonConvert.SerializeObject(mesModel);
-            return await myClient.sendMessageAsync(mes, 8005);
+            string message = await serviceGateway.MessageHandlerAsync(mes);
+            return message;
         }
 
         // using UTF8 encoding for the messages
@@ -101,155 +102,5 @@ namespace Communication
 
             return result;
         }
-
-        /*private static Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static List<Socket> clientSockets = new List<Socket>();
-        private static byte[] buffer = new byte[1024];
-        public int port = 0;
-
-        public void SetupServer()
-        {
-            Console.WriteLine("Setting up server...");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Any, 100));
-            serverSocket.Listen(10);
-            serverSocket.BeginAccept(new AsyncCallback(AcceptCallback), null);
-        }
-
-        private void AcceptCallback(IAsyncResult AR)
-        {
-            Socket socket = serverSocket.EndAccept(AR);
-            clientSockets.Add(socket);
-            Console.WriteLine("Gateway: Client connected on port: " + ((IPEndPoint)socket.LocalEndPoint).Port.ToString());
-            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
-            serverSocket.BeginAccept(new AsyncCallback(AcceptCallback), null);
-        }
-
-        private void ReceiveCallback(IAsyncResult AR)
-        {
-            Socket socket = (Socket)AR.AsyncState;
-            int received = socket.EndReceive(AR);
-            byte[] dataBuf = new byte[received];
-            Array.Copy(buffer, dataBuf, received);
-
-            string text = Encoding.ASCII.GetString(dataBuf);
-            Console.WriteLine("Text received: " + text);
-
-            foreach(var item in clientSockets)
-            {
-                    Console.WriteLine(item.RemoteEndPoint);
-            }
-
-            string response = string.Empty;
-
-            response = text;
-            port = Int32.Parse(response);
-
-            byte[] data = Encoding.ASCII.GetBytes(response);
-            socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);
-
-            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
-        }
-
-        private static void SendCallback(IAsyncResult AR)
-        {
-            Socket socket = (Socket)AR.AsyncState;
-            socket.EndSend(AR);
-        }
-
-        /*public Socket listener;
-        public IPEndPoint localEndPoint;
-        public void StartServer()
-        {
-            // Establish the local endpoint
-            // for the socket. Dns.GetHostName
-            // returns the name of the host
-            // running the application.
-            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddr = ipHost.AddressList[0];
-            localEndPoint = new IPEndPoint(ipAddr, 11111);
-
-            // Creation TCP/IP Socket using
-            // Socket Class Constructor
-            listener = new Socket(ipAddr.AddressFamily,
-                         SocketType.Stream, ProtocolType.Tcp);
-
-            // Using Bind() method we associate a
-            // network address to the Server Socket
-            // All client that will connect to this
-            // Server Socket must know this network
-            // Address
-            listener.Bind(localEndPoint);
-
-            // Using Listen() method we create
-            // the Client list that will want
-            // to connect to Server
-            listener.Listen(30);
-        }
-
-        public (String, Socket) ListenForMessages()
-        {
-            try
-            {
-                while (true)
-                {
-
-                    Console.WriteLine("Waiting connection ... ");
-
-                    // Suspend while waiting for
-                    // incoming connection Using
-                    // Accept() method the server
-                    // will accept connection of client
-                    Socket clientSocket = listener.Accept();
-
-                    // Data buffer
-                    byte[] bytes = new Byte[1024];
-                    string data = null;
-
-                    while (true)
-                    {
-
-                        int numByte = clientSocket.Receive(bytes);
-
-                        data += Encoding.ASCII.GetString(bytes,
-                                                   0, numByte);
-
-                        if (data.IndexOf("<EOF>") > -1)
-                            break;
-                    }
-
-                    Console.WriteLine("Text received -> {0} ", data);
-                    return (data, clientSocket);
-                }
-            }            
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-
-            return (null, null);
-        }
-
-        private void Client(Socket client)
-        {
-
-        }
-
-        public void SendMessage(String mes, Socket clientSocket)
-        {
-            byte[] message = Encoding.ASCII.GetBytes(mes);
-
-            // Send a message to Client
-            // using Send() method
-            clientSocket.Send(message);
-
-            // Close client Socket using the
-            // Close() method. After closing,
-            // we can use the closed Socket
-            // for a new Client Connection
-            clientSocket.Shutdown(SocketShutdown.Both);
-            clientSocket.Close();
-        }
-    }*/
-
     }
 }

@@ -11,6 +11,8 @@ using MongoDB.Driver;
 using DataAccess;
 using DataAccess.Models;
 using Newtonsoft.Json;
+using Models;
+using Utils;
 
 namespace Building_DT
 {
@@ -25,25 +27,29 @@ namespace Building_DT
         public List<OccupancyMeterData> OccupancyMeters { get; set; }
         public List<SolarMeterData> SolarMeters { get; set; }
 
+        public bool Initialised = false;
+        public bool NewEnergyDataAvailable = false;
+
         private EnergyMeters energyManager = new EnergyMeters();
         private OccupancyMeters occupancyManager = new OccupancyMeters();
         private SolarMeters solarManager = new SolarMeters();
         private APICaller apiCaller = new APICaller();
         private Stopwatch stopWatch = new Stopwatch();
         private BuildingDBDataAccess db;
-
-        private string startingDate = "2022-04-20 00:00:00";
+        private Utilities utilities = new Utilities();
+        private string startingDate;
 
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
         Services_Communication.ServerSocket myServer = new Services_Communication.ServerSocket();
 
-        public Building(string name, string latitude, string longitude, int port)
+        public Building(string name, string latitude, string longitude, int port, string iniDate)
         {
             Building_name = name;
             Latitude = latitude;
             Longitude = longitude;
             Port = port;
             db = new BuildingDBDataAccess(Building_name.Replace(" ", "_"));
+            startingDate = iniDate;
             _ = InitialiseBuildingAsync();
         }
 
@@ -51,12 +57,13 @@ namespace Building_DT
         // Get available energy meters in the building
         public async Task InitialiseBuildingAsync()
         {
+            myServer.SetupServer(Port, this, null, null);
             EnergyMeters = energyManager.LoadEnergyMeterList(Building_name);
             var energymeters = new List<EnergyMeterModel>();
 
             foreach (var item in EnergyMeters)
             {
-                var tempMeter = new EnergyMeterModel(item.description, item.meterid, 0, null);
+                var tempMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, 0, null);
                 energymeters.Add(tempMeter);
                 await db.CreateEnergyMeter(tempMeter);
             }
@@ -64,21 +71,18 @@ namespace Building_DT
             OccupancyMeters = occupancyManager.LoadOccupancyMeterList(Building_name);
             SolarMeters = solarManager.LoadSolarMeterList(Building_name);
 
-            var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);
-            myServer.SetupServer(Port, this, null, null);
+            var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);            
             await db.CreateBuilding(building);
             await Task.Run(() => InitialPopulateDataBase());
             await Task.Run(() => RunBuildingDTAsync());
         }
-
         private void InitialPopulateDataBase()
         {
-            InitialiseMeterData();
+            InitialiseEnergyMeterData();
             InitialContextGeneration(startingDate, apiCaller.GetCurrentDateTime().Item1);
             _ = SaveToDataBaseInitialAsync();
         }
-
-        private void InitialiseMeterData()
+        private void InitialiseEnergyMeterData()
         {
             foreach (var item in EnergyMeters)
             {
@@ -87,14 +91,15 @@ namespace Building_DT
                 item.latest_timestamp = item.data[item.data.Count - 1].timestamp;
             }
         }
-
         private void InitialContextGeneration(String startDate, String endDate)
         {
-            CalculateInitialDayAverage(startDate, endDate);
-            //CalculateMonthAverage();
+            CalculateInitialEnergyDayAverage(startDate, endDate);
+            CalculateInitialEnergyMonthAverage(startDate, endDate);
+            CalculateInitialEnergyYearAverage(startDate, endDate);
         }
 
-        public void CalculateInitialDayAverage(string startDate, string endDate)
+        // Energy Data
+        public void CalculateInitialEnergyDayAverage(string startDate, string endDate)
         {
             foreach (var item in EnergyMeters)
             {
@@ -102,9 +107,9 @@ namespace Building_DT
 
                 int day, month, year, prevDay = 0, prevMonth = 0, prevYear = 0;
                 int startDay, startMonth, startYear;
-                (startDay, startMonth, startYear) = apiCaller.GetDate(startDate);
+                (startYear, startMonth, startDay) = apiCaller.GetDate(startDate);
                 int endDay, endMonth, endYear;
-                (endDay, endMonth, endYear) = apiCaller.GetDate(endDate);
+                (endYear, endMonth, endDay) = apiCaller.GetDate(endDate);
                 double tempEnergy = 0;
                 int count = 0;
                 EnergyAverageData tempData = new EnergyAverageData();
@@ -125,7 +130,6 @@ namespace Building_DT
                                 tempEnergy += data.ptot_kw;
                                 count++;
                             }
-
                         }
 
                         tempData = new EnergyAverageData();
@@ -139,6 +143,97 @@ namespace Building_DT
                 }
             }
         }
+        public void CalculateInitialEnergyMonthAverage(string startDate, string endDate)
+        {
+            foreach (var item in EnergyMeters)
+            {
+                item.month_average = new List<EnergyAverageData>();
+
+                int day, month, year, prevMonth = 0, prevYear = 0;
+                int startDay, startMonth, startYear;
+                (startYear, startMonth, startDay) = apiCaller.GetDate(startDate);
+                int endDay, endMonth, endYear;
+                (endYear, endMonth, endDay) = apiCaller.GetDate(endDate);
+                double tempEnergy = 0;
+                int count = 0;
+                EnergyAverageData tempData = new EnergyAverageData();
+
+                for (int i = 0; i < item.data.Count; i++)
+                {
+                    (year, month, day) = apiCaller.GetDate(item.data[i].timestamp);
+
+                    if (((year != prevYear) || (month != prevMonth)) && ((year >= startYear) || (month >= startMonth))
+                        && ((year <= endYear) || (month <= endMonth)))
+                    {
+                        foreach (var data in item.data)
+                        {
+                            int tempDay, tempMonth, tempYear;
+                            (tempYear, tempMonth, tempDay) = apiCaller.GetDate(data.timestamp);
+                            if ((year == tempYear) && (month == tempMonth))
+                            {
+                                tempEnergy += data.ptot_kw;
+                                count++;
+                            }
+                        }
+
+                        tempData = new EnergyAverageData();
+                        tempData.timestamp = year + "-" + month;
+                        tempData.ptot_kw = tempEnergy / count;
+                        item.month_average.Add(tempData);
+                        prevYear = year;
+                        prevMonth = month;
+                    }
+                }
+            }
+        }
+        public void CalculateInitialEnergyYearAverage(string startDate, string endDate)
+        {
+            foreach (var item in EnergyMeters)
+            {
+                item.year_average = new List<EnergyAverageData>();
+
+                int day, month, year, prevYear = 0;
+                int startDay, startMonth, startYear;
+                (startYear, startMonth, startDay) = apiCaller.GetDate(startDate);
+                int endDay, endMonth, endYear;
+                (endYear, endMonth, endDay) = apiCaller.GetDate(endDate);
+                double tempEnergy = 0;
+                int count = 0;
+                EnergyAverageData tempData = new EnergyAverageData();
+
+                for (int i = 0; i < item.data.Count; i++)
+                {
+                    (year, month, day) = apiCaller.GetDate(item.data[i].timestamp);
+
+                    if (((year != prevYear)) && ((year >= startYear))
+                        && ((year <= endYear)))
+                    {
+                        foreach (var data in item.data)
+                        {
+                            int tempDay, tempMonth, tempYear;
+                            (tempYear, tempMonth, tempDay) = apiCaller.GetDate(data.timestamp);
+                            if ((year == tempYear))
+                            {
+                                tempEnergy += data.ptot_kw;
+                                count++;
+                            }
+                        }
+
+                        tempData = new EnergyAverageData();
+                        tempData.timestamp = year.ToString();
+                        tempData.ptot_kw = tempEnergy / count;
+                        item.year_average.Add(tempData);
+                        prevYear = year;
+                    }
+                }
+            }
+        }
+
+        // Occupancy Meters
+
+        // Solar Meters
+
+        // Water Meters
 
         private async Task SaveToDataBaseInitialAsync()
         {
@@ -147,37 +242,52 @@ namespace Building_DT
             {
                 for (int i = 0; i < item.day_average.Count; i++)
                 {
-                    var tempMeter = new EnergyMeterModel(item.description, item.meterid, item.day_average[i].ptot_kw, item.day_average[i].timestamp);
+                    var tempMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.day_average[i].ptot_kw, item.day_average[i].timestamp);
+                    await db.CreateEnergyMeter(tempMeter);
+                }
+                for (int i = 0; i < item.month_average.Count; i++)
+                {
+                    var tempMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.month_average[i].ptot_kw, item.month_average[i].timestamp);
+                    await db.CreateEnergyMeter(tempMeter);
+                }
+                for (int i = 0; i < item.year_average.Count; i++)
+                {
+                    var tempMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.year_average[i].ptot_kw, item.year_average[i].timestamp);
                     await db.CreateEnergyMeter(tempMeter);
                 }
             }
             Console.WriteLine($"{Building_name} DT has been initialised");
+            Initialised = true;
         }
+
         #endregion
 
+        #region DT Running Functions
         public async Task RunBuildingDTAsync()
         {
             stopWatch.Start();
             while (true)
             {
                 double ts = stopWatch.Elapsed.TotalSeconds;
-                if (ts >= 5)
+                if (ts >= 60)
                 {
-
                     await GetCurrentMeterDataAsync();
                     stopWatch.Restart();
                 }
             }
         }
-        
+        private async Task GetCurrentMeterDataAsync()
+        {
+            await GetCurrentEnergyMeterDataAsync();
+        }
+        // Energy Meter Data
         public async Task<string> AccessDatabaseAsync(int meterid, string date)
         {
             var temp = await db.GetEnergyMeterReading(meterid, date);
             var info = JsonConvert.SerializeObject(temp[0]);
             return info;
         }
-
-        private async Task GetCurrentMeterDataAsync()
+        private async Task GetCurrentEnergyMeterDataAsync()
         {
             foreach (var item in EnergyMeters)
             {
@@ -189,172 +299,217 @@ namespace Building_DT
                         item.previous_timestamp = item.latest_timestamp;
                         item.latest_timestamp = tempData[tempData.Count - 1].timestamp;
                         item.latest_power = tempData[tempData.Count - 1].ptot_kw;
-                        var newEnergyData = await CalculateDayAverageAsync(item.meterid, item.latest_power, item.previous_timestamp);
-                        await db.UpdateEnergyMeter(newEnergyData);
-                        //Console.WriteLine($"New data available for {item.meterid} - {item.description}");
+                        /*var temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.previous_timestamp, "Day"));
+                        if (temp != null)
+                        {
+                            Console.WriteLine($"Old day value for energy for {item.description} {item.previous_timestamp} - {temp[0].Power_Tot}");
+                        }*/
+                        var newDayEnergyData = await CalculateEnergyNewAverageAsync(item.meterid, item.latest_power, item.previous_timestamp, "Day");
+                        var newMonthEnergyData = await CalculateEnergyNewAverageAsync(item.meterid, item.latest_power, item.previous_timestamp, "Month");
+                        var newYearEnergyData = await CalculateEnergyNewAverageAsync(item.meterid, item.latest_power, item.previous_timestamp, "Year");
+                        if (newDayEnergyData.Timestamp != null)
+                        {
+                            await db.UpdateEnergyMeter(newDayEnergyData);
+                            await db.UpdateEnergyMeter(newMonthEnergyData);
+                            await db.UpdateEnergyMeter(newYearEnergyData);
+                        }    
+                        else if(newDayEnergyData.Timestamp == null)
+                        {
+                            var tempDayMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Day"));
+                            var tempMonthMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Month"));
+                            var tempYearMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Year"));
+                            await db.CreateEnergyMeter(tempDayMeter);
+                            await db.CreateEnergyMeter(tempMonthMeter);
+                            await db.CreateEnergyMeter(tempYearMeter);
+                        }
+                        item.NewDataAvailable = true;
+                        //temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.latest_timestamp, "Day"));
+                        //Console.WriteLine($"Updated day value for energy for {item.description} {item.latest_timestamp} - {temp[0].Power_Tot}");
+                        Console.WriteLine(Building_name + " Updated");
                     }
                 }
             }
+            UpdateDataAvailable();
         }
+        public void UpdateDataAvailable()
+        {
+            bool initial = true;
+            foreach (var item in EnergyMeters)
+            {
+                if (item.NewDataAvailable == false)
+                {
+                    initial = false;
+                }
+            }
+            if (initial)
+            {
+                NewEnergyDataAvailable = true;
+            }
+        }
+        public void ResetDataAvailable()
+        {
+            NewEnergyDataAvailable = false;
+            foreach (var item in EnergyMeters)
+            {
+                item.NewDataAvailable = false;
+            }
+        }
+
+        #endregion
 
         #region Services
-        private void ContextGeneration(String currDate)
-        {
-            //CalculateDayAverage(currDate);
-            Console.WriteLine("Average Energy Reading for " + EnergyMeters[0].description + " was " + EnergyMeters[0].day_average[0].timestamp + " - " + EnergyMeters[0].day_average[0].ptot_kw);
-            //CalculateMonthAverage();
-        }
 
-        public async Task<EnergyMeterModel> CalculateDayAverageAsync(int meterid, double newPower, string prevTime)
+        // Energy Services
+        public List<string> ReturnLocation()
         {
-            var prevTimestamp = DecodeTimestamp(prevTime, "Day");
+            List<string> location = new List<string>();
+            location.Add(Latitude);
+            location.Add(Longitude);
+            return location;
+        }
+        public double ReturnCurrentBuildingEnergy()
+        {
+            double currentPower = 0;
+            foreach(var item in EnergyMeters)
+            {
+                var tempData = ReturnCurrentEnergyReading(item.meterid);
+                currentPower += tempData;
+            }
+            return currentPower;
+        }
+        public double ReturnCurrentEnergyReading(int meterID)
+        {
+            var tempData = energyManager.GetCurrentEnergyData(meterID);
+            if (tempData.Count > 0)
+            {
+                return tempData[tempData.Count - 1].ptot_kw;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public async Task<List<EnergyMeterModel>> ReturnBuildingEnergyAveragesAsync(List<string> dateList)
+        {
+            List<EnergyMeterModel> meterData = new List<EnergyMeterModel>();
+            foreach (var date in dateList)
+            {
+                var temp = await db.GetBuildingEnergyReading(Building_name, date);
+                if (temp.Count != 0)
+                {
+                    meterData.Add(temp[0]);
+                }
+            }
+
+            return meterData;
+        }
+        private async Task<List<EnergyMeterModel>> ReturnEnergyAveragesAsync(int meterID, List<string> dateList)
+        {
+            List<EnergyMeterModel> meterData = new List<EnergyMeterModel>();
+            foreach(var date in dateList)
+            {
+                var temp = await db.GetEnergyMeterReading(meterID, date);
+                if(temp.Count != 0)
+                {
+                    meterData.Add(temp[0]);
+                }
+            }
+
+            return meterData;
+        }
+        public async Task<EnergyMeterModel> CalculateEnergyNewAverageAsync(int meterid, double newPower, string prevTime, string type)
+        {
+            string prevTimestamp = utilities.DecodeTimestamp(prevTime, type);
+            int currentNumberofTimestamps = 0;
+            if(type == "Day")
+            {
+                currentNumberofTimestamps = (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
+            }
+            else if(type == "Month")
+            {
+                currentNumberofTimestamps = (DateTime.Now.Day * 288) + (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
+            }
+            else if(type == "Year")
+            {
+                currentNumberofTimestamps = (DateTime.Now.Day * 8640) + (DateTime.Now.Day * 288) + (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
+            }
+
             var temp = await db.GetEnergyMeterReading(meterid, prevTimestamp);
-            var newp = (temp[0].Power_Tot + newPower) / 2;
-
-            temp[0].Power_Tot = newp;
-
-            return temp[0];
-        }
-
-        private string DecodeTimestamp(string timestamp, string type)
-        {
-            string newTime = "";
-
-            if (type == "Day")
+            EnergyMeterModel result = null;
+            if (temp.Count != 0)
             {
-                String[] temp = timestamp.Split('-');
-
-                String yr = temp[0];
-                String mon = temp[1];
-                String dy = temp[2];
-
-                if (dy.Length > 2)
-                {
-                    String[] daytemp = dy.Split(' ');
-                    dy = daytemp[0];
-                    if (dy[0].Equals("0"))
-                    {
-                        dy = dy[1].ToString();
-                    }
-                }
-                if (mon[0].Equals('0'))
-                {
-                    mon = mon[1].ToString();
-                }
-
-
-                newTime = yr + "-" + mon + "-" + dy;
+                double newp = (double)((temp[0].Power_Tot * (currentNumberofTimestamps)) + newPower) / (currentNumberofTimestamps + 1);
+                temp[0].Power_Tot = newp;
+                result = temp[0];
+            }
+            else if (temp.Count == 0)
+            {
+                result = new EnergyMeterModel(null, 0, null, null, 0, null);
             }
 
-            return newTime;
+            return result;
         }
-
-        /*
-        public void CalculateDayAverage(int meterid)
+        public async Task<double> GetTotalEnergyAsync(string date)
         {
-            double prevPtot = AccessDatabase();
-            String prevDate = "";
-
-            foreach (var item in EnergyMeters)
+            List<string> dates = new List<string>();
+            dates.Add(date);
+            double totPower = 0;
+            
+            if(EnergyMeters.Count > 1)
             {
-                item.day_average = new List<EnergyAverageData>();
-
-                int day, month, year, prevDay = 0, prevMonth = 0, prevYear = 0;
-                int currDay, currMonth, currYear;
-                (currDay, currMonth, currYear) = apiCaller.GetDate(currDate);
-                double tempEnergy = 0;
-                int count = 0;
-                EnergyAverageData tempData = new EnergyAverageData();
-
-                for (int i = 0; i < item.data.Count; i++)
+                foreach(var item in EnergyMeters)
                 {
-                    (year, month, day) = apiCaller.GetDate(prevDate);
-
-                    if (((year != prevYear) || (month != prevMonth) || (day != prevDay)) && ((year >= startYear) || (month >= startMonth) || (day >= startDay))
-                        && ((year <= endYear) || (month <= endMonth) || (day <= endDay)))
+                    if(item.meterid != EnergyMeters[0].meterid)
                     {
-                        foreach (var data in item.data)
-                        {
-                            int tempDay, tempMonth, tempYear;
-                            (tempYear, tempMonth, tempDay) = apiCaller.GetDate(data.timestamp);
-                            if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
-                            {
-                                tempEnergy += data.ptot_kw;
-                                count++;
-                            }
-
-                        }
-
-                        tempData = new EnergyAverageData();
-                        tempData.timestamp = year + "-" + month + "-" + day;
-                        tempData.ptot_kw = tempEnergy / count;
-                        item.day_average.Add(tempData);
-                        prevYear = year;
-                        prevMonth = month;
-                        prevDay = day;
+                        var temp = await ReturnEnergyAveragesAsync(item.meterid, dates);
+                        totPower += (double)temp[0].Power_Tot;
                     }
                 }
             }
-        }
-
-        /*
-        // Calculate monthly energy average
-        // This function will calculate the average energy use for each month and store it in the energy meter
-        // Input: None
-        // Output: Stored all energy meter monthly average
-        /*public void CalculateMonthAverage(string startDate, string endDate, int meterid)
-        {
-            // Loops through the list of energy meters
-            foreach (var item in EnergyMeters)
+            else
             {
-                if (item.meterid == meterid)
+                var temp = await ReturnEnergyAveragesAsync(EnergyMeters[0].meterid, dates);
+                totPower = (double)temp[0].Power_Tot;
+            }
+
+            return totPower;
+        }
+        public async Task<string> ServiceHandlerAsync(MessageModel message)
+        {
+            if (message.DataType == "Energy")
+            {
+                if (message.MessageType == "CurrentData")
                 {
-
-                    item.data = GetMeterDataAsync(startDate, endDate, meterid).Result;
-                    item.month_average = new List<EnergyAverage>();
-
-                    int day, month, year, prevMonth = 0, prevYear = 0;
-                    double tempEnergy = 0;
-                    int count = 0;
-                    int startDay, startMonth, startYear;
-                    (startDay, startMonth, startYear) = GetDate(startDate);
-                    int endDay, endMonth, endYear;
-                    (endDay, endMonth, endYear) = GetDate(endDate);
-                    EnergyAverage tempData = new EnergyAverage();
-
-                    for (int i = 0; i < item.day_average.Count; i++)
-                    {
-                        (year, month, day) = GetDate(item.day_average[i].timestamp);
-
-                        if ((year != prevYear) || (month != prevMonth) && ((year >= startYear) || (month >= startMonth))
-                                && ((year <= endYear) || (month <= endMonth)))
-                        {
-
-                            foreach (var data in item.day_average)
-                            {
-                                int tempDay, tempMonth, tempYear;
-                                (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
-                                if ((year == tempYear) && (month == tempMonth))
-                                {
-                                    tempEnergy += data.ptot_kw;
-                                    count++;
-                                }
-
-                            }
-
-                            tempData = new EnergyAverage();
-                            tempData.timestamp = year + "-" + month + "-01";
-                            tempData.ptot_kw = tempEnergy / count;
-                            item.month_average.Add(tempData);
-                            prevYear = year;
-                            prevMonth = month;
-
-                        }
-                    }
+                    var tempEnergy = ReturnCurrentBuildingEnergy();
+                    EnergyMeterModel temp = new EnergyMeterModel(Building_name, 0, Latitude, Longitude, tempEnergy, "");
+                    var tempMess = JsonConvert.SerializeObject(temp);
+                    return tempMess;
+                }
+                else if (message.MessageType == "Averages")
+                {
+                    message.startDate = utilities.ChangeDateFormat(message.startDate);
+                    message.endDate = utilities.ChangeDateFormat(message.endDate);
+                    var temp = await ReturnBuildingEnergyAveragesAsync(utilities.GenerateDateList(message.startDate, message.endDate, message.timePeriod));
+                    var response = JsonConvert.SerializeObject(temp);
+                    return response;
                 }
             }
-        }*/
-        #endregion
+            else if (message.DataType == "DigitalTwins")
+            {
+                if (message.MessageType == "ChildDTList")
+                {
+                    ChildDTModel temp = new ChildDTModel("None", "None");
+                    var tempList = new List<ChildDTModel>();
+                    tempList.Add(temp);
+                    var tempMess = JsonConvert.SerializeObject(tempList);
+                    return tempMess;
+                }
+            }
+            return "";
+        }
+
+         #endregion
+
     }
 }
 

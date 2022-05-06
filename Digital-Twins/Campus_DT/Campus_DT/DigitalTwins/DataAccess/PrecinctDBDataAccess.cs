@@ -34,5 +34,24 @@ namespace DataAccess
             var precinctCollection = ConnectToMongo<PrecinctModel>(PrecinctCollection);
             return precinctCollection.InsertOneAsync(precinct);
         }
+
+        public Task CreateEnergyReading(EnergyMeterModel energymeter)
+        {
+            var energyMeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
+            return energyMeterCollection.InsertOneAsync(energymeter);
+        }
+
+        public async Task<List<EnergyMeterModel>> GetEnergyReading(string precinct, string timestamp)
+        {
+            var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
+            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == precinct && c.Timestamp == timestamp));
+            return results.ToList();
+        }
+        public Task UpdateEnergyMeter(EnergyMeterModel energyMeter)
+        {
+            var energyCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
+            var filter = Builders<EnergyMeterModel>.Filter.Eq("Id", energyMeter.Id);
+            return energyCollection.ReplaceOneAsync(filter, energyMeter, new ReplaceOptions { IsUpsert = true });
+        }
     }
 }

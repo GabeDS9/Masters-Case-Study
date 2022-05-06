@@ -11,9 +11,9 @@ namespace DataAccess.Models
         public static string Campus_name { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
-        public static List<Precinct_DT.Precinct> Precincts { get; set; }
+        public static List<string> Precincts { get; set; }
 
-        public CampusModel(string campus_name, string latitude, string longitude, List<Precinct_DT.Precinct> precincts)
+        public CampusModel(string campus_name, string latitude, string longitude, List<string> precincts)
         {
             Campus_name = campus_name;
             Latitude = latitude;

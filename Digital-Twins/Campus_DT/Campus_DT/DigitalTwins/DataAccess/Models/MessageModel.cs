@@ -8,8 +8,12 @@ namespace Models
 {
     public class MessageModel
     {
+        public string DataType { get; set; }
         public string MessageType { get; set; }
-        public int MeterID { get; set; }
-        public string Date { get; set; }
+        public string DisplayType { get; set; }
+        public string LowestDTLevel { get; set; }
+        public string startDate { get; set; }
+        public string endDate { get; set; }
+        public string timePeriod { get; set; }
     }
 }

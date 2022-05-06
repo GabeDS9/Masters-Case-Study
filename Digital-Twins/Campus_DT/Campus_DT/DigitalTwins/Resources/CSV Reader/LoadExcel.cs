@@ -11,6 +11,7 @@ public class LoadExcel
     public List<SolarMeterData> solarMeterList = new List<SolarMeterData>();
     public List<Building_DT.Building> buildingList = new List<Building_DT.Building>();
     public List<Precinct_DT.Precinct> precinctList = new List<Precinct_DT.Precinct>();
+    public List<Campus_DT.Campus> campusList = new List<Campus_DT.Campus>();
 
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
@@ -186,7 +187,7 @@ public class LoadExcel
     #endregion
 
     #region Buildings
-    public List<Building_DT.Building> LoadBuildingData(string precinct_name)
+    public List<Building_DT.Building> LoadBuildingData(string precinct_name, string startingDate)
     {
         buildingList.Clear();
 
@@ -201,25 +202,25 @@ public class LoadExcel
                 string name = data[i]["Building"].ToString();
                 string latitude = data[i][" Latitude"].ToString();
                 string longitude = data[i][" Longitude"].ToString();
-                int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer); ;
-
-                AddBuilding(name, latitude, longitude, port);
+                int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
+                
+                AddBuilding(name, latitude, longitude, port, startingDate);
             }
         }
 
         return buildingList;
     }
 
-    void AddBuilding(string name, string latitude, string longitude, int port)
+    void AddBuilding(string name, string latitude, string longitude, int port, string startingDate)
     {
-        Building_DT.Building tempBuilding = new Building_DT.Building(name, latitude, longitude, port);
+        Building_DT.Building tempBuilding = new Building_DT.Building(name, latitude, longitude, port, startingDate);
 
         buildingList.Add(tempBuilding);
     }
     #endregion
 
     #region Precincts
-    public List<Precinct_DT.Precinct> LoadPrecinctData(string campus_name)
+    public List<Precinct_DT.Precinct> LoadPrecinctData(string campus_name, string startingDate)
     {
         precinctList.Clear();
 
@@ -229,24 +230,58 @@ public class LoadExcel
 
         for (var i = 0; i < data.Count; i++)
         {
-            if ((data[i]["Campus"].ToString() == campus_name) && (data[i]["Building"].ToString() == "-") && (data[i]["Reticulation"].ToString() == "-"))
+            if ((data[i]["Campus"].ToString() == campus_name) && (data[i]["Precinct"].ToString() != "-") && (data[i]["Building"].ToString() == "-") && (data[i]["Reticulation"].ToString() == "-"))
             {
                 string name = data[i]["Precinct"].ToString();
                 string latitude = data[i][" Latitude"].ToString();
                 string longitude = data[i][" Longitude"].ToString();
+                int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
 
-                AddPrecinct(name, latitude, longitude);
+                AddPrecinct(name, latitude, longitude, port, startingDate);
             }
         }
 
         return precinctList;
     }
 
-    void AddPrecinct(string name, string latitude, string longitude)
+    void AddPrecinct(string name, string latitude, string longitude, int port, string startingDate)
     {
-        Precinct_DT.Precinct tempPrecinct = new Precinct_DT.Precinct(name, latitude, longitude);
+        Precinct_DT.Precinct tempPrecinct = new Precinct_DT.Precinct(name, latitude, longitude, port, startingDate);
 
         precinctList.Add(tempPrecinct);
+    }
+    #endregion
+
+    #region Campus
+    public List<Campus_DT.Campus> LoadCampusData(string campus_name, string startingDate)
+    {
+        precinctList.Clear();
+
+        string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
+
+        List<Dictionary<string, object>> data = CSVReader.Read(filepath);
+
+        for (var i = 0; i < data.Count; i++)
+        {
+            if ((data[i]["Campus"].ToString() == campus_name) && (data[i]["Precinct"].ToString() == "-"))
+            {
+                string name = data[i]["Campus"].ToString();
+                string latitude = data[i][" Latitude"].ToString();
+                string longitude = data[i][" Longitude"].ToString();
+                int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
+
+                AddCampus(name, latitude, longitude, port, startingDate);
+            }
+        }
+
+        return campusList;
+    }
+
+    void AddCampus(string name, string latitude, string longitude, int port, string startingDate)
+    {
+        Campus_DT.Campus tempCampus = new Campus_DT.Campus(name, latitude, longitude, port, startingDate);
+
+        campusList.Add(tempCampus);
     }
     #endregion
 }

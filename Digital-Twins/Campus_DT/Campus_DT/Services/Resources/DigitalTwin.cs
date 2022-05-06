@@ -10,6 +10,6 @@ namespace Services
     {
         public string DT_Name { get; set; }
         public int Port { get; set; }
-        //public List<DigitalTwin> Child_DTs { get; set; }
+        public List<string> Child_DTs { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Resources;
 using Models;
 
 namespace Services
@@ -18,36 +19,83 @@ namespace Services
         ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
 
         Communication.ServerSocket myServer = new Communication.ServerSocket();
+        Communication.ClientSocket myClient = new Communication.ClientSocket();
 
         private int ServerPort = 9000;
 
         public void InitialiseServices()
-        {            
-            directoryService.InitialiseDirectoryService();
-            StartGatewayServer();
+        {
+            _ = directoryService.InitialiseDirectoryServiceAsync();
             //exploratoryService.InitialiseEAService();
+            StartGatewayServer();            
         }
-
         private void StartGatewayServer()
         {
-            myServer.SetupServer(ServerPort);
+            myServer.SetupServer(ServerPort, this);
         }
-
-        /*public void RunGatewayService()
+        public async Task<string> MessageHandlerAsync(string mes)
         {
-            while (true)
+            string message = "";
+            var tempMessage = JsonConvert.DeserializeObject<UIMessageModel>(mes);
+            int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
+            var temp = new MessageModel {
+                DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
+                DisplayType = tempMessage.DisplayType, LowestDTLevel = tempMessage.LowestDTLevel, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
+                timePeriod = tempMessage.timePeriod
+            };
+            var tempDTMessage = JsonConvert.SerializeObject(temp);
+            message = await myClient.sendMessageAsync(tempDTMessage, port);
+            /*if (tempMessage.DataType == "Energy")
             {
-                String message = "";
-                Socket clientSocket;
-                (message, clientSocket) = myServer.ListenForMessages();
-                //ProcessMessage(message, clientSocket);
-            }
-        }
-        public void ProcessMessage(String message, Socket clientSocket)
-        {
-            String information = "Hello";
+                if(tempMessage.InformationType == "CurrentData")
+                {
+                    if(tempMessage.DisplayType == "Individual")
+                    {
+                        var temp = new MessageModel {
+                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
+                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
+                            timePeriod = tempMessage.timePeriod
+                        };
+                        var tempDTMessage = JsonConvert.SerializeObject(temp);
+                        message = await myClient.sendMessageAsync(tempDTMessage, port);
+                    }
+                    else if(tempMessage.DisplayType == "Collective")
+                    {
+                        var temp = new MessageModel {
+                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
+                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
+                            timePeriod = tempMessage.timePeriod
+                        };
+                        var tempDTMessage = JsonConvert.SerializeObject(temp);
+                        message = await myClient.sendMessageAsync(tempDTMessage, port);
+                    }                    
+                }
+                else if (tempMessage.InformationType == "Averages")
+                {
+                    if (tempMessage.DisplayType == "Individual")
+                    {
+                        var temp = new MessageModel {
+                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
+                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
+                            timePeriod = tempMessage.timePeriod
+                        };
+                        var tempDTMessage = JsonConvert.SerializeObject(temp);
+                        message = await myClient.sendMessageAsync(tempDTMessage, port);
+                    }
+                    else if (tempMessage.DisplayType == "Collective")
+                    {
+                        var temp = new MessageModel {
+                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
+                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
+                            timePeriod = tempMessage.timePeriod
+                        };
+                        var tempDTMessage = JsonConvert.SerializeObject(temp);
+                        message = await myClient.sendMessageAsync(tempDTMessage, port);
+                    }
+                }
+            }*/
 
-            myServer.SendMessage(information, clientSocket);
-        }*/
+            return message;
+        }
     }
 }

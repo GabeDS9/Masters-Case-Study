@@ -45,7 +45,12 @@ namespace DataAccess
             var filter = Builders<EnergyMeterModel>.Filter.Eq("Id", energyMeter.Id);
             return energyCollection.ReplaceOneAsync(filter, energyMeter, new ReplaceOptions { IsUpsert = true });
         }
-
+        public async Task<List<EnergyMeterModel>> GetBuildingEnergyReading(string building, string timestamp)
+        {
+            var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
+            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == building && c.Timestamp == timestamp));
+            return results.ToList();
+        }
         public async Task<List<EnergyMeterModel>> GetEnergyMeterReading(int meter_id, string timestamp)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
