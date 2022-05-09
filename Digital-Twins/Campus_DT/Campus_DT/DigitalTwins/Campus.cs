@@ -217,7 +217,10 @@ namespace Campus_DT
                 }
                 ResetUpdatedDataAvailable();
                 temp = await db.GetEnergyReading(Campus_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
-                Console.WriteLine($"Updated day value for energy for {Campus_name} {tempDate} - {temp[0].Power_Tot}");
+                if (temp != null)
+                {
+                    Console.WriteLine($"Updated day value for energy for {Campus_name} {tempDate} - {temp[0].Power_Tot}");
+                }
             }
         }
         private void CheckUpdatedData()

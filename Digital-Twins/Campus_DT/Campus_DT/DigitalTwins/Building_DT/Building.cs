@@ -316,16 +316,35 @@ namespace Building_DT
                         else if(newDayEnergyData.Timestamp == null)
                         {
                             var tempDayMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Day"));
-                            var tempMonthMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Month"));
-                            var tempYearMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Year"));
                             await db.CreateEnergyMeter(tempDayMeter);
-                            await db.CreateEnergyMeter(tempMonthMeter);
-                            await db.CreateEnergyMeter(tempYearMeter);
+
+                            var prevMonth = utilities.DecodeTimestamp(newDayEnergyData.Timestamp, "Month");
+                            var prevYear = utilities.DecodeTimestamp(newDayEnergyData.Timestamp, "Year");
+
+                            if (utilities.DecodeTimestamp(item.latest_timestamp, "Month") == prevMonth)
+                            {
+                                await db.UpdateEnergyMeter(newMonthEnergyData);
+                            }
+                            else if (utilities.DecodeTimestamp(item.latest_timestamp, "Month") != prevMonth)
+                            {
+                                var tempMonthMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Month"));
+                                await db.CreateEnergyMeter(tempMonthMeter);
+                            }
+
+                            if (utilities.DecodeTimestamp(item.latest_timestamp, "Year") == prevYear)
+                            {
+                                await db.UpdateEnergyMeter(newYearEnergyData);
+                            }
+                            else if (utilities.DecodeTimestamp(item.latest_timestamp, "Year") != prevYear)
+                            {
+                                var tempYearMeter = new EnergyMeterModel(item.description, item.meterid, item.latitude, item.longitude, item.latest_power, utilities.DecodeTimestamp(item.latest_timestamp, "Year"));
+                                await db.CreateEnergyMeter(tempYearMeter);
+                            }                          
                         }
                         item.NewDataAvailable = true;
                         //temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.latest_timestamp, "Day"));
                         //Console.WriteLine($"Updated day value for energy for {item.description} {item.latest_timestamp} - {temp[0].Power_Tot}");
-                        Console.WriteLine(Building_name + " Updated");
+                        //Console.WriteLine(Building_name + " Updated");
                     }
                 }
             }
@@ -507,7 +526,6 @@ namespace Building_DT
             }
             return "";
         }
-
          #endregion
 
     }

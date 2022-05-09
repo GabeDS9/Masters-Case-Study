@@ -17,7 +17,7 @@ public class GatewayCommunication : MonoBehaviour
         var mes1 = new MessageModel
         {
             DataType = "Energy",
-            InformationType = "Averages",
+            InformationType = "CurrentData",
             DisplayType = "Collective",
             DigitalTwin = "Stellenbosch",
             LowestDTLevel = "All",

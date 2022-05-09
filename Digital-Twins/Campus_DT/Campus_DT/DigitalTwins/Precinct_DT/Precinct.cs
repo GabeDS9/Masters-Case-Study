@@ -238,7 +238,7 @@ namespace Precinct_DT
                 NewEnergyDataAvailable = true;
                 //temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
                 //Console.WriteLine($"Updated day value for energy for {Precinct_name} {prevEnergyTime} - {temp[0].Power_Tot}");
-                Console.WriteLine(Precinct_name + " Updated");
+                //Console.WriteLine(Precinct_name + " Updated");
             }            
         }
         private void CheckUpdatedData()
