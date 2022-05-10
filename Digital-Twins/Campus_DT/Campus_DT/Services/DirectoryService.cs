@@ -21,7 +21,7 @@ namespace Services
             string mes = JsonConvert.SerializeObject(mesModel);
 
             foreach (var dt in digitalTwinsList)
-            {                
+            {
                 var tempData = await myClient.sendMessageAsync(mes, dt.Port);
                 var temp = JsonConvert.DeserializeObject<List<ChildDTModel>>(tempData);
                 if (temp != null)
@@ -35,18 +35,44 @@ namespace Services
                 }
             }
         }
-    
+
         public int ReturnPortNumber(string dtName)
         {
-            foreach(var dt in digitalTwinsList)
+            foreach (var dt in digitalTwinsList)
             {
-                if(dt.DT_Name == dtName)
+                if (dt.DT_Name == dtName)
                 {
                     return dt.Port;
                 }
             }
 
             return 0;
+        }
+
+        public List<string> ReturnDTs(string parentDT)
+        {
+            List<string> dtList = new List<string>();
+
+            if (parentDT != "")
+            {
+                foreach (var dt in digitalTwinsList)
+                {
+                    if (dt.DT_Name == parentDT)
+                    {
+                        foreach (var childDT in dt.Child_DTs)
+                        {
+                            dtList.Add(childDT);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dtList.Add(digitalTwinsList[0].DT_Name);
+            }
+
+            return dtList;
+
         }
     }
 }

@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class DisplayInfo : MonoBehaviour
 {
-    private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
-    private List<WaterMeterList> waterMeterList = new List<WaterMeterList>();
+    //private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
+    //private List<WaterMeterList> waterMeterList = new List<WaterMeterList>();
     public Mapbox.Examples.SpawnOnMap spawnOnMap;
-    public EnergyAPIScript energyManager = new EnergyAPIScript();
+    //public EnergyAPIScript energyManager = new EnergyAPIScript();
     public Button energyButton;
 
     private bool isPopulated = false;
@@ -60,7 +60,7 @@ public class DisplayInfo : MonoBehaviour
             }
         }*/
 
-        var meter = energyManager.EnergyMeters[0];
+        /*var meter = energyManager.EnergyMeters[0];
 
         for (int i=0; i < meter.day_average.Count; i++)
         {
@@ -70,7 +70,7 @@ public class DisplayInfo : MonoBehaviour
         for (int i = 0; i < meter.month_average.Count; i++)
         {
             Debug.Log($"{meter.meterid} has month average of {meter.month_average[i].ptot_kw} on {meter.month_average[i].timestamp}");
-        }
+        }*/
     }
 
 }

@@ -14,7 +14,7 @@ public class GatewayCommunication : MonoBehaviour
         Debug.Log("Connecting to gateway...");
 
         // Checking Stellenbosch
-        var mes1 = new MessageModel
+        /*var mes1 = new MessageModel
         {
             DataType = "Energy",
             InformationType = "CurrentData",

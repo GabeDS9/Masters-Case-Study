@@ -30,7 +30,7 @@ public class ClientSocket
                 // streamToMessage - discussed later
                 response = streamToMessage(stream);
                 //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
-                Debug.Log("Message received from Gateway: " + response);
+                //Debug.Log("Message received from Gateway: " + response);
             }
             client.Close();
         }

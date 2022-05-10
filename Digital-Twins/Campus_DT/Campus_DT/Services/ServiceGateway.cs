@@ -37,14 +37,24 @@ namespace Services
         {
             string message = "";
             var tempMessage = JsonConvert.DeserializeObject<UIMessageModel>(mes);
-            int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
-            var temp = new MessageModel {
-                DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
-                DisplayType = tempMessage.DisplayType, LowestDTLevel = tempMessage.LowestDTLevel, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
-                timePeriod = tempMessage.timePeriod
-            };
-            var tempDTMessage = JsonConvert.SerializeObject(temp);
-            message = await myClient.sendMessageAsync(tempDTMessage, port);
+
+            if (tempMessage.DataType == "List")
+            {
+                List<string> DTList = new List<string>();
+                DTList = directoryService.ReturnDTs(tempMessage.DigitalTwin);
+                message = JsonConvert.SerializeObject(DTList);
+            }
+            else
+            {
+                int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
+                var temp = new MessageModel {
+                    DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
+                    DisplayType = tempMessage.DisplayType, LowestDTLevel = tempMessage.LowestDTLevel, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
+                    timePeriod = tempMessage.timePeriod
+                };
+                var tempDTMessage = JsonConvert.SerializeObject(temp);
+                message = await myClient.sendMessageAsync(tempDTMessage, port);
+            }
             /*if (tempMessage.DataType == "Energy")
             {
                 if(tempMessage.InformationType == "CurrentData")

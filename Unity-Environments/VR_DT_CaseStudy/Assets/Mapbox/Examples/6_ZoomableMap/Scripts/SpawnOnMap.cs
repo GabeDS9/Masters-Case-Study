@@ -12,7 +12,6 @@
     public class SpawnOnMap : MonoBehaviour
     {
         public AbstractMap Map;
-        public LegendManager legendManager;
 
         [Geocode]
         string[] _locationStrings;
@@ -22,13 +21,7 @@
         List<GameObject> _spawnedEnergyObjects = new List<GameObject>();
         List<GameObject> _spawnedWaterObjects;
 
-        List<EnergyMeterData> _energyMeterList;
-        List<WaterMeterList> _waterMeterList;
-
-        private List<EnergyMeterData> energyMeterData = new List<EnergyMeterData>();
-        private List<WaterMeterData> waterMeterData = new List<WaterMeterData>();
-
-        public void PopulateEnergyObject(EnergyMeterData energyMeter, List<EnergyAverage> averages, string date, string visualisation_type)
+        /*public void PopulateEnergyObject(EnergyMeterData energyMeter, List<EnergyAverage> averages, string date, string visualisation_type)
         {
             ClearEnergyObjects(energyMeter.meterid, visualisation_type, legendManager);
             
@@ -71,7 +64,7 @@
                     }
                 }
             }
-        }
+        }*/
 
         /*public async Task PopulateEnergyObjectAsync(int meterid, EnergyAPIScript energyManager, String date)
         {
