@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
+using Newtonsoft.Json;
+using Resources;
 
 namespace Services
 {
-    class ExploratoryAnalyticsService
+    public class ExploratoryAnalyticsService
     {
-        public void InitialiseEAService()
+        Communication.ClientSocket myClient = new Communication.ClientSocket();
+        public async Task<string> ExploratoryServiceAsync(int port, UIMessageModel message)
         {
-            Console.WriteLine("Exploratory Analytics service initialised");
+            var temp = new MessageModel {
+                DataType = message.DataType, MessageType = message.InformationType,
+                DisplayType = message.DisplayType, LowestDTLevel = message.LowestDTLevel, startDate = message.startDate, endDate = message.endDate,
+                timePeriod = message.timePeriod
+            };
+            var tempDTMessage = JsonConvert.SerializeObject(temp);
+            return await myClient.sendMessageAsync(tempDTMessage, port);
         }
     }
 }

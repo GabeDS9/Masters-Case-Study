@@ -33,48 +33,7 @@ namespace Campus_DT
                     campus.GetUpdatedData();
                     stopWatch.Restart();
                 }
-            }
-
-            //db = new CampusDBDataAccess(Campus_name);
-            //var campus = new CampusModel(Campus_name, Latitude, Longitude, Precincts);
-            //db.CreateCampus(campus);
-
-            /*foreach (var item in Precincts)
-            {
-                Console.WriteLine("Campus: " + Campus_name);
-                
-                Console.WriteLine("Precinct: " + item.Precinct_name);
-
-                foreach(var record in item.Buildings)
-                {
-                    Console.WriteLine(item.Precinct_name + " - Building: " + record.Building_name);
-                    Console.WriteLine(record.Building_name + " energy meters");
-                    foreach (var rec in record.EnergyMeters)
-                    {
-                        Console.WriteLine(record.Building_name + " - " + rec.description);
-                    }
-                    /*Console.WriteLine(record.Building_name + " occupancy meters");
-                    foreach (var rec in record.OccupancyMeters)
-                    {
-                        Console.WriteLine(record.Building_name + " - " + rec.description);
-                    }
-                    Console.WriteLine(record.Building_name + " solar meters");
-                    foreach (var rec in record.SolarMeters)
-                    {
-                        Console.WriteLine(record.Building_name + " - " + rec.description);
-                    }
-                }
-
-                /*foreach (var record in item.SolarMeters)
-                {
-                    Console.WriteLine(item.Precinct_name + " - " + record.Reticulation_name);
-                }
-
-                foreach (var record in item.EnergyMeters)
-                {
-                    Console.WriteLine(item.Precinct_name + " - " + record.Reticulation_name);
-                }
-            }*/
+            }            
         }
     }
 }

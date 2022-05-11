@@ -57,6 +57,12 @@ namespace DataAccess
             var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.Timestamp == timestamp));
             return results.ToList();
         }
+        public async Task<List<EnergyMeterModel>> GetLatestEnergyReading()
+        {
+            var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
+            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == "Current"));
+            return results.ToList();
+        }
 
         /*public async Task<List<ChoreModel>> GetAllChores()
         {

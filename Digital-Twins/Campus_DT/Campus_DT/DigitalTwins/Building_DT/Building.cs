@@ -38,6 +38,7 @@ namespace Building_DT
         private BuildingDBDataAccess db;
         private Utilities utilities = new Utilities();
         private string startingDate;
+        private double latestBuildingEnergy = 0;
 
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
         Services_Communication.ServerSocket myServer = new Services_Communication.ServerSocket();
@@ -89,7 +90,8 @@ namespace Building_DT
                 item.data = energyManager.GetMeterData(startingDate, apiCaller.GetCurrentDateTime().Item1, item.meterid);
                 item.latest_power = item.data[item.data.Count - 1].ptot_kw;
                 item.latest_timestamp = item.data[item.data.Count - 1].timestamp;
-            }
+                latestBuildingEnergy += item.latest_power;
+            }            
         }
         private void InitialContextGeneration(String startDate, String endDate)
         {
@@ -256,6 +258,8 @@ namespace Building_DT
                     await db.CreateEnergyMeter(tempMeter);
                 }
             }
+            var tempCurrent = new EnergyMeterModel("Current", 0, Latitude, Longitude, latestBuildingEnergy, "");
+            await db.CreateEnergyMeter(tempCurrent);
             Console.WriteLine($"{Building_name} DT has been initialised");
             Initialised = true;
         }
@@ -363,6 +367,7 @@ namespace Building_DT
             if (initial)
             {
                 NewEnergyDataAvailable = true;
+                _ = UpdateLatestEnergyDataAsync();
             }
         }
         public void ResetDataAvailable()
@@ -373,7 +378,18 @@ namespace Building_DT
                 item.NewDataAvailable = false;
             }
         }
-
+        private async Task UpdateLatestEnergyDataAsync()
+        {
+            // Update latest energy reading
+            latestBuildingEnergy = 0;
+            foreach (var item in EnergyMeters)
+            {
+                latestBuildingEnergy += item.latest_power;
+            }
+            var temp = await db.GetLatestEnergyReading();
+            temp[0].Power_Tot = latestBuildingEnergy;
+            await db.UpdateEnergyMeter(temp[0]);
+        }
         #endregion
 
         #region Services
@@ -386,15 +402,10 @@ namespace Building_DT
             location.Add(Longitude);
             return location;
         }
-        public double ReturnCurrentBuildingEnergy()
+        public async Task<double> ReturnLatestBuildingEnergyAsync()
         {
-            double currentPower = 0;
-            foreach(var item in EnergyMeters)
-            {
-                var tempData = ReturnCurrentEnergyReading(item.meterid);
-                currentPower += tempData;
-            }
-            return currentPower;
+            var temp = await db.GetLatestEnergyReading();
+            return (double)temp[0].Power_Tot;
         }
         public double ReturnCurrentEnergyReading(int meterID)
         {
@@ -499,7 +510,7 @@ namespace Building_DT
             {
                 if (message.MessageType == "CurrentData")
                 {
-                    var tempEnergy = ReturnCurrentBuildingEnergy();
+                    var tempEnergy = await ReturnLatestBuildingEnergyAsync();
                     EnergyMeterModel temp = new EnergyMeterModel(Building_name, 0, Latitude, Longitude, tempEnergy, "");
                     var tempMess = JsonConvert.SerializeObject(temp);
                     return tempMess;

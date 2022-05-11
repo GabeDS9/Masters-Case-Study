@@ -39,6 +39,7 @@ namespace Precinct_DT
         private bool BuildingsInitialised = false;        
         private string prevEnergyTime;
         private bool EnergyDataAvailable = false;
+        private double latestPrecinctEnergy = 0;
 
         public bool Initialised = false;
         public bool NewEnergyDataAvailable = false;
@@ -68,6 +69,7 @@ namespace Precinct_DT
                     foreach (var building in Buildings)
                     {
                         buildingNames.Add(building.Building_name);
+                        latestPrecinctEnergy += await building.ReturnLatestBuildingEnergyAsync();
                     }
 
                     var precinct = new PrecinctModel(Precinct_name, Latitude, Longitude, buildingNames);
@@ -175,6 +177,8 @@ namespace Precinct_DT
             {
                 await db.CreateEnergyReading(year);
             }
+            var tempCurrent = new EnergyMeterModel("Current", 0, Latitude, Longitude, latestPrecinctEnergy, "");
+            await db.CreateEnergyReading(tempCurrent);
             Console.WriteLine($"{Precinct_name} DT has been initialised");
         }
         #endregion
@@ -254,6 +258,7 @@ namespace Precinct_DT
             if (initial)
             {
                 EnergyDataAvailable = true;
+                _ = UpdateLatestEnergyDataAsync();
             }
         }
         private void ResetUpdatedDataAvailable()
@@ -263,6 +268,18 @@ namespace Precinct_DT
             {
                 building.ResetDataAvailable();
             }
+        }
+        private async Task UpdateLatestEnergyDataAsync()
+        {
+            // Update latest energy reading
+            latestPrecinctEnergy = 0;
+            foreach (var building in Buildings)
+            {
+                latestPrecinctEnergy += await building.ReturnLatestBuildingEnergyAsync();
+            }
+            var temp = await db.GetLatestEnergyReading();
+            temp[0].Power_Tot = latestPrecinctEnergy;
+            await db.UpdateEnergyMeter(temp[0]);
         }
         #endregion
 
@@ -278,16 +295,10 @@ namespace Precinct_DT
 
             return childDTList;
         }
-        public double ReturnPrecinctCurrentEnergyReading()
+        public async Task<double> ReturnPrecinctLatestEnergyReadingAsync()
         {
-            double currentPower = 0;
-
-            foreach(var building in Buildings)
-            {
-                currentPower += building.ReturnCurrentBuildingEnergy();
-            }
-
-            return currentPower;
+            var temp = await db.GetLatestEnergyReading();
+            return (double)temp[0].Power_Tot;
         }
         public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, string DTLevel, List<string> dateList)
         {
@@ -324,17 +335,17 @@ namespace Precinct_DT
                 {
                     foreach (var building in Buildings)
                     {
-                        var tempEnergy = building.ReturnCurrentBuildingEnergy();
+                        var tempEnergy = await building.ReturnLatestBuildingEnergyAsync();
                         EnergyMeterModel tempModel = new EnergyMeterModel(building.Building_name, 0, building.Latitude, building.Latitude, tempEnergy, "");
                         energyDataList.Add(tempModel);
                     }
-                    var tempPrec = ReturnPrecinctCurrentEnergyReading();
+                    var tempPrec = await ReturnPrecinctLatestEnergyReadingAsync();
                     EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Latitude, tempPrec, "");
                     energyDataList.Add(temp);
                 }
                 else if (DTLevel == "Precinct")
                 {
-                    var tempPrec = ReturnPrecinctCurrentEnergyReading();
+                    var tempPrec = await ReturnPrecinctLatestEnergyReadingAsync();
                     EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Latitude, tempPrec, "");
                     energyDataList.Add(temp);
                 }
@@ -403,7 +414,7 @@ namespace Precinct_DT
                 {
                     if (message.DisplayType == "Individual")
                     {
-                        var tempEnergy = ReturnPrecinctCurrentEnergyReading();
+                        var tempEnergy = await ReturnPrecinctLatestEnergyReadingAsync();
                         EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, tempEnergy, "");
                         var tempMess = JsonConvert.SerializeObject(temp);
                         return tempMess;

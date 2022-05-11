@@ -35,6 +35,7 @@ namespace Campus_DT
         public bool Initialised = false;
         private string prevEnergyTime;
         private bool EnergyDataAvailable = false;
+        private double latestCampusEnergy = 0;
 
         Services_Communication.ServerSocket myServer = new Services_Communication.ServerSocket();
 
@@ -62,6 +63,7 @@ namespace Campus_DT
                     foreach (var prec in Precincts)
                     {
                         precinctNames.Add(prec.Precinct_name);
+                        latestCampusEnergy += await prec.ReturnPrecinctLatestEnergyReadingAsync();
                     }
 
                     var campus = new CampusModel(Campus_name, Latitude, Longitude, precinctNames);
@@ -167,6 +169,8 @@ namespace Campus_DT
             {
                 await db.CreateEnergyReading(year);
             }
+            var tempCurrent = new EnergyMeterModel("Current", 0, Latitude, Longitude, latestCampusEnergy, "");
+            await db.CreateEnergyReading(tempCurrent);
             Console.WriteLine($"{Campus_name} DT has been initialised");
         }
         #endregion
@@ -236,6 +240,7 @@ namespace Campus_DT
             if (initial)
             {
                 EnergyDataAvailable = true;
+                _ = UpdateLatestEnergyDataAsync();
             }
         }
         private void ResetUpdatedDataAvailable()
@@ -245,6 +250,18 @@ namespace Campus_DT
             {
                 precincts.NewEnergyDataAvailable = false;
             }
+        }
+        private async Task UpdateLatestEnergyDataAsync()
+        {
+            // Update latest energy reading
+            latestCampusEnergy = 0;
+            foreach (var precinct in Precincts)
+            {
+                latestCampusEnergy += await precinct.ReturnPrecinctLatestEnergyReadingAsync();
+            }
+            var temp = await db.GetLatestEnergyReading();
+            temp[0].Power_Tot = latestCampusEnergy;
+            await db.UpdateEnergyMeter(temp[0]);
         }
         #endregion
 
@@ -266,16 +283,10 @@ namespace Campus_DT
                 }
             }
         }
-        private double ReturnCurrentEnergyReading()
+        private async Task<double> ReturnLatestEnergyReadingAsync()
         {
-            double currentPower = 0;
-
-            foreach (var precincts in Precincts)
-            {
-                currentPower += precincts.ReturnPrecinctCurrentEnergyReading();
-            }
-
-            return currentPower;
+            var temp = await db.GetLatestEnergyReading();
+            return (double)temp[0].Power_Tot;
         }
         public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, string DTLevel, List<string> dateList)
         {
@@ -354,7 +365,7 @@ namespace Campus_DT
                 {
                     foreach (var precinct in Precincts)
                     {
-                        var tempPrecinct = precinct.ReturnPrecinctCurrentEnergyReading();
+                        var tempPrecinct = await precinct.ReturnPrecinctLatestEnergyReadingAsync();
                         EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Latitude, tempPrecinct, "");
                         energyDataList.Add(temp);
                     }
@@ -369,7 +380,7 @@ namespace Campus_DT
                             energyDataList.Add(item);
                         }
                     }
-                    var tempCampus = ReturnCurrentEnergyReading();
+                    var tempCampus = await ReturnLatestEnergyReadingAsync();
                     EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Latitude, tempCampus, "");
                     energyDataList.Add(temp);
                 }
@@ -377,7 +388,7 @@ namespace Campus_DT
                 {
                     foreach (var precinct in Precincts)
                     {
-                        var tempEnergy = precinct.ReturnPrecinctCurrentEnergyReading();
+                        var tempEnergy = await precinct.ReturnPrecinctLatestEnergyReadingAsync();
                         EnergyMeterModel temp = new EnergyMeterModel(precinct.Precinct_name, 0, precinct.Latitude, precinct.Latitude, tempEnergy, "");
                         energyDataList.Add(temp);
                     }
@@ -447,7 +458,7 @@ namespace Campus_DT
                 {
                     if (message.DisplayType == "Individual")
                     {
-                        var tempEnergy = ReturnCurrentEnergyReading();
+                        var tempEnergy = await ReturnLatestEnergyReadingAsync();
                         EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempEnergy, "");
                         var tempMess = JsonConvert.SerializeObject(temp);
                         return tempMess;

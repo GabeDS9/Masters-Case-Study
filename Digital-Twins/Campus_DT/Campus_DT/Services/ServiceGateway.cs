@@ -38,73 +38,17 @@ namespace Services
             string message = "";
             var tempMessage = JsonConvert.DeserializeObject<UIMessageModel>(mes);
 
-            if (tempMessage.DataType == "List")
+            if (tempMessage.ServiceTag == "Directory")
             {
                 List<string> DTList = new List<string>();
                 DTList = directoryService.ReturnDTs(tempMessage.DigitalTwin);
                 message = JsonConvert.SerializeObject(DTList);
             }
-            else
+            else if(tempMessage.ServiceTag == "Exploratory")
             {
                 int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
-                var temp = new MessageModel {
-                    DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
-                    DisplayType = tempMessage.DisplayType, LowestDTLevel = tempMessage.LowestDTLevel, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
-                    timePeriod = tempMessage.timePeriod
-                };
-                var tempDTMessage = JsonConvert.SerializeObject(temp);
-                message = await myClient.sendMessageAsync(tempDTMessage, port);
+                message = await exploratoryService.ExploratoryServiceAsync(port, tempMessage);
             }
-            /*if (tempMessage.DataType == "Energy")
-            {
-                if(tempMessage.InformationType == "CurrentData")
-                {
-                    if(tempMessage.DisplayType == "Individual")
-                    {
-                        var temp = new MessageModel {
-                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
-                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
-                            timePeriod = tempMessage.timePeriod
-                        };
-                        var tempDTMessage = JsonConvert.SerializeObject(temp);
-                        message = await myClient.sendMessageAsync(tempDTMessage, port);
-                    }
-                    else if(tempMessage.DisplayType == "Collective")
-                    {
-                        var temp = new MessageModel {
-                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
-                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
-                            timePeriod = tempMessage.timePeriod
-                        };
-                        var tempDTMessage = JsonConvert.SerializeObject(temp);
-                        message = await myClient.sendMessageAsync(tempDTMessage, port);
-                    }                    
-                }
-                else if (tempMessage.InformationType == "Averages")
-                {
-                    if (tempMessage.DisplayType == "Individual")
-                    {
-                        var temp = new MessageModel {
-                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
-                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
-                            timePeriod = tempMessage.timePeriod
-                        };
-                        var tempDTMessage = JsonConvert.SerializeObject(temp);
-                        message = await myClient.sendMessageAsync(tempDTMessage, port);
-                    }
-                    else if (tempMessage.DisplayType == "Collective")
-                    {
-                        var temp = new MessageModel {
-                            DataType = tempMessage.DataType, MessageType = tempMessage.InformationType,
-                            DisplayType = tempMessage.DisplayType, startDate = tempMessage.startDate, endDate = tempMessage.endDate,
-                            timePeriod = tempMessage.timePeriod
-                        };
-                        var tempDTMessage = JsonConvert.SerializeObject(temp);
-                        message = await myClient.sendMessageAsync(tempDTMessage, port);
-                    }
-                }
-            }*/
-
             return message;
         }
     }

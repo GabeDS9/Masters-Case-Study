@@ -8,6 +8,7 @@ namespace Resources
 {
     public class UIMessageModel
     {
+        public string ServiceTag { get; set; }
         public string DataType { get; set; }
         public string InformationType { get; set; }
         public string DisplayType { get; set; }
