@@ -19,10 +19,11 @@ public class MenuManager : MonoBehaviour
 
     // Display Level UI
     public GameObject DisplayLevel;
-    public Button HighestLevel;
-    public Button MiddleLevel;
-    public Button LowestLevel;
+    public Toggle HighestLevelToggle;
+    public Toggle MiddleLevelToggle;
+    public Toggle LowestLevelToggle;
     public Button DisplayLevelMMButton;
+    public Button DisplayLevelNextButton;
 
     // Data Type UI
     public GameObject DataType;
@@ -52,16 +53,13 @@ public class MenuManager : MonoBehaviour
     private MessageHandler messHandler = new MessageHandler();
 
     // Flags
-    private bool HighestLevelSelected = false;
-    private bool MiddleLevelSelected = false;
-    private bool LowestLevelSelected = false;
     private bool AllLevelSelected = false;
     private bool EnergyDataFlag = false;
     private bool AllDataFlag = false;
 
     // Message parameters
     private string SelectedDT = "";
-    private string DTLevelSelected = "";
+    private List<string> DTLevelSelected = new List<string>();
     private string DataTypeSelected = "";
     private string InformationTypeSelected = "";
     private string DisplayTypeSelected = "";
@@ -88,38 +86,22 @@ public class MenuManager : MonoBehaviour
         {
             var dtList = await messHandler.GetDTListAsync("");
             CampusDropdown.AddOptions(dtList);
-            foreach (var item in dtList)
-            {
-                Debug.Log(item);
-            }
         }
         else if ((CampusDropdown.value != 0) && (PrecinctDropdown.value == 0))
         {
             //Debug.Log(CampusDropdown.options[CampusDropdown.value].text);
             var dtList = await messHandler.GetDTListAsync(CampusDropdown.options[CampusDropdown.value].text);
             PrecinctDropdown.AddOptions(dtList);
-            foreach (var item in dtList)
-            {
-                Debug.Log(item);
-            }
         }
         else if ((CampusDropdown.value != 0) && (PrecinctDropdown.value != 0) && (BuildingDropdown.value == 0))
         {
             //Debug.Log(PrecinctDropdown.options[PrecinctDropdown.value].text);
             var dtList = await messHandler.GetDTListAsync(PrecinctDropdown.options[PrecinctDropdown.value].text);
             BuildingDropdown.AddOptions(dtList);
-            foreach (var item in dtList)
-            {
-                Debug.Log(item);
-            }
         }
     }
-
-    public void DisplayMainMenu()
+    public void ResetDropDown()
     {
-        CampusDropdown.value = 0;
-        PrecinctDropdown.value = 0;
-        BuildingDropdown.value = 0;
         CampusDropdown.ClearOptions();
         PrecinctDropdown.ClearOptions();
         BuildingDropdown.ClearOptions();
@@ -132,6 +114,13 @@ public class MenuManager : MonoBehaviour
         List<string> tempBuildOptions = new List<string>();
         tempBuildOptions.Add("Select Building");
         BuildingDropdown.AddOptions(tempBuildOptions);
+        CampusDropdown.value = 0;
+        PrecinctDropdown.value = 0;
+        BuildingDropdown.value = 0;
+    }
+    public void DisplayMainMenu()
+    {
+        ResetDropDown();
         PopulateDropDown();
         MainMenu.SetActive(true);
         currentMenu.SetActive(false);
@@ -139,13 +128,14 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayDTLevelMenu()
     {
-        HighestLevelSelected = false;
-        MiddleLevelSelected = false;
-        LowestLevelSelected = false;
         AllLevelSelected = false;
-        HighestLevel.gameObject.SetActive(false);
-        MiddleLevel.gameObject.SetActive(false);
-        LowestLevel.gameObject.SetActive(false);
+        HighestLevelToggle.gameObject.SetActive(false);
+        MiddleLevelToggle.gameObject.SetActive(false);
+        LowestLevelToggle.gameObject.SetActive(false);
+        HighestLevelToggle.isOn = false;
+        MiddleLevelToggle.isOn = false;
+        LowestLevelToggle.isOn = false;
+        DTLevelSelected.Clear();
 
         if (CampusDropdown.value != 0)
         {
@@ -154,30 +144,30 @@ public class MenuManager : MonoBehaviour
                 if (BuildingDropdown.value != 0)
                 {
                     SelectedDT = BuildingDropdown.options[BuildingDropdown.value].text;
-                    HighestLevel.GetComponentInChildren<Text>().text = "Building";
-                    HighestLevel.gameObject.SetActive(true);
-                    MiddleLevel.gameObject.SetActive(false);
-                    LowestLevel.gameObject.SetActive(false);
+                    HighestLevelToggle.GetComponentInChildren<Text>().text = "Building";
+                    HighestLevelToggle.gameObject.SetActive(true);
+                    MiddleLevelToggle.gameObject.SetActive(false);
+                    LowestLevelToggle.gameObject.SetActive(false);
                 }
                 else
                 {
                     SelectedDT = PrecinctDropdown.options[PrecinctDropdown.value].text;
-                    HighestLevel.GetComponentInChildren<Text>().text = "Precinct";
-                    MiddleLevel.GetComponentInChildren<Text>().text = "Building";
-                    HighestLevel.gameObject.SetActive(true);
-                    MiddleLevel.gameObject.SetActive(true);
-                    LowestLevel.gameObject.SetActive(false);
+                    HighestLevelToggle.GetComponentInChildren<Text>().text = "Precinct";
+                    MiddleLevelToggle.GetComponentInChildren<Text>().text = "Building";
+                    HighestLevelToggle.gameObject.SetActive(true);
+                    MiddleLevelToggle.gameObject.SetActive(true);
+                    LowestLevelToggle.gameObject.SetActive(false);
                 }
             }
             else
             {
                 SelectedDT = CampusDropdown.options[CampusDropdown.value].text;
-                HighestLevel.GetComponentInChildren<Text>().text = "Campus";
-                MiddleLevel.GetComponentInChildren<Text>().text = "Precinct";
-                LowestLevel.GetComponentInChildren<Text>().text = "Building";
-                HighestLevel.gameObject.SetActive(true);
-                MiddleLevel.gameObject.SetActive(true);
-                LowestLevel.gameObject.SetActive(true);
+                HighestLevelToggle.GetComponentInChildren<Text>().text = "Campus";
+                MiddleLevelToggle.GetComponentInChildren<Text>().text = "Precinct";
+                LowestLevelToggle.GetComponentInChildren<Text>().text = "Building";
+                HighestLevelToggle.gameObject.SetActive(true);
+                MiddleLevelToggle.gameObject.SetActive(true);
+                LowestLevelToggle.gameObject.SetActive(true);
             }
 
             MainMenu.SetActive(false);
@@ -191,28 +181,33 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayDataTypeMenu()
     {
-        Debug.Log(DTLevelSelected);
         EnergyDataFlag = false;
         AllDataFlag = false;
         DataTypeSelected = "";
-        if (HighestLevelSelected)
+        if (HighestLevelToggle.isOn && !MiddleLevelToggle.isOn && !LowestLevelToggle.isOn)
         {
-            DTLevelSelected = HighestLevel.GetComponentInChildren<Text>().text;
+            DTLevelSelected.Add(HighestLevelToggle.GetComponentInChildren<Text>().text);
             DisplayTypeSelected = "Individual";
         }
-        else if (MiddleLevelSelected)
+        else if (HighestLevelToggle.isOn)
         {
-            DTLevelSelected = MiddleLevel.GetComponentInChildren<Text>().text;
+            DTLevelSelected.Add(HighestLevelToggle.GetComponentInChildren<Text>().text);
             DisplayTypeSelected = "Collective";
         }
-        else if (LowestLevelSelected)
+        if (MiddleLevelToggle.isOn)
         {
-            DTLevelSelected = LowestLevel.GetComponentInChildren<Text>().text;
+            DTLevelSelected.Add(MiddleLevelToggle.GetComponentInChildren<Text>().text);
             DisplayTypeSelected = "Collective";
         }
-        else if (AllLevelSelected)
+        if (LowestLevelToggle.isOn)
         {
-            DTLevelSelected = "All";
+            DTLevelSelected.Add(LowestLevelToggle.GetComponentInChildren<Text>().text);
+            DisplayTypeSelected = "Collective";
+        }
+        if (AllLevelSelected)
+        {
+            DTLevelSelected.Clear();
+            DTLevelSelected.Add("All");
             DisplayTypeSelected = "Collective";
         }
 
@@ -222,7 +217,6 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayTimeSelectMenu()
     {
-        Debug.Log(DataTypeSelected);
         DisableStartCalendar();
         DisableEndCalendar();
         currentMenu.SetActive(false);
@@ -237,18 +231,6 @@ public class MenuManager : MonoBehaviour
     }
 
     // Setting DT Level Flags
-    public void SetHighestLevelFlag()
-    {
-        HighestLevelSelected = true;
-    }
-    public void SetMiddleLevelFlag()
-    {
-        MiddleLevelSelected = true;
-    }
-    public void SetLowestLevelFlag()
-    {
-        LowestLevelSelected = true;
-    }
     public void SetAllLevelFlag()
     {
         AllLevelSelected = true;
@@ -274,7 +256,7 @@ public class MenuManager : MonoBehaviour
         var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message, ServerPort);
-        Information.text = response;
+        mapSpawnner.PopulateData(response);
     }
     public async void GetInformation()
     {
@@ -285,17 +267,18 @@ public class MenuManager : MonoBehaviour
         var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message, ServerPort);
-        Information.text = response;
+        mapSpawnner.PopulateData(response);
     }
     private string CreateMessage()
     {
         var message = new MessageModel
         {
+            ServiceTag = "Exploratory",
             DataType = DataTypeSelected,
             InformationType = InformationTypeSelected,
             DisplayType = DisplayTypeSelected,
             DigitalTwin = SelectedDT,
-            LowestDTLevel = DTLevelSelected,
+            DTDetailLevel = DTLevelSelected,
             startDate = StartDateSelected,
             endDate = EndDateSelected,
             timePeriod = TimePeriodSelected

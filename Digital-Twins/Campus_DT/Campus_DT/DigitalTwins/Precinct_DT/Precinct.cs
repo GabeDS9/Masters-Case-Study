@@ -300,54 +300,78 @@ namespace Precinct_DT
             var temp = await db.GetLatestEnergyReading();
             return (double)temp[0].Power_Tot;
         }
-        public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, string DTLevel, List<string> dateList)
+        public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, List<string> DTDetailLevel, List<string> dateList)
         {
             List<EnergyMeterModel> energyDataList = new List<EnergyMeterModel>();
-            if (type == "Averages") {
-                if (DTLevel == "All" || DTLevel == "Building")
+            foreach (var DTLevel in DTDetailLevel)
+            {
+                if (type == "Averages")
                 {
-                    foreach (var building in Buildings)
+                    if (DTLevel == "Building")
                     {
-                        var tempPrecChild = await building.ReturnBuildingEnergyAveragesAsync(dateList);
-                        foreach (var item in tempPrecChild)
+                        foreach (var building in Buildings)
+                        {
+                            var tempPrecChild = await building.ReturnBuildingEnergyAveragesAsync(dateList);
+                            foreach (var item in tempPrecChild)
+                            {
+                                energyDataList.Add(item);
+                            }
+                        }
+                    }
+                    else if (DTLevel == "Precinct")
+                    {
+                        var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList);
+                        foreach (var item in tempPrec)
                         {
                             energyDataList.Add(item);
                         }
                     }
-                    var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList);
-                    foreach (var item in tempPrec)
+                    else if(DTLevel == "All")
                     {
-                        energyDataList.Add(item);
+                        foreach (var building in Buildings)
+                        {
+                            var tempPrecChild = await building.ReturnBuildingEnergyAveragesAsync(dateList);
+                            foreach (var item in tempPrecChild)
+                            {
+                                energyDataList.Add(item);
+                            }
+                        }
+                        var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList);
+                        foreach (var item in tempPrec)
+                        {
+                            energyDataList.Add(item);
+                        }
                     }
                 }
-                else if (DTLevel == "Precinct")
+                else if (type == "CurrentData")
                 {
-                    var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList);
-                    foreach (var item in tempPrec)
+                    if (DTLevel == "Building")
                     {
-                        energyDataList.Add(item);
+                        foreach (var building in Buildings)
+                        {
+                            var tempEnergy = await building.ReturnLatestBuildingEnergyAsync();
+                            EnergyMeterModel tempModel = new EnergyMeterModel(building.Building_name, 0, building.Latitude, building.Longitude, tempEnergy, "Latest Reading");
+                            energyDataList.Add(tempModel);
+                        }
                     }
-                }
-            }
-            else if (type == "CurrentData")
-            {
-                if (DTLevel == "All" || DTLevel == "Building")
-                {
-                    foreach (var building in Buildings)
+                    else if (DTLevel == "Precinct")
                     {
-                        var tempEnergy = await building.ReturnLatestBuildingEnergyAsync();
-                        EnergyMeterModel tempModel = new EnergyMeterModel(building.Building_name, 0, building.Latitude, building.Latitude, tempEnergy, "");
-                        energyDataList.Add(tempModel);
+                        var tempPrec = await ReturnPrecinctLatestEnergyReadingAsync();
+                        EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, tempPrec, "Latest Reading");
+                        energyDataList.Add(temp);
                     }
-                    var tempPrec = await ReturnPrecinctLatestEnergyReadingAsync();
-                    EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Latitude, tempPrec, "");
-                    energyDataList.Add(temp);
-                }
-                else if (DTLevel == "Precinct")
-                {
-                    var tempPrec = await ReturnPrecinctLatestEnergyReadingAsync();
-                    EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Latitude, tempPrec, "");
-                    energyDataList.Add(temp);
+                    else if (DTLevel == "All")
+                    {
+                        foreach (var building in Buildings)
+                        {
+                            var tempEnergy = await building.ReturnLatestBuildingEnergyAsync();
+                            EnergyMeterModel tempModel = new EnergyMeterModel(building.Building_name, 0, building.Latitude, building.Longitude, tempEnergy, "Latest Reading");
+                            energyDataList.Add(tempModel);
+                        }
+                        var tempPrec = await ReturnPrecinctLatestEnergyReadingAsync();
+                        EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, tempPrec, "Latest Reading");
+                        energyDataList.Add(temp);
+                    }
                 }
             }
             return energyDataList;
@@ -406,6 +430,28 @@ namespace Precinct_DT
 
             return result;
         }
+        private List<InformationModel> GenerateInformationList(List<EnergyMeterModel> energyList)
+        {
+            List<InformationModel> infoModelList = new List<InformationModel>();
+            foreach (var item in energyList)
+            {
+                string dt_Type = "";
+                if (item.EnergyMeter_name != Precinct_name)
+                {
+                    dt_Type = "Building";
+                }
+                else
+                {
+                    dt_Type = "Precinct";
+                }
+                InformationModel temp = new InformationModel {
+                    DataType = "Energy", DT_Type = dt_Type, DT_name = item.EnergyMeter_name, Longitude = item.Longitude, Latitude = item.Latitude
+            , Value = (double)item.Power_Tot
+                };
+                infoModelList.Add(temp);
+            }
+            return infoModelList;
+        }
         public async Task<string> ServiceHandlerAsync(MessageModel message)
         {
             if (message.DataType == "Energy")
@@ -416,13 +462,17 @@ namespace Precinct_DT
                     {
                         var tempEnergy = await ReturnPrecinctLatestEnergyReadingAsync();
                         EnergyMeterModel temp = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, tempEnergy, "");
-                        var tempMess = JsonConvert.SerializeObject(temp);
+                        List<EnergyMeterModel> tempEnergyList = new List<EnergyMeterModel>();
+                        tempEnergyList.Add(temp);
+                        List<InformationModel> tempList = GenerateInformationList(tempEnergyList);
+                        var tempMess = JsonConvert.SerializeObject(tempList);
                         return tempMess;
                     }
                     else if (message.DisplayType == "Collective")
                     {
-                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.LowestDTLevel, null);
-                        var tempMess = JsonConvert.SerializeObject(tempEnergy);
+                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, null);
+                        var infoModelList = GenerateInformationList(tempEnergy);
+                        var tempMess = JsonConvert.SerializeObject(infoModelList);
                         return tempMess;
                     }
                 }
@@ -434,13 +484,15 @@ namespace Precinct_DT
                     if (message.DisplayType == "Individual")
                     {
                         var temp = await ReturnPrecinctEnergyAveragesAsync(dateList);
-                        var response = JsonConvert.SerializeObject(temp);
+                        var infoModelList = GenerateInformationList(temp);
+                        var response = JsonConvert.SerializeObject(infoModelList);
                         return response;
                     }
                     else if (message.DisplayType == "Collective")
                     {
-                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.LowestDTLevel, dateList);
-                        var tempMess = JsonConvert.SerializeObject(tempEnergy);
+                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, dateList);
+                        var infoModelList = GenerateInformationList(tempEnergy);
+                        var tempMess = JsonConvert.SerializeObject(infoModelList);
                         return tempMess;
                     }
                 }

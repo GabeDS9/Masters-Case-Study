@@ -13,7 +13,7 @@ namespace Resources
         public string InformationType { get; set; }
         public string DisplayType { get; set; }
         public string DigitalTwin { get; set; }
-        public string LowestDTLevel { get; set; }
+        public List<string> DTDetailLevel { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
         public string timePeriod { get; set; }

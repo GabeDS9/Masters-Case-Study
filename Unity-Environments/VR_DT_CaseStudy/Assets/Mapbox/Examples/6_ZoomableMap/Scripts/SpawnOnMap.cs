@@ -1,6 +1,7 @@
 ﻿namespace Mapbox.Examples
 {
     using UnityEngine;
+    using UnityEngine.UI;
     using Mapbox.Utils;
     using Mapbox.Unity.Map;
     using Mapbox.Unity.MeshGeneration.Factories;
@@ -8,6 +9,7 @@
     using System.Collections.Generic;
     using System;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     public class SpawnOnMap : MonoBehaviour
     {
@@ -17,14 +19,85 @@
         string[] _locationStrings;
         Vector2d[] _locations;
 
-        public List<GameObject> MarkerPrefab;
-        List<GameObject> _spawnedEnergyObjects = new List<GameObject>();
-        List<GameObject> _spawnedWaterObjects;
+        public List<GameObject> MarkerPrefabs;
+        public GameObject VisualInfo;
+
+        private List<VisualisationModel> myVisuals = new List<VisualisationModel>();
+
+        public void PopulateData(string message)
+        {
+            ClearVisualisationObjects();
+            var DataList = DecodeMessage(message);
+
+            foreach(var data in DataList)
+            {
+                string latitude = data.Latitude;
+                string longitude = data.Longitude;
+
+                Vector2d[] locations = new Vector2d[1];
+
+                var locationString = latitude + "," + longitude;
+                locations[0] = Conversions.StringToLatLon(locationString);
+                int markerPos = GetMarkerType(data.DT_Type, data.DataType);
+                var instance = Instantiate(MarkerPrefabs[markerPos]);
+                instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
+
+                var infoInstance = Instantiate(VisualInfo);
+                var infoText = infoInstance.GetComponentInChildren<Text>();
+                infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{data.Value} kW";
+
+                float floatEnergy = (float)Math.Abs(data.Value);
+                float adjustedScalePos = floatEnergy / 5;
+                instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
+                instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
+                infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
+
+                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
+                myVisuals.Add(tempModel);
+            }
+        }
+
+        private List<DataModel> DecodeMessage(string message)
+        {
+            List<DataModel> dataList = new List<DataModel>();
+            dataList = JsonConvert.DeserializeObject<List<DataModel>>(message);         
+            return dataList;
+        }
+        private int GetMarkerType(string DT_Type, string DataType)
+        {
+            int markerPos = 0;
+            if(DataType == "Energy")
+            {
+                if(DT_Type == "Campus")
+                {
+                    markerPos = 0;
+                }
+                else if (DT_Type == "Precinct")
+                {
+                    markerPos = 1;
+                }
+                else if (DT_Type == "Building")
+                {
+                    markerPos = 2;
+                }
+            }
+            return markerPos;
+        }
+        public void ClearVisualisationObjects()
+        {
+            foreach (var item in myVisuals)
+            {
+                Destroy(item.Visual);
+                Destroy(item.VisualInfo);
+            }
+            myVisuals.Clear();
+        }
+
 
         /*public void PopulateEnergyObject(EnergyMeterData energyMeter, List<EnergyAverage> averages, string date, string visualisation_type)
         {
             ClearEnergyObjects(energyMeter.meterid, visualisation_type, legendManager);
-            
+
             String latitude = energyMeter.latitude;
             String longitude = energyMeter.longitude;
             double energy = 0;

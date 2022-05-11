@@ -102,7 +102,7 @@
     <Compile Include="Assets\Mapbox\Examples\Scripts\FeatureSelectionDetector.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\LonLatToGeoCoordinateConverter.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\TileErrorHandler.cs" />
-    <Compile Include="Assets\Scripts\MessageModel.cs" />
+    <Compile Include="Assets\Scripts\Models\MessageModel.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationArrayEditorLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\FlatSphereTerrainStrategy.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\PoiMarkerHelper.cs" />
@@ -200,6 +200,7 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tokens\MapboxToken.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Interfaces\LayerVisualizerBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\VectorSubLayerProperties.cs" />
+    <Compile Include="Assets\Scripts\Models\DataModel.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Route.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\GameObjectExtensions.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\CoreVectorLayerProperties.cs" />
@@ -400,6 +401,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\UnityTile.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyle.cs" />
+    <Compile Include="Assets\Scripts\Models\VisualisationModel.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerBehaviorModifiers.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCoreOptions.cs" />
     <Compile Include="Assets\Mapbox\Examples\6_ZoomableMap\Scripts\SetCameraHeight.cs" />

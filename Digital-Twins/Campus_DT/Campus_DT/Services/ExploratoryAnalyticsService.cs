@@ -16,7 +16,7 @@ namespace Services
         {
             var temp = new MessageModel {
                 DataType = message.DataType, MessageType = message.InformationType,
-                DisplayType = message.DisplayType, LowestDTLevel = message.LowestDTLevel, startDate = message.startDate, endDate = message.endDate,
+                DisplayType = message.DisplayType, DTDetailLevel = message.DTDetailLevel, startDate = message.startDate, endDate = message.endDate,
                 timePeriod = message.timePeriod
             };
             var tempDTMessage = JsonConvert.SerializeObject(temp);

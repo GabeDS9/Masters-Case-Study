@@ -504,6 +504,20 @@ namespace Building_DT
 
             return totPower;
         }
+        private List<InformationModel> GenerateInformationList(List<EnergyMeterModel> energyList)
+        {
+            List<InformationModel> infoModelList = new List<InformationModel>();
+            foreach (var item in energyList)
+            {
+                string dt_Type = "Building";
+                InformationModel temp = new InformationModel {
+                    DataType = "Energy", DT_Type = dt_Type, DT_name = item.EnergyMeter_name, Longitude = item.Longitude, Latitude = item.Latitude
+            , Value = (double)item.Power_Tot
+                };
+                infoModelList.Add(temp);
+            }
+            return infoModelList;
+        }
         public async Task<string> ServiceHandlerAsync(MessageModel message)
         {
             if (message.DataType == "Energy")
@@ -511,8 +525,11 @@ namespace Building_DT
                 if (message.MessageType == "CurrentData")
                 {
                     var tempEnergy = await ReturnLatestBuildingEnergyAsync();
-                    EnergyMeterModel temp = new EnergyMeterModel(Building_name, 0, Latitude, Longitude, tempEnergy, "");
-                    var tempMess = JsonConvert.SerializeObject(temp);
+                    EnergyMeterModel temp = new EnergyMeterModel(Building_name, 0, Latitude, Longitude, tempEnergy, "Latest Reading");
+                    List<EnergyMeterModel> tempEnergyList = new List<EnergyMeterModel>();
+                    tempEnergyList.Add(temp);
+                    List<InformationModel> tempList = GenerateInformationList(tempEnergyList);
+                    var tempMess = JsonConvert.SerializeObject(tempList);
                     return tempMess;
                 }
                 else if (message.MessageType == "Averages")
@@ -520,7 +537,8 @@ namespace Building_DT
                     message.startDate = utilities.ChangeDateFormat(message.startDate);
                     message.endDate = utilities.ChangeDateFormat(message.endDate);
                     var temp = await ReturnBuildingEnergyAveragesAsync(utilities.GenerateDateList(message.startDate, message.endDate, message.timePeriod));
-                    var response = JsonConvert.SerializeObject(temp);
+                    var infoModelList = GenerateInformationList(temp);
+                    var response = JsonConvert.SerializeObject(infoModelList);
                     return response;
                 }
             }

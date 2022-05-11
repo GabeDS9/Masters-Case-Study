@@ -12,11 +12,12 @@ public class MessageHandler
     {
         var message = new MessageModel
         {
+            ServiceTag = "Directory",
             DataType = "List",
             InformationType = "",
             DisplayType = "",
             DigitalTwin = dt,
-            LowestDTLevel = "",
+            DTDetailLevel = null,
             startDate = "",
             endDate = "",
             timePeriod = ""

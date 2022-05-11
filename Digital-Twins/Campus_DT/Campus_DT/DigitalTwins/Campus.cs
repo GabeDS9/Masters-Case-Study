@@ -54,7 +54,7 @@ namespace Campus_DT
         public async Task InitialiseCampusAsync()
         {
             myServer.SetupServer(Port, null, null, this);
-            Precincts = precinctManager.InitialisePrecincts(Campus_name, startingDate);            
+            Precincts = precinctManager.InitialisePrecincts(Campus_name, startingDate);
             while (!Initialised)
             {
                 CheckInitialisations();
@@ -184,7 +184,7 @@ namespace Campus_DT
         {
             CheckUpdatedData();
             if (EnergyDataAvailable)
-            {                
+            {
                 double newDayPower = 0;
                 string dayDate = "";
                 string tempDate = "";
@@ -288,108 +288,116 @@ namespace Campus_DT
             var temp = await db.GetLatestEnergyReading();
             return (double)temp[0].Power_Tot;
         }
-        public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, string DTLevel, List<string> dateList)
+        public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, List<string> DTDetailLevel, List<string> dateList)
         {
             List<EnergyMeterModel> energyDataList = new List<EnergyMeterModel>();
-            if (type == "Averages")
+            foreach (var DTLevel in DTDetailLevel)
             {
-                if(DTLevel == "Building")
+                if (type == "Averages")
                 {
-                    foreach(var precinct in Precincts)
+                    if (DTLevel == "Building")
                     {
-                        var temp = await precinct.ReturnChildDTEnergyDataAsync(type, DTLevel, dateList);
-                        foreach (var item in temp)
+                        foreach (var precinct in Precincts)
+                        {
+                            var temp = await precinct.ReturnChildDTEnergyDataAsync(type, DTDetailLevel, dateList);
+                            foreach (var item in temp)
+                            {
+                                energyDataList.Add(item);
+                            }
+                        }
+                    }
+                    else if (DTLevel == "Precinct")
+                    {
+                        foreach (var precinct in Precincts)
+                        {
+                            var temp = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
+                            foreach (var item in temp)
+                            {
+                                energyDataList.Add(item);
+                            }
+                        }
+                    }
+                    else if (DTLevel == "Campus")
+                    {
+                        var tempCampus = await ReturnEnergyAveragesAsync(dateList);
+                        foreach (var item in tempCampus)
                         {
                             energyDataList.Add(item);
                         }
                     }
-                }
-                else if(DTLevel == "Precinct")
-                {
-                    foreach (var precinct in Precincts)
+                    else if (DTLevel == "All")
                     {
-                        var temp = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
-                        foreach (var item in temp)
+                        foreach (var precinct in Precincts)
+                        {
+                            var tempPrecChild = await precinct.ReturnChildDTEnergyDataAsync(type, DTDetailLevel, dateList);
+                            foreach (var item in tempPrecChild)
+                            {
+                                energyDataList.Add(item);
+                            }
+                            var tempPrec = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
+                            foreach (var item in tempPrec)
+                            {
+                                energyDataList.Add(item);
+                            }
+                        }
+                        var tempCampus = await ReturnEnergyAveragesAsync(dateList);
+                        foreach (var item in tempCampus)
                         {
                             energyDataList.Add(item);
                         }
                     }
-                }
-                else if(DTLevel == "All")
-                {
-                    foreach (var precinct in Precincts)
+                    else if (DTLevel == "Campus")
                     {
-                        var tempPrecChild = await precinct.ReturnChildDTEnergyDataAsync(type, DTLevel, dateList);
-                        foreach (var item in tempPrecChild)
+                        foreach (var precinct in Precincts)
                         {
-                            energyDataList.Add(item);
+                            var temp = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
+                            foreach (var item in temp)
+                            {
+                                energyDataList.Add(item);
+                            }
                         }
-                        var tempPrec = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
-                        foreach (var item in tempPrec)
+                    }
+                }
+                else if (type == "CurrentData")
+                {
+                    if (DTLevel == "Building")
+                    {
+                        foreach (var precinct in Precincts)
                         {
-                            energyDataList.Add(item);
+                            var temp = await precinct.ReturnChildDTEnergyDataAsync(type, DTDetailLevel, dateList);
+                            foreach (var item in temp)
+                            {
+                                energyDataList.Add(item);
+                            }
                         }                        
                     }
-                    var tempCampus = await ReturnEnergyAveragesAsync(dateList);
-                    foreach (var item in tempCampus)
+                    else if (DTLevel == "Precinct")
                     {
-                        energyDataList.Add(item);
-                    }
-                }
-                else if (DTLevel == "Campus")
-                {
-                    foreach (var precinct in Precincts)
-                    {
-                        var temp = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
-                        foreach (var item in temp)
+                        foreach (var precinct in Precincts)
                         {
-                            energyDataList.Add(item);
+                            var tempPrecinct = await precinct.ReturnPrecinctLatestEnergyReadingAsync();
+                            EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempPrecinct, "Latest Reading");
+                            energyDataList.Add(temp);
                         }
                     }
-                }                
-            }
-            else if (type == "CurrentData")
-            {
-                if (DTLevel == "Building")
-                {
-                    foreach (var precinct in Precincts)
+                    else if (DTLevel == "Campus")
                     {
-                        var temp = await precinct.ReturnChildDTEnergyDataAsync(type, DTLevel, dateList);
-                        foreach (var item in temp)
+                        var tempCampus = await ReturnLatestEnergyReadingAsync();
+                        EnergyMeterModel tempEnergy = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempCampus, "Latest Reading");
+                        energyDataList.Add(tempEnergy);
+                    }
+                    else if (DTLevel == "All")
+                    {
+                        foreach (var precinct in Precincts)
                         {
-                            energyDataList.Add(item);
+                            var tempPrecChild = await precinct.ReturnChildDTEnergyDataAsync(type, DTDetailLevel, dateList);
+                            foreach (var item in tempPrecChild)
+                            {
+                                energyDataList.Add(item);
+                            }
                         }
-                    }
-                }
-                else if (DTLevel == "Precinct")
-                {
-                    foreach (var precinct in Precincts)
-                    {
-                        var tempPrecinct = await precinct.ReturnPrecinctLatestEnergyReadingAsync();
-                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Latitude, tempPrecinct, "");
-                        energyDataList.Add(temp);
-                    }
-                }
-                else if (DTLevel == "All")
-                {
-                    foreach (var precinct in Precincts)
-                    {
-                        var tempPrecChild = await precinct.ReturnChildDTEnergyDataAsync(type, DTLevel, dateList);
-                        foreach (var item in tempPrecChild)
-                        {
-                            energyDataList.Add(item);
-                        }
-                    }
-                    var tempCampus = await ReturnLatestEnergyReadingAsync();
-                    EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Latitude, tempCampus, "");
-                    energyDataList.Add(temp);
-                }
-                else if (DTLevel == "Campus")
-                {
-                    foreach (var precinct in Precincts)
-                    {
-                        var tempEnergy = await precinct.ReturnPrecinctLatestEnergyReadingAsync();
-                        EnergyMeterModel temp = new EnergyMeterModel(precinct.Precinct_name, 0, precinct.Latitude, precinct.Latitude, tempEnergy, "");
+                        var tempCampus = await ReturnLatestEnergyReadingAsync();
+                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempCampus, "Latest Reading");
                         energyDataList.Add(temp);
                     }
                 }
@@ -450,6 +458,39 @@ namespace Campus_DT
 
             return result;
         }
+        private List<InformationModel> GenerateInformationList(List<EnergyMeterModel> energyList)
+        {
+            List<InformationModel> infoModelList = new List<InformationModel>();
+            foreach (var item in energyList)
+            {
+                string dt_Type = "";
+                if (item.EnergyMeter_name != Campus_name)
+                {
+
+                    foreach (var prec in Precincts)
+                    {
+                        if (item.EnergyMeter_name == prec.Precinct_name)
+                        {
+                            dt_Type = "Precinct";
+                        }
+                        else
+                        {
+                            dt_Type = "Building";
+                        }
+                    }
+                }
+                else
+                {
+                    dt_Type = "Campus";
+                }
+                InformationModel temp = new InformationModel {
+                    DataType = "Energy", DT_Type = dt_Type, DT_name = item.EnergyMeter_name, Longitude = item.Longitude, Latitude = item.Latitude
+            , Value = (double)item.Power_Tot, Timestamp = item.Timestamp
+                };
+                infoModelList.Add(temp);
+            }
+            return infoModelList;
+        }
         public async Task<string> ServiceHandlerAsync(MessageModel message)
         {
             if (message.DataType == "Energy")
@@ -460,13 +501,17 @@ namespace Campus_DT
                     {
                         var tempEnergy = await ReturnLatestEnergyReadingAsync();
                         EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempEnergy, "");
-                        var tempMess = JsonConvert.SerializeObject(temp);
+                        List<EnergyMeterModel> tempEnergyList = new List<EnergyMeterModel>();
+                        tempEnergyList.Add(temp);
+                        List<InformationModel> tempList = GenerateInformationList(tempEnergyList);
+                        var tempMess = JsonConvert.SerializeObject(tempList);
                         return tempMess;
                     }
-                    else if(message.DisplayType == "Collective")
+                    else if (message.DisplayType == "Collective")
                     {
-                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.LowestDTLevel, null);
-                        var tempMess = JsonConvert.SerializeObject(tempEnergy);
+                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, null);
+                        var infoModelList = GenerateInformationList(tempEnergy); 
+                        var tempMess = JsonConvert.SerializeObject(infoModelList);
                         return tempMess;
                     }
                 }
@@ -476,15 +521,17 @@ namespace Campus_DT
                     message.endDate = utilities.ChangeDateFormat(message.endDate);
                     var dateList = utilities.GenerateDateList(message.startDate, message.endDate, message.timePeriod);
                     if (message.DisplayType == "Individual")
-                    {                        
+                    {
                         var temp = await ReturnEnergyAveragesAsync(dateList);
-                        var response = JsonConvert.SerializeObject(temp);
+                        var infoModelList = GenerateInformationList(temp);
+                        var response = JsonConvert.SerializeObject(infoModelList);
                         return response;
                     }
                     else if (message.DisplayType == "Collective")
                     {
-                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.LowestDTLevel, dateList);
-                        var tempMess = JsonConvert.SerializeObject(tempEnergy);
+                        var tempEnergy = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, dateList);
+                        var infoModelList = GenerateInformationList(tempEnergy);
+                        var tempMess = JsonConvert.SerializeObject(infoModelList);
                         return tempMess;
                     }
                 }
@@ -498,7 +545,6 @@ namespace Campus_DT
                     return tempMess;
                 }
             }
-
             return "";
         }
         #endregion
