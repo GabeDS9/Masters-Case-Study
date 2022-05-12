@@ -26,19 +26,19 @@ Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Swembadpompe,Energy,
 Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,-,Energy,2856,Swembad Minisub,Elster,Kocos,A1140,78520491,LiMo R2,306/2,0,1,Outside,Swembad minisub,-33.94067001,18.87089593,8025
 Stellenbosch University,Erica 11 kV,-,-,-,Energy,2739,Erica 11 kV,Elster,Kocos,A1700,51500260,LiMo-DIN,-,-,-,-,-,-33.93471243,18.87145327,8059
 Stellenbosch University,Erica 11 kV,-,Erica Koshuis,-,Energy,2731,Erica Koshuis,Elster,Kocos,A1140,68509072,LiMo R2,-,-,-,-,-,-33.9354,18.872,8027
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Annex (Huismoles),Energy,3001,Heemstede Annex (Huismoles),Elster,Kocos,A1140,68509018,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hittepompe,Energy,2998,Heemstede Hittepompe,Elster,Kocos,A1140,68509014,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hooftoevoer - VM Remainder,Energy,5797,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Kombuis,Energy,2996,Heemstede Kombuis,Elster,Kocos,A1140,68509070,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Lydia Hittepompe,Energy,3002,Huis Ten Bosch Lydia Hittepompe,Elster,Kocos,A1140,68509045,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3000,Huis Ten Bosch Kombuis,Elster,Kocos,A1140,68509028,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3138,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,2999,Huis Ten Bosch Toevoer,Elster,Kocos,A1140,68509029,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2958,Lydia Kombuis,Elster,Kocos,A1140,68509032,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,3137,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2959,Lydia Toevoer,Elster,Kocos,A1140,68509031,LiMo R2,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,Studente Gesondheid,Energy,3759,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
-Stellenbosch University,Erica 11 kV,-,Heemstede Hooftoevoer,-,Energy,2997,Heemstede Hooftoevoer,Elster,Kocos,A1140,68509012,LiMo R2,-,-,-,-,-,-33.93514,18.86858,8040
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Annex (Huismoles),Energy,3001,Heemstede Annex (Huismoles),Elster,Kocos,A1140,68509018,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hittepompe,Energy,2998,Heemstede Hittepompe,Elster,Kocos,A1140,68509014,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hooftoevoer - VM Remainder,Energy,5797,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Kombuis,Energy,2996,Heemstede Kombuis,Elster,Kocos,A1140,68509070,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Lydia Hittepompe,Energy,3002,Huis Ten Bosch Lydia Hittepompe,Elster,Kocos,A1140,68509045,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3000,Huis Ten Bosch Kombuis,Elster,Kocos,A1140,68509028,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3138,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,2999,Huis Ten Bosch Toevoer,Elster,Kocos,A1140,68509029,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2958,Lydia Kombuis,Elster,Kocos,A1140,68509032,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,3137,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2959,Lydia Toevoer,Elster,Kocos,A1140,68509031,LiMo R2,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Studente Gesondheid,Energy,3759,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
+-,Erica 11 kV,-,Heemstede Hooftoevoer,-,Energy,2997,Heemstede Hooftoevoer,Elster,Kocos,A1140,68509012,LiMo R2,-,-,-,-,-,-33.93514,18.86858,0
 Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Heatpump,Energy,7121,Western Cape - Metanoia - Heat pumps,Elster,Kocos,A1140,88500424,LiMo R2,-,-,-,-,-,-,-,0
 Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Kombuis,Energy,2743,Metanoia Kombuis,Elster,Kocos,A1700,61501659,LiMo-DIN,-,-,-,-,-,-,-,0
 Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Koshuis - VM Remainder,Energy,5455,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
@@ -64,7 +64,6 @@ Stellenbosch University,Helderberg 11 kV,-,Helderberg Koshuis - VM Remainder,-,E
 Stellenbosch University,Huis Neethling,-,-,-,Energy,3027,Huis Neethling,Elster,Kocos,A1140,58508057,LiMo R2,-,-,-,-,-,-33.93644765,18.8697207,8064
 Stellenbosch University,Ingenieurswese 11 kV,-,-,-,Energy,2666,Ingenieurswese 11 kV,Elster,Kocos,A1700,51500309,LiMo R2,-,-,-,-,-,-33.92850795,18.86615108,8100
 Stellenbosch University,Ingenieurswese 11 kV,-,Academia Oos,-,Energy,2923,Academia Oos,Elster,Kocos,A1700,51500268,LiMo R2,-,0,-,-,Academia  oos,-33.92660964,18.86951784,8065
-Stellenbosch University,Ingenieurswese 11 kV,-,Academia Wes,-,Energy,2922,Academia Wes,Elster,Kocos,A1700,51500303,LiMo R2,-,0,-,-,Academia wes,-33.9267581,18.86865942,8066
 Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,Concordia Toevoer - VM Remainder,Energy,5796,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,0
 Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,Concordia WW,Energy,2942,Concordia WW,Elster,Kocos,A1140,68509042,LiMo R2,-,-,-,-,-,-,-,0
 Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,-,Energy,2659,Concordia Toevoer,Elster,Kocos,A1140,68508109,LiMo R2,-,0,-,-,Concordia toevoer,-33.92625382,18.8684445,8069
@@ -73,9 +72,6 @@ Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,PO
 Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,PO Sauer (Bosbou),Energy,2655,PO Sauer (Bosbou),Elster,Kocos,A1140,58500465,LiMo R2,3385,104,1,E103B,PO Sauer (Bosbou),-33.92822605,18.86669839,0
 Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,-,Energy,2654,Elektriese En Elektroniese Ing,Elster,Kocos,A1700,61102035,LiMo R2,3385,104,1,E103B,Elektriese en elektroniese ingenieurswese,-33.92823421,18.86669861,8073
 Stellenbosch University,Ingenieurswese 11 kV,-,Huis Mac Donald,-,Energy,2664,Huis Mac Donald,ELSTER,Kocos,A1140,68509075,LiMo R2,-,288,1,1008,Huis Macdonald,-33.92592833,18.8694305,8074
-Stellenbosch University,Ingenieurswese 11 kV,-,Ingenieurswese Cell C,-,Energy,2689,VM,VM,VM,VM,VM,VM,4854,102,7,Roof,Ingenieurswese Cell C,-33.92950345,18.86518133,8075
-Stellenbosch University,Ingenieurswese 11 kV,-,Ingenieurswese MTN,-,Energy,2690,Ingenieurswese MTN,Elster,Kocos,A1140,28100174,LiMo R2,4854,102,7,Roof,Ingenieurswese MTN,-33.92949622,18.86519205,8076
-Stellenbosch University,Ingenieurswese 11 kV,-,Ingenieurswese Vodacom,-,Energy,2688,VM,VM,VM,VM,VM,VM,4854,102,7,Roof,Ingenieurswese Vodacom,-33.92949121,18.8651773,8077
 Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-A,Energy,3616,DB-A,Elster,Kocos,A1140,38146611,LiMo R2,4854,104,1,199c,DB-A,-33.92872344,18.86585919,0
 Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-H,Energy,3614,DB-H,Elster,Kocos,A1140,38146603,LiMo R2,4854,104,1,199c,DB-H,-33.92870869,18.86582499,0
 Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-WW,Energy,3068,DB-WW,Elster,Kocos,A1140,58500438,LiMo R2,4854,104,1,199c,DB-WW,-33.92872872,18.8658431,0

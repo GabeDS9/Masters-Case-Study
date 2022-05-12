@@ -93,8 +93,6 @@ namespace Building_DT
         }
         private void InitialiseEnergyMeterData()
         {
-            try
-            {
                 foreach (var item in EnergyMeters)
             {
                 
@@ -110,11 +108,6 @@ namespace Building_DT
                         item.latest_timestamp = item.data[item.data.Count - 1].timestamp;
                         latestBuildingEnergy += item.latest_power;
                     }                
-            }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
             }
         }
         private void InitialContextGeneration(String startDate, String endDate)

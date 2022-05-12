@@ -197,7 +197,7 @@ public class LoadExcel
 
         for (var i = 0; i < data.Count; i++)
         {
-            if ((data[i]["Precinct"].ToString() == precinct_name) && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-"))
+            if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() == precinct_name) && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-"))
             {
                 string name = data[i]["Building"].ToString();
                 string latitude = data[i]["Latitude"].ToString();
