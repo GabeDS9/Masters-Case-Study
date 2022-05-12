@@ -15,7 +15,7 @@ public class LoadExcel
 
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
-    private string DTConfigurationFile = "DTArchitectureConfiguration.csv";
+    private string DTConfigurationFile = "LargeDTArchitectureConfiguration.csv";
 
     #region EnergyMeters
     public List<EnergyMeterData> LoadEnergyMeterData(string buildRecName)
@@ -30,19 +30,19 @@ public class LoadExcel
         {
             if ((data[i]["Reticulation"].ToString() == buildRecName) || (data[i]["Building"].ToString() == buildRecName) && (data[i]["Meter Type"].ToString() == "Energy"))
             {
-                int id = int.Parse(data[i][" meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
-                string description = data[i][" description"].ToString();
-                string make = data[i][" make"].ToString();
-                string manufacturer = data[i][" manufacturer"].ToString();
-                string type = data[i][" type"].ToString();
-                string serialno = data[i][" Serial Number"].ToString();
-                string model = data[i][" model"].ToString();
-                string yard_number = data[i][" yard_number"].ToString();
-                string building_no = data[i][" Building_No"].ToString();
-                string floor = data[i][" Floor"].ToString();
-                string room_no = data[i][" Room_No"].ToString();
-                string latitude = data[i][" Latitude"].ToString();
-                string longitude = data[i][" Longitude"].ToString();
+                int id = int.Parse(data[i]["meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
+                string description = data[i]["description"].ToString();
+                string make = data[i]["make"].ToString();
+                string manufacturer = data[i]["manufacturer"].ToString();
+                string type = data[i]["type"].ToString();
+                string serialno = data[i]["Serial Number"].ToString();
+                string model = data[i]["model"].ToString();
+                string yard_number = data[i]["yard_number"].ToString();
+                string building_no = data[i]["Building_No"].ToString();
+                string floor = data[i]["Floor"].ToString();
+                string room_no = data[i]["Room_No"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
 
                 AddEnergyMeter(id, description, make, manufacturer, type, serialno, model, yard_number, building_no, floor, room_no, latitude, longitude);
             }
@@ -200,8 +200,8 @@ public class LoadExcel
             if ((data[i]["Precinct"].ToString() == precinct_name) && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-"))
             {
                 string name = data[i]["Building"].ToString();
-                string latitude = data[i][" Latitude"].ToString();
-                string longitude = data[i][" Longitude"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
                 
                 AddBuilding(name, latitude, longitude, port, startingDate);
@@ -233,8 +233,8 @@ public class LoadExcel
             if ((data[i]["Campus"].ToString() == campus_name) && (data[i]["Precinct"].ToString() != "-") && (data[i]["Building"].ToString() == "-") && (data[i]["Reticulation"].ToString() == "-"))
             {
                 string name = data[i]["Precinct"].ToString();
-                string latitude = data[i][" Latitude"].ToString();
-                string longitude = data[i][" Longitude"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
 
                 AddPrecinct(name, latitude, longitude, port, startingDate);
@@ -266,8 +266,8 @@ public class LoadExcel
             if ((data[i]["Campus"].ToString() == campus_name) && (data[i]["Precinct"].ToString() == "-"))
             {
                 string name = data[i]["Campus"].ToString();
-                string latitude = data[i][" Latitude"].ToString();
-                string longitude = data[i][" Longitude"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
 
                 AddCampus(name, latitude, longitude, port, startingDate);

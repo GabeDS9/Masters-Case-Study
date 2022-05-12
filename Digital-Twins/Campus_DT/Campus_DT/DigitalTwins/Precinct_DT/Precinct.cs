@@ -52,6 +52,7 @@ namespace Precinct_DT
             Longitude = longitude;
             Port = port;
             db = new PrecinctDBDataAccess(Precinct_name.Replace(" ", "_"));
+            _ = db.DeleteDatabase(Precinct_name.Replace(" ", "_"));
             startingDate = iniDate;
             _ = InitialisePrecinctAsync();
         }
@@ -59,27 +60,34 @@ namespace Precinct_DT
         # region Initialisation Functions
         public async Task InitialisePrecinctAsync()
         {
-            Buildings = buildingManager.InitialiseBuildings(Precinct_name, startingDate);
-            myServer.SetupServer(Port, null, this, null);
-            while (!Initialised)
+            try
             {
-                CheckInitialisations();
-                if (BuildingsInitialised)
+                Buildings = buildingManager.InitialiseBuildings(Precinct_name, startingDate);
+                myServer.SetupServer(Port, null, this, null);
+                while (!Initialised)
                 {
-                    foreach (var building in Buildings)
+                    CheckInitialisations();
+                    if (BuildingsInitialised)
                     {
-                        buildingNames.Add(building.Building_name);
-                        latestPrecinctEnergy += await building.ReturnLatestBuildingEnergyAsync();
-                    }
+                        foreach (var building in Buildings)
+                        {
+                            buildingNames.Add(building.Building_name);
+                            latestPrecinctEnergy += await building.ReturnLatestBuildingEnergyAsync();
+                        }
 
-                    var precinct = new PrecinctModel(Precinct_name, Latitude, Longitude, buildingNames);
-                    await db.CreatePrecinct(precinct);
-                    await InitialPopulateDataBaseAsync();
-                    Initialised = true;
+                        var precinct = new PrecinctModel(Precinct_name, Latitude, Longitude, buildingNames);
+                        await db.CreatePrecinct(precinct);
+                        await InitialPopulateDataBaseAsync();
+                        Initialised = true;
+                    }
                 }
+                Initialised = true;
+                await Task.Run(() => RunPrecinctDTAsync());
             }
-            Initialised = true;
-            await Task.Run(() => RunPrecinctDTAsync());
+            catch(Exception e)
+            {
+                Console.WriteLine($"{Precinct_name} precinct did not initialise");
+            }
         }
         private void CheckInitialisations()
         {
@@ -100,7 +108,7 @@ namespace Precinct_DT
         private async Task InitialPopulateDataBaseAsync()
         {
             await InitialContextGenerationAsync(startingDate, apiCaller.GetCurrentDateTime().Item1);
-            _ = SaveToDataBaseInitialAsync();
+            await SaveToDataBaseInitialAsync();
         }
         private async Task InitialContextGenerationAsync(String startDate, String endDate)
         {
@@ -297,8 +305,16 @@ namespace Precinct_DT
         }
         public async Task<double> ReturnPrecinctLatestEnergyReadingAsync()
         {
-            var temp = await db.GetLatestEnergyReading();
-            return (double)temp[0].Power_Tot;
+            try
+            {
+                var temp = await db.GetLatestEnergyReading();
+                return (double)temp[0].Power_Tot;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{Precinct_name} cannot return latest energy reading");
+            }
+            return 0;
         }
         public async Task<List<EnergyMeterModel>> ReturnChildDTEnergyDataAsync(string type, List<string> DTDetailLevel, List<string> dateList)
         {
@@ -392,11 +408,20 @@ namespace Precinct_DT
         }
         public async Task<double> GetTotalEnergyAsync(string date)
         {
-            List<string> dates = new List<string>();
-            dates.Add(date);
-            var temp = await ReturnPrecinctEnergyAveragesAsync(dates);
-            double totPower = (double)temp[0].Power_Tot;
-            return totPower;
+            try
+            {
+                List<string> dates = new List<string>();
+                dates.Add(date);
+                var temp = await ReturnPrecinctEnergyAveragesAsync(dates);
+                double totPower = (double)temp[0].Power_Tot;
+                return totPower;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{Precinct_name} failed to initialise for {date}");
+            };
+            return 0;
         }
         public async Task<EnergyMeterModel> CalculateEnergyNewAverageAsync(double newPower, string prevTime, string type)
         {
@@ -446,7 +471,7 @@ namespace Precinct_DT
                 }
                 InformationModel temp = new InformationModel {
                     DataType = "Energy", DT_Type = dt_Type, DT_name = item.EnergyMeter_name, Longitude = item.Longitude, Latitude = item.Latitude
-            , Value = (double)item.Power_Tot
+            , Value = (double)item.Power_Tot, Timestamp = item.Timestamp
                 };
                 infoModelList.Add(temp);
             }

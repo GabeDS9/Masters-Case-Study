@@ -27,22 +27,30 @@ public class EnergyMeters
     // Output: Energy Data (MeterData)
     public List<EnergyData> GetMeterData(String from_date, String to_date, int meterid)
     {
-        String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
-        String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
-        var result = apiCaller.CallAPI(url);
-        EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
-
-        foreach (var item in energyMeters)
+        try
         {
-            if (item.meterid == meterid)
-            {
-                item.data = meterdata.data;
-                meterdata = item;
-                break;
-            }
-        }
+            String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
+            String url = $"https://api.indivo.co.za/Energy/EnergyData?id={meterid}&from_date={from_date}&to_date={to_date}&interval=ts_5min&key={apikey}";
+            var result = apiCaller.CallAPI(url);
+            EnergyMeterData meterdata = JsonConvert.DeserializeObject<EnergyMeterData>(result);
 
-        return meterdata.data;
+            foreach (var item in energyMeters)
+            {
+                if (item.meterid == meterid)
+                {
+                    item.data = meterdata.data;
+                    meterdata = item;
+                    break;
+                }
+            }
+
+            return meterdata.data;
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine($"Energy meter {meterid} returned null");
+            return null;
+        }        
     }
 
     public List<EnergyData> GetCurrentEnergyData(int meterid)

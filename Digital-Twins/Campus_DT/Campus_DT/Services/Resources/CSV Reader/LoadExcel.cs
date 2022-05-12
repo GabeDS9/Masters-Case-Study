@@ -11,7 +11,7 @@ namespace Services
 
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
-        private string DTConfigurationFile = "DTArchitectureConfiguration.csv";
+        private string DTConfigurationFile = "LargeDTArchitectureConfiguration.csv";
 
         #region DigitalTwins
         public List<DigitalTwin> LoadDigitalTwins()

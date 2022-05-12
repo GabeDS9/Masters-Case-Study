@@ -24,12 +24,67 @@
 
         private List<VisualisationModel> myVisuals = new List<VisualisationModel>();
 
-        public void PopulateData(string message)
+        public void PopulateData(string message, List<string> DateList)
         {
             ClearVisualisationObjects();
+            if (DateList != null)
+            {
+                PopulateTimePeriodData(message, DateList);
+            }
+            else
+            {
+                PopulateCurrentData(message);
+            }
+        }
+        private void PopulateTimePeriodData(string message, List<string> DateList)
+        {
             var DataList = DecodeMessage(message);
+            foreach (var data in DataList)
+            {
+                string latitude = data.Latitude;
+                string longitude = data.Longitude;
 
-            foreach(var data in DataList)
+                Vector2d[] locations = new Vector2d[1];
+
+                var locationString = latitude + "," + longitude;
+                locations[0] = Conversions.StringToLatLon(locationString);
+                int markerPos = GetMarkerType(data.DT_Type, data.DataType);
+                var instance = Instantiate(MarkerPrefabs[markerPos]);
+                instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
+
+                float floatEnergy = (float)Math.Abs(data.Value);
+                float adjustedScalePos = floatEnergy / 5; 
+                instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
+                instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
+
+                var infoInstance = Instantiate(VisualInfo);
+                var infoText = infoInstance.GetComponentInChildren<Text>();
+                var roundedData = (float)(Math.Round((decimal)data.Value, 3));
+                infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{roundedData} kW";
+                infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
+
+                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
+                myVisuals.Add(tempModel);
+            }
+
+            foreach (var vis in myVisuals)
+            {
+                if (DateList[0] == vis.Data.Timestamp)
+                {
+                    vis.Visual.SetActive(true);
+                    vis.VisualInfo.SetActive(true);
+                }
+                else
+                {
+                    vis.Visual.SetActive(false);
+                    vis.VisualInfo.SetActive(false);
+                }
+            }
+        }
+        private void PopulateCurrentData(string message)
+        {
+            var DataList = DecodeMessage(message);
+            foreach (var data in DataList)
             {
                 string latitude = data.Latitude;
                 string longitude = data.Longitude;
@@ -48,6 +103,7 @@
 
                 float floatEnergy = (float)Math.Abs(data.Value);
                 float adjustedScalePos = floatEnergy / 5;
+                adjustedScalePos = (float)(Math.Round((decimal)adjustedScalePos, 3));
                 instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
                 instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
@@ -56,19 +112,34 @@
                 myVisuals.Add(tempModel);
             }
         }
-
+        public void ChangeVisualisation(string date)
+        {
+            foreach (var vis in myVisuals)
+            {
+                if (date == vis.Data.Timestamp)
+                {
+                    vis.Visual.SetActive(true);
+                    vis.VisualInfo.SetActive(true);
+                }
+                else
+                {
+                    vis.Visual.SetActive(false);
+                    vis.VisualInfo.SetActive(false);
+                }
+            }
+        }
         private List<DataModel> DecodeMessage(string message)
         {
             List<DataModel> dataList = new List<DataModel>();
-            dataList = JsonConvert.DeserializeObject<List<DataModel>>(message);         
+            dataList = JsonConvert.DeserializeObject<List<DataModel>>(message);
             return dataList;
         }
         private int GetMarkerType(string DT_Type, string DataType)
         {
             int markerPos = 0;
-            if(DataType == "Energy")
+            if (DataType == "Energy")
             {
-                if(DT_Type == "Campus")
+                if (DT_Type == "Campus")
                 {
                     markerPos = 0;
                 }

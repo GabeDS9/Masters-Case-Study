@@ -9,7 +9,7 @@ namespace Campus_DT
 {
     class CampusManager
     {
-        private string startingDate = "2022-05-01 00:00:00";
+        private string startingDate = "2022-05-12 00:00:00";
         private Campus campus;
         private Stopwatch stopWatch = new Stopwatch();
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
@@ -17,7 +17,7 @@ namespace Campus_DT
         public void InitialiseCampus()
         {
             LoadExcel excel = new LoadExcel();
-            string Campus_name = "Stellenbosch";
+            string Campus_name = "Stellenbosch University";
 
             var camp = excel.LoadCampusData(Campus_name, startingDate);
 

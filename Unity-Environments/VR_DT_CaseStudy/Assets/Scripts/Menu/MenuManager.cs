@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class MenuManager : MonoBehaviour
 
@@ -51,6 +52,7 @@ public class MenuManager : MonoBehaviour
     private GameObject currentMenu;
     private ClientSocket myClient = new ClientSocket();
     private MessageHandler messHandler = new MessageHandler();
+    private Utilities utils = new Utilities();
 
     // Flags
     private bool AllLevelSelected = false;
@@ -217,6 +219,9 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayTimeSelectMenu()
     {
+        TimePeriod.value = 0;
+        startDate.text = "";
+        endDate.text = "";
         DisableStartCalendar();
         DisableEndCalendar();
         currentMenu.SetActive(false);
@@ -225,11 +230,27 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayVisualisationUI()
     {
+        visualisationSlider.enabled = false;
         currentMenu.SetActive(false);
         VisualisationUI.SetActive(true);
         currentMenu = VisualisationUI;
+        if(TimePeriod.value != 0)
+        {
+            ConfigureVisualisationSlider();
+        }        
     }
-
+    public void ChangeVisualisation()
+    {
+        var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
+        mapSpawnner.ChangeVisualisation(date);
+    }
+    private void ConfigureVisualisationSlider()
+    {
+        visualisationSlider.enabled = true;
+        visualisationSlider.wholeNumbers = true;
+        var numDates = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected).Count - 1;
+        visualisationSlider.maxValue = numDates;
+    }
     // Setting DT Level Flags
     public void SetAllLevelFlag()
     {
@@ -255,8 +276,8 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "CurrentData";
         var message = CreateMessage();
         DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message, ServerPort);
-        mapSpawnner.PopulateData(response);
+        var response = await myClient.sendMessageAsync(message, ServerPort);        
+        mapSpawnner.PopulateData(response, null);
     }
     public async void GetInformation()
     {
@@ -267,7 +288,8 @@ public class MenuManager : MonoBehaviour
         var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message, ServerPort);
-        mapSpawnner.PopulateData(response);
+        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
+        mapSpawnner.PopulateData(response, DateList);
     }
     private string CreateMessage()
     {
@@ -284,10 +306,8 @@ public class MenuManager : MonoBehaviour
             timePeriod = TimePeriodSelected
         };
         var mes = JsonConvert.SerializeObject(message);
-        Debug.Log(mes);
         return mes;        
     }
-
     public void DisplayStartCalendar()
     {
         StartCalendar.SetActive(true);

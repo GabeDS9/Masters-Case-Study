@@ -48,8 +48,9 @@ namespace Building_DT
             Building_name = name;
             Latitude = latitude;
             Longitude = longitude;
-            Port = port;
+            Port = port;            
             db = new BuildingDBDataAccess(Building_name.Replace(" ", "_"));
+            _ = db.DeleteDatabase(Building_name.Replace(" ", "_"));
             startingDate = iniDate;
             _ = InitialiseBuildingAsync();
         }
@@ -58,6 +59,7 @@ namespace Building_DT
         // Get available energy meters in the building
         public async Task InitialiseBuildingAsync()
         {
+            try {
             myServer.SetupServer(Port, this, null, null);
             EnergyMeters = energyManager.LoadEnergyMeterList(Building_name);
             var energymeters = new List<EnergyMeterModel>();
@@ -72,26 +74,48 @@ namespace Building_DT
             OccupancyMeters = occupancyManager.LoadOccupancyMeterList(Building_name);
             SolarMeters = solarManager.LoadSolarMeterList(Building_name);
 
-            var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);            
+            var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);
             await db.CreateBuilding(building);
-            await Task.Run(() => InitialPopulateDataBase());
+            await InitialPopulateDataBaseAsync();
             await Task.Run(() => RunBuildingDTAsync());
+
         }
-        private void InitialPopulateDataBase()
+            catch (Exception e)
+            {
+                Console.WriteLine($"{Building_name} building did not initialise + {e}");
+            }
+        }
+        private async Task InitialPopulateDataBaseAsync()
         {
             InitialiseEnergyMeterData();
             InitialContextGeneration(startingDate, apiCaller.GetCurrentDateTime().Item1);
-            _ = SaveToDataBaseInitialAsync();
+            await SaveToDataBaseInitialAsync();
         }
         private void InitialiseEnergyMeterData()
         {
-            foreach (var item in EnergyMeters)
+            try
             {
-                item.data = energyManager.GetMeterData(startingDate, apiCaller.GetCurrentDateTime().Item1, item.meterid);
-                item.latest_power = item.data[item.data.Count - 1].ptot_kw;
-                item.latest_timestamp = item.data[item.data.Count - 1].timestamp;
-                latestBuildingEnergy += item.latest_power;
-            }            
+                foreach (var item in EnergyMeters)
+            {
+                
+                    item.data = energyManager.GetMeterData(startingDate, apiCaller.GetCurrentDateTime().Item1, item.meterid);
+                    if (item.data == null)
+                    {
+                        EnergyMeters.Remove(item);
+                        Console.WriteLine($"{item.meterid} energy meter removed from {Building_name}");
+                    }
+                    else if(item.data.Count > 0)
+                    {
+                        item.latest_power = item.data[item.data.Count - 1].ptot_kw;
+                        item.latest_timestamp = item.data[item.data.Count - 1].timestamp;
+                        latestBuildingEnergy += item.latest_power;
+                    }                
+            }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
         private void InitialContextGeneration(String startDate, String endDate)
         {
@@ -404,8 +428,15 @@ namespace Building_DT
         }
         public async Task<double> ReturnLatestBuildingEnergyAsync()
         {
-            var temp = await db.GetLatestEnergyReading();
-            return (double)temp[0].Power_Tot;
+            try
+            {
+                var temp = await db.GetLatestEnergyReading();
+                return (double)temp[0].Power_Tot;
+            }
+            catch(Exception e)
+            {
+                return 0;
+            }
         }
         public double ReturnCurrentEnergyReading(int meterID)
         {
@@ -481,28 +512,36 @@ namespace Building_DT
         }
         public async Task<double> GetTotalEnergyAsync(string date)
         {
-            List<string> dates = new List<string>();
-            dates.Add(date);
-            double totPower = 0;
-            
-            if(EnergyMeters.Count > 1)
+            try
             {
-                foreach(var item in EnergyMeters)
+                List<string> dates = new List<string>();
+                dates.Add(date);
+                double totPower = 0;
+
+                if (EnergyMeters.Count > 1)
                 {
-                    if(item.meterid != EnergyMeters[0].meterid)
+                    foreach (var item in EnergyMeters)
                     {
-                        var temp = await ReturnEnergyAveragesAsync(item.meterid, dates);
-                        totPower += (double)temp[0].Power_Tot;
+                        if (item.meterid != EnergyMeters[0].meterid)
+                        {
+                            var temp = await ReturnEnergyAveragesAsync(item.meterid, dates);
+                            totPower += (double)temp[0].Power_Tot;
+                        }
                     }
                 }
-            }
-            else
-            {
-                var temp = await ReturnEnergyAveragesAsync(EnergyMeters[0].meterid, dates);
-                totPower = (double)temp[0].Power_Tot;
-            }
+                else
+                {
+                    var temp = await ReturnEnergyAveragesAsync(EnergyMeters[0].meterid, dates);
+                    totPower = (double)temp[0].Power_Tot;
+                }
 
-            return totPower;
+                return totPower;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"{Building_name} failed to initialise for {date}");
+            };
+            return 0;
         }
         private List<InformationModel> GenerateInformationList(List<EnergyMeterModel> energyList)
         {
@@ -512,7 +551,7 @@ namespace Building_DT
                 string dt_Type = "Building";
                 InformationModel temp = new InformationModel {
                     DataType = "Energy", DT_Type = dt_Type, DT_name = item.EnergyMeter_name, Longitude = item.Longitude, Latitude = item.Latitude
-            , Value = (double)item.Power_Tot
+            , Value = (double)item.Power_Tot, Timestamp = item.Timestamp
                 };
                 infoModelList.Add(temp);
             }

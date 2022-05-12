@@ -26,7 +26,6 @@ namespace Services
         public void InitialiseServices()
         {
             _ = directoryService.InitialiseDirectoryServiceAsync();
-            //exploratoryService.InitialiseEAService();
             StartGatewayServer();            
         }
         private void StartGatewayServer()

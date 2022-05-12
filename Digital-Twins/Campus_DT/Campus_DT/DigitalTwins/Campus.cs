@@ -46,6 +46,7 @@ namespace Campus_DT
             Longitude = longitude;
             Port = port;
             db = new CampusDBDataAccess(Campus_name.Replace(" ", "_"));
+            _ = db.DeleteDatabase(Campus_name.Replace(" ", "_"));
             startingDate = iniDate;
             _ = InitialiseCampusAsync();
         }
@@ -344,17 +345,6 @@ namespace Campus_DT
                         foreach (var item in tempCampus)
                         {
                             energyDataList.Add(item);
-                        }
-                    }
-                    else if (DTLevel == "Campus")
-                    {
-                        foreach (var precinct in Precincts)
-                        {
-                            var temp = await precinct.ReturnPrecinctEnergyAveragesAsync(dateList);
-                            foreach (var item in temp)
-                            {
-                                energyDataList.Add(item);
-                            }
                         }
                     }
                 }

@@ -63,7 +63,11 @@ namespace DataAccess
             var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == "Current"));
             return results.ToList();
         }
-
+        public async Task DeleteDatabase(string dbName)
+        {
+            var client = new MongoClient(ConnectionString);
+            await client.DropDatabaseAsync(dbName);
+        }
         /*public async Task<List<ChoreModel>> GetAllChores()
         {
             var choresCollection = ConnectToMongo<ChoreModel>(ChoreCollection);
