@@ -366,7 +366,7 @@ namespace Campus_DT
                         foreach (var precinct in Precincts)
                         {
                             var tempPrecinct = await precinct.ReturnPrecinctLatestEnergyReadingAsync();
-                            EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempPrecinct, "Latest Reading");
+                            EnergyMeterModel temp = new EnergyMeterModel(precinct.Precinct_name, 0, precinct.Latitude, precinct.Longitude, tempPrecinct, "Latest Reading");
                             energyDataList.Add(temp);
                         }
                     }
@@ -462,6 +462,7 @@ namespace Campus_DT
                         if (item.EnergyMeter_name == prec.Precinct_name)
                         {
                             dt_Type = "Precinct";
+                            break;
                         }
                         else
                         {

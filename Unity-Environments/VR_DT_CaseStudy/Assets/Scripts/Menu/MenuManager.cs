@@ -276,7 +276,8 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "CurrentData";
         var message = CreateMessage();
         DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message, ServerPort);        
+        var response = await myClient.sendMessageAsync(message, ServerPort);
+        Debug.Log("Length of response was " + response.Length);
         mapSpawnner.PopulateData(response, null);
     }
     public async void GetInformation()

@@ -9,15 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ClientSocket
+public class ClientSocket : MonoBehaviour
 {
     public async Task<string> sendMessageAsync(string message, int port)
     {
         string response = "";
         try
         {
+            var ipAdd = IPAddress.Parse("146.232.146.140");
             TcpClient client = new TcpClient(); // Create a new connection
-            await client.ConnectAsync(IPAddress.Loopback, port);
+            //await client.ConnectAsync(IPAddress.Loopback, port);
+            await client.ConnectAsync(ipAdd, port);
             client.NoDelay = true; // please check TcpClient for more optimization
                                    // messageToByteArray- discussed later
             byte[] messageBytes = messageToByteArray(message);
@@ -28,7 +30,7 @@ public class ClientSocket
 
                 // Message sent!  Wait for the response stream of bytes...
                 // streamToMessage - discussed later
-                response = streamToMessage(stream);
+                response = await streamToMessage(stream, client);
                 //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
                 //Debug.Log("Message received from Gateway: " + response);
             }
@@ -58,23 +60,37 @@ public class ClientSocket
         return completemsg;
     }
 
-    private static string streamToMessage(Stream stream)
+    private async Task<string> streamToMessage(NetworkStream stream, TcpClient client)
     {
-        // size bytes have been fixed to 4
-        byte[] sizeBytes = new byte[4];
-        // read the content length
-        stream.Read(sizeBytes, 0, 4);
-        int messageSize = BitConverter.ToInt32(sizeBytes, 0);
-        // create a buffer of the content length size and read from the stream
-        byte[] messageBytes = new byte[messageSize];
-        stream.Read(messageBytes, 0, messageSize);
-        // convert message byte array to the message string using the encoding
-        string message = encoding.GetString(messageBytes);
         string result = null;
-        foreach (var c in message)
-            if (c != '\0')
+        do
+        {
+            //Debug.Log(stream.DataAvailable);
+            // size bytes have been fixed to 4
+            byte[] sizeBytes = new byte[4];
+            // read the content length
+            await stream.ReadAsync(sizeBytes, 0, 4);
+            int messageSize = BitConverter.ToInt32(sizeBytes, 0);
+            // create a buffer of the content length size and read from the stream
+            byte[] messageBytes = new byte[messageSize];
+            await stream.ReadAsync(messageBytes, 0, messageSize);
+            // convert message byte array to the message string using the encoding
+            string message = encoding.GetString(messageBytes);
+            foreach (var c in message)
+            {
                 result += c;
-
+                /*if (c != '\0')
+                {
+                    result += c;
+                }
+                else
+                {
+                    Debug.Log(c);
+                }*/
+            }
+        }
+        while (stream.DataAvailable);
+        //Debug.Log(result);
         return result;
     }
 }

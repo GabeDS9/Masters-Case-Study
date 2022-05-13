@@ -38,6 +38,7 @@
         }
         private void PopulateTimePeriodData(string message, List<string> DateList)
         {
+            Debug.Log(message);
             var DataList = DecodeMessage(message);
             foreach (var data in DataList)
             {
@@ -53,7 +54,7 @@
                 instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
 
                 float floatEnergy = (float)Math.Abs(data.Value);
-                float adjustedScalePos = floatEnergy / 5; 
+                float adjustedScalePos = floatEnergy / 10; 
                 instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
                 instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
 
@@ -61,6 +62,7 @@
                 var infoText = infoInstance.GetComponentInChildren<Text>();
                 var roundedData = (float)(Math.Round((decimal)data.Value, 3));
                 infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{roundedData} kW";
+                //Debug.Log(infoText.text);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
 
                 VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
@@ -83,6 +85,7 @@
         }
         private void PopulateCurrentData(string message)
         {
+            //Debug.Log(message);
             var DataList = DecodeMessage(message);
             foreach (var data in DataList)
             {
@@ -102,7 +105,7 @@
                 infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{data.Value} kW";
 
                 float floatEnergy = (float)Math.Abs(data.Value);
-                float adjustedScalePos = floatEnergy / 5;
+                float adjustedScalePos = floatEnergy / 10;
                 adjustedScalePos = (float)(Math.Round((decimal)adjustedScalePos, 3));
                 instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
                 instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
