@@ -90,7 +90,7 @@ public class ClientSocket : MonoBehaviour
             }
         }
         while (stream.DataAvailable);
-        //Debug.Log(result);
+        Debug.Log(result);
         return result;
     }
 }

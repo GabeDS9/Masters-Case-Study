@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviour
     // Visualisation UI
     public GameObject VisualisationUI;
     public Slider visualisationSlider;
-    public Text Information;
+    public Text visualisationStatus;
 
     public Mapbox.Examples.SpawnOnMap mapSpawnner;
 
@@ -79,7 +79,11 @@ public class MenuManager : MonoBehaviour
         DataType.SetActive(false);
         DateSelectMenu.SetActive(false);
         VisualisationUI.SetActive(false);
-        PopulateDropDown();
+        PrecinctDropdown.interactable = false;
+        BuildingDropdown.interactable = false;
+        MMNextButton.interactable = false;
+        currentMenu = MainMenu;
+        DisplayMainMenu();        
     }
 
     public async void PopulateDropDown()
@@ -92,6 +96,8 @@ public class MenuManager : MonoBehaviour
         else if ((CampusDropdown.value != 0) && (PrecinctDropdown.value == 0))
         {
             //Debug.Log(CampusDropdown.options[CampusDropdown.value].text);
+            PrecinctDropdown.interactable = true;
+            MMNextButton.interactable = true;
             var dtList = await messHandler.GetDTListAsync(CampusDropdown.options[CampusDropdown.value].text);
             PrecinctDropdown.AddOptions(dtList);
         }
@@ -99,6 +105,7 @@ public class MenuManager : MonoBehaviour
         {
             //Debug.Log(PrecinctDropdown.options[PrecinctDropdown.value].text);
             var dtList = await messHandler.GetDTListAsync(PrecinctDropdown.options[PrecinctDropdown.value].text);
+            BuildingDropdown.interactable = true;
             BuildingDropdown.AddOptions(dtList);
         }
     }
@@ -107,6 +114,9 @@ public class MenuManager : MonoBehaviour
         CampusDropdown.ClearOptions();
         PrecinctDropdown.ClearOptions();
         BuildingDropdown.ClearOptions();
+        PrecinctDropdown.interactable = false;
+        BuildingDropdown.interactable = false;
+        MMNextButton.interactable = false;
         List<string> tempCampOptions = new List<string>();
         tempCampOptions.Add("Select Campus");
         CampusDropdown.AddOptions(tempCampOptions);
@@ -124,8 +134,8 @@ public class MenuManager : MonoBehaviour
     {
         ResetDropDown();
         PopulateDropDown();
-        MainMenu.SetActive(true);
         currentMenu.SetActive(false);
+        MainMenu.SetActive(true);        
         currentMenu = MainMenu;
     }
     public void DisplayDTLevelMenu()
@@ -138,6 +148,7 @@ public class MenuManager : MonoBehaviour
         MiddleLevelToggle.isOn = false;
         LowestLevelToggle.isOn = false;
         DTLevelSelected.Clear();
+        DisplayLevelNextButton.interactable = false;
 
         if (CampusDropdown.value != 0)
         {
@@ -222,6 +233,7 @@ public class MenuManager : MonoBehaviour
         TimePeriod.value = 0;
         startDate.text = "";
         endDate.text = "";
+        DateSelectNextButton.interactable = false;
         DisableStartCalendar();
         DisableEndCalendar();
         currentMenu.SetActive(false);
@@ -230,7 +242,8 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayVisualisationUI()
     {
-        visualisationSlider.enabled = false;
+        visualisationSlider.value = 0;
+        visualisationSlider.interactable = false;
         currentMenu.SetActive(false);
         VisualisationUI.SetActive(true);
         currentMenu = VisualisationUI;
@@ -246,7 +259,7 @@ public class MenuManager : MonoBehaviour
     }
     private void ConfigureVisualisationSlider()
     {
-        visualisationSlider.enabled = true;
+        visualisationSlider.interactable = true;
         visualisationSlider.wholeNumbers = true;
         var numDates = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected).Count - 1;
         visualisationSlider.maxValue = numDates;
@@ -270,6 +283,7 @@ public class MenuManager : MonoBehaviour
     }
     public async void GetCurrentInformation()
     {
+        visualisationStatus.text = "Getting visualisation ready...";
         TimePeriodSelected = "";
         StartDateSelected = "";
         EndDateSelected = "";
@@ -279,9 +293,11 @@ public class MenuManager : MonoBehaviour
         var response = await myClient.sendMessageAsync(message, ServerPort);
         Debug.Log("Length of response was " + response.Length);
         mapSpawnner.PopulateData(response, null);
+        visualisationStatus.text = "Visualisation ready";
     }
     public async void GetInformation()
     {
+        visualisationStatus.text = "Getting visualisation ready...";
         TimePeriodSelected = TimePeriod.options[TimePeriod.value].text;
         StartDateSelected = startDate.text;
         EndDateSelected = endDate.text;
@@ -291,6 +307,7 @@ public class MenuManager : MonoBehaviour
         var response = await myClient.sendMessageAsync(message, ServerPort);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         mapSpawnner.PopulateData(response, DateList);
+        visualisationStatus.text = "Visualisation ready";
     }
     private string CreateMessage()
     {
@@ -330,7 +347,17 @@ public class MenuManager : MonoBehaviour
     {
         EndCalendar.SetActive(false);
     }
-
+    public void ChangeDisplayLevelNext()
+    {
+        DisplayLevelNextButton.interactable = true;
+    }
+    public void ChangeTimePeriodNext()
+    {
+        if((startDate.text != "") && (endDate.text != "") && (TimePeriod.value != 0))
+        {
+            DateSelectNextButton.interactable = true;
+        }        
+    }
     /*#region EnergyFields
     public void EnergyMeters()
     {
