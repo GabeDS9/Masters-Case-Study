@@ -234,7 +234,9 @@ public class MenuManager : MonoBehaviour
         if (AllLevelSelected)
         {
             DTLevelSelected.Clear();
-            DTLevelSelected.Add("All");
+            DTLevelSelected.Add("Building");
+            DTLevelSelected.Add("Precinct");
+            DTLevelSelected.Add("Campus");
             DisplayTypeSelected = "Collective";
         }
 
@@ -263,7 +265,6 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "CurrentData";
         string response = infoHandler.GetInformation(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected,
             SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
-        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         /*var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message, ServerPort);

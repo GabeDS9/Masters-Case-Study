@@ -16,9 +16,9 @@ public class ApplicationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnergyMeterList = energyManager.LoadEnergyMeterList();
+        /*EnergyMeterList = energyManager.LoadEnergyMeterList();
         OccupancyMeterList = occupancyManager.LoadOccupancyMeterList();
-        SolarMeterList = solarManager.LoadSolarMeterList();
+        SolarMeterList = solarManager.LoadSolarMeterList();*/
     }
 
     // Update is called once per frame
