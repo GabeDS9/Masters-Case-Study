@@ -192,7 +192,7 @@ public class LoadExcel
         buildingList.Clear();
 
         string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DTConfigurationFile);
-
+        Console.WriteLine(filepath);
         List<Dictionary<string, object>> data = CSVReader.Read(filepath);
 
         for (var i = 0; i < data.Count; i++)

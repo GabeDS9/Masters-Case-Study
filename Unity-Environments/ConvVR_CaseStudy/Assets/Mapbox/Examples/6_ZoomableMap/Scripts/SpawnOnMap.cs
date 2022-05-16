@@ -12,7 +12,6 @@
     public class SpawnOnMap : MonoBehaviour
     {
         public AbstractMap Map;
-        public LegendManager legendManager;
 
         [Geocode]
         string[] _locationStrings;
@@ -30,7 +29,7 @@
 
         public void PopulateEnergyObject(EnergyMeterData energyMeter, List<EnergyAverage> averages, string date, string visualisation_type)
         {
-            ClearEnergyObjects(energyMeter.meterid, visualisation_type, legendManager);
+            ClearEnergyObjects(energyMeter.meterid, visualisation_type);
             
             String latitude = energyMeter.latitude;
             String longitude = energyMeter.longitude;
@@ -56,21 +55,11 @@
             float floatEnergy = (float)Math.Abs(energy);
             instance.transform.localScale = new Vector3(1, floatEnergy, 1);
             instance.transform.position = new Vector3(instance.transform.localPosition.x, floatEnergy / 2, instance.transform.localPosition.z);
-            legendManager.ManageEnergyObjects(energyMeter, visualisation_type, instance, "add");
         }
 
-        public void ClearEnergyObjects(int meterid, string visualisation_type, LegendManager legendManager)
+        public void ClearEnergyObjects(int meterid, string visualisation_type)
         {
-            if (legendManager.spawnedEnergyObjects != null)
-            {
-                foreach (var item in legendManager.spawnedEnergyObjects)
-                {
-                    if((item.meterid == meterid) && (item.visualisation_type == visualisation_type))
-                    {
-                        Destroy(item.visual);
-                    }
-                }
-            }
+
         }
 
         /*public async Task PopulateEnergyObjectAsync(int meterid, EnergyAPIScript energyManager, String date)

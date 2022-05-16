@@ -20,7 +20,7 @@ public class OccupancyAPIScript : APICaller
     {
         LoadExcel excel = new LoadExcel();
 
-        OccupancyMeters = excel.LoadOccupancyMeterData();
+        //OccupancyMeters = excel.LoadOccupancyMeterData();
 
         return OccupancyMeters;
     }

@@ -20,7 +20,7 @@ public class SolarAPIScript : APICaller
     {
         LoadExcel excel = new LoadExcel();
 
-        SolarMeters = excel.LoadSolarMeterData();
+        //SolarMeters = excel.LoadSolarMeterData();
 
         return SolarMeters;
     }

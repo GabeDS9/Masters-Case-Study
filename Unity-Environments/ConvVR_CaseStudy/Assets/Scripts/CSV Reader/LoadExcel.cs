@@ -1,16 +1,111 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class LoadExcel
 {
-    public List<EnergyMeterData> energyMeterList = new List<EnergyMeterData>();
-    public List<OccupancyMeterData> occupancyMeterList = new List<OccupancyMeterData>();
-    public List<SolarMeterData> solarMeterList = new List<SolarMeterData>();
-
-    private string FileName = "";
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
+    private string ConfigurationFile = "DTArchitectureConfiguration";
 
+    public List<ElementModel> LoadBuildings()
+    {
+        List<ElementModel> buildingList = new List<ElementModel>();
+        List<Dictionary<string, object>> data = CSVReader.Read(ConfigurationFile);
+
+        for (var i = 0; i < data.Count; i++)
+        {
+            if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() != "-") && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-"))
+            {
+                string name = data[i]["Building"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
+
+                var childList = new List<string>();
+                for (var j = 0; j < data.Count; j++)
+                {
+                    if ((data[j]["Campus"].ToString() != "-") && (data[j]["Precinct"].ToString() != "-") && (data[j]["Reticulation"].ToString() == "-") && (data[j]["Building"].ToString() == name) && (data[j]["Meter Name"].ToString() != "-"))
+                    {
+                        string meterID = data[j]["meter_id"].ToString();
+                        childList.Add(meterID);
+                    }
+                }
+                if(childList.Count == 0)
+                {
+                    for (var j = 0; j < data.Count; j++)
+                    {
+                        if ((data[j]["Campus"].ToString() != "-") && (data[j]["Precinct"].ToString() != "-") && (data[j]["Reticulation"].ToString() == "-") && (data[j]["Building"].ToString() == name) && (data[j]["Meter Name"].ToString() == "-"))
+                        {
+                            string meterID = data[j]["meter_id"].ToString();
+                            childList.Add(meterID);
+                        }
+                    }
+                }
+                var tempBuilding = new ElementModel { ElementName = name, ElementType = "Building", Latitude = latitude, Longitude = longitude, ChildElements = childList};
+                buildingList.Add(tempBuilding);
+            }
+        }
+
+        return buildingList;
+    }
+    public List<ElementModel> LoadPrecincts()
+    {
+        List<ElementModel> precinctList = new List<ElementModel>();
+        List<Dictionary<string, object>> data = CSVReader.Read(ConfigurationFile);
+
+        for (var i = 0; i < data.Count; i++)
+        {
+            if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() != "-") && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() == "-"))
+            {
+                string name = data[i]["Precinct"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
+
+                var childList = new List<string>();
+                for (var j = 0; j < data.Count; j++)
+                {
+                    if ((data[j]["Campus"].ToString() != "-") && (data[j]["Precinct"].ToString() == name) && ((data[j]["Reticulation"].ToString() != "-") || (data[j]["Building"].ToString() != "-")) && (data[j]["Meter Name"].ToString() == "-"))
+                    {
+                        string building = data[j]["Building"].ToString();
+                        childList.Add(building);
+                    }
+                }
+                var tempPrecinct = new ElementModel { ElementName = name, ElementType = "Precinct", Latitude = latitude, Longitude = longitude, ChildElements = childList };
+                precinctList.Add(tempPrecinct);
+            }
+        }
+
+        return precinctList;
+    }
+    public List<ElementModel> LoadCampus()
+    {
+        List<ElementModel> campusList = new List<ElementModel>();
+        List<Dictionary<string, object>> data = CSVReader.Read(ConfigurationFile);
+
+        for (var i = 0; i < data.Count; i++)
+        {
+            if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() == "-"))
+            {
+                string name = data[i]["Campus"].ToString();
+                string latitude = data[i]["Latitude"].ToString();
+                string longitude = data[i]["Longitude"].ToString();
+
+                var childList = new List<string>();
+                for (var j = 0; j < data.Count; j++)
+                {
+                    if ((data[j]["Campus"].ToString() == name) && (data[j]["Precinct"].ToString() != "-") && (data[j]["Reticulation"].ToString() == "-") && (data[j]["Building"].ToString() == "-"))
+                    {
+                        string precinct = data[j]["Precinct"].ToString();
+                        childList.Add(precinct);
+                    }
+                }
+                var tempCampus = new ElementModel { ElementName = name, ElementType = "Campus", Latitude = latitude, Longitude = longitude, ChildElements = childList };
+                campusList.Add(tempCampus);
+            }
+        }
+        return campusList;
+    }
     /*
     #region EnergyMeters
     public List<EnergyMeterData> LoadEnergyMeterData()

@@ -55,13 +55,25 @@ public class MenuManager : MonoBehaviour
     private bool EnergyDataFlag = false;
     private bool AllDataFlag = false;
 
+    private string SelectedElement;
+    private List<string> DTLevelSelected = new List<string>();
+    private string DataTypeSelected = "";
+    private string InformationTypeSelected = "";
+    private string DisplayTypeSelected = "";
+    private string StartDateSelected = "";
+    private string EndDateSelected = "";
+    private string TimePeriodSelected = "";
+
     private List<ElementModel> CampusList = new List<ElementModel>();
     private List<ElementModel> PrecinctList = new List<ElementModel>();
     private List<ElementModel> BuildingList = new List<ElementModel>();
 
+    private LoadExcel excel = new LoadExcel();
+    private InformationHandler infoHandler = new InformationHandler();
     // Start is called before the first frame update
     void Start()
     {
+        LoadElements();
         MainMenu.SetActive(true);
         DisplayLevel.SetActive(false);
         DataType.SetActive(false);
@@ -73,9 +85,11 @@ public class MenuManager : MonoBehaviour
         currentMenu = MainMenu;
         DisplayMainMenu();
     }
-    public void LoadElements()
+    private void LoadElements()
     {
-
+        CampusList = excel.LoadCampus();
+        PrecinctList = excel.LoadPrecincts();
+        BuildingList = excel.LoadBuildings();
     }
     public void DisplayMainMenu()
     {
@@ -106,32 +120,42 @@ public class MenuManager : MonoBehaviour
         PrecinctDropdown.value = 0;
         BuildingDropdown.value = 0;
     }
-    public async void PopulateDropDown()
+    public void PopulateDropDown()
     {
-        /*if (CampusDropdown.value == 0)
+        if (CampusDropdown.value == 0)
         {
-            var dtList = await messHandler.GetDTListAsync("");
+            List<string> dtList = new List<string>();
+            foreach(var camp in CampusList)
+            {
+                dtList.Add(camp.ElementName);
+            }
             CampusDropdown.AddOptions(dtList);
         }
         else if ((CampusDropdown.value != 0) && (PrecinctDropdown.value == 0))
         {
-            //Debug.Log(CampusDropdown.options[CampusDropdown.value].text);
             PrecinctDropdown.interactable = true;
             MMNextButton.interactable = true;
-            var dtList = await messHandler.GetDTListAsync(CampusDropdown.options[CampusDropdown.value].text);
+            List<string> dtList = new List<string>();
+            foreach (var prec in PrecinctList)
+            {
+                dtList.Add(prec.ElementName);
+            }
             PrecinctDropdown.AddOptions(dtList);
         }
         else if ((CampusDropdown.value != 0) && (PrecinctDropdown.value != 0) && (BuildingDropdown.value == 0))
         {
-            //Debug.Log(PrecinctDropdown.options[PrecinctDropdown.value].text);
             BuildingDropdown.interactable = true;
-            var dtList = await messHandler.GetDTListAsync(PrecinctDropdown.options[PrecinctDropdown.value].text);
+            List<string> dtList = new List<string>();
+            foreach (var build in BuildingList)
+            {
+                dtList.Add(build.ElementName);
+            }
             BuildingDropdown.AddOptions(dtList);
-        }*/
+        }
     }
     public void DisplayDTLevelMenu()
     {
-        /*AllLevelSelected = false;
+        AllLevelSelected = false;
         HighestLevelToggle.gameObject.SetActive(false);
         MiddleLevelToggle.gameObject.SetActive(false);
         LowestLevelToggle.gameObject.SetActive(false);
@@ -146,7 +170,7 @@ public class MenuManager : MonoBehaviour
             {
                 if (BuildingDropdown.value != 0)
                 {
-                    SelectedDT = BuildingDropdown.options[BuildingDropdown.value].text;
+                    SelectedElement = BuildingDropdown.options[BuildingDropdown.value].text;
                     HighestLevelToggle.GetComponentInChildren<Text>().text = "Building";
                     HighestLevelToggle.gameObject.SetActive(true);
                     MiddleLevelToggle.gameObject.SetActive(false);
@@ -154,7 +178,7 @@ public class MenuManager : MonoBehaviour
                 }
                 else
                 {
-                    SelectedDT = PrecinctDropdown.options[PrecinctDropdown.value].text;
+                    SelectedElement = PrecinctDropdown.options[PrecinctDropdown.value].text;
                     HighestLevelToggle.GetComponentInChildren<Text>().text = "Precinct";
                     MiddleLevelToggle.GetComponentInChildren<Text>().text = "Building";
                     HighestLevelToggle.gameObject.SetActive(true);
@@ -164,7 +188,7 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                SelectedDT = CampusDropdown.options[CampusDropdown.value].text;
+                SelectedElement = CampusDropdown.options[CampusDropdown.value].text;
                 HighestLevelToggle.GetComponentInChildren<Text>().text = "Campus";
                 MiddleLevelToggle.GetComponentInChildren<Text>().text = "Precinct";
                 LowestLevelToggle.GetComponentInChildren<Text>().text = "Building";
@@ -180,11 +204,11 @@ public class MenuManager : MonoBehaviour
         else
         {
             DisplayMainMenu();
-        }*/
+        }
     }
     public void DisplayDataTypeMenu()
     {
-        /*EnergyDataFlag = false;
+        EnergyDataFlag = false;
         AllDataFlag = false;
         DataTypeSelected = "";
         if (HighestLevelToggle.isOn && !MiddleLevelToggle.isOn && !LowestLevelToggle.isOn)
@@ -216,7 +240,7 @@ public class MenuManager : MonoBehaviour
 
         currentMenu.SetActive(false);
         DataType.SetActive(true);
-        currentMenu = DataType;*/
+        currentMenu = DataType;
     }
     public void DisplayTimeSelectMenu()
     {
@@ -229,6 +253,40 @@ public class MenuManager : MonoBehaviour
         currentMenu.SetActive(false);
         DateSelectMenu.SetActive(true);
         currentMenu = DateSelectMenu;
+    }
+    public async void GetCurrentInformation()
+    {
+        visualisationStatus.text = "Getting visualisation ready...";
+        TimePeriodSelected = "";
+        StartDateSelected = "";
+        EndDateSelected = "";
+        InformationTypeSelected = "CurrentData";
+        string response = infoHandler.GetInformation(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected,
+            SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
+        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
+        /*var message = CreateMessage();
+        DisplayVisualisationUI();
+        var response = await myClient.sendMessageAsync(message, ServerPort);
+        Debug.Log("Length of response was " + response.Length);
+        mapSpawnner.PopulateData(response, null);*/
+        visualisationStatus.text = "Visualisation ready";
+    }
+    public async void GetInformation()
+    {
+        visualisationStatus.text = "Getting visualisation ready...";
+        TimePeriodSelected = TimePeriod.options[TimePeriod.value].text;
+        StartDateSelected = startDate.text;
+        EndDateSelected = endDate.text;
+        InformationTypeSelected = "Averages";
+        string response = infoHandler.GetInformation(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, 
+            SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
+        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
+        /*var message = CreateMessage();
+        DisplayVisualisationUI();
+        var response = await myClient.sendMessageAsync(message, ServerPort);
+        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
+        mapSpawnner.PopulateData(response, DateList);*/
+        visualisationStatus.text = "Visualisation ready";
     }
     public void DisplayVisualisationUI()
     {
@@ -254,17 +312,20 @@ public class MenuManager : MonoBehaviour
         var numDates = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected).Count - 1;
         visualisationSlider.maxValue = numDates;*/
     }
-
+    public void SetAllLevelFlag()
+    {
+        AllLevelSelected = true;
+    }
     // Setting Data Type Flag
     public void SetEnergyDataFlag()
     {
         EnergyDataFlag = true;
-        //DataTypeSelected = "Energy";
+        DataTypeSelected = "Energy";
     }
     public void SetAllDataFlag()
     {
         AllDataFlag = true;
-        //DataTypeSelected = "All";
+        DataTypeSelected = "All";
     }
     public void DisplayStartCalendar()
     {

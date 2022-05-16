@@ -314,6 +314,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\HeightModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\Vector2d\Mathd.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\BearingFilter.cs" />
+    <Compile Include="Assets\Scripts\Models\ElementModel.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ObjectInspectorModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\ColliderOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapOptions.cs" />
@@ -321,6 +322,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\ColliderModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\DirectionsResponse.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultElevation.cs" />
+    <Compile Include="Assets\Scripts\Utilities.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\UnifiedMapOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorEntity.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SmoothLineModifier.cs" />
@@ -446,8 +448,7 @@
     <Compile Include="Assets\Mapbox\Examples\1_DataExplorer\HighlightBuildings.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\DeviceLocationProviderAndroidNative.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
-    <Compile Include="Assets\Scripts\Utilities.cs" />
-    <Compile Include="Assets\Scripts\Models\ElementModel.cs" />
+    <Compile Include="Assets\Scripts\InformationHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

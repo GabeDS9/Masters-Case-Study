@@ -13,53 +13,6 @@ public class EnergyAPIScript : APICaller
     public List<EnergyMeterData> EnergyMeters = new List<EnergyMeterData>();
     public static System.Random random = new System.Random();
 
-    // Energy MeterList API Caller
-    // This function will make an API call to receive the energy meters availabe
-    // Input: None
-    // Output: Meter List (List<MeterList>)
-    public List<EnergyMeterData> GetEnergyMeterListAsync()
-    {
-        String apikey = "68b408399bdcbf3d5d4b3485c76596e8015c9f797414a83e3aa626d04d070abe"; //"[YOUR API KEY HERE]";
-        String url = "https://api.indivo.co.za/Energy/MeterList?key=" + apikey;
-        var result = Task.Run(() => CallAPI(url));
-        List<EnergyMeterData> meterlist = JsonConvert.DeserializeObject<List<EnergyMeterData>>(result.Result);
-
-        // Temporary solution to remove meter 8656 because it returns an error when accessing it
-        int pos = 0;
-        foreach (var record in meterlist)
-        {
-            if (record.meterid == 8656)
-            {
-                // Get position of meter 8656 in the list
-                pos = meterlist.IndexOf(record);
-            }
-            else
-            {
-                // Generate random coordinates until receive actual data with real coordinates
-                record.longitude = NextFloat(18.8600f, 18.8800f).ToString().Replace(',', '.');
-                record.latitude = NextFloat(-33.9400f, -33.9600f).ToString().Replace(',', '.');
-            }
-        }
-
-        // Remove meter 8656
-        meterlist.RemoveAt(pos);
-
-        return meterlist;
-    }
-
-    // Load Energy Meter List
-    // This function will populate a energy meter list with data froma CSV configuration file for the energy meters
-    // Input: None
-    // Output: Energy Meter List (List<EnergyMeterData>)
-    public List<EnergyMeterData> LoadEnergyMeterList()
-    {
-        LoadExcel excel = new LoadExcel();
-
-        EnergyMeters = excel.LoadEnergyMeterData();
-
-        return EnergyMeters;
-    }
-
     // Energy MeterUsage API Caller
     // This function will make an API call to receive an energy meter's information over a specified time period
     // Input: Energy Meter ID (string), time frame (string)

@@ -8,5 +8,7 @@ public class ElementModel
 {
     public string ElementName { get; set; }
     public string ElementType { get; set; }
+    public string Latitude { get; set; }
+    public string Longitude { get; set; }
     public List<string> ChildElements { get; set; }
 }
