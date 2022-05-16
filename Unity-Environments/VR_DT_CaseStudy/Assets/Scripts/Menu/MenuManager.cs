@@ -104,8 +104,8 @@ public class MenuManager : MonoBehaviour
         else if ((CampusDropdown.value != 0) && (PrecinctDropdown.value != 0) && (BuildingDropdown.value == 0))
         {
             //Debug.Log(PrecinctDropdown.options[PrecinctDropdown.value].text);
-            var dtList = await messHandler.GetDTListAsync(PrecinctDropdown.options[PrecinctDropdown.value].text);
             BuildingDropdown.interactable = true;
+            var dtList = await messHandler.GetDTListAsync(PrecinctDropdown.options[PrecinctDropdown.value].text);
             BuildingDropdown.AddOptions(dtList);
         }
     }

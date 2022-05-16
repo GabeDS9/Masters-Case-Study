@@ -22,7 +22,7 @@ public class ApplicationManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (EnergyMeterList != null)
         {
@@ -38,5 +38,5 @@ public class ApplicationManager : MonoBehaviour
         {
             menuManager.SolarMetersButton.SetActive(true);
         }
-    }
+    }*/
 }

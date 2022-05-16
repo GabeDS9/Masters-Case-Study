@@ -8,8 +8,10 @@ public class LoadExcel
     public List<OccupancyMeterData> occupancyMeterList = new List<OccupancyMeterData>();
     public List<SolarMeterData> solarMeterList = new List<SolarMeterData>();
 
+    private string FileName = "";
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
+    /*
     #region EnergyMeters
     public List<EnergyMeterData> LoadEnergyMeterData()
     {
@@ -165,5 +167,5 @@ public class LoadExcel
         solarMeterList.Add(tempMeter);
     }
     #endregion
-
+    */
 }

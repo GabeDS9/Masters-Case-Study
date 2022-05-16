@@ -266,7 +266,6 @@
     <Compile Include="Assets\Mapbox\Examples\Scripts\DragableDirectionWaypoint.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TerrainSideWallOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\Plugins\Android\UniAndroidPermission\UniAndroidPermission.cs" />
-    <Compile Include="Assets\Scripts\SocketClient.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\Singleton.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\TileProviders\RangeTileProvider.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\ImmediatePositionWithLocationProvider.cs" />
@@ -283,7 +282,6 @@
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IUnifiedMap.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\Runnable.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapExtentOptions.cs" />
-    <Compile Include="Assets\Scripts\MovementManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\MapImageFactory.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\SpawnPrefabOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\ITelemetryLibrary.cs" />
@@ -355,7 +353,6 @@
     <Compile Include="Assets\Mapbox\Unity\Utilities\OpenUrlOnButtonClick.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapScalingOptions.cs" />
     <Compile Include="Assets\Scripts\APIs\EnergyAPI\EnergyData.cs" />
-    <Compile Include="Assets\Scripts\Menu\ToggleManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\MapboxLocationInfoMock.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\Geometry.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\CameraMovement.cs" />
@@ -403,7 +400,6 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Resource.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\RasterTileExample.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\TextureModifier.cs" />
-    <Compile Include="Assets\Scripts\Menu\LegendManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\DescriptionAttribute.cs" />
     <Compile Include="Assets\Mapbox\Unity\Telemetry\TelemetryIos.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\RetinaRasterTile.cs" />
@@ -450,6 +446,8 @@
     <Compile Include="Assets\Mapbox\Examples\1_DataExplorer\HighlightBuildings.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\DeviceLocationProviderAndroidNative.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
+    <Compile Include="Assets\Scripts\Utilities.cs" />
+    <Compile Include="Assets\Scripts\Models\ElementModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
