@@ -210,7 +210,6 @@
     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Scripts\SkeletonUIOptions.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Samples\BuggyBuddy\BuggyBuddy.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Input_References.cs" />
-    <Compile Include="Assets\SteamVR\Plugins\openvr_api.cs" />
     <Compile Include="Assets\SteamVR\Input\SteamVR_Action_Vector3.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackage.cs" />
     <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportPoint.cs" />

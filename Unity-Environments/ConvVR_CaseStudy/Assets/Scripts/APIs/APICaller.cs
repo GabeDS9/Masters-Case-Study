@@ -31,7 +31,7 @@ public class APICaller
         String to_date = "";
         String from_date = "";
         DateTime currDate = DateTime.Now;
-        DateTime fromDate = currDate.AddMinutes(-15);
+        DateTime fromDate = currDate.AddMinutes(-30);
 
         to_date = currDate.Year + "-" + currDate.Month + "-" + currDate.Day + "%20" + currDate.Hour + ":" + currDate.Minute + ":00";
         from_date = fromDate.Year + "-" + fromDate.Month + "-" + fromDate.Day + "%20" + fromDate.Hour + ":" + fromDate.Minute + ":00";

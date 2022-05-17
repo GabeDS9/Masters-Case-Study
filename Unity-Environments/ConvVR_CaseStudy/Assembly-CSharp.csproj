@@ -68,6 +68,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\PrefabModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\IImageryLayer.cs" />
     <Compile Include="Assets\Scripts\Movement\VR_Movement.cs" />
+    <Compile Include="Assets\Scripts\Models\VisualisationModel.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerRealisticStyle.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SnapTerrainRaycastModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\Cache\SQLiteCache\Tilesets.cs" />

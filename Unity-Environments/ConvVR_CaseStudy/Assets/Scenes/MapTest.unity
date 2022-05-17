@@ -793,10 +793,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Map: {fileID: 786433027}
-  MarkerPrefab:
+  MarkerPrefabs:
   - {fileID: 5317113767025326050, guid: d9747a2790a72df4996b777f7a613230, type: 3}
   - {fileID: 7228671149945930138, guid: 7c013ad8022831f47b933104961985ea, type: 3}
   - {fileID: 1736853374287567588, guid: 4f8de054030eac24c8017bbee74e3746, type: 3}
+  VisualInfo: {fileID: 8953245177986855224, guid: 18e7820cd4e1ef347816462150d76024, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

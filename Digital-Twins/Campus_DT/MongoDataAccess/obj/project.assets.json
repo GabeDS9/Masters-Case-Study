@@ -624,19 +624,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\20935927\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Digital-Twins\\Campus_DT\\MongoDataAccess\\MongoDataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Digital-Twins\\Campus_DT\\MongoDataAccess\\MongoDataAccess.csproj",
       "projectName": "MongoDataAccess",
-      "projectPath": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Digital-Twins\\Campus_DT\\MongoDataAccess\\MongoDataAccess.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Digital-Twins\\Campus_DT\\MongoDataAccess\\obj\\",
+      "projectPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Digital-Twins\\Campus_DT\\MongoDataAccess\\MongoDataAccess.csproj",
+      "packagesPath": "C:\\Users\\20935927\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Digital-Twins\\Campus_DT\\MongoDataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\20935927\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -682,7 +682,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

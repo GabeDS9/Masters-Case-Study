@@ -10,7 +10,7 @@ using Mapbox.Json;
 
 public class WaterAPIScript : APICaller
 {
-    // Water MeterList API Caller
+    /*// Water MeterList API Caller
     // This function will make an API call to receive the Water meters availabe
     // Input: None
     // Output: Meter List (List<MeterList>)
@@ -75,5 +75,5 @@ public class WaterAPIScript : APICaller
         }
 
         return temp;
-    }
+    }*/
 }

@@ -265,12 +265,8 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "CurrentData";
         var response = await infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected,
             SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
-        Debug.Log($"{response[0].Element_Name} {response[0].Timestamp} {response[0].Value}");
-        /*var message = CreateMessage();
-        DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message, ServerPort);
-        Debug.Log("Length of response was " + response.Length);
-        mapSpawnner.PopulateData(response, null);*/
+        //Debug.Log($"{response[0].Element_Name} {response[0].Timestamp} {response[0].Value}");
+        mapSpawnner.PopulateData(response, null);
         visualisationStatus.text = "Visualisation ready";
     }
     /*public async void GetInformation()
