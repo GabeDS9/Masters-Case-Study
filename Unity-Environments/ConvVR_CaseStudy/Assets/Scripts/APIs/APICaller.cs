@@ -26,7 +26,7 @@ public class APICaller
     }
 
     // Gives current date and time for current meter readings
-    public static (String, String) GetCurrentDateTime()
+    public (String, String) GetCurrentDateTime()
     {
         String to_date = "";
         String from_date = "";

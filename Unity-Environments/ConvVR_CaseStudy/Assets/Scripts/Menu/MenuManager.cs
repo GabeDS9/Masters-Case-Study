@@ -263,8 +263,9 @@ public class MenuManager : MonoBehaviour
         StartDateSelected = "";
         EndDateSelected = "";
         InformationTypeSelected = "CurrentData";
-        string response = infoHandler.GetInformation(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected,
+        var response = await infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected,
             SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
+        Debug.Log($"{response[0].Element_Name} {response[0].Timestamp} {response[0].Value}");
         /*var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message, ServerPort);
@@ -272,23 +273,23 @@ public class MenuManager : MonoBehaviour
         mapSpawnner.PopulateData(response, null);*/
         visualisationStatus.text = "Visualisation ready";
     }
-    public async void GetInformation()
+    /*public async void GetInformation()
     {
         visualisationStatus.text = "Getting visualisation ready...";
         TimePeriodSelected = TimePeriod.options[TimePeriod.value].text;
         StartDateSelected = startDate.text;
         EndDateSelected = endDate.text;
         InformationTypeSelected = "Averages";
-        string response = infoHandler.GetInformation(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, 
+        string response = infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, 
             SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         /*var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message, ServerPort);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
-        mapSpawnner.PopulateData(response, DateList);*/
+        mapSpawnner.PopulateData(response, DateList);
         visualisationStatus.text = "Visualisation ready";
-    }
+    }*/
     public void DisplayVisualisationUI()
     {
         visualisationSlider.value = 0;

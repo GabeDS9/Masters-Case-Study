@@ -11,7 +11,7 @@ using Mapbox.Json;
 public class EnergyAPIScript : APICaller
 {
     public List<EnergyMeterData> EnergyMeters = new List<EnergyMeterData>();
-    public static System.Random random = new System.Random();
+    private APICaller apiCaller = new APICaller();
 
     // Energy MeterUsage API Caller
     // This function will make an API call to receive an energy meter's information over a specified time period
@@ -36,7 +36,13 @@ public class EnergyAPIScript : APICaller
 
         return meterdata.data;
     }
+    public async Task<List<EnergyData>> GetCurrentEnergyDataAsync(int meterid)
+    {
+        String to_date, from_date;
+        (to_date, from_date) = apiCaller.GetCurrentDateTime();
 
+        return await GetMeterDataAsync(from_date, to_date, meterid);
+    }
     // Store energy meter data
     // This function will make API calls to receive and store all energy information
     // Input: None
@@ -186,11 +192,11 @@ public class EnergyAPIScript : APICaller
         }
     }
 
-    private float NextFloat(float min, float max)
+    /*private float NextFloat(float min, float max)
     {
         double val = (random.NextDouble() * (max - min) + min);
         return (float)val;
-    }
+    }*/
 
 }
 
