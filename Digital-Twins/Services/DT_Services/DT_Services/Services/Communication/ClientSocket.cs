@@ -16,7 +16,7 @@ namespace Communication
         public async Task<string> sendMessageAsync(string message, string ipAdd, int port)
         {
             stopWatch.Start();
-            while (stopWatch.Elapsed.TotalSeconds < 10)
+            while (stopWatch.Elapsed.TotalSeconds < 60000)
             {
                 string response = "";
                 try
@@ -40,10 +40,11 @@ namespace Communication
                     }
                     client.Close();
                 }
-                catch (Exception e) { Console.WriteLine(e.Message + stopWatch.Elapsed.TotalSeconds); }
+                catch (Exception e) { Console.WriteLine("Trying to connect again..."); }
                 return response;
             }
             stopWatch.Reset();
+            Console.WriteLine($"Unable to connect to {ipAdd} on port {port}");
             return null;
         }
 

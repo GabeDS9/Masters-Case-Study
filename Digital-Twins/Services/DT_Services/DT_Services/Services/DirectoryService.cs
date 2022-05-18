@@ -48,6 +48,18 @@ namespace Services
 
             return 0;
         }
+        public string ReturnIPAddress(string dtName)
+        {
+            foreach (var dt in digitalTwinsList)
+            {
+                if (dt.DT_Name == dtName)
+                {
+                    return dt.IP_Address;
+                }
+            }
+
+            return "";
+        }
 
         public List<string> ReturnDTs(string parentDT)
         {
