@@ -89,7 +89,7 @@ namespace Precinct_DT
             }
             catch (Exception e)
             {
-                Console.WriteLine($"{Precinct_name} precinct did not initialise");
+                Console.WriteLine($"{e} {Precinct_name} precinct did not initialise");
             }
         }
         private void CheckInitialisations()

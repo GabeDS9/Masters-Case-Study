@@ -205,8 +205,12 @@ public class LoadExcel
                 string ipAdd = data[i]["IP_Address"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
                 string startingDate = data[i]["Starting date"].ToString();
+                string location = data[i]["Location"].ToString();
 
-                AddBuilding(name, latitude, longitude, ipAdd, port, startingDate);
+                if (location == "Local")
+                {
+                    AddBuilding(name, latitude, longitude, ipAdd, port, startingDate);
+                }
             }
         }
 
@@ -240,8 +244,12 @@ public class LoadExcel
                 string ipAdd = data[i]["IP_Address"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
                 string startingDate = data[i]["Starting date"].ToString();
+                string location = data[i]["Location"].ToString();
 
-                AddPrecinct(name, latitude, longitude, ipAdd, port, startingDate);
+                if (location == "Local")
+                {
+                    AddPrecinct(name, latitude, longitude, ipAdd, port, startingDate);
+                }
             }
         }
 
@@ -295,8 +303,12 @@ public class LoadExcel
                 string ipAdd = data[i]["IP_Address"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
                 string startingDate = data[i]["Starting date"].ToString();
+                string location = data[i]["Location"].ToString();
 
-                AddCampus(name, latitude, longitude, ipAdd, port, startingDate);
+                if (location == "Local")
+                {
+                    AddCampus(name, latitude, longitude, ipAdd, port, startingDate);
+                }
             }
         }
 
