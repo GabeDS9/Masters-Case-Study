@@ -25,6 +25,7 @@ namespace Services
         public void InitialiseServices()
         {
             _ = directoryService.InitialiseDirectoryServiceAsync();
+            Console.WriteLine("Service Gateway Initialised");
             StartGatewayServer();            
         }
         private void StartGatewayServer()
@@ -45,7 +46,7 @@ namespace Services
             else if(tempMessage.ServiceTag == "Exploratory")
             {
                 int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
-                string ipAdd = "";
+                string ipAdd = directoryService.ReturnIPAddress(tempMessage.DigitalTwin); ;
                 message = await exploratoryService.ExploratoryServiceAsync(ipAdd, port, tempMessage);
             }
             return message;

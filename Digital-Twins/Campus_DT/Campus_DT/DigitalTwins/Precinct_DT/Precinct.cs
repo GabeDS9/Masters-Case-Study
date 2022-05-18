@@ -354,12 +354,16 @@ namespace Precinct_DT
             }
             return 0;
         }
-        public async Task<List<InformationModel>> ReturnChildDTEnergyDataAsync(string type, List<string> DTDetailLevel, string startDate, string endDate, string timePeriod)
+        public async Task<List<InformationModel>> ReturnChildDTEnergyDataAsync(string type, List<string> DTDetailLevel, string displayType, string startDate, string endDate, string timePeriod)
         {
             List<InformationModel> informationDataList = new List<InformationModel>();
-            string stDate = utilities.ChangeDateFormat(startDate);
-            string enDate = utilities.ChangeDateFormat(endDate);
-            var dateList = utilities.GenerateDateList(stDate, enDate, timePeriod);
+            List<string> dateList = new List<string>();
+            if ((startDate != null) || (endDate != null) || (timePeriod != null))
+            {
+                string stDate = utilities.ChangeDateFormat(startDate);
+                string enDate = utilities.ChangeDateFormat(endDate);
+                dateList = utilities.GenerateDateList(stDate, enDate, timePeriod);
+            }
             foreach (var DTLevel in DTDetailLevel)
             {
                 if (type == "Averages")
@@ -368,7 +372,7 @@ namespace Precinct_DT
                     {
                         foreach (var building in Buildings)
                         {
-                            MessageModel tempMes = new MessageModel { DataType = "Energy", MessageType = "Averages", 
+                            MessageModel tempMes = new MessageModel { DataType = "Energy", MessageType = "Averages", DisplayType = displayType, 
                                 startDate = startDate, endDate = endDate, timePeriod = timePeriod };
                             var mes = JsonConvert.SerializeObject(tempMes);
                             var response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
@@ -393,7 +397,7 @@ namespace Precinct_DT
                         foreach (var building in Buildings)
                         {
                             MessageModel tempMes = new MessageModel {
-                                DataType = "Energy", MessageType = "Averages",
+                                DataType = "Energy", MessageType = "Averages", DisplayType = displayType,
                                 startDate = startDate, endDate = endDate, timePeriod = timePeriod
                             };
                             var mes = JsonConvert.SerializeObject(tempMes);
@@ -419,7 +423,7 @@ namespace Precinct_DT
                         foreach (var building in Buildings)
                         {
                             MessageModel tempMes = new MessageModel {
-                                DataType = "Energy", MessageType = "CurrentData"  };
+                                DataType = "Energy", MessageType = "CurrentData", DisplayType = displayType };
                             var mes = JsonConvert.SerializeObject(tempMes);
                             var response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
                             var infoList = JsonConvert.DeserializeObject<List<InformationModel>>(response);
@@ -576,7 +580,7 @@ namespace Precinct_DT
                     }
                     else if (message.DisplayType == "Collective")
                     {
-                        var infoModelList = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, null, null, null);
+                        var infoModelList = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, message.DisplayType, null, null, null);
                         var tempMess = JsonConvert.SerializeObject(infoModelList);
                         return tempMess;
                     }
@@ -595,7 +599,7 @@ namespace Precinct_DT
                     }
                     else if (message.DisplayType == "Collective")
                     {
-                        var infoModelList = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, message.startDate, message.endDate, message.timePeriod);
+                        var infoModelList = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, message.DisplayType, message.startDate, message.endDate, message.timePeriod);
                         var tempMess = JsonConvert.SerializeObject(infoModelList);
                         return tempMess;
                     }
