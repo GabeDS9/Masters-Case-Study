@@ -14,3 +14,5 @@ C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_S
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\ref\DT_Services.dll
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.pdb
 C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.genruntimeconfig.cache
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\User\Desktop\Masters-Case-Study\Digital-Twins\Services\DT_Services\DT_Services\obj\Debug\net5.0\DT_Services.csproj.CopyComplete

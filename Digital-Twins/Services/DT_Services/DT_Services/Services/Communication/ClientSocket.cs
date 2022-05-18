@@ -3,41 +3,48 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Text;
-using System.IO;
 using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
+using System.Diagnostics;
 
-namespace Services_Communication
+namespace Communication
 {
-    class ClientSocket
+    public class ClientSocket
     {
+        private Stopwatch stopWatch = new Stopwatch();
         public async Task<string> sendMessageAsync(string message, string ipAdd, int port)
         {
-            string response = "";
-            try
+            stopWatch.Start();
+            while (stopWatch.Elapsed.TotalSeconds < 10)
             {
-                TcpClient client = new TcpClient(); // Create a new connection
-                await client.ConnectAsync(ipAdd, port);
-                client.NoDelay = true; // please check TcpClient for more optimization
-                                       // messageToByteArray- discussed later
-                byte[] messageBytes = messageToByteArray(message);
-
-                using (NetworkStream stream = client.GetStream())
+                string response = "";
+                try
                 {
-                    stream.Write(messageBytes, 0, messageBytes.Length);
+                    TcpClient client = new TcpClient(); // Create a new connection
+                    await client.ConnectAsync(ipAdd, port);
+                    client.NoDelay = true; // please check TcpClient for more optimization
+                                           // messageToByteArray- discussed later
+                    byte[] messageBytes = messageToByteArray(message);
 
-                    // Message sent!  Wait for the response stream of bytes...
-                    // streamToMessage - discussed later
-                    response = streamToMessage(stream);
-                    //Console.WriteLine(response);
-                    //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
-                    //Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
+                    using (NetworkStream stream = client.GetStream())
+                    {
+                        stream.Write(messageBytes, 0, messageBytes.Length);
+
+                        // Message sent!  Wait for the response stream of bytes...
+                        // streamToMessage - discussed later
+                        response = streamToMessage(stream);
+                        //Console.WriteLine(response);
+                        //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
+                        //Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
+                    }
+                    client.Close();
                 }
-                client.Close();
+                catch (Exception e) { Console.WriteLine(e.Message + stopWatch.Elapsed.TotalSeconds); }
+                return response;
             }
-            catch (Exception e) { 
-                Console.WriteLine(e.Message + port + message); 
-            }
-            return response;
+            stopWatch.Reset();
+            return null;
         }
 
         // using UTF8 encoding for the messages

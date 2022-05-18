@@ -9,7 +9,7 @@ namespace Building_DT
         {
             LoadExcel excel = new LoadExcel();
             List<Building> buildingList = new List<Building>();
-            buildingList = excel.LoadBuildingData(precinct_name, startingDate);
+            buildingList = excel.LoadBuildingData();
             
             return buildingList;
         }

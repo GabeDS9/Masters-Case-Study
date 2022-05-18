@@ -6,76 +6,63 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using DataAccess;
-using Newtonsoft.Json;
 using Models;
-using Building_DT;
-using Precinct_DT;
-using Campus_DT;
+using Newtonsoft.Json;
+using Services;
+using Resources;
 
-namespace Services_Communication
+namespace Communication
 {
     class ServerSocket
     {
+        private TcpListener server = null;
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        private TcpListener listener = null;
-        private Building building = null;
-        private Precinct precinct = null;
-        private Campus campus = null;
+        Communication.ClientSocket myClient = new Communication.ClientSocket();
+        ServiceGateway serviceGateway = null;
 
-        public void SetupServer(int port, Building build, Precinct prec, Campus camp)
+        public void SetupServer(int port, ServiceGateway myGateway)
         {
-            building = build;
-            precinct = prec;
-            campus = camp;
-            listener = new TcpListener(IPAddress.Any, port);
-            listener.Start();
-            Console.WriteLine($"Setting up DT server on {((IPEndPoint)listener.LocalEndpoint).Port}...");
+            serviceGateway = myGateway;
+            server = new TcpListener(IPAddress.Any, port);
+            server.Start();
+            Console.WriteLine($"Setting up Gateway service server on {((IPEndPoint)server.LocalEndpoint).Port}...");
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
-            _ = Task.Run(async () => {
+            //_ = Task.Run(async () => {
                 while (!cancellationTokenSource.IsCancellationRequested)
                 {
-                    var tcpClient = await listener.AcceptTcpClientAsync();
+                    var tcpClient = server.AcceptTcpClientAsync().Result;
                     _ = HandleTcpClientAsync(tcpClient);
                 }
-            });
+            //});
         }
+
         private async Task HandleTcpClientAsync(TcpClient client)
         {
-            string request = streamToMessage(client.GetStream());
+            Console.WriteLine("UI connected on port: " + ((IPEndPoint)server.LocalEndpoint).Port);
 
+            string request = streamToMessage(client.GetStream());
+            
             if (request != null)
             {
                 string responseMessage = await MessageHandlerAsync(request);
                 sendMessage(responseMessage, client);
             }
         }
+
         private static void sendMessage(string message, TcpClient client)
         {
             // messageToByteArray- discussed later
             byte[] bytes = messageToByteArray(message);
             client.GetStream().Write(bytes, 0, bytes.Length);
         }
-        public async Task<string> MessageHandlerAsync(string message)
+
+        public async Task<string> MessageHandlerAsync(string mes)
         {
-            var tempMessage = JsonConvert.DeserializeObject<MessageModel>(message);
-            string mes = "";
-            if(building != null)
-            {
-                mes = await building.ServiceHandlerAsync(tempMessage);
-            }
-            else if(precinct != null)
-            {
-                mes = await precinct.ServiceHandlerAsync(tempMessage);
-            }
-            else if(campus != null)
-            {
-                mes = await campus.ServiceHandlerAsync(tempMessage);
-            }
-            
-            return mes;
+            string message = await serviceGateway.MessageHandlerAsync(mes);
+            return message;
         }
+
         // using UTF8 encoding for the messages
         static Encoding encoding = Encoding.UTF8;
         private static byte[] messageToByteArray(string message)
@@ -95,6 +82,7 @@ namespace Services_Communication
             messageBytes.CopyTo(completemsg, 4);
             return completemsg;
         }
+
         private static string streamToMessage(Stream stream)
         {
             // size bytes have been fixed to 4

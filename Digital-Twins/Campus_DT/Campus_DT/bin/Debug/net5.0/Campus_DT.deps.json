@@ -9,7 +9,6 @@
       "Campus_DT/1.0.0": {
         "dependencies": {
           "MongoDB.Driver": "2.15.0",
-          "MongoDataAccess": "1.0.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
@@ -159,15 +158,7 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
-      "System.Security.Principal.Windows/5.0.0": {},
-      "MongoDataAccess/1.0.0": {
-        "dependencies": {
-          "MongoDB.Driver": "2.15.0"
-        },
-        "runtime": {
-          "MongoDataAccess.dll": {}
-        }
-      }
+      "System.Security.Principal.Windows/5.0.0": {}
     }
   },
   "libraries": {
@@ -266,11 +257,6 @@
       "sha512": "sha512-t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA==",
       "path": "system.security.principal.windows/5.0.0",
       "hashPath": "system.security.principal.windows.5.0.0.nupkg.sha512"
-    },
-    "MongoDataAccess/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }
