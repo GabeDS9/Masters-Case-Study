@@ -236,7 +236,7 @@ namespace Precinct_DT
                     dayDate = utilities.DecodeTimestamp(response, "Day");
                     prevEnergyTime = dayDate;
 
-                    tempMes = new MessageModel { DataType = "Operations", MessageType = "Averages", startDate = dayDate };
+                    tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestEnergy", startDate = dayDate };
                     mes = JsonConvert.SerializeObject(tempMes);
                     response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
                     newDayPower += double.Parse(response);
@@ -631,7 +631,7 @@ namespace Precinct_DT
             {
                 if (message.MessageType == "LatestTimeStamp")
                 {
-                    MessageModel tempMes = new MessageModel { DataType = "Initialisation", MessageType = "LatestTimeStamp" };
+                    MessageModel tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestTimeStamp" };
                     var mes = JsonConvert.SerializeObject(tempMes);
                     var response = await myClient.sendMessageAsync(mes, Buildings[0].IP_Address, Buildings[0].Port);
                     string dayDate = utilities.DecodeTimestamp(response, "Day");

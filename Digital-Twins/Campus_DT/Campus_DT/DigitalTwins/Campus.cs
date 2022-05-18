@@ -226,7 +226,7 @@ namespace Campus_DT
                     dayDate = utilities.DecodeTimestamp(response, "Day");
                     prevEnergyTime = dayDate;
 
-                    tempMes = new MessageModel { DataType = "Operations", MessageType = "Averages", startDate = dayDate };
+                    tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestEnergy", startDate = dayDate };
                     mes = JsonConvert.SerializeObject(tempMes);
                     response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
                     newDayPower += double.Parse(response);
