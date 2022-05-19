@@ -1,6 +1,6 @@
 ﻿Campus,Precinct,Reticulation,Building,Meter Name,Meter Type, meter_id, description, make, manufacturer, type, Serial Number, model, yard_number, Building_No, Floor, Room_No, Meter_Description, Latitude, Longitude,IP_Address,Port
-Stellenbosch University,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-33.9328,18.8644,146.232.145.189,8000
-Stellenbosch University,Coetzenburg 11kV,-,-,-,Energy,3025,Coetzenburg 11 kV, Elster, Kocos, A1700,51500272, LiMo-DIN,306,745,1,1002, Coetzenburg 11kv,-33.93943714,18.86822311,146.232.145.189,8001
+Stellenbosch University,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-33.9328,18.8644,127.0.0.1,8000
+Stellenbosch University,Coetzenburg 11kV,-,-,-,Energy,3025,Coetzenburg 11 kV, Elster, Kocos, A1700,51500272, LiMo-DIN,306,745,1,1002, Coetzenburg 11kv,-33.93943714,18.86822311,127.0.0.1,8001
 Stellenbosch University,Coetzenburg 11kV,-,Swembad Minisub,-,Energy,2856,Swembad Minisub, Elster, Kocos, A1140,78520491, LiMo R2, 306/2,0,1, Outside, Swembad minisub,-33.94067001,18.87089593,127.0.0.1,8002
 Stellenbosch University,Coetzenburg 11kV,-,Swembad Minisub,Swembadpompe,Energy,2639,Swembadpompe, Elster, Kocos, A1140,58500661, LiMo R2, 306/2,171,1,1002, Swembad pompe,-33.94064265,18.87086229,-,0
 Stellenbosch University,Coetzenburg 11kV,-,Swembad Minisub,Coetzenburg Sentrum,Energy,2848,Coetzenburg Sentrum, Elster, Kocos, A1140,58500669, LiMo R2, 306/2,171,1,1002, Coetzenburg sentrum,-33.94064548,18.87086475,-,0

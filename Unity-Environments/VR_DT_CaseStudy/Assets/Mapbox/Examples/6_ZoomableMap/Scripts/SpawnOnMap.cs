@@ -63,9 +63,9 @@
                 var roundedData = (float)(Math.Round((decimal)data.Value, 3));
                 infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{roundedData} kW";
                 //Debug.Log(infoText.text);
-                infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
+                infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 5, instance.transform.position.z); ;
 
-                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
+                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data, InitialVisualScale = adjustedScalePos, InitialInfoScale = infoInstance.transform.localScale };
                 myVisuals.Add(tempModel);
             }
 
@@ -102,20 +102,20 @@
 
                 var infoInstance = Instantiate(VisualInfo);
                 var infoText = infoInstance.GetComponentInChildren<Text>();
-                infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{data.Value} kW";
+                infoText.text = $"{data.DT_name}\n{data.Timestamp}\n{data.Value} kWh";
 
                 float floatEnergy = (float)Math.Abs(data.Value);
                 float adjustedScalePos = floatEnergy / 10;
                 adjustedScalePos = (float)(Math.Round((decimal)adjustedScalePos, 3));
                 instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
                 instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
-                infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
+                infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 4, instance.transform.position.z);
 
-                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
+                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data, InitialVisualScale = adjustedScalePos, InitialInfoScale = infoInstance.transform.localScale };
                 myVisuals.Add(tempModel);
             }
         }
-        public void ChangeVisualisation(string date)
+        public void ChangeVisualisationDate(string date)
         {
             foreach (var vis in myVisuals)
             {
@@ -129,6 +129,17 @@
                     vis.Visual.SetActive(false);
                     vis.VisualInfo.SetActive(false);
                 }
+            }
+        }
+        public void ChangeVisualisationScale(float scale)
+        {
+            foreach(var vis in myVisuals)
+            {
+                float newScale = vis.InitialVisualScale * scale;
+                vis.Visual.transform.localScale = new Vector3(1, newScale, 1);
+                vis.Visual.transform.position = new Vector3(vis.Visual.transform.localPosition.x, newScale / 2, vis.Visual.transform.localPosition.z);
+                //vis.VisualInfo.transform.localScale = vis.InitialInfoScale * scale; 
+                vis.VisualInfo.transform.position = new Vector3(vis.Visual.transform.position.x - 1, (newScale / 2) + 4, vis.Visual.transform.position.z);
             }
         }
         private List<DataModel> DecodeMessage(string message)

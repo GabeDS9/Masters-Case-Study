@@ -32,6 +32,9 @@ public class MenuManager : MonoBehaviour
     public Button AllButton;
     public Button DataTypeMMButton;
 
+    // Services Select UI
+    public GameObject ServicesSelectMenu;
+
     // Date Select UI
     public GameObject DateSelectMenu;
     public TMP_InputField startDate;
@@ -46,6 +49,8 @@ public class MenuManager : MonoBehaviour
     public GameObject VisualisationUI;
     public Slider visualisationSlider;
     public Text visualisationStatus;
+    public Slider visualisationScale;
+    public Button PlayUIButton;
 
     public Mapbox.Examples.SpawnOnMap mapSpawnner;
 
@@ -77,6 +82,7 @@ public class MenuManager : MonoBehaviour
         MainMenu.SetActive(true);
         DisplayLevel.SetActive(false);
         DataType.SetActive(false);
+        ServicesSelectMenu.SetActive(false);
         DateSelectMenu.SetActive(false);
         VisualisationUI.SetActive(false);
         PrecinctDropdown.interactable = false;
@@ -132,6 +138,7 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayMainMenu()
     {
+        CancelInvoke();
         ResetDropDown();
         PopulateDropDown();
         currentMenu.SetActive(false);
@@ -197,6 +204,7 @@ public class MenuManager : MonoBehaviour
         EnergyDataFlag = false;
         AllDataFlag = false;
         DataTypeSelected = "";
+        AllButton.interactable = false;
         if (HighestLevelToggle.isOn && !MiddleLevelToggle.isOn && !LowestLevelToggle.isOn)
         {
             DTLevelSelected.Add(HighestLevelToggle.GetComponentInChildren<Text>().text);
@@ -228,6 +236,12 @@ public class MenuManager : MonoBehaviour
         DataType.SetActive(true);
         currentMenu = DataType;        
     }
+    public void DisplayServicesSelectMenu()
+    {
+        currentMenu.SetActive(false);
+        ServicesSelectMenu.SetActive(true);
+        currentMenu = ServicesSelectMenu;
+    }
     public void DisplayTimeSelectMenu()
     {
         TimePeriod.value = 0;
@@ -242,25 +256,65 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayVisualisationUI()
     {
+        PlayUIButton.interactable = false;
+        PlayUIButton.GetComponentInChildren<Text>().text = "Play";
         visualisationSlider.value = 0;
         visualisationSlider.interactable = false;
+        visualisationScale.interactable = true;
+        visualisationScale.maxValue = 1;
+        visualisationScale.minValue = 0.1f;
+        visualisationScale.value = 1;
         currentMenu.SetActive(false);
         VisualisationUI.SetActive(true);
         currentMenu = VisualisationUI;
         if(TimePeriod.value != 0)
         {
-            ConfigureVisualisationSlider();
+            PlayUIButton.interactable = true;
+            ConfigureVisualisationSliders();
         }        
     }
-    public void ChangeVisualisation()
+    public void ChangeVisualisationDate()
     {
         var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
-        mapSpawnner.ChangeVisualisation(date);
+        mapSpawnner.ChangeVisualisationDate(date);
     }
-    private void ConfigureVisualisationSlider()
+    public void ChangeVisualisationScale()
+    {
+        var scale = visualisationScale.value;
+        mapSpawnner.ChangeVisualisationScale(scale);
+    }
+    public void PlayVisualisation()
+    {
+        if(PlayUIButton.GetComponentInChildren<Text>().text == "Play")
+        {
+            visualisationSlider.interactable = false;
+            PlayUIButton.GetComponentInChildren<Text>().text = "Stop";
+            InvokeRepeating("PlayFunction", 0.2f, 0.2f);
+        }
+        else if (PlayUIButton.GetComponentInChildren<Text>().text == "Stop")
+        {
+            visualisationSlider.interactable = true;
+            PlayUIButton.GetComponentInChildren<Text>().text = "Play";
+            CancelInvoke();
+        }
+    }
+    private void PlayFunction()
+    {
+        var val = visualisationSlider.value + 1;
+        if(val > visualisationSlider.maxValue)
+        {
+            visualisationSlider.value = visualisationSlider.minValue;
+        }
+        else
+        {
+            visualisationSlider.value = val;
+        }
+        ChangeVisualisationDate();
+    }
+    private void ConfigureVisualisationSliders()
     {
         visualisationSlider.interactable = true;
-        visualisationSlider.wholeNumbers = true;
+        visualisationSlider.wholeNumbers = true;        
         var numDates = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected).Count - 1;
         visualisationSlider.maxValue = numDates;
     }
