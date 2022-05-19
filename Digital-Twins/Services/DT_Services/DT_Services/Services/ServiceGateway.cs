@@ -26,9 +26,8 @@ namespace Services
         {
             _ = directoryService.InitialiseDirectoryServiceAsync();
             Console.WriteLine("Service Gateway Initialised");
-            //StartGatewayServer();
-
-            
+            StartGatewayServer();            
+            /*
             //Test
             string ipAdd = "127.0.0.1";
             int port = 8000;
@@ -36,7 +35,7 @@ namespace Services
             DTDetail.Add("All");
             /*DTDetail.Add("Campus");
             DTDetail.Add("Precinct");
-            DTDetail.Add("Building");*/
+            DTDetail.Add("Building");
             var temp = new MessageModel
             {
                 DataType = "Energy",
@@ -49,7 +48,7 @@ namespace Services
             };
             string tempMes = JsonConvert.SerializeObject(temp);
             string response = myClient.sendMessageAsync(tempMes, ipAdd, port).Result;
-            Console.WriteLine(response);
+            Console.WriteLine(response);*/
         }
         private void StartGatewayServer()
         {
