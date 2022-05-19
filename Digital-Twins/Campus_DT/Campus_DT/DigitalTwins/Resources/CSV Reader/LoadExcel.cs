@@ -19,7 +19,7 @@ public class LoadExcel
     private string DTConfigurationFile = "DTArchitectureConfiguration.csv";
 
     #region EnergyMeters
-    public List<EnergyMeterData> LoadEnergyMeterData(string buildRecName)
+    public List<EnergyMeterData> LoadEnergyMeterData(string elementName)
     {
         energyMeterList.Clear();
 
@@ -29,7 +29,7 @@ public class LoadExcel
 
         for (var i = 0; i < data.Count; i++)
         {
-            if ((data[i]["Reticulation"].ToString() == buildRecName) || (data[i]["Building"].ToString() == buildRecName) && (data[i]["Meter Type"].ToString() == "Energy"))
+            if (((data[i]["Precinct"].ToString() == elementName) || (data[i]["Reticulation"].ToString() == elementName) || (data[i]["Building"].ToString() == elementName)) && (data[i]["Meter Type"].ToString() == "Energy"))
             {
                 int id = int.Parse(data[i]["meter_id"].ToString(), System.Globalization.NumberStyles.Integer);
                 string description = data[i]["description"].ToString();
