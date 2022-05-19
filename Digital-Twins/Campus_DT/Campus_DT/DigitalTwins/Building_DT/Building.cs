@@ -90,7 +90,11 @@ namespace Building_DT
 
                 var building = new BuildingModel(Building_name, Latitude, Longitude, energymeters, OccupancyMeters, SolarMeters);
                 _ = db.CreateBuilding(building);
-                _ = InitialPopulateDataBaseAsync();
+                InitialPopulateDataBaseAsync();    
+                foreach(var item in EnergyMeters)
+                {
+                    item.data.Clear();
+                }
                 RunBuildingDT();
             }
             catch (Exception e)
@@ -98,11 +102,11 @@ namespace Building_DT
                 Console.WriteLine($"{Building_name} building did not initialise + {e}");
             }
         }
-        private async Task InitialPopulateDataBaseAsync()
+        private void InitialPopulateDataBaseAsync()
         {
             InitialiseEnergyMeterData();
             InitialContextGeneration(startingDate, apiCaller.GetCurrentDateTime().Item1);
-            await SaveToDataBaseInitialAsync();
+            _ = SaveToDataBaseInitialAsync();
         }
         private void InitialiseEnergyMeterData()
         {

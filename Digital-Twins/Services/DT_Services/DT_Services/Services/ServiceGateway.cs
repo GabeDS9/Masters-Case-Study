@@ -19,14 +19,35 @@ namespace Services
         ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
 
         Communication.ServerSocket myServer = new Communication.ServerSocket();
-
+        Communication.ClientSocket myClient = new Communication.ClientSocket();
         private int ServerPort = 9000;
 
         public void InitialiseServices()
         {
             _ = directoryService.InitialiseDirectoryServiceAsync();
             Console.WriteLine("Service Gateway Initialised");
-            StartGatewayServer();            
+            StartGatewayServer();
+
+            /*
+            //Test
+            string ipAdd = "127.0.0.1";
+            int port = 8001;
+            List<string> DTDetail = new List<string>();
+            DTDetail.Add("Precinct");
+            DTDetail.Add("Building");
+            var temp = new MessageModel
+            {
+                DataType = "Energy",
+                MessageType = "CurrentData",
+                DisplayType = "Collective",
+                DTDetailLevel = DTDetail,
+                //startDate = message.startDate,
+                //endDate = message.endDate,
+                //timePeriod = message.timePeriod
+            };
+            string tempMes = JsonConvert.SerializeObject(temp);
+            string response = myClient.sendMessageAsync(tempMes, ipAdd, port).Result;
+            Console.WriteLine(response);*/
         }
         private void StartGatewayServer()
         {
