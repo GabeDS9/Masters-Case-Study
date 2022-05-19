@@ -419,53 +419,60 @@ namespace Precinct_DT
         }
         private async Task GetUpdatedEnergyDataAsync()
         {
-            CheckUpdatedData();
-            if (EnergyDataAvailable)
+            if (Buildings.Count > 0)
             {
-                double newDayPower = 0;
-                string dayDate;
-                foreach (var building in Buildings)
+                CheckUpdatedData();
+                if (EnergyDataAvailable)
                 {
-                    MessageModel tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestTimeStamp" };
-                    var mes = JsonConvert.SerializeObject(tempMes);
-                    var response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
-                    dayDate = utilities.DecodeTimestamp(response, "Day");
-                    prevEnergyTime = dayDate;
+                    double newDayPower = 0;
+                    string dayDate;
+                    foreach (var building in Buildings)
+                    {
+                        MessageModel tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestTimeStamp" };
+                        var mes = JsonConvert.SerializeObject(tempMes);
+                        var response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
+                        dayDate = utilities.DecodeTimestamp(response, "Day");
+                        prevEnergyTime = dayDate;
 
-                    tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestEnergy", startDate = dayDate };
-                    mes = JsonConvert.SerializeObject(tempMes);
-                    response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
-                    newDayPower += double.Parse(response);
-                }
-                var temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), 0);
-                /*if (temp != null)
-                {
-                    Console.WriteLine($"Old day value for energy for {Precinct_name} {prevEnergyTime} - {temp[0].Power_Tot}");
-                }*/
-                var newDayEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Day");
-                var newMonthEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Month");
-                var newYearEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Year");
+                        tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestEnergy", startDate = dayDate };
+                        mes = JsonConvert.SerializeObject(tempMes);
+                        response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
+                        newDayPower += double.Parse(response);
+                    }
+                    var temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), 0);
+                    /*if (temp != null)
+                    {
+                        Console.WriteLine($"Old day value for energy for {Precinct_name} {prevEnergyTime} - {temp[0].Power_Tot}");
+                    }*/
+                    var newDayEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Day");
+                    var newMonthEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Month");
+                    var newYearEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Year");
 
-                if (newDayEnergyData.Timestamp != null)
-                {
-                    await db.UpdateEnergyMeter(newDayEnergyData);
-                    await db.UpdateEnergyMeter(newMonthEnergyData);
-                    await db.UpdateEnergyMeter(newYearEnergyData);
+                    if (newDayEnergyData.Timestamp != null)
+                    {
+                        await db.UpdateEnergyMeter(newDayEnergyData);
+                        await db.UpdateEnergyMeter(newMonthEnergyData);
+                        await db.UpdateEnergyMeter(newYearEnergyData);
+                    }
+                    else if (newDayEnergyData.Timestamp == null)
+                    {
+                        var tempDayMeter = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, (double)newDayEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                        var tempMonthMeter = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, (double)newMonthEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
+                        var tempYearMeter = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, (double)newYearEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
+                        await db.CreateEnergyReading(tempDayMeter);
+                        await db.CreateEnergyReading(tempMonthMeter);
+                        await db.CreateEnergyReading(tempYearMeter);
+                    }
+                    _ = ResetUpdatedDataAvailableAsync();
+                    NewEnergyDataAvailable = true;
+                    //temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                    //Console.WriteLine($"Updated day value for energy for {Precinct_name} {prevEnergyTime} - {temp[0].Power_Tot}");
+                    //Console.WriteLine(Precinct_name + " Updated");
                 }
-                else if (newDayEnergyData.Timestamp == null)
-                {
-                    var tempDayMeter = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, (double)newDayEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
-                    var tempMonthMeter = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, (double)newMonthEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
-                    var tempYearMeter = new EnergyMeterModel(Precinct_name, 0, Latitude, Longitude, (double)newYearEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
-                    await db.CreateEnergyReading(tempDayMeter);
-                    await db.CreateEnergyReading(tempMonthMeter);
-                    await db.CreateEnergyReading(tempYearMeter);
-                }
-                _ = ResetUpdatedDataAvailableAsync();
-                NewEnergyDataAvailable = true;
-                //temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
-                //Console.WriteLine($"Updated day value for energy for {Precinct_name} {prevEnergyTime} - {temp[0].Power_Tot}");
-                //Console.WriteLine(Precinct_name + " Updated");
+            }
+            else
+            {
+                await GetCurrentEnergyMeterDataAsync();
             }
         }
         private void CheckUpdatedData()
@@ -488,6 +495,103 @@ namespace Precinct_DT
                 _ = UpdateLatestEnergyDataAsync();
             }
         }
+        private async Task GetCurrentEnergyMeterDataAsync()
+        {
+            var tempData = energyManager.GetCurrentEnergyData(precinctEnergyMeter.meterid);
+            if (tempData.Count > 0)
+            {
+                if (tempData[tempData.Count - 1].timestamp != precinctEnergyMeter.latest_timestamp)
+                {
+                    precinctEnergyMeter.previous_timestamp = precinctEnergyMeter.latest_timestamp;
+                    precinctEnergyMeter.latest_timestamp = tempData[tempData.Count - 1].timestamp;
+                    precinctEnergyMeter.latest_power = tempData[tempData.Count - 1].ptot_kw;
+                    /*var temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.previous_timestamp, "Day"));
+                    if (temp != null)
+                    {
+                        Console.WriteLine($"Old day value for energy for {item.description} {item.previous_timestamp} - {temp[0].Power_Tot}");
+                    }*/
+                    var newDayEnergyData = await CalculateEnergyNewAverageAsync(precinctEnergyMeter.meterid, precinctEnergyMeter.latest_power, precinctEnergyMeter.previous_timestamp, "Day");
+                    var newMonthEnergyData = await CalculateEnergyNewAverageAsync(precinctEnergyMeter.meterid, precinctEnergyMeter.latest_power, precinctEnergyMeter.previous_timestamp, "Month");
+                    var newYearEnergyData = await CalculateEnergyNewAverageAsync(precinctEnergyMeter.meterid, precinctEnergyMeter.latest_power, precinctEnergyMeter.previous_timestamp, "Year");
+                    if (newDayEnergyData.Timestamp != null)
+                    {
+                        await db.UpdateEnergyMeter(newDayEnergyData);
+                        await db.UpdateEnergyMeter(newMonthEnergyData);
+                        await db.UpdateEnergyMeter(newYearEnergyData);
+                    }
+                    else if (newDayEnergyData.Timestamp == null)
+                    {
+                        var tempDayMeter = new EnergyMeterModel(precinctEnergyMeter.description, precinctEnergyMeter.meterid, precinctEnergyMeter.latitude,
+                            precinctEnergyMeter.longitude, precinctEnergyMeter.latest_power, utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Day"));
+                        await db.CreateEnergyReading(tempDayMeter);
+
+                        var prevMonth = utilities.DecodeTimestamp(newDayEnergyData.Timestamp, "Month");
+                        var prevYear = utilities.DecodeTimestamp(newDayEnergyData.Timestamp, "Year");
+
+                        if (utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Month") == prevMonth)
+                        {
+                            await db.UpdateEnergyMeter(newMonthEnergyData);
+                        }
+                        else if (utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Month") != prevMonth)
+                        {
+                            var tempMonthMeter = new EnergyMeterModel(precinctEnergyMeter.description, precinctEnergyMeter.meterid, precinctEnergyMeter.latitude,
+                                precinctEnergyMeter.longitude, precinctEnergyMeter.latest_power, utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Month"));
+                            await db.CreateEnergyReading(tempMonthMeter);
+                        }
+
+                        if (utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Year") == prevYear)
+                        {
+                            await db.UpdateEnergyMeter(newYearEnergyData);
+                        }
+                        else if (utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Year") != prevYear)
+                        {
+                            var tempYearMeter = new EnergyMeterModel(precinctEnergyMeter.description, precinctEnergyMeter.meterid, precinctEnergyMeter.latitude,
+                                precinctEnergyMeter.longitude, precinctEnergyMeter.latest_power, utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Year"));
+                            await db.CreateEnergyReading(tempYearMeter);
+                        }
+                    }
+                    precinctEnergyMeter.NewDataAvailable = true;
+                    //temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.latest_timestamp, "Day"));
+                    //Console.WriteLine($"Updated day value for energy for {item.description} {item.latest_timestamp} - {temp[0].Power_Tot}");
+                    //Console.WriteLine(Building_name + " Updated");
+                }
+            }
+            if(Buildings.Count == 0) {
+                NewEnergyDataAvailable = true;
+            }            
+        }
+        public async Task<EnergyMeterModel> CalculateEnergyNewAverageAsync(int meterid, double newPower, string prevTime, string type)
+        {
+            string prevTimestamp = utilities.DecodeTimestamp(prevTime, type);
+            int currentNumberofTimestamps = 0;
+            if (type == "Day")
+            {
+                currentNumberofTimestamps = (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
+            }
+            else if (type == "Month")
+            {
+                currentNumberofTimestamps = (DateTime.Now.Day * 288) + (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
+            }
+            else if (type == "Year")
+            {
+                currentNumberofTimestamps = (DateTime.Now.Day * 8640) + (DateTime.Now.Day * 288) + (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
+            }
+
+            var temp = await db.GetEnergyReading(Precinct_name, prevTimestamp, meterid);
+            EnergyMeterModel result = null;
+            if (temp.Count != 0)
+            {
+                double newp = (double)((temp[0].Power_Tot * (currentNumberofTimestamps)) + newPower) / (currentNumberofTimestamps + 1);
+                temp[0].Power_Tot = newp;
+                result = temp[0];
+            }
+            else if (temp.Count == 0)
+            {
+                result = new EnergyMeterModel(null, 0, null, null, 0, null);
+            }
+
+            return result;
+        }
         private async Task ResetUpdatedDataAvailableAsync()
         {
             EnergyDataAvailable = false;
@@ -509,8 +613,19 @@ namespace Precinct_DT
                 var response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
                 latestPrecinctEnergy += double.Parse(response);
             }
-            var temp = await db.GetLatestEnergyReading();
-            temp[0].Power_Tot = latestPrecinctEnergy;
+            List<EnergyMeterModel> temp = new List<EnergyMeterModel>();
+            if(Buildings.Count > 0)
+            {
+                temp = await db.GetLatestEnergyReading(0);
+                temp[0].Power_Tot = latestPrecinctEnergy;
+            }
+            else
+            {
+                temp = await db.GetLatestEnergyReading(precinctEnergyMeter.meterid);
+                var data = energyManager.GetCurrentEnergyData(precinctEnergyMeter.meterid);
+                temp[0].Power_Tot = data[data.Count - 1].ptot_kw;
+            }
+            
             await db.UpdateEnergyMeter(temp[0]);
         }
         private void ResetDataAvailable()
@@ -541,7 +656,15 @@ namespace Precinct_DT
         {
             try
             {
-                var temp = await db.GetLatestEnergyReading();
+                List<EnergyMeterModel> temp = new List<EnergyMeterModel>();
+                if(Buildings.Count > 0)
+                {
+                    temp = await db.GetLatestEnergyReading(0);
+                }
+                else
+                {
+                    temp = await db.GetLatestEnergyReading(precinctEnergyMeter.meterid);
+                }
                 return (double)temp[0].Power_Tot;
             }
             catch (Exception e)
@@ -581,11 +704,23 @@ namespace Precinct_DT
                     }
                     else if (DTLevel == "Precinct")
                     {
-                        var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList);
-                        var newList = GenerateInformationList(tempPrec);
-                        foreach (var item in newList)
+                        if (Buildings.Count > 0)
                         {
-                            informationDataList.Add(item);
+                            var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList, 0);
+                            var newList = GenerateInformationList(tempPrec);
+                            foreach (var item in newList)
+                            {
+                                informationDataList.Add(item);
+                            }
+                        }
+                        else
+                        {
+                            var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList, precinctEnergyMeter.meterid);
+                            var newList = GenerateInformationList(tempPrec);
+                            foreach (var item in newList)
+                            {
+                                informationDataList.Add(item);
+                            }
                         }
                     }
                     else if (DTLevel == "All")
@@ -604,11 +739,23 @@ namespace Precinct_DT
                                 informationDataList.Add(item);
                             }
                         }
-                        var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList);
-                        var newList = GenerateInformationList(tempPrec);
-                        foreach (var item in newList)
+                        if (Buildings.Count > 0)
                         {
-                            informationDataList.Add(item);
+                            var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList, 0);
+                            var newList = GenerateInformationList(tempPrec);
+                            foreach (var item in newList)
+                            {
+                                informationDataList.Add(item);
+                            }
+                        }
+                        else
+                        {
+                            var tempPrec = await ReturnPrecinctEnergyAveragesAsync(dateList, precinctEnergyMeter.meterid);
+                            var newList = GenerateInformationList(tempPrec);
+                            foreach (var item in newList)
+                            {
+                                informationDataList.Add(item);
+                            }
                         }
                     }
                 }
@@ -671,12 +818,12 @@ namespace Precinct_DT
             }
             return informationDataList;
         }
-        public async Task<List<EnergyMeterModel>> ReturnPrecinctEnergyAveragesAsync(List<string> dateList)
+        public async Task<List<EnergyMeterModel>> ReturnPrecinctEnergyAveragesAsync(List<string> dateList, int meterid)
         {
             List<EnergyMeterModel> meterData = new List<EnergyMeterModel>();
             foreach (var date in dateList)
             {
-                var temp = await db.GetEnergyReading(Precinct_name, date, 0);
+                var temp = await db.GetEnergyReading(Precinct_name, date, meterid);
                 if (temp.Count != 0)
                 {
                     meterData.Add(temp[0]);
@@ -691,7 +838,7 @@ namespace Precinct_DT
             {
                 List<string> dates = new List<string>();
                 dates.Add(date);
-                var temp = await ReturnPrecinctEnergyAveragesAsync(dates);
+                var temp = await ReturnPrecinctEnergyAveragesAsync(dates, 0);
                 if(temp.Count > 0)
                 {
                     double totPower = (double)temp[0].Power_Tot;
@@ -788,7 +935,15 @@ namespace Precinct_DT
                         string stDate = utilities.ChangeDateFormat(message.startDate);
                         string enDate = utilities.ChangeDateFormat(message.endDate);
                         var dateList = utilities.GenerateDateList(stDate, enDate, message.timePeriod);
-                        var temp = await ReturnPrecinctEnergyAveragesAsync(dateList);
+                        var temp = new List<EnergyMeterModel>();
+                        if(Buildings.Count > 0)
+                        {
+                            temp = await ReturnPrecinctEnergyAveragesAsync(dateList, 0);
+                        }
+                        else
+                        {
+                            temp = await ReturnPrecinctEnergyAveragesAsync(dateList, precinctEnergyMeter.meterid);
+                        }
                         var infoModelList = GenerateInformationList(temp);
                         var response = JsonConvert.SerializeObject(infoModelList);
                         return response;

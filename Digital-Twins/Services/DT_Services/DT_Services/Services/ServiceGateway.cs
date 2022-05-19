@@ -26,28 +26,30 @@ namespace Services
         {
             _ = directoryService.InitialiseDirectoryServiceAsync();
             Console.WriteLine("Service Gateway Initialised");
-            StartGatewayServer();
+            //StartGatewayServer();
 
-            /*
+            
             //Test
             string ipAdd = "127.0.0.1";
-            int port = 8001;
+            int port = 8000;
             List<string> DTDetail = new List<string>();
+            DTDetail.Add("All");
+            /*DTDetail.Add("Campus");
             DTDetail.Add("Precinct");
-            DTDetail.Add("Building");
+            DTDetail.Add("Building");*/
             var temp = new MessageModel
             {
                 DataType = "Energy",
-                MessageType = "CurrentData",
+                MessageType = "Averages",
                 DisplayType = "Collective",
                 DTDetailLevel = DTDetail,
-                //startDate = message.startDate,
-                //endDate = message.endDate,
-                //timePeriod = message.timePeriod
+                startDate = "2022-5-1",
+                endDate = "2022-5-19",
+                timePeriod = "Day"
             };
             string tempMes = JsonConvert.SerializeObject(temp);
             string response = myClient.sendMessageAsync(tempMes, ipAdd, port).Result;
-            Console.WriteLine(response);*/
+            Console.WriteLine(response);
         }
         private void StartGatewayServer()
         {

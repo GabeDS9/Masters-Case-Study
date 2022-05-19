@@ -53,10 +53,10 @@ namespace DataAccess
             var filter = Builders<EnergyMeterModel>.Filter.Eq("Id", energyMeter.Id);
             return energyCollection.ReplaceOneAsync(filter, energyMeter, new ReplaceOptions { IsUpsert = true });
         }
-        public async Task<List<EnergyMeterModel>> GetLatestEnergyReading()
+        public async Task<List<EnergyMeterModel>> GetLatestEnergyReading(int meterID)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == "Current"));
+            var results = await energymeterCollection.FindAsync(c => ((c.EnergyMeter_name == "Current" || c.EnergyMeter_name == "MainMeterCurrent") && (c.Meter_ID == meterID)));
             return results.ToList();
         }
         public async Task DeleteDatabase(string dbName)

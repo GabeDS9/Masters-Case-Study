@@ -34,7 +34,7 @@ namespace Communication
                         // Message sent!  Wait for the response stream of bytes...
                         // streamToMessage - discussed later
                         response = await streamToMessage(stream, client);
-                        Console.WriteLine(response.Length);
+                        //Console.WriteLine(response.Length);
                         //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
                         //Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
                     }
