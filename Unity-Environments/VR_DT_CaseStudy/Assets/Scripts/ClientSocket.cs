@@ -32,7 +32,7 @@ public class ClientSocket : MonoBehaviour
                 // streamToMessage - discussed later
                 response = await streamToMessage(stream, client);
                 //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
-                //Debug.Log("Message received from Gateway: " + response);
+                //Debug.Log("Message received from Gateway: " + response.Length);
             }
             client.Close();
         }
@@ -90,7 +90,7 @@ public class ClientSocket : MonoBehaviour
             }
         }
         while (stream.DataAvailable);
-        Debug.Log(result);
+        //Debug.Log(result);
         return result;
     }
 }

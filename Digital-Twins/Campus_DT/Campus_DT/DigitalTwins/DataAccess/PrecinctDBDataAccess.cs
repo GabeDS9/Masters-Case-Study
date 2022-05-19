@@ -41,10 +41,10 @@ namespace DataAccess
             return energyMeterCollection.InsertOneAsync(energymeter);
         }
 
-        public async Task<List<EnergyMeterModel>> GetEnergyReading(string precinct, string timestamp)
+        public async Task<List<EnergyMeterModel>> GetEnergyReading(string precinct, string timestamp, int meterid)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == precinct && c.Timestamp == timestamp));
+            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == precinct && c.Timestamp == timestamp && c.Meter_ID == meterid));
             return results.ToList();
         }
         public Task UpdateEnergyMeter(EnergyMeterModel energyMeter)

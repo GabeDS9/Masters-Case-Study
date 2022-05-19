@@ -16,7 +16,7 @@ public class LoadExcel
 
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
-    private string DTConfigurationFile = "DTArchitectureConfiguration.csv";
+    private string DTConfigurationFile = "LargeDTArchitectureConfiguration.csv";
 
     #region EnergyMeters
     public List<EnergyMeterData> LoadEnergyMeterData(string elementName)

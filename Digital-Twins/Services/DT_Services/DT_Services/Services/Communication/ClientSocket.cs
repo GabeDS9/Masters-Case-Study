@@ -33,8 +33,8 @@ namespace Communication
 
                         // Message sent!  Wait for the response stream of bytes...
                         // streamToMessage - discussed later
-                        response = streamToMessage(stream);
-                        //Console.WriteLine(response);
+                        response = await streamToMessage(stream, client);
+                        Console.WriteLine(response.Length);
                         //var tempMessage = JsonConvert.DeserializeObject<DataAccess.Models.EnergyMeterModel>(response);
                         //Console.WriteLine("Message received from DT: " + tempMessage.EnergyMeter_name + " power average for " + tempMessage.Timestamp + " was: " + tempMessage.Power_Tot);
                     }
@@ -68,23 +68,36 @@ namespace Communication
             return completemsg;
         }
 
-        private static string streamToMessage(Stream stream)
+        private async Task<string> streamToMessage(NetworkStream stream, TcpClient client)
         {
-            // size bytes have been fixed to 4
-            byte[] sizeBytes = new byte[4];
-            // read the content length
-            stream.Read(sizeBytes, 0, 4);
-            int messageSize = BitConverter.ToInt32(sizeBytes, 0);
-            // create a buffer of the content length size and read from the stream
-            byte[] messageBytes = new byte[messageSize];
-            stream.Read(messageBytes, 0, messageSize);
-            // convert message byte array to the message string using the encoding
-            string message = encoding.GetString(messageBytes);
             string result = null;
-            foreach (var c in message)
-                if (c != '\0')
+            do
+            {
+                //Debug.Log(stream.DataAvailable);
+                // size bytes have been fixed to 4
+                byte[] sizeBytes = new byte[4];
+                // read the content length
+                await stream.ReadAsync(sizeBytes, 0, 4);
+                int messageSize = BitConverter.ToInt32(sizeBytes, 0);
+                // create a buffer of the content length size and read from the stream
+                byte[] messageBytes = new byte[messageSize];
+                await stream.ReadAsync(messageBytes, 0, messageSize);
+                // convert message byte array to the message string using the encoding
+                string message = encoding.GetString(messageBytes);
+                foreach (var c in message)
+                {
                     result += c;
-
+                    /*if (c != '\0')
+                    {
+                        result += c;
+                    }
+                    else
+                    {
+                        Debug.Log(c);
+                    }*/
+                }
+            }
+            while (stream.DataAvailable);
             return result;
         }
     }

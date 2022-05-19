@@ -580,7 +580,7 @@ namespace Building_DT
                 {
                     foreach (var item in EnergyMeters)
                     {
-                        if (item.meterid != EnergyMeters[0].meterid)
+                        if (item.meterid != buildingEnergyMeter.meterid)
                         {
                             var temp = await ReturnEnergyAveragesAsync(item.meterid, dates);
                             totPower += (double)temp[0].Power_Tot;

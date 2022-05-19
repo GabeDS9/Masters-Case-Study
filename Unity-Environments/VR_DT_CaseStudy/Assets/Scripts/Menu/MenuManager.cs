@@ -144,6 +144,7 @@ public class MenuManager : MonoBehaviour
         currentMenu.SetActive(false);
         MainMenu.SetActive(true);        
         currentMenu = MainMenu;
+        TimePeriod.value = 0;
     }
     public void DisplayDTLevelMenu()
     {
@@ -261,7 +262,7 @@ public class MenuManager : MonoBehaviour
         visualisationSlider.value = 0;
         visualisationSlider.interactable = false;
         visualisationScale.interactable = true;
-        visualisationScale.maxValue = 1;
+        visualisationScale.maxValue = 2;
         visualisationScale.minValue = 0.1f;
         visualisationScale.value = 1;
         currentMenu.SetActive(false);
@@ -275,8 +276,11 @@ public class MenuManager : MonoBehaviour
     }
     public void ChangeVisualisationDate()
     {
-        var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
-        mapSpawnner.ChangeVisualisationDate(date);
+        if (visualisationSlider.value != 0)
+        {
+            var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
+            mapSpawnner.ChangeVisualisationDate(date);
+        }
     }
     public void ChangeVisualisationScale()
     {

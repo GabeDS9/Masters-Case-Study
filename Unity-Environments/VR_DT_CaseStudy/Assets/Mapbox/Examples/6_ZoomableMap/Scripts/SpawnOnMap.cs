@@ -54,7 +54,7 @@
                 instance.transform.localPosition = Map.GeoToWorldPosition(locations[0], true);
 
                 float floatEnergy = (float)Math.Abs(data.Value);
-                float adjustedScalePos = floatEnergy / 10; 
+                float adjustedScalePos = floatEnergy / 10;
                 instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
                 instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
 
@@ -136,10 +136,10 @@
             foreach(var vis in myVisuals)
             {
                 float newScale = vis.InitialVisualScale * scale;
-                vis.Visual.transform.localScale = new Vector3(1, newScale, 1);
+                vis.Visual.transform.localScale = new Vector3(2*scale, newScale, 2*scale);
                 vis.Visual.transform.position = new Vector3(vis.Visual.transform.localPosition.x, newScale / 2, vis.Visual.transform.localPosition.z);
-                //vis.VisualInfo.transform.localScale = vis.InitialInfoScale * scale; 
-                vis.VisualInfo.transform.position = new Vector3(vis.Visual.transform.position.x - 1, (newScale / 2) + 4, vis.Visual.transform.position.z);
+                vis.VisualInfo.transform.localScale = new Vector3(vis.InitialInfoScale.x * (scale+0.2f), vis.InitialInfoScale.y * (scale + 0.2f), vis.InitialInfoScale.z * (scale + 0.2f)); 
+                vis.VisualInfo.transform.position = new Vector3(vis.Visual.transform.position.x - 1, (newScale / 2) + (4.5f*scale), vis.Visual.transform.position.z);
             }
         }
         private List<DataModel> DecodeMessage(string message)

@@ -437,7 +437,7 @@ namespace Precinct_DT
                     response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
                     newDayPower += double.Parse(response);
                 }
-                var temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                var temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), 0);
                 /*if (temp != null)
                 {
                     Console.WriteLine($"Old day value for energy for {Precinct_name} {prevEnergyTime} - {temp[0].Power_Tot}");
@@ -676,7 +676,7 @@ namespace Precinct_DT
             List<EnergyMeterModel> meterData = new List<EnergyMeterModel>();
             foreach (var date in dateList)
             {
-                var temp = await db.GetEnergyReading(Precinct_name, date);
+                var temp = await db.GetEnergyReading(Precinct_name, date, 0);
                 if (temp.Count != 0)
                 {
                     meterData.Add(temp[0]);
@@ -721,7 +721,7 @@ namespace Precinct_DT
                 currentNumberofTimestamps = (DateTime.Now.Day * 8640) + (DateTime.Now.Day * 288) + (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
             }
 
-            var temp = await db.GetEnergyReading(Precinct_name, prevTimestamp);
+            var temp = await db.GetEnergyReading(Precinct_name, prevTimestamp, 0);
             EnergyMeterModel result = null;
             if (temp.Count != 0)
             {
