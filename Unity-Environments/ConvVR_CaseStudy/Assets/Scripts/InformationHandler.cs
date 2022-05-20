@@ -18,27 +18,58 @@ public class InformationHandler : MonoBehaviour
         BuildingDataList.Clear();
         PrecinctDataList.Clear();
         CampusDataList.Clear();
+        dataList.Clear();
         foreach(var level in ElementLevel)
         {
-            if(level == "Building")
+            if (level == "Building")
             {
-                if(DisplayType == "Individual")
+                if (DisplayType == "Individual")
                 {
                     var BuildInfo = await GetBuildingInformationAsync(DataType, InformationType, ElementSelected, startDate, endDate, timePeriod, BuildingList);
                     BuildingDataList.Add(BuildInfo);
                     dataList.Add(BuildInfo);
                 }
-                else if(DisplayType == "Collective")
+                else if (DisplayType == "Collective")
                 {
-                    foreach(var prec in PrecinctList)
+                    foreach(var build in BuildingList)
                     {
-                        if(prec.ElementName == ElementSelected)
+                        if(build.ElementName == ElementSelected)
                         {
-                            foreach(var build in prec.ChildElements)
+                            var BuildInfo = await GetBuildingInformationAsync(DataType, InformationType, ElementSelected, startDate, endDate, timePeriod, BuildingList);
+                            BuildingDataList.Add(BuildInfo);
+                            dataList.Add(BuildInfo);
+                        }
+                    }
+                    foreach (var prec in PrecinctList)
+                    {
+                        if (prec.ElementName == ElementSelected)
+                        {
+                            foreach (var build in prec.ChildElements)
                             {
                                 var BuildInfo = await GetBuildingInformationAsync(DataType, InformationType, build, startDate, endDate, timePeriod, BuildingList);
                                 BuildingDataList.Add(BuildInfo);
                                 dataList.Add(BuildInfo);
+                            }
+                        }
+                    }
+                    foreach(var camp in CampusList)
+                    {
+                        if(camp.ElementName == ElementSelected)
+                        {
+                            foreach (var childPrec in camp.ChildElements)
+                            {
+                                foreach (var prec in PrecinctList)
+                                {
+                                    if (prec.ElementName == childPrec)
+                                    {
+                                        foreach (var build in prec.ChildElements)
+                                        {
+                                            var BuildInfo = await GetBuildingInformationAsync(DataType, InformationType, build, startDate, endDate, timePeriod, BuildingList);
+                                            BuildingDataList.Add(BuildInfo);
+                                            dataList.Add(BuildInfo);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -70,10 +101,10 @@ public class InformationHandler : MonoBehaviour
                             PrecinctDataList.Add(PrecInfo);
                             dataList.Add(PrecInfo);
                         }
-                    } 
-                    foreach(var campus in CampusList)
+                    }
+                    foreach (var campus in CampusList)
                     {
-                        if(campus.ElementName == ElementSelected)
+                        if (campus.ElementName == ElementSelected)
                         {
                             foreach (var childPrec in campus.ChildElements)
                             {
@@ -103,9 +134,47 @@ public class InformationHandler : MonoBehaviour
             {
                 if (DisplayType == "Individual")
                 {
-                    var PrecInfo = await GetCampusInformationAsync(DataType, InformationType, DisplayType, ElementSelected, startDate, endDate, timePeriod, BuildingList, PrecinctList, CampusList);
-                    PrecinctDataList.Add(PrecInfo);
-                    dataList.Add(PrecInfo);
+                    var CampusInfo = await GetCampusInformationAsync(DataType, InformationType, DisplayType, ElementSelected, startDate, endDate, timePeriod, BuildingList, PrecinctList, CampusList);
+                    CampusDataList.Add(CampusInfo);
+                    dataList.Add(CampusInfo);
+                }
+                else if (DisplayType == "Collective")
+                {
+                    foreach (var campus in CampusList)
+                    {
+                        if (PrecinctDataList.Count == 0)
+                        {
+                            if (campus.ElementName == ElementSelected)
+                            {
+                                foreach (var childPrec in campus.ChildElements)
+                                {
+                                    foreach (var prec in PrecinctList)
+                                    {
+                                        if (prec.ElementName == childPrec)
+                                        {
+                                            if (PrecinctDataList.Count < 1)
+                                            {
+                                                if (BuildingDataList.Count < 1)
+                                                {
+                                                    foreach (var build in prec.ChildElements)
+                                                    {
+                                                        var BuildInfo = await GetBuildingInformationAsync(DataType, InformationType, build, startDate, endDate, timePeriod, BuildingList);
+                                                        BuildingDataList.Add(BuildInfo);
+                                                    }
+                                                }
+                                                var PrecInfo = await GetPrecinctInformationAsync(DataType, InformationType, DisplayType, prec.ElementName, startDate, endDate, timePeriod, BuildingList, PrecinctList);
+                                                PrecinctDataList.Add(PrecInfo);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        var CampusInfo = await GetCampusInformationAsync(DataType, InformationType, DisplayType, ElementSelected, startDate, endDate, timePeriod, BuildingList, PrecinctList, CampusList);
+                        CampusDataList.Add(CampusInfo);
+                        dataList.Add(CampusInfo);
+                    }
                 }
             }
         }        
@@ -251,22 +320,22 @@ public class InformationHandler : MonoBehaviour
             }
             else if (DisplayType == "Collective")
             {
-                foreach (var prec in PrecinctList)
+                foreach (var camp in CampusList)
                 {
-                    if (prec.ElementName == ElementSelected)
+                    if (camp.ElementName == ElementSelected)
                     {
                         double Ptot = 0;
-                        foreach (var data in BuildingDataList)
+                        foreach (var data in PrecinctDataList)
                         {
                             Ptot += data.Value;
                         }
                         DataModel newData = new DataModel
                         {
                             DataType = DataType,
-                            ElementType = "Precinct",
+                            ElementType = "Campus",
                             Element_Name = ElementSelected,
-                            Latitude = prec.Latitude,
-                            Longitude = prec.Longitude,
+                            Latitude = camp.Latitude,
+                            Longitude = camp.Longitude,
                             Meter_ID = 0,
                             Value = Ptot,
                             Timestamp = "Latest Reading"

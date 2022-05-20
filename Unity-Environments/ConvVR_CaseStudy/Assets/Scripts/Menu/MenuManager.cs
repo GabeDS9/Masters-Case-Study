@@ -211,6 +211,17 @@ public class MenuManager : MonoBehaviour
         EnergyDataFlag = false;
         AllDataFlag = false;
         DataTypeSelected = "";
+        DTLevelSelected.Clear();
+        if (LowestLevelToggle.isOn)
+        {
+            DTLevelSelected.Add(LowestLevelToggle.GetComponentInChildren<Text>().text);
+            DisplayTypeSelected = "Collective";
+        }
+        if (MiddleLevelToggle.isOn)
+        {
+            DTLevelSelected.Add(MiddleLevelToggle.GetComponentInChildren<Text>().text);
+            DisplayTypeSelected = "Collective";
+        }
         if (HighestLevelToggle.isOn && !MiddleLevelToggle.isOn && !LowestLevelToggle.isOn)
         {
             DTLevelSelected.Add(HighestLevelToggle.GetComponentInChildren<Text>().text);
@@ -220,23 +231,26 @@ public class MenuManager : MonoBehaviour
         {
             DTLevelSelected.Add(HighestLevelToggle.GetComponentInChildren<Text>().text);
             DisplayTypeSelected = "Collective";
-        }
-        if (MiddleLevelToggle.isOn)
-        {
-            DTLevelSelected.Add(MiddleLevelToggle.GetComponentInChildren<Text>().text);
-            DisplayTypeSelected = "Collective";
-        }
-        if (LowestLevelToggle.isOn)
-        {
-            DTLevelSelected.Add(LowestLevelToggle.GetComponentInChildren<Text>().text);
-            DisplayTypeSelected = "Collective";
-        }
+        }        
+        
         if (AllLevelSelected)
         {
             DTLevelSelected.Clear();
-            DTLevelSelected.Add("Building");
-            DTLevelSelected.Add("Precinct");
-            DTLevelSelected.Add("Campus");
+            if (LowestLevelToggle.IsActive())
+            {
+                DTLevelSelected.Add("Building");
+                DTLevelSelected.Add("Precinct");
+                DTLevelSelected.Add("Campus");
+            }
+            else if (!LowestLevelToggle.IsActive() && MiddleLevelToggle.IsActive())
+            {
+                DTLevelSelected.Add("Building");
+                DTLevelSelected.Add("Precinct");                
+            }
+            else if (!LowestLevelToggle.IsActive() && !MiddleLevelToggle.IsActive() && HighestLevelToggle.IsActive())
+            {
+                DTLevelSelected.Add("Building");
+            }
             DisplayTypeSelected = "Collective";
         }
 

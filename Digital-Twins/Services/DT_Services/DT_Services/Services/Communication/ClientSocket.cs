@@ -71,8 +71,9 @@ namespace Communication
         private async Task<string> streamToMessage(NetworkStream stream, TcpClient client)
         {
             string result = null;
+            StringBuilder sb = new StringBuilder();
             do
-            {
+            {               
                 //Debug.Log(stream.DataAvailable);
                 // size bytes have been fixed to 4
                 byte[] sizeBytes = new byte[4];
@@ -86,7 +87,8 @@ namespace Communication
                 string message = encoding.GetString(messageBytes);
                 foreach (var c in message)
                 {
-                    result += c;
+                    sb.Append(c);
+                    //result += c;
                     /*if (c != '\0')
                     {
                         result += c;
@@ -96,8 +98,10 @@ namespace Communication
                         Debug.Log(c);
                     }*/
                 }
+                //Console.WriteLine("Receiving information");
             }
             while (stream.DataAvailable);
+            result = sb.ToString();
             return result;
         }
     }

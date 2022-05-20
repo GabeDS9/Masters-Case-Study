@@ -988,8 +988,16 @@ namespace Precinct_DT
                 {
                     MessageModel tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestTimeStamp" };
                     var mes = JsonConvert.SerializeObject(tempMes);
-                    var response = await myClient.sendMessageAsync(mes, Buildings[0].IP_Address, Buildings[0].Port);
-                    string dayDate = utilities.DecodeTimestamp(response, "Day");
+                    string dayDate = "";
+                    if (Buildings.Count > 0)
+                    {
+                        var response = await myClient.sendMessageAsync(mes, Buildings[0].IP_Address, Buildings[0].Port);
+                        dayDate = utilities.DecodeTimestamp(response, "Day");
+                    }
+                    else
+                    {
+                        dayDate = utilities.DecodeTimestamp(precinctEnergyMeter.latest_timestamp, "Day");
+                    }
                     return dayDate;
                 }
                 else if (message.MessageType == "LatestEnergy")

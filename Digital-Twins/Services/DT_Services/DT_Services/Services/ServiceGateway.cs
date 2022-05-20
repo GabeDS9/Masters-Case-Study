@@ -68,7 +68,7 @@ namespace Services
             else if(tempMessage.ServiceTag == "Exploratory")
             {
                 int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
-                string ipAdd = directoryService.ReturnIPAddress(tempMessage.DigitalTwin); ;
+                string ipAdd = directoryService.ReturnIPAddress(tempMessage.DigitalTwin);
                 message = await exploratoryService.ExploratoryServiceAsync(ipAdd, port, tempMessage);
             }
             return message;

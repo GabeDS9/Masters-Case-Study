@@ -63,6 +63,7 @@ public class ClientSocket : MonoBehaviour
     private async Task<string> streamToMessage(NetworkStream stream, TcpClient client)
     {
         string result = null;
+        StringBuilder sb = new StringBuilder();
         do
         {
             //Debug.Log(stream.DataAvailable);
@@ -78,7 +79,8 @@ public class ClientSocket : MonoBehaviour
             string message = encoding.GetString(messageBytes);
             foreach (var c in message)
             {
-                result += c;
+                sb.Append(c);
+                //result += c;
                 /*if (c != '\0')
                 {
                     result += c;
@@ -88,9 +90,10 @@ public class ClientSocket : MonoBehaviour
                     Debug.Log(c);
                 }*/
             }
+            //Console.WriteLine("Receiving information");
         }
         while (stream.DataAvailable);
-        //Debug.Log(result);
+        result = sb.ToString();
         return result;
     }
 }

@@ -56,6 +56,7 @@ namespace Services_Communication
             // messageToByteArray- discussed later
             byte[] bytes = messageToByteArray(message);
             client.GetStream().Write(bytes, 0, bytes.Length);
+            client.GetStream().Flush();
         }
         public async Task<string> MessageHandlerAsync(string message)
         {
