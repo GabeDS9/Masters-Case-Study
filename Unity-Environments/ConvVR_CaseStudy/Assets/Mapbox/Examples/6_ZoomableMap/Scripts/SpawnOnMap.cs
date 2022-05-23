@@ -9,6 +9,7 @@
     using System;
     using System.Threading.Tasks;
     using UnityEngine.UI;
+    using Newtonsoft.Json;
 
     public class SpawnOnMap : MonoBehaviour
     {
@@ -62,7 +63,7 @@
                 //Debug.Log(infoText.text);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 4, instance.transform.position.z); ;
 
-                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
+                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data, InitialVisualScale = adjustedScalePos, InitialInfoScale = infoInstance.transform.localScale };
                 myVisuals.Add(tempModel);
             }
 
@@ -106,11 +107,11 @@
                 instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 2, instance.transform.position.z); ;
 
-                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data };
+                VisualisationModel tempModel = new VisualisationModel { Visual = instance, VisualInfo = infoInstance, Data = data, InitialVisualScale = adjustedScalePos, InitialInfoScale = infoInstance.transform.localScale };
                 myVisuals.Add(tempModel);
             }
         }
-        public void ChangeVisualisation(string date)
+        public void ChangeVisualisationDate(string date)
         {
             foreach (var vis in myVisuals)
             {
@@ -125,6 +126,23 @@
                     vis.VisualInfo.SetActive(false);
                 }
             }
+        }
+        public void ChangeVisualisationScale(float scale)
+        {
+            foreach (var vis in myVisuals)
+            {
+                float newScale = vis.InitialVisualScale * scale;
+                vis.Visual.transform.localScale = new Vector3(2 * scale, newScale, 2 * scale);
+                vis.Visual.transform.position = new Vector3(vis.Visual.transform.localPosition.x, newScale / 2, vis.Visual.transform.localPosition.z);
+                vis.VisualInfo.transform.localScale = new Vector3(vis.InitialInfoScale.x * (scale + 0.2f), vis.InitialInfoScale.y * (scale + 0.2f), vis.InitialInfoScale.z * (scale + 0.2f));
+                vis.VisualInfo.transform.position = new Vector3(vis.Visual.transform.position.x - 1, (newScale / 2) + (4.5f * scale), vis.Visual.transform.position.z);
+            }
+        }
+        private List<DataModel> DecodeMessage(string message)
+        {
+            List<DataModel> dataList = new List<DataModel>();
+            dataList = JsonConvert.DeserializeObject<List<DataModel>>(message);
+            return dataList;
         }
         private int GetMarkerType(string DT_Type, string DataType)
         {

@@ -30,6 +30,9 @@ public class MenuManager : MonoBehaviour
     public Button AllButton;
     public Button DataTypeMMButton;
 
+    // Services Select UI
+    public GameObject ServicesSelectMenu;
+
     // Date Select UI
     public GameObject DateSelectMenu;
     public TMP_InputField startDate;
@@ -44,6 +47,8 @@ public class MenuManager : MonoBehaviour
     public GameObject VisualisationUI;
     public Slider visualisationSlider;
     public Text visualisationStatus;
+    public Slider visualisationScale;
+    public Button PlayUIButton;
 
     public Mapbox.Examples.SpawnOnMap mapSpawnner;
 
@@ -77,6 +82,7 @@ public class MenuManager : MonoBehaviour
         MainMenu.SetActive(true);
         DisplayLevel.SetActive(false);
         DataType.SetActive(false);
+        ServicesSelectMenu.SetActive(false);
         DateSelectMenu.SetActive(false);
         VisualisationUI.SetActive(false);
         PrecinctDropdown.interactable = false;
@@ -93,6 +99,7 @@ public class MenuManager : MonoBehaviour
     }
     public void DisplayMainMenu()
     {
+        CancelInvoke();
         ResetDropDown();
         PopulateDropDown();
         currentMenu.SetActive(false);
@@ -146,9 +153,21 @@ public class MenuManager : MonoBehaviour
         {
             BuildingDropdown.interactable = true;
             List<string> dtList = new List<string>();
-            foreach (var build in BuildingList)
+            foreach (var prec in PrecinctList)
             {
-                dtList.Add(build.ElementName);
+                if (prec.ElementName == PrecinctDropdown.options[PrecinctDropdown.value].text)
+                {
+                    foreach (var child in prec.ChildElements)
+                    {
+                        foreach (var build in BuildingList)
+                        {
+                            if (child == build.ElementName)
+                            {
+                                dtList.Add(build.ElementName);
+                            }
+                        }
+                    }
+                }
             }
             BuildingDropdown.AddOptions(dtList);
         }
@@ -258,6 +277,12 @@ public class MenuManager : MonoBehaviour
         DataType.SetActive(true);
         currentMenu = DataType;
     }
+    public void DisplayServicesSelectMenu()
+    {
+        currentMenu.SetActive(false);
+        ServicesSelectMenu.SetActive(true);
+        currentMenu = ServicesSelectMenu;
+    }
     public void DisplayTimeSelectMenu()
     {
         TimePeriod.value = 0;
@@ -269,6 +294,73 @@ public class MenuManager : MonoBehaviour
         currentMenu.SetActive(false);
         DateSelectMenu.SetActive(true);
         currentMenu = DateSelectMenu;
+    }
+    public void DisplayVisualisationUI()
+    {
+        PlayUIButton.interactable = false;
+        PlayUIButton.GetComponentInChildren<Text>().text = "Play";
+        visualisationSlider.value = 0;
+        visualisationSlider.interactable = false;
+        visualisationScale.interactable = true;
+        visualisationScale.maxValue = 2;
+        visualisationScale.minValue = 0.1f;
+        visualisationScale.value = 1;
+        currentMenu.SetActive(false);
+        VisualisationUI.SetActive(true);
+        currentMenu = VisualisationUI;
+        if (TimePeriod.value != 0)
+        {
+            PlayUIButton.interactable = true;
+            ConfigureVisualisationSliders();
+        }
+    }
+    public void ChangeVisualisationDate()
+    {
+        //if (visualisationSlider.value != 0)
+        //{
+            var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
+            mapSpawnner.ChangeVisualisationDate(date);
+        //}
+    }
+    public void ChangeVisualisationScale()
+    {
+        var scale = visualisationScale.value;
+        mapSpawnner.ChangeVisualisationScale(scale);
+    }
+    public void PlayVisualisation()
+    {
+        if (PlayUIButton.GetComponentInChildren<Text>().text == "Play")
+        {
+            visualisationSlider.interactable = false;
+            PlayUIButton.GetComponentInChildren<Text>().text = "Stop";
+            InvokeRepeating("PlayFunction", 0.2f, 0.2f);
+        }
+        else if (PlayUIButton.GetComponentInChildren<Text>().text == "Stop")
+        {
+            visualisationSlider.interactable = true;
+            PlayUIButton.GetComponentInChildren<Text>().text = "Play";
+            CancelInvoke();
+        }
+    }
+    private void PlayFunction()
+    {
+        var val = visualisationSlider.value + 1;
+        if (val > visualisationSlider.maxValue)
+        {
+            visualisationSlider.value = visualisationSlider.minValue;
+        }
+        else
+        {
+            visualisationSlider.value = val;
+        }
+        ChangeVisualisationDate();
+    }
+    private void ConfigureVisualisationSliders()
+    {
+        visualisationSlider.interactable = true;
+        visualisationSlider.wholeNumbers = true;
+        var numDates = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected).Count - 1;
+        visualisationSlider.maxValue = numDates;
     }
     public async void GetCurrentInformation()
     {
@@ -283,46 +375,18 @@ public class MenuManager : MonoBehaviour
         mapSpawnner.PopulateData(response, null);
         visualisationStatus.text = "Visualisation ready";
     }
-    /*public async void GetInformation()
+    public async void GetInformation()
     {
         visualisationStatus.text = "Getting visualisation ready...";
         TimePeriodSelected = TimePeriod.options[TimePeriod.value].text;
         StartDateSelected = startDate.text;
         EndDateSelected = endDate.text;
         InformationTypeSelected = "Averages";
-        string response = infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, 
-            SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
-        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
-        /*var message = CreateMessage();
-        DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message, ServerPort);
+        var response = await infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, SelectedElement, DTLevelSelected,
+            StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         mapSpawnner.PopulateData(response, DateList);
         visualisationStatus.text = "Visualisation ready";
-    }*/
-    public void DisplayVisualisationUI()
-    {
-        visualisationSlider.value = 0;
-        visualisationSlider.interactable = false;
-        currentMenu.SetActive(false);
-        VisualisationUI.SetActive(true);
-        currentMenu = VisualisationUI;
-        if (TimePeriod.value != 0)
-        {
-            ConfigureVisualisationSlider();
-        }
-    }
-    public void ChangeVisualisation()
-    {
-        //var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
-        //mapSpawnner.ChangeVisualisation(date);
-    }
-    private void ConfigureVisualisationSlider()
-    {
-        /*visualisationSlider.interactable = true;
-        visualisationSlider.wholeNumbers = true;
-        var numDates = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected).Count - 1;
-        visualisationSlider.maxValue = numDates;*/
     }
     public void SetAllLevelFlag()
     {

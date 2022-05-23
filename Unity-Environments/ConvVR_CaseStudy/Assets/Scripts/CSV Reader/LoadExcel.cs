@@ -7,7 +7,7 @@ using UnityEngine;
 public class LoadExcel
 {
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
-    private string ConfigurationFile = "DTArchitectureConfiguration";
+    private string ConfigurationFile = "LargeDTArchitectureConfiguration";
 
     public List<ElementModel> LoadBuildings()
     {
@@ -69,6 +69,17 @@ public class LoadExcel
                     {
                         string building = data[j]["Building"].ToString();
                         childList.Add(building);
+                    }
+                }
+                if (childList.Count == 0)
+                {
+                    for (var j = 0; j < data.Count; j++)
+                    {
+                        if ((data[j]["Campus"].ToString() != "-") && (data[j]["Precinct"].ToString() == name) && (data[j]["Reticulation"].ToString() == "-"))
+                        {
+                            string meterID = data[j]["meter_id"].ToString();
+                            childList.Add(meterID);
+                        }
                     }
                 }
                 var tempPrecinct = new ElementModel { ElementName = name, ElementType = "Precinct", Latitude = latitude, Longitude = longitude, ChildElements = childList };
