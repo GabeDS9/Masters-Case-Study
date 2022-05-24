@@ -50,8 +50,7 @@ namespace Services
             }
             else if (tempMessage.DataType == "IP_Address")
             {
-                var response = await Task.Run(() => ReturnIPAddress(tempMessage.DigitalTwin));
-                message = JsonConvert.SerializeObject(response);
+                message = await Task.Run(() => ReturnIPAddress(tempMessage.DigitalTwin));
             }
             else if (tempMessage.DataType == "Port")
             {

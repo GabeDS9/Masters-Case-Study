@@ -42,8 +42,6 @@ namespace Communication
 
         private async Task HandleTcpClientAsync(TcpClient client)
         {
-            Console.WriteLine("UI connected on port: " + ((IPEndPoint)server.LocalEndpoint).Port);
-
             string request = streamToMessage(client.GetStream());
             
             if (request != null)
@@ -65,7 +63,8 @@ namespace Communication
             string message = "";
             if(myGateway != null)
             {
-                message = await myGateway.MessageHandlerAsync(mes);
+                Console.WriteLine("UI requeesting information on port");
+                message = await myGateway.MessageHandlerAsync(mes);                
             }
             else if(myDirectory != null)
             {

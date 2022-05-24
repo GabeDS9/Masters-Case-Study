@@ -16,7 +16,7 @@ class Bootstrap
         Thread directoryThread = new Thread(directoryService.InitialiseDirectoryServiceAsync);
         Thread exploratoryThread = new Thread(exploratoryService.InitialiseExploratoryAnalyticsService);
 
-        //directoryThread.Start();
+        directoryThread.Start();
         exploratoryThread.Start();
 
         serviceGateway.InitialiseServiceGateway();        

@@ -289,10 +289,10 @@ public class MenuManager : MonoBehaviour
         if(PlayUIButton.GetComponentInChildren<Text>().text == "Play")
         {
             visualisationSlider.interactable = false;
-            PlayUIButton.GetComponentInChildren<Text>().text = "Stop";
+            PlayUIButton.GetComponentInChildren<Text>().text = "Pause";
             InvokeRepeating("PlayFunction", 0.2f, 0.2f);
         }
-        else if (PlayUIButton.GetComponentInChildren<Text>().text == "Stop")
+        else if (PlayUIButton.GetComponentInChildren<Text>().text == "Pause")
         {
             visualisationSlider.interactable = true;
             PlayUIButton.GetComponentInChildren<Text>().text = "Play";
