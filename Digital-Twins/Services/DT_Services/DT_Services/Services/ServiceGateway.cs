@@ -13,46 +13,30 @@ using Models;
 
 namespace Services
 {
-    public class ServiceGateway
+    public class ServiceGateway : ServiceBaseClass
     {
-        DirectoryService directoryService = new DirectoryService();
-        ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
-
+        private static LoadExcel excel = new LoadExcel();
         Communication.ServerSocket myServer = new Communication.ServerSocket();
         Communication.ClientSocket myClient = new Communication.ClientSocket();
-        private int ServerPort = 9000;
-
-        public void InitialiseServices()
+        private int servicePort = 0;
+        private List<Service> servicesList = new List<Service>();
+        public void InitialiseServiceGateway()
         {
-            _ = directoryService.InitialiseDirectoryServiceAsync();
-            Console.WriteLine("Service Gateway Initialised");
-            StartGatewayServer();            
-            /*
-            //Test
-            string ipAdd = "127.0.0.1";
-            int port = 8000;
-            List<string> DTDetail = new List<string>();
-            DTDetail.Add("All");
-            /*DTDetail.Add("Campus");
-            DTDetail.Add("Precinct");
-            DTDetail.Add("Building");
-            var temp = new MessageModel
+            servicesList = excel.LoadServices();
+            foreach (var service in servicesList)
             {
-                DataType = "Energy",
-                MessageType = "Averages",
-                DisplayType = "Collective",
-                DTDetailLevel = DTDetail,
-                startDate = "2022-5-1",
-                endDate = "2022-5-19",
-                timePeriod = "Day"
-            };
-            string tempMes = JsonConvert.SerializeObject(temp);
-            string response = myClient.sendMessageAsync(tempMes, ipAdd, port).Result;
-            Console.WriteLine(response);*/
+                if (service.ServiceName == "Service Gateway")
+                {
+                    servicePort = service.Port;
+                    break;
+                }
+            }
+            Console.WriteLine($"Setting up service gateway on {servicePort}");
+            StartGatewayServer(servicePort);
         }
-        private void StartGatewayServer()
+        private void StartGatewayServer(int port)
         {
-            myServer.SetupServer(ServerPort, this);
+            myServer.SetupServer(port, this, null, null);
         }
         public async Task<string> MessageHandlerAsync(string mes)
         {
@@ -61,15 +45,27 @@ namespace Services
 
             if (tempMessage.ServiceTag == "Directory")
             {
-                List<string> DTList = new List<string>();
-                DTList = directoryService.ReturnDTs(tempMessage.DigitalTwin);
-                message = JsonConvert.SerializeObject(DTList);
+                foreach(var service in servicesList)
+                {
+                    if (service.ServiceName == "Directory Service")
+                    {
+                        var DTList = await myClient.sendMessageAsync(mes, service.IP_Address, service.Port);
+                        message = DTList;
+                        break;
+                    }
+                }                
             }
             else if(tempMessage.ServiceTag == "Exploratory")
             {
-                int port = directoryService.ReturnPortNumber(tempMessage.DigitalTwin);
-                string ipAdd = directoryService.ReturnIPAddress(tempMessage.DigitalTwin);
-                message = await exploratoryService.ExploratoryServiceAsync(ipAdd, port, tempMessage);
+                foreach (var service in servicesList)
+                {
+                    if (service.ServiceName == "Exploratory Service")
+                    {
+                        var response = await myClient.sendMessageAsync(mes, service.IP_Address, service.Port);
+                        message = response;
+                        break;
+                    }
+                }
             }
             return message;
         }

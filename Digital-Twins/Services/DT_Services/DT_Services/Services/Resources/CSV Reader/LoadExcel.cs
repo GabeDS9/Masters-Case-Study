@@ -8,10 +8,12 @@ namespace Services
     public class LoadExcel
     {
         public List<DigitalTwin> digitalTwinsList = new List<DigitalTwin>();
+        public static List<Service> servicesList = new List<Service>();
 
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
         private string DTConfigurationFile = "LargeDTArchitectureConfiguration.csv";
+        private static string ServiceConfigurationFile = "ServiceArchitectureConfiguration.csv";
 
         #region DigitalTwins
         public List<DigitalTwin> LoadDigitalTwins()
@@ -63,5 +65,30 @@ namespace Services
         }
         #endregion
 
+        #region Services
+        public List<Service> LoadServices()
+        {
+            servicesList.Clear();
+
+            string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ServiceConfigurationFile);
+
+            List<Dictionary<string, object>> data = CSVReader.Read(filepath);
+
+            for (var i = 0; i < data.Count; i++)
+            {
+                // Add Campus DT
+                if ((data[i]["Service_Name"].ToString() != " -") && (data[i]["Port"].ToString() != "0"))
+                {
+                    string service_name = data[i]["Service_Name"].ToString();
+                    string ip = data[i]["IP_Address"].ToString();
+                    int port = int.Parse(data[i]["Port"].ToString());
+                    string location = data[i]["Location"].ToString();
+
+                    servicesList.Add(new Service { ServiceName = service_name, IP_Address = ip, Port = port, Location = location });
+                }
+            }
+            return servicesList;
+        }
+        #endregion
     }
 }

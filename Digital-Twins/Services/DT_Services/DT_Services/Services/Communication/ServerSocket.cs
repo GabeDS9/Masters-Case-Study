@@ -18,14 +18,17 @@ namespace Communication
         private TcpListener server = null;
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         Communication.ClientSocket myClient = new Communication.ClientSocket();
-        ServiceGateway serviceGateway = null;
+        ServiceGateway myGateway = null;
+        DirectoryService myDirectory = null;
+        ExploratoryAnalyticsService myExplore = null;
 
-        public void SetupServer(int port, ServiceGateway myGateway)
+        public void SetupServer(int port, ServiceGateway gateway, DirectoryService directory, ExploratoryAnalyticsService explore)
         {
-            serviceGateway = myGateway;
+            myGateway = gateway;
+            myDirectory = directory;
+            myExplore = explore;
             server = new TcpListener(IPAddress.Any, port);
-            server.Start();
-            Console.WriteLine($"Setting up Gateway service server on {((IPEndPoint)server.LocalEndpoint).Port}...");
+            server.Start();            
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             //_ = Task.Run(async () => {
@@ -59,7 +62,19 @@ namespace Communication
 
         public async Task<string> MessageHandlerAsync(string mes)
         {
-            string message = await serviceGateway.MessageHandlerAsync(mes);
+            string message = "";
+            if(myGateway != null)
+            {
+                message = await myGateway.MessageHandlerAsync(mes);
+            }
+            else if(myDirectory != null)
+            {
+                message = await myDirectory.MessageHandlerAsync(mes);
+            }
+            else if(myExplore != null)
+            {
+                message = await myExplore.MessageHandlerAsync(mes);
+            }
             return message;
         }
 

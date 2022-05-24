@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DT_Services", "DT_Services\DT_Services.csproj", "{898AEF6D-7A01-439F-A6D4-EB36AC3E389E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DT_Services", "DT_Services\DT_Services.csproj", "{898AEF6D-7A01-439F-A6D4-EB36AC3E389E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
