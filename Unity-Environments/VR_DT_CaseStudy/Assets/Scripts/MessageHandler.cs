@@ -23,7 +23,7 @@ public class MessageHandler
             timePeriod = ""
         };
         var mes = JsonConvert.SerializeObject(message);
-        var temp = await myClient.sendMessageAsync(mes, 9000);
+        var temp = await myClient.sendMessageAsync(mes);
         List<string> response = JsonConvert.DeserializeObject<List<string>>(temp);
         return response;
     }

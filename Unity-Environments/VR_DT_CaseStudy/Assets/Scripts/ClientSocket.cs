@@ -9,17 +9,22 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class ClientSocket : MonoBehaviour
+public class ClientSocket
 {
-    public async Task<string> sendMessageAsync(string message, int port)
+    LoadExcel excel = new LoadExcel();
+    ServiceGateway myGateway = new ServiceGateway();
+    public ClientSocket()
+    {
+        myGateway = excel.LoadServiceGatewayAddress();
+    }
+    public async Task<string> sendMessageAsync(string message)
     {
         string response = "";
         try
         {
-            var ipAdd = IPAddress.Parse("146.232.146.140");
             TcpClient client = new TcpClient(); // Create a new connection
             //await client.ConnectAsync(IPAddress.Loopback, port);
-            await client.ConnectAsync(ipAdd, port);
+            await client.ConnectAsync(myGateway.IP_Address, myGateway.Port);
             client.NoDelay = true; // please check TcpClient for more optimization
                                    // messageToByteArray- discussed later
             byte[] messageBytes = messageToByteArray(message);

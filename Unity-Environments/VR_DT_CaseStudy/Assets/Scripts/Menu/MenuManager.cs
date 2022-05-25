@@ -74,8 +74,6 @@ public class MenuManager : MonoBehaviour
     private string EndDateSelected = "";
     private string TimePeriodSelected = "";
 
-    private int ServerPort = 9000;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -348,7 +346,7 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "CurrentData";
         var message = CreateMessage();
         DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message, ServerPort);
+        var response = await myClient.sendMessageAsync(message);
         Debug.Log("Length of response was " + response.Length);
         mapSpawnner.PopulateData(response, null);
         visualisationStatus.text = "Visualisation ready";
@@ -362,7 +360,7 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "Averages";
         var message = CreateMessage();
         DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message, ServerPort);
+        var response = await myClient.sendMessageAsync(message);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         mapSpawnner.PopulateData(response, DateList);
         visualisationStatus.text = "Visualisation ready";
