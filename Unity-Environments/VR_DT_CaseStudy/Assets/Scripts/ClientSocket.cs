@@ -16,7 +16,7 @@ public class ClientSocket : MonoBehaviour
         string response = "";
         try
         {
-            var ipAdd = IPAddress.Parse("127.0.0.1");
+            var ipAdd = IPAddress.Parse("146.232.146.140");
             TcpClient client = new TcpClient(); // Create a new connection
             //await client.ConnectAsync(IPAddress.Loopback, port);
             await client.ConnectAsync(ipAdd, port);
