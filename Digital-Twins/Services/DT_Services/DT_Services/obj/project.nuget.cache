@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/3fK/FuJi+R9YhUSkS4TgEr22DzCTD/igYMB8FKYyGB+QaAQNM7hfxBSTx8P2n5OvgBkWBM0IGelxbq+DvgUMQ==",
+  "dgSpecHash": "ec1doQEOD65ilyZA7gYpdXEOFN71iL0ZhQwbK6fDeGvfx2h53MHuWO/ezqeZ9EQ+l3FzvAV5WUucK+8GVSvSAw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Digital-Twins\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Digital-Twins\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\20935927\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

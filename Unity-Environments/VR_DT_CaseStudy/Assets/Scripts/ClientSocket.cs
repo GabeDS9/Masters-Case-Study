@@ -80,17 +80,7 @@ public class ClientSocket : MonoBehaviour
             foreach (var c in message)
             {
                 sb.Append(c);
-                //result += c;
-                /*if (c != '\0')
-                {
-                    result += c;
-                }
-                else
-                {
-                    Debug.Log(c);
-                }*/
             }
-            //Console.WriteLine("Receiving information");
         }
         while (stream.DataAvailable);
         result = sb.ToString();

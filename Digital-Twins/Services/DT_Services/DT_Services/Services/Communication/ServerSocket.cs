@@ -16,8 +16,6 @@ namespace Communication
     class ServerSocket
     {
         private TcpListener server = null;
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        Communication.ClientSocket myClient = new Communication.ClientSocket();
         ServiceGateway myGateway = null;
         DirectoryService myDirectory = null;
         ExploratoryAnalyticsService myExplore = null;
@@ -29,7 +27,7 @@ namespace Communication
             myExplore = explore;
             server = new TcpListener(IPAddress.Any, port);
             server.Start();            
-            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+            CancellationTokenSource cancellationTokenSource = new();
 
             //_ = Task.Run(async () => {
                 while (!cancellationTokenSource.IsCancellationRequested)
@@ -42,20 +40,22 @@ namespace Communication
 
         private async Task HandleTcpClientAsync(TcpClient client)
         {
-            string request = streamToMessage(client.GetStream());
+            NetworkStream stream = client.GetStream();
+            string request = await StreamToMessage(stream, client);
             
             if (request != null)
             {
                 string responseMessage = await MessageHandlerAsync(request);
-                sendMessage(responseMessage, client);
+                SendMessage(responseMessage, client);
             }
         }
 
-        private static void sendMessage(string message, TcpClient client)
+        private static void SendMessage(string message, TcpClient client)
         {
             // messageToByteArray- discussed later
-            byte[] bytes = messageToByteArray(message);
+            byte[] bytes = MessageToByteArray(message);
             client.GetStream().Write(bytes, 0, bytes.Length);
+            client.GetStream().Flush();
         }
 
         public async Task<string> MessageHandlerAsync(string mes)
@@ -78,8 +78,8 @@ namespace Communication
         }
 
         // using UTF8 encoding for the messages
-        static Encoding encoding = Encoding.UTF8;
-        private static byte[] messageToByteArray(string message)
+        static readonly Encoding encoding = Encoding.UTF8;
+        private static byte[] MessageToByteArray(string message)
         {
             // get the size of original message
             byte[] messageBytes = encoding.GetBytes(message);
@@ -97,23 +97,30 @@ namespace Communication
             return completemsg;
         }
 
-        private static string streamToMessage(Stream stream)
+        private async Task<string> StreamToMessage(NetworkStream stream, TcpClient client)
         {
-            // size bytes have been fixed to 4
-            byte[] sizeBytes = new byte[4];
-            // read the content length
-            stream.Read(sizeBytes, 0, 4);
-            int messageSize = BitConverter.ToInt32(sizeBytes, 0);
-            // create a buffer of the content length size and read from the stream
-            byte[] messageBytes = new byte[messageSize];
-            stream.Read(messageBytes, 0, messageSize);
-            // convert message byte array to the message string using the encoding
-            string message = encoding.GetString(messageBytes);
             string result = null;
-            foreach (var c in message)
-                if (c != '\0')
-                    result += c;
-
+            StringBuilder sb = new StringBuilder();
+            do
+            {
+                //Debug.Log(stream.DataAvailable);
+                // size bytes have been fixed to 4
+                byte[] sizeBytes = new byte[4];
+                // read the content length
+                await stream.ReadAsync(sizeBytes, 0, 4);
+                int messageSize = BitConverter.ToInt32(sizeBytes, 0);
+                // create a buffer of the content length size and read from the stream
+                byte[] messageBytes = new byte[messageSize];
+                await stream.ReadAsync(messageBytes, 0, messageSize);
+                // convert message byte array to the message string using the encoding
+                string message = encoding.GetString(messageBytes);
+                foreach (var c in message)
+                {
+                    sb.Append(c);
+                }
+            }
+            while (stream.DataAvailable);
+            result = sb.ToString();
             return result;
         }
     }
