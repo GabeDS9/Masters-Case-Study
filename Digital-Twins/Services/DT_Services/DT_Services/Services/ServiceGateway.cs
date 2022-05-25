@@ -36,6 +36,7 @@ namespace Services
         }
         private void StartGatewayServer(int port)
         {
+            Console.WriteLine($"Service gateway service running");
             myServer.SetupServer(port, this, null, null);
         }
         public async Task<string> MessageHandlerAsync(string mes)

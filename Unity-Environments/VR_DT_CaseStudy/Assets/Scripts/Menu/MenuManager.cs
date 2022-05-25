@@ -276,8 +276,11 @@ public class MenuManager : MonoBehaviour
     }
     public void ChangeVisualisationDate()
     {
+        if (StartDateSelected != "" && EndDateSelected != "" && TimePeriodSelected != "")
+        {
             var date = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected)[((int)visualisationSlider.value)];
             mapSpawnner.ChangeVisualisationDate(date);
+        }
     }
     public void ChangeVisualisationScale()
     {
