@@ -77,6 +77,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myClient.LoadServiceGateway();
         MainMenu.SetActive(true);
         DisplayLevel.SetActive(false);
         DataType.SetActive(false);

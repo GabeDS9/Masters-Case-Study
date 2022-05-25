@@ -10,6 +10,7 @@ public class MessageHandler
     private ClientSocket myClient = new ClientSocket();
     public async Task<List<string>> GetDTListAsync(string dt)
     {
+        myClient.LoadServiceGateway();
         var message = new MessageModel
         {
             ServiceTag = "Directory",

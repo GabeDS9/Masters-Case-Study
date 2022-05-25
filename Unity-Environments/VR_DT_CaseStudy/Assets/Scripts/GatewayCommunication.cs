@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GatewayCommunication : MonoBehaviour
 {
-    private ClientSocket myClient = new ClientSocket();
+    //private ClientSocket myClient = new ClientSocket();
     public Text textBox;
     public void ConnectToGateway()
     {

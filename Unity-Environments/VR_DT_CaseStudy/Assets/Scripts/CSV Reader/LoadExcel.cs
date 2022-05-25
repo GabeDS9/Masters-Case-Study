@@ -7,7 +7,7 @@ using UnityEngine;
 public class LoadExcel
 {
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
-    private string ConfigurationFile = "ServiceGatewayCommunicationConfiguration.csv";
+    private string ConfigurationFile = "ServiceGatewayCommunicationConfiguration";
 
     public ServiceGateway LoadServiceGatewayAddress()
     {

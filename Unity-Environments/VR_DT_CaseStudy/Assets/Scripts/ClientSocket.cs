@@ -13,7 +13,7 @@ public class ClientSocket
 {
     LoadExcel excel = new LoadExcel();
     ServiceGateway myGateway = new ServiceGateway();
-    public ClientSocket()
+    public void LoadServiceGateway()
     {
         myGateway = excel.LoadServiceGatewayAddress();
     }

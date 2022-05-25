@@ -351,6 +351,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\NoiseOffsetModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\OpenUrlOnButtonClick.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapScalingOptions.cs" />
+    <Compile Include="Assets\Scripts\Models\ServiceGateway.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\MapboxLocationInfoMock.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\Geometry.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\CameraMovement.cs" />
@@ -445,7 +446,6 @@
     <Compile Include="Assets\Mapbox\Unity\Location\DeviceLocationProviderAndroidNative.cs" />
     <Compile Include="Assets\SteamVR_Input\ActionSetClasses\SteamVR_Input_ActionSet_platformer.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
-    <Compile Include="Assets\Scripts\Models\ServiceGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
