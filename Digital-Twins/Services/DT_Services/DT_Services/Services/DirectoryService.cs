@@ -37,6 +37,7 @@ namespace Services
         }
         private void StartServiceServer(int port)
         {
+            Console.WriteLine($"Directory service running");
             myServer.SetupServer(port, null, this, null);
         }
         public async Task<string> MessageHandlerAsync(string mes)
