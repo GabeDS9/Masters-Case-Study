@@ -14,7 +14,8 @@ namespace Models
         public int NumberOfBuildings { get; set; }
         public int NumberOfDataPoints { get; set; }
         public float TimeTaken { get; set; }
-        public float RAMusage { get; set; }
+        public float RAMusageMB { get; set; }
+        public float RAMusagePerc { get; set; }
         public float CPUusage { get; set; }
     }
 }

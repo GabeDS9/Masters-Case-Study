@@ -78,13 +78,13 @@ public class MenuManager : MonoBehaviour
 
     // Evaluation parameters
     Stopwatch stopwatch = new Stopwatch();
-    WriteToCSVFile csvWriter = new WriteToCSVFile();
+    public CSVWriter csvWriter;
 
     // Start is called before the first frame update
     void Start()
     {
-        /*myClient.LoadServiceGateway();
-        MainMenu.SetActive(true);
+        myClient.LoadServiceGateway();
+        /*MainMenu.SetActive(true);
         DisplayLevel.SetActive(false);
         DataType.SetActive(false);
         ServicesSelectMenu.SetActive(false);
@@ -398,21 +398,21 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        string startDate = "2022-5-1";
-        string endDate = "2022-5-30";
-        var DateList = utils.GenerateDateList(startDate, endDate, "Day");
+        string sDate = "2022-5-1";
+        string eDate = "2022-5-30";
+        var DateList = utils.GenerateDateList(sDate, eDate, "Day");
         List<string> dtLevel = new List<string>();
         dtLevel.Add("All");
         foreach(var date in DateList)
         {
-            EvaluationTestModel temp = await GetInformation("Energy", "Averages", "Collective", "Stellenbosch University", dtLevel, startDate, date, "Day");
+            EvaluationTestModel temp = await GetInformation("Energy", "Averages", "Collective", "Stellenbosch University", dtLevel, sDate, date, "Day");
             EvaluationTestModel testInfo = new EvaluationTestModel { NumberOfDTs = numberOfDTs, NumberOfCampuses = numberOfCampuses, 
                 NumberOfPrecincts = numberOfPrecincts, NumberOfBuildings = numberOfBuildings, TimeTaken = temp.TimeTaken, 
-                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusage = 0, CPUusage = 0 };
+                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusageMB = 0, RAMusagePerc = 0, CPUusage = 0 };
             testInformation.Add(testInfo);
         }
 
-        csvWriter.addRecords(testInformation);
+        csvWriter.WriteCSV(testInformation);
     }
     private async Task<EvaluationTestModel> GetInformation(string dataType, string informationType, string displayType, string digitalTwin, List<string> dtLevel,
         string sDate, string eDate, string timePer)
@@ -420,8 +420,7 @@ public class MenuManager : MonoBehaviour
         visualisationStatus.text = "Getting visualisation ready...";
         stopwatch.Start();
         var message = CreateMessage(dataType, informationType, displayType, digitalTwin, dtLevel, sDate, eDate, timePer);
-        DisplayVisualisationUI();
-        var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
+        var DateList = utils.GenerateDateList(sDate, eDate, timePer);
         var response = await myClient.sendMessageAsync(message);
         mapSpawnner.PopulateData(response, DateList);
         visualisationStatus.text = "Visualisation ready";
