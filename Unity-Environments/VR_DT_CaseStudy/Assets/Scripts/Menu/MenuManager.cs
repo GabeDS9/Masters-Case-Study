@@ -348,7 +348,6 @@ public class MenuManager : MonoBehaviour
         var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message);
-        Debug.Log("Length of response was " + response.Length);
         mapSpawnner.PopulateData(response, null);
         visualisationStatus.text = "Visualisation ready";
     }
@@ -361,8 +360,8 @@ public class MenuManager : MonoBehaviour
         InformationTypeSelected = "Averages";
         var message = CreateMessage();
         DisplayVisualisationUI();
-        var response = await myClient.sendMessageAsync(message);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
+        var response = await myClient.sendMessageAsync(message);        
         mapSpawnner.PopulateData(response, DateList);
         visualisationStatus.text = "Visualisation ready";
     }
