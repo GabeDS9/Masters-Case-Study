@@ -41,7 +41,6 @@
         }
         private void PopulateTimePeriodData(string message, List<string> DateList)
         {
-            Debug.Log(message);
             var DataList = DecodeMessage(message);
             foreach (var data in DataList)
             {

@@ -24,7 +24,7 @@ public class CSVWriter : MonoBehaviour
                 {
                     writer.WriteLine($"{item.NumberOfDTs},{item.NumberOfCampuses},{item.NumberOfPrecincts},{item.NumberOfBuildings}," +
                     $"{item.NumberOfDataPoints},{item.TotalTimeTaken},{item.DTResponseTimeTaken},{item.VisualTimeTaken}," +
-                    $"{item.RAMusageMB},{item.CPUusage}");
+                    $"{item.RAMusageMBUnity.ToString().Replace(',', '.')},{item.RAMusagePercUnity.ToString().Replace(',','.')},{item.CPUusageUnity.ToString().Replace(',', '.')}");
                 }
                 writer.Close();
             }

@@ -81,7 +81,14 @@ public class MenuManager : MonoBehaviour
 
     // Evaluation parameters
     Stopwatch stopwatch = new Stopwatch();
+    Stopwatch dtStopwatch = new Stopwatch();
+    Stopwatch visStopwatch = new Stopwatch();
     public CSVWriter csvWriter;
+    public MemoryProfiler memoryProfiler;
+    PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+    PerformanceCounter cpuUnityCounter = new PerformanceCounter("Process", "% Processor Time", "Unity Editor", true);
+    PerformanceCounter cpuDTCounter = new PerformanceCounter("Process", "% Processor Time", "Campus_DT", true);
+    PerformanceCounter cpuServicesCounter = new PerformanceCounter("Process", "% Processor Time", "DT_Services", true);
 
     // Start is called before the first frame update
     void Start()
@@ -412,8 +419,10 @@ public class MenuManager : MonoBehaviour
             EvaluationTestModel testInfo = new EvaluationTestModel { NumberOfDTs = numberOfDTs, NumberOfCampuses = numberOfCampuses, 
                 NumberOfPrecincts = numberOfPrecincts, NumberOfBuildings = numberOfBuildings, TotalTimeTaken = temp.TotalTimeTaken, 
                 DTResponseTimeTaken = temp.DTResponseTimeTaken, VisualTimeTaken = temp.VisualTimeTaken,
-                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusageMB = temp.RAMusageMB, 
-                RAMusagePerc = temp.RAMusagePerc, CPUusage = temp.CPUusage };
+                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusageMBUnity = temp.RAMusageMBUnity,
+                RAMusagePercUnity = temp.RAMusagePercUnity,
+                CPUusageUnity = temp.CPUusageUnity
+            };
             testInformation.Add(testInfo);
         }
 
@@ -422,25 +431,32 @@ public class MenuManager : MonoBehaviour
     private async Task<EvaluationTestModel> GetInformation(string dataType, string informationType, string displayType, string digitalTwin, List<string> dtLevel,
         string sDate, string eDate, string timePer)
     {
-        visualisationStatus.text = "Getting visualisation ready...";
         stopwatch.Start();
+        dtStopwatch.Start();
+        visualisationStatus.text = "Getting visualisation ready...";
         var message = CreateMessage(dataType, informationType, displayType, digitalTwin, dtLevel, sDate, eDate, timePer);
         var DateList = utils.GenerateDateList(sDate, eDate, timePer);
         var response = await myClient.sendMessageAsync(message);
-        var dtResponse = stopwatch.ElapsedMilliseconds;
-        mapSpawnner.PopulateData(response, DateList);
-        var visualTime = stopwatch.ElapsedMilliseconds;
+        float dtResponse = dtStopwatch.ElapsedMilliseconds;
+        dtStopwatch.Stop();
+        visStopwatch.Start();
+        mapSpawnner.PopulateData(response, DateList);        
         visualisationStatus.text = "Visualisation ready";
+        float visualTime = visStopwatch.ElapsedMilliseconds;
+        visStopwatch.Stop();
         stopwatch.Stop();
         float totalTime = stopwatch.ElapsedMilliseconds;
         stopwatch.Reset();
-        var memoryUsageMB = CalculateRAMUsageMB();
-        var memoryUsagePerc = CalculateRAMUsagePerc();
-        var cpuUsage = CalculateCPUUsagePerc();
-
+        dtStopwatch.Reset();
+        visStopwatch.Reset();        
+        var memoryUsageMB = memoryProfiler.ReturnMemoryReserved();//CalculateRAMUsageMB();
+        var memoryUsagePerc = ((float)memoryUsageMB / 65249.0f) * 100.0f;
+        var cpuUsage = cpuUnityCounter.NextValue();
+        var temp = "";
+        mapSpawnner.ClearVisualisationObjects();
         EvaluationTestModel testInfo = new EvaluationTestModel { TotalTimeTaken = totalTime, DTResponseTimeTaken = dtResponse, 
-            VisualTimeTaken = visualTime, NumberOfDataPoints = DateList.Count, RAMusageMB = memoryUsageMB,
-        RAMusagePerc = memoryUsagePerc, CPUusage = cpuUsage };
+            VisualTimeTaken = visualTime, NumberOfDataPoints = DateList.Count, RAMusageMBUnity = memoryUsageMB,
+        RAMusagePercUnity = memoryUsagePerc, CPUusageUnity = cpuUsage };
         return testInfo;
     }
     private string CreateMessage(string dataType, string informationType, string displayType, string digitalTwin, List<string> dtLevel,
