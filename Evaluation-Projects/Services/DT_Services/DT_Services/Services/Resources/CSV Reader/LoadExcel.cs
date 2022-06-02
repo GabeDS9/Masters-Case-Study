@@ -27,7 +27,7 @@ namespace Services
             for (var i = 0; i < data.Count; i++)
             {
                 // Add Campus DT
-                if((data[i]["Precinct"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
+                if((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
                 {
                     string dt_name = data[i]["Campus"].ToString();
                     string ip = data[i]["IP_Address"].ToString();
@@ -35,7 +35,7 @@ namespace Services
 
                     digitalTwinsList.Add(new DigitalTwin { DT_Name = dt_name, IP_Address = ip, Port = port });
                 }
-                else if((data[i]["Precinct"].ToString() != "-") && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
+                else if((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() != "-") && (data[i]["Reticulation"].ToString() == "-") && (data[i]["Building"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
                 {
                     string dt_name = data[i]["Precinct"].ToString();
                     string ip = data[i]["IP_Address"].ToString();
@@ -43,7 +43,7 @@ namespace Services
 
                     digitalTwinsList.Add(new DigitalTwin { DT_Name = dt_name, IP_Address = ip, Port = port });
                 }
-                else if ((data[i]["Precinct"].ToString() != "-") && (data[i]["Reticulation"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
+                else if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() != "-") && (data[i]["Reticulation"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
                 {
                     string dt_name = data[i]["Reticulation"].ToString();
                     string ip = data[i]["IP_Address"].ToString();
@@ -51,7 +51,7 @@ namespace Services
 
                     digitalTwinsList.Add(new DigitalTwin { DT_Name = dt_name, IP_Address = ip, Port = port });
                 }
-                else if ((data[i]["Precinct"].ToString() != "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
+                else if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() != "-") && (data[i]["Building"].ToString() != "-") && (data[i]["Meter Name"].ToString() == "-") && (data[i]["Port"].ToString() != "0"))
                 {
                     string dt_name = data[i]["Building"].ToString();
                     string ip = data[i]["IP_Address"].ToString();

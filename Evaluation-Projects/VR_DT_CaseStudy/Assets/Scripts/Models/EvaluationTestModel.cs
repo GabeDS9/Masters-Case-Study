@@ -13,9 +13,11 @@ namespace Models
         public int NumberOfPrecincts { get; set; }
         public int NumberOfBuildings { get; set; }
         public int NumberOfDataPoints { get; set; }
-        public float TimeTaken { get; set; }
-        public float RAMusageMB { get; set; }
-        public float RAMusagePerc { get; set; }
-        public float CPUusage { get; set; }
+        public float TotalTimeTaken { get; set; }
+        public float DTResponseTimeTaken { get; set; }
+        public float VisualTimeTaken { get; set; }
+        public double RAMusageMB { get; set; }
+        public double RAMusagePerc { get; set; }
+        public double CPUusage { get; set; }
     }
 }

@@ -23,7 +23,8 @@ public class CSVWriter : MonoBehaviour
                 foreach (var item in testInfoList)
                 {
                     writer.WriteLine($"{item.NumberOfDTs},{item.NumberOfCampuses},{item.NumberOfPrecincts},{item.NumberOfBuildings}," +
-                    $"{item.NumberOfDataPoints},{item.TimeTaken},{item.RAMusageMB},{item.RAMusagePerc},{item.CPUusage}");
+                    $"{item.NumberOfDataPoints},{item.TotalTimeTaken},{item.DTResponseTimeTaken},{item.VisualTimeTaken}," +
+                    $"{item.RAMusageMB},{item.CPUusage}");
                 }
                 writer.Close();
             }

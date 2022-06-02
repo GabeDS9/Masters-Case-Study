@@ -1,14 +1,17 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 using Models;
+using System.Management;
+using System.Linq;
 
 public class MenuManager : MonoBehaviour
 
@@ -407,8 +410,10 @@ public class MenuManager : MonoBehaviour
         {
             EvaluationTestModel temp = await GetInformation("Energy", "Averages", "Collective", "Stellenbosch University", dtLevel, sDate, date, "Day");
             EvaluationTestModel testInfo = new EvaluationTestModel { NumberOfDTs = numberOfDTs, NumberOfCampuses = numberOfCampuses, 
-                NumberOfPrecincts = numberOfPrecincts, NumberOfBuildings = numberOfBuildings, TimeTaken = temp.TimeTaken, 
-                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusageMB = 0, RAMusagePerc = 0, CPUusage = 0 };
+                NumberOfPrecincts = numberOfPrecincts, NumberOfBuildings = numberOfBuildings, TotalTimeTaken = temp.TotalTimeTaken, 
+                DTResponseTimeTaken = temp.DTResponseTimeTaken, VisualTimeTaken = temp.VisualTimeTaken,
+                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusageMB = temp.RAMusageMB, 
+                RAMusagePerc = temp.RAMusagePerc, CPUusage = temp.CPUusage };
             testInformation.Add(testInfo);
         }
 
@@ -422,13 +427,20 @@ public class MenuManager : MonoBehaviour
         var message = CreateMessage(dataType, informationType, displayType, digitalTwin, dtLevel, sDate, eDate, timePer);
         var DateList = utils.GenerateDateList(sDate, eDate, timePer);
         var response = await myClient.sendMessageAsync(message);
+        var dtResponse = stopwatch.ElapsedMilliseconds;
         mapSpawnner.PopulateData(response, DateList);
+        var visualTime = stopwatch.ElapsedMilliseconds;
         visualisationStatus.text = "Visualisation ready";
         stopwatch.Stop();
-        float elapsedTime = stopwatch.ElapsedMilliseconds;
+        float totalTime = stopwatch.ElapsedMilliseconds;
         stopwatch.Reset();
+        var memoryUsageMB = CalculateRAMUsageMB();
+        var memoryUsagePerc = CalculateRAMUsagePerc();
+        var cpuUsage = CalculateCPUUsagePerc();
 
-        EvaluationTestModel testInfo = new EvaluationTestModel { TimeTaken = elapsedTime, NumberOfDataPoints = DateList.Count };
+        EvaluationTestModel testInfo = new EvaluationTestModel { TotalTimeTaken = totalTime, DTResponseTimeTaken = dtResponse, 
+            VisualTimeTaken = visualTime, NumberOfDataPoints = DateList.Count, RAMusageMB = memoryUsageMB,
+        RAMusagePerc = memoryUsagePerc, CPUusage = cpuUsage };
         return testInfo;
     }
     private string CreateMessage(string dataType, string informationType, string displayType, string digitalTwin, List<string> dtLevel,
@@ -448,6 +460,52 @@ public class MenuManager : MonoBehaviour
         };
         var mes = JsonConvert.SerializeObject(message);
         return mes;
+    }
+    private double CalculateCPUUsagePerc()
+    {
+        double usage = 0;
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_PerfFormattedData_PerfOS_Processor");
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            var value = obj["PercentProcessorTime"];
+            usage = double.Parse(value.ToString());
+            var name = obj["Name"];
+            Console.WriteLine(name + " : " + usage);
+        }
+        return usage;
+    }
+    private double CalculateRAMUsagePerc()
+    {
+        var wmiObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+
+        var memoryValues = wmiObject.Get().Cast<ManagementObject>().Select(mo => new {
+            FreePhysicalMemory = Double.Parse(mo["FreePhysicalMemory"].ToString()),
+            TotalVisibleMemorySize = Double.Parse(mo["TotalVisibleMemorySize"].ToString())
+        }).FirstOrDefault();
+
+        double percent = 0;
+        if (memoryValues != null)
+        {
+            percent = ((memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory) / memoryValues.TotalVisibleMemorySize) * 100;
+        }
+        return percent;
+    }
+    private double CalculateRAMUsageMB()
+    {
+        var wmiObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+
+        var memoryValues = wmiObject.Get().Cast<ManagementObject>().Select(mo => new {
+            FreePhysicalMemory = Double.Parse(mo["FreePhysicalMemory"].ToString()),
+            TotalVisibleMemorySize = Double.Parse(mo["TotalVisibleMemorySize"].ToString())
+        }).FirstOrDefault();
+
+        double usage = 0;
+        if (memoryValues != null)
+        {
+            usage = (memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory);
+        }
+
+        return usage;
     }
     #endregion
     private string CreateMessage()

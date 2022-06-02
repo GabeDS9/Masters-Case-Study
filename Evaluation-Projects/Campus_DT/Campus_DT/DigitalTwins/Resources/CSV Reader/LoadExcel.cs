@@ -204,7 +204,7 @@ public class LoadExcel
                 string longitude = data[i]["Longitude"].ToString();
                 string ipAdd = data[i]["IP_Address"].ToString();
                 int port = int.Parse(data[i]["Port"].ToString(), System.Globalization.NumberStyles.Integer);
-                string startingDate = data[i]["Starting date"].ToString();
+                string startingDate = "2022-05-01 00:00:00";
                 string location = data[i]["Location"].ToString();
 
                 if (location == "Local")

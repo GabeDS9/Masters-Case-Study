@@ -661,19 +661,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\20935927\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
       "projectName": "Campus_DT",
-      "projectPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
-      "packagesPath": "C:\\Users\\20935927\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\20935927\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -723,7 +723,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
       }
     }
   }
