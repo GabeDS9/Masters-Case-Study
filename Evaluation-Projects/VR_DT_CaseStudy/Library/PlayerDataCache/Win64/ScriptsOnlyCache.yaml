@@ -23,7 +23,7 @@ ScriptsOnlyBuild:
     - Mapbox.Unity.MeshGeneration.Modifiers.ReplaceFeatureCollectionModifier
     - Mapbox.Unity.Utilities.DebugTools.SceneData
     - Mapbox.Unity.Utilities.DebugTools.ScenesList
-    - Mapbox.Unity.Utilities.Runnable
+    - MemoryProfiler
     - MenuManager
     - ScriptablePalette
     - VR_Movement
@@ -165,19 +165,13 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 516}
-    - Class: 114
       Script: {instanceID: 520}
     - Class: 114
       Script: {instanceID: 524}
     - Class: 114
       Script: {instanceID: 528}
     - Class: 114
-      Script: {instanceID: 1702}
-    - Class: 114
-      Script: {instanceID: 1704}
-    - Class: 114
-      Script: {instanceID: 1706}
+      Script: {instanceID: 532}
     - Class: 114
       Script: {instanceID: 1708}
     - Class: 114
@@ -185,121 +179,129 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1712}
     - Class: 114
-      Script: {instanceID: 1850}
+      Script: {instanceID: 1714}
     - Class: 114
-      Script: {instanceID: 1856}
+      Script: {instanceID: 1716}
     - Class: 114
-      Script: {instanceID: 1894}
+      Script: {instanceID: 1718}
     - Class: 114
-      Script: {instanceID: 1972}
+      Script: {instanceID: 1886}
     - Class: 114
-      Script: {instanceID: 2006}
+      Script: {instanceID: 1892}
     - Class: 114
-      Script: {instanceID: 2014}
+      Script: {instanceID: 1930}
     - Class: 114
-      Script: {instanceID: 2296}
+      Script: {instanceID: 2012}
     - Class: 114
-      Script: {instanceID: 2322}
+      Script: {instanceID: 2052}
     - Class: 114
-      Script: {instanceID: 2542}
+      Script: {instanceID: 2060}
     - Class: 114
-      Script: {instanceID: 2580}
+      Script: {instanceID: 2362}
     - Class: 114
-      Script: {instanceID: 2740}
+      Script: {instanceID: 2388}
     - Class: 114
-      Script: {instanceID: 2756}
+      Script: {instanceID: 2620}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2662}
     - Class: 114
-      Script: {instanceID: 2844}
+      Script: {instanceID: 2832}
     - Class: 114
-      Script: {instanceID: 3166}
+      Script: {instanceID: 2852}
     - Class: 114
-      Script: {instanceID: 3234}
+      Script: {instanceID: 2904}
     - Class: 114
-      Script: {instanceID: 3320}
+      Script: {instanceID: 2948}
     - Class: 114
-      Script: {instanceID: 3366}
+      Script: {instanceID: 3282}
     - Class: 114
-      Script: {instanceID: 3474}
+      Script: {instanceID: 3354}
     - Class: 114
-      Script: {instanceID: 3640}
+      Script: {instanceID: 3444}
     - Class: 114
-      Script: {instanceID: 3716}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 3720}
+      Script: {instanceID: 3606}
     - Class: 114
-      Script: {instanceID: 3740}
+      Script: {instanceID: 3780}
     - Class: 114
-      Script: {instanceID: 3788}
+      Script: {instanceID: 3858}
     - Class: 114
-      Script: {instanceID: 3810}
+      Script: {instanceID: 3862}
     - Class: 114
-      Script: {instanceID: 3880}
+      Script: {instanceID: 3884}
     - Class: 114
-      Script: {instanceID: 4098}
+      Script: {instanceID: 3936}
     - Class: 114
-      Script: {instanceID: 4116}
+      Script: {instanceID: 3958}
     - Class: 114
-      Script: {instanceID: 4138}
+      Script: {instanceID: 4032}
     - Class: 114
-      Script: {instanceID: 4342}
+      Script: {instanceID: 4148}
     - Class: 114
-      Script: {instanceID: 4366}
+      Script: {instanceID: 4268}
     - Class: 114
-      Script: {instanceID: 4494}
+      Script: {instanceID: 4286}
     - Class: 114
-      Script: {instanceID: 4690}
+      Script: {instanceID: 4288}
     - Class: 114
-      Script: {instanceID: 4858}
+      Script: {instanceID: 4310}
     - Class: 114
-      Script: {instanceID: 4974}
+      Script: {instanceID: 4530}
     - Class: 114
-      Script: {instanceID: 4996}
+      Script: {instanceID: 4556}
     - Class: 114
-      Script: {instanceID: 5062}
+      Script: {instanceID: 4688}
     - Class: 114
-      Script: {instanceID: 5190}
+      Script: {instanceID: 4896}
     - Class: 114
-      Script: {instanceID: 5318}
+      Script: {instanceID: 5070}
     - Class: 114
-      Script: {instanceID: 5400}
+      Script: {instanceID: 5186}
     - Class: 114
-      Script: {instanceID: 5484}
+      Script: {instanceID: 5208}
     - Class: 114
-      Script: {instanceID: 5488}
+      Script: {instanceID: 5278}
     - Class: 114
-      Script: {instanceID: 5506}
+      Script: {instanceID: 5414}
     - Class: 114
-      Script: {instanceID: 5606}
+      Script: {instanceID: 5546}
     - Class: 114
-      Script: {instanceID: 5612}
+      Script: {instanceID: 5634}
     - Class: 114
-      Script: {instanceID: 5734}
+      Script: {instanceID: 5732}
     - Class: 114
-      Script: {instanceID: 5920}
+      Script: {instanceID: 5736}
     - Class: 114
-      Script: {instanceID: 5984}
+      Script: {instanceID: 5754}
     - Class: 114
-      Script: {instanceID: 6040}
+      Script: {instanceID: 5860}
     - Class: 114
-      Script: {instanceID: 6050}
+      Script: {instanceID: 5866}
     - Class: 114
-      Script: {instanceID: 6484}
+      Script: {instanceID: 5992}
     - Class: 114
-      Script: {instanceID: 6526}
+      Script: {instanceID: 6186}
     - Class: 114
-      Script: {instanceID: 6562}
+      Script: {instanceID: 6254}
     - Class: 114
-      Script: {instanceID: 6646}
+      Script: {instanceID: 6314}
     - Class: 114
-      Script: {instanceID: 6880}
+      Script: {instanceID: 6324}
     - Class: 114
-      Script: {instanceID: 6896}
+      Script: {instanceID: 6780}
     - Class: 114
-      Script: {instanceID: 7632}
+      Script: {instanceID: 6826}
     - Class: 114
-      Script: {instanceID: 42056}
+      Script: {instanceID: 6864}
+    - Class: 114
+      Script: {instanceID: 6954}
+    - Class: 114
+      Script: {instanceID: 7196}
+    - Class: 114
+      Script: {instanceID: 7220}
+    - Class: 114
+      Script: {instanceID: 8012}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1183,7 +1185,7 @@ ScriptsOnlyBuild:
     className: ReverseGeocodeUserInput
   - hash:
       serializedVersion: 2
-      Hash: 0dc1669ed74eceaad84f8fc753a7ffa4
+      Hash: 9f27c1f6fb3fb3d03e5d225f37057041
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuManager
@@ -1327,6 +1329,12 @@ ScriptsOnlyBuild:
     className: InputDebuggerWindow
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CSVWriter
+  - hash:
+      serializedVersion: 2
       Hash: 012f217471efcdaa545a3cc27f756975
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR.InteractionSystem
@@ -1391,6 +1399,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MemoryProfiler
   - hash:
       serializedVersion: 2
       Hash: d8c9c53ba0b1477ec5a91355304f709c
@@ -2521,16 +2535,16 @@ ScriptsOnlyBuild:
     className: ApplicationManager
   - hash:
       serializedVersion: 2
-      Hash: 8c362ed1d3d229b03c8cd704cd15ca04
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Mapbox.Unity.MeshGeneration.Modifiers
-    className: ModifierStackBase
-  - hash:
-      serializedVersion: 2
       Hash: ba6ef9e2082e09d9399eaef28d94d812
     assemblyName: Assembly-CSharp.dll
     namespaceName: Mapbox.Unity.MeshGeneration.Modifiers
     className: PolygonMeshModifier
+  - hash:
+      serializedVersion: 2
+      Hash: 8c362ed1d3d229b03c8cd704cd15ca04
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Mapbox.Unity.MeshGeneration.Modifiers
+    className: ModifierStackBase
   - hash:
       serializedVersion: 2
       Hash: ea41fa959037983f32ebd7c70de46554
@@ -2855,12 +2869,6 @@ ScriptsOnlyBuild:
     assemblyName: SteamVR.dll
     namespaceName: Valve.VR
     className: SteamVR_Behaviour_Single
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CSVWriter
   platform: 19
   scenePathNames:
   - Assets/Scenes/VR_DT_CaseStudy.unity

@@ -467,12 +467,6 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.WebGL.Extensions">
- <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions">
- <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
@@ -480,55 +474,49 @@
  <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
  </Reference>
  <Reference Include="MapboxAccountsUnity">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/MapboxAccounts/net35/MapboxAccountsUnity.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/MapboxAccounts/net35/MapboxAccountsUnity.dll</HintPath>
  </Reference>
  <Reference Include="log4netPlastic">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
  </Reference>
  <Reference Include="Valve.Newtonsoft.Json">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="System.Diagnostics.PerformanceCounter">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/System.Diagnostics.PerformanceCounter.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/System.Diagnostics.PerformanceCounter.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.Json">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.VectorTile.VectorTileReader">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.VectorTileReader.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.VectorTileReader.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.IO.Compression">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Newtonsoft.Json">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="System.Management">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/System.Management.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/System.Management.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Antlr3.Runtime">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.VectorTile.ExtensionMethods">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.ExtensionMethods.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="unityplastic">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/PackageCache/com.unity.collab-proxy@1.15.7/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.VectorTile.PbfReader">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.PbfReader.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.PbfReader.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.VectorTile.Geometry">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.Geometry.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Common">
- <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Assets/Mapbox/Core/Plugins/Mapbox/vector-tile-cs/net46/Mapbox.VectorTile.Geometry.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -876,16 +864,16 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="Unity.XR.OpenVR">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/Unity.XR.OpenVR.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/Unity.XR.OpenVR.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/User/Desktop/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/20935927/Documents/Masters-Case-Study/Evaluation-Projects/VR_DT_CaseStudy/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

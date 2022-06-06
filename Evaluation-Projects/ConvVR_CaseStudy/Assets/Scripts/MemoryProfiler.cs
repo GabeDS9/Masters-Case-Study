@@ -13,7 +13,7 @@ public class MemoryProfiler : MonoBehaviour
     float memoryValue = 0;
     void OnEnable()
     {
-        _totalMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "Total Used Memory");
+        _totalMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
     }
     void OnDisable()
     {

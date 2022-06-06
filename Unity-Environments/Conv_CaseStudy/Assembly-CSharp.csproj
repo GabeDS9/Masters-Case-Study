@@ -93,7 +93,6 @@
     <Compile Include="Assets\Mapbox\Unity\Utilities\ObjectPool.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TileProcessFinishedEventArgs.cs" />
     <Compile Include="Assets\Scripts\SocketClient.cs" />
-    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyData.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\SubLayerCustomStyleTiled.cs" />
     <Compile Include="Assets\SimpleUnityCalendar-master\Assets\Scripts\BodyManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\FeatureBehaviour.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ITerrainLayer.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\TelemetryConfigurationButton.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\UnwrappedTileId.cs" />
-    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyMeterData.cs" />
     <Compile Include="Assets\Mapbox\Unity\Styling\ScriptablePalette.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\ReverseGeocoderExample.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IUnifiedMap.cs" />
@@ -123,6 +121,7 @@
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapExtentOptions.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Response\Leg.cs" />
     <Compile Include="Assets\Scripts\MovementManager.cs" />
+    <Compile Include="Assets\Scripts\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\CSV Reader\CSVReader.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AngleSmoothing\AngleSmoothingEMA.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\MapImageFactory.cs" />
@@ -164,7 +163,6 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSONObjectVectorLayer.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Map\ClassicRasterTile.cs" />
     <Compile Include="Assets\Mapbox\Examples\Scripts\LabelTextSetter.cs" />
-    <Compile Include="Assets\Scripts\APIs\OccupancyAPI\OccupancyAPIScript.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Enums\TilePropertyState.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Strategies\MapScalingAtWorldScaleStrategy.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\Interfaces\IMap.cs" />
@@ -185,7 +183,6 @@
     <Compile Include="Assets\Mapbox\Examples\Scripts\ObjectInspectorModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyleAtlasWithColorPallete.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\ColliderOptions.cs" />
-    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarAPIScript.cs" />
     <Compile Include="Assets\Mapbox\Unity\LayerProperties\LayerProperties.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\LoftModifier.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapOptions.cs" />
@@ -201,10 +198,10 @@
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSONReponse.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultElevation.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\IAsyncRequest.cs" />
+    <Compile Include="Assets\Scripts\CSV Reader\LoadExcel.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\UnifiedMapOptions.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorEntity.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\SmoothLineModifier.cs" />
-    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarData.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTree\KDTree.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Utils\JsonConverters\JsonConverters.cs" />
     <Compile Include="Assets\Mapbox\Examples\5_Playground\Scripts\DirectionsExample.cs" />
@@ -289,7 +286,6 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Components\TextureSelector.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\TerrainStrategies\TerrainStrategy.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Platform\TileJSON\TileJSON.cs" />
-    <Compile Include="Assets\Scripts\APIs\SolarAPI\SolarMeterData.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\AbstractMap.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\IMapboxLocationInfo.cs" />
     <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\CheapRuler.cs" />
@@ -370,6 +366,7 @@
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCoreOptions.cs" />
     <Compile Include="Assets\Mapbox\Examples\6_ZoomableMap\Scripts\SetCameraHeight.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\TileStats.cs" />
+    <Compile Include="Assets\Scripts\APIs\EnergyAPI\EnergyAPIScript.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Geocoder.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\ModifierBase.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\LineGeometryOptions.cs" />
@@ -384,8 +381,8 @@
     <Compile Include="Assets\Mapbox\Unity\Location\AbstractLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\MapboxDefaultVector.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\AbstractEditorLocationProvider.cs" />
+    <Compile Include="Assets\SimpleUnityCalendar-master\Assets\Scripts\HeaderManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\DataContainers\MapPlacementOptions.cs" />
-    <Compile Include="Assets\Mapbox\Examples\6_ZoomableMap\Scripts\SpawnOnMap.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\NodeEditorElementAttribute.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\UnityLocationWrappers\IMapboxLocationService.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\DirectionsFactory.cs" />
@@ -415,6 +412,7 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\GameObjectModifiers\TagModifier.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Geocoding\Response\GeocodeResponse.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Data\KdTreeCollection.cs" />
+    <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <Compile Include="Assets\Mapbox\Unity\Map\MapVisualizer.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\EditorLocationProvider.cs" />
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Modifiers\MeshModifiers\Earcut.cs" />
@@ -444,11 +442,6 @@
     <Compile Include="Assets\Mapbox\Unity\MeshGeneration\Factories\ImageDataFetcher.cs" />
     <Compile Include="Assets\Mapbox\Unity\Location\LocationSmoothing\KalmanFilter.cs" />
     <Compile Include="Assets\Mapbox\Unity\SourceLayers\ISubLayerCustomStyle.cs" />
-    <Compile Include="Assets\Scripts\APIs\EnergyAPI\EnergyAPIScript.cs" />
-    <Compile Include="Assets\SimpleUnityCalendar-master\Assets\Scripts\HeaderManager.cs" />
-    <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
-    <Compile Include="Assets\Scripts\CSV Reader\LoadExcel.cs" />
-    <Compile Include="Assets\Scripts\ApplicationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

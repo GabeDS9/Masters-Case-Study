@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.Profiling;
+using UnityEngine;
 
-public class Test
-{    public List<float> ReturnRAMUsages()
+public class Test : MonoBehaviour
+{
+    ProfilerRecorder _totalMemoryRecorder;
+    float memoryValue = 0;
+    void OnEnable()
     {
-        List<float> results = new List<float>();
-        Process[] services = Process.GetProcessesByName("DT_Services");
-        var temp = (float)services[0].WorkingSet64 / (1024 * 1024);
-        results.Add(temp);
-        services = Process.GetProcessesByName("Campus_DT");
-        temp = (float)services[0].WorkingSet64 / (1024 * 1024);
-        results.Add(temp);
-        services = Process.GetProcessesByName("Unity");
-        temp = (float)services[0].WorkingSet64 / (1024 * 1024);
-        results.Add(temp);
-        return results;
+        _totalMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
+    }
+    void OnDisable()
+    {
+        _totalMemoryRecorder.Dispose();
+    }
+    void Update()
+    {
+        if (_totalMemoryRecorder.Valid)
+        {
+            memoryValue = (float)_totalMemoryRecorder.LastValueAsDouble;
+        }
+    }
+    public float ReturnMemoryReserved()
+    {
+        return memoryValue / (1024 * 1024);
     }
 }

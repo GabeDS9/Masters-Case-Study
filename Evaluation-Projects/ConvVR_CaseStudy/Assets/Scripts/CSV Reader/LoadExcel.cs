@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class LoadExcel
+public class LoadExcel : MonoBehaviour
 {
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
-    private string ConfigurationFile = "LargeDTArchitectureConfiguration";
-
+    string ConfigurationFile = "";
+    //string filename = "";
+    void Start()
+    {
+        //ConfigurationFile = Application.dataPath + "/LargeDTArchitectureConfiguration.csv";
+        ConfigurationFile = "LargeDTArchitectureConfiguration";
+    }
     public List<ElementModel> LoadBuildings()
     {
         List<ElementModel> buildingList = new List<ElementModel>();

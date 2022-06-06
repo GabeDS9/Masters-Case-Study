@@ -85,7 +85,7 @@ public class MenuManager : MonoBehaviour
     Stopwatch visStopwatch = new Stopwatch();
     public CSVWriter csvWriter;
     public MemoryProfiler memoryProfiler;
-    public Test tester = new Test();
+    public Test tester;
     /*PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
     PerformanceCounter cpuUnityCounter = new PerformanceCounter("Process", "% Processor Time", "Unity Editor", true);
     PerformanceCounter cpuDTCounter = new PerformanceCounter("Process", "% Processor Time", "Campus_DT", true);
@@ -468,7 +468,7 @@ public class MenuManager : MonoBehaviour
         var memoryUsageMBService = ram[2];
         var memoryUsagePercService = (float)((memoryUsageMBService / totalRam) * 100);
         var cpuUsageService = ram[3];
-        var memoryUsageMBUnity = ram[4];
+        var memoryUsageMBUnity = memoryProfiler.ReturnMemoryReserved(); ;
         var memoryUsagePercUnity = (float)((memoryUsageMBUnity / totalRam) * 100);
         var cpuUsageUnity = ram[5];
         var ramTotalMB = memoryUsageMBDTs + memoryUsageMBService + memoryUsageMBUnity;

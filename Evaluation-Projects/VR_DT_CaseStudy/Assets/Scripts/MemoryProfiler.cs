@@ -7,7 +7,7 @@ using UnityEngine;
 public class MemoryProfiler : MonoBehaviour
 {
     ProfilerRecorder _totalMemoryRecorder;
-    double maxMemory = 0;
+    float memoryValue = 0;
     void OnEnable()
     {
         _totalMemoryRecorder = ProfilerRecorder.StartNew(ProfilerCategory.Memory, "System Used Memory");
@@ -20,16 +20,11 @@ public class MemoryProfiler : MonoBehaviour
     {
         if (_totalMemoryRecorder.Valid)
         {
-            if(_totalMemoryRecorder.LastValue > maxMemory)
-            {
-                maxMemory = _totalMemoryRecorder.LastValueAsDouble;
-            }
+            memoryValue = (float)_totalMemoryRecorder.LastValueAsDouble;
         }
     }
-    public double ReturnMemoryReserved()
+    public float ReturnMemoryReserved()
     {
-        var temp = maxMemory / (1024.0 * 1024.0);
-        maxMemory = 0;
-        return temp;
+        return memoryValue / (1024 * 1024);
     }
 }

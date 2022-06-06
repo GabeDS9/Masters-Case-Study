@@ -75,7 +75,7 @@ public class MenuManager : MonoBehaviour
     private List<ElementModel> PrecinctList = new List<ElementModel>();
     private List<ElementModel> BuildingList = new List<ElementModel>();
 
-    private LoadExcel excel = new LoadExcel();
+    public LoadExcel excel;
     private InformationHandler infoHandler = new InformationHandler();
 
     // Evaluation parameters
@@ -408,7 +408,7 @@ public class MenuManager : MonoBehaviour
         int numberOfBuildings = BuildingList.Count;
         int numberOfDTs = numberOfCampuses + numberOfPrecincts + numberOfBuildings;
 
-        string sDate = "2022-5-25";
+        string sDate = "2022-5-1";
         string eDate = "2022-5-30";
         var DateList = utils.GenerateDateList(sDate, eDate, "Day");
         List<string> dtLevel = new List<string>();
@@ -464,6 +464,7 @@ public class MenuManager : MonoBehaviour
         dataStopwatch.Reset();
         visStopwatch.Reset();
         var ramMB = memoryProfiler.ReturnMemoryReserved();
+        //var ramMB = memoryProfiler.ReturnRAM();
         var totalRam = 65249.0f;
         var ramPerc = (float)((ramMB / totalRam) * 100);
         var cpuPerc = await memoryProfiler.ReturnCurrentProcessCPU();
