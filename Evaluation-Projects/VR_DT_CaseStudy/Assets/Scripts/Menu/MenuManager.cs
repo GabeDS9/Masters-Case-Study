@@ -85,26 +85,27 @@ public class MenuManager : MonoBehaviour
     Stopwatch visStopwatch = new Stopwatch();
     public CSVWriter csvWriter;
     public MemoryProfiler memoryProfiler;
-    PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+    public Test tester = new Test();
+    /*PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
     PerformanceCounter cpuUnityCounter = new PerformanceCounter("Process", "% Processor Time", "Unity Editor", true);
     PerformanceCounter cpuDTCounter = new PerformanceCounter("Process", "% Processor Time", "Campus_DT", true);
-    PerformanceCounter cpuServicesCounter = new PerformanceCounter("Process", "% Processor Time", "DT_Services", true);
+    PerformanceCounter cpuServicesCounter = new PerformanceCounter("Process", "% Processor Time", "DT_Services", true);*/
 
     // Start is called before the first frame update
     void Start()
     {
         myClient.LoadServiceGateway();
-        /*MainMenu.SetActive(true);
+        MainMenu.SetActive(false);
         DisplayLevel.SetActive(false);
         DataType.SetActive(false);
         ServicesSelectMenu.SetActive(false);
         DateSelectMenu.SetActive(false);
-        VisualisationUI.SetActive(false);
+        VisualisationUI.SetActive(true);
         PrecinctDropdown.interactable = false;
         BuildingDropdown.interactable = false;
         MMNextButton.interactable = false;
         currentMenu = MainMenu;
-        DisplayMainMenu();*/
+        //DisplayMainMenu();
         _ = RunEvaluationTest();
     }
 
@@ -158,7 +159,7 @@ public class MenuManager : MonoBehaviour
         ResetDropDown();
         PopulateDropDown();
         currentMenu.SetActive(false);
-        MainMenu.SetActive(true);        
+        MainMenu.SetActive(false);        
         currentMenu = MainMenu;
         TimePeriod.value = 0;
     }
@@ -418,14 +419,15 @@ public class MenuManager : MonoBehaviour
             EvaluationTestModel temp = await GetInformation("Energy", "Averages", "Collective", "Stellenbosch University", dtLevel, sDate, date, "Day");
             EvaluationTestModel testInfo = new EvaluationTestModel { NumberOfDTs = numberOfDTs, NumberOfCampuses = numberOfCampuses, 
                 NumberOfPrecincts = numberOfPrecincts, NumberOfBuildings = numberOfBuildings, TotalTimeTaken = temp.TotalTimeTaken, 
-                DTResponseTimeTaken = temp.DTResponseTimeTaken, VisualTimeTaken = temp.VisualTimeTaken,
-                NumberOfDataPoints = temp.NumberOfDataPoints, RAMusageMBUnity = temp.RAMusageMBUnity,
-                RAMusagePercUnity = temp.RAMusagePercUnity,
-                CPUusageUnity = temp.CPUusageUnity
+                DTResponseTimeTaken = temp.DTResponseTimeTaken, VisualTimeTaken = temp.VisualTimeTaken, NumberOfDataPoints = temp.NumberOfDataPoints, 
+                RAMusageMBUnity = temp.RAMusageMBUnity, RAMusageMBDTs = temp.RAMusageMBDTs, RAMusageMBServices = temp.RAMusageMBServices,
+                RAMusagePercUnity = temp.RAMusagePercUnity, RAMusagePercDTs = temp.RAMusagePercDTs, RAMusagePercServices = temp.RAMusagePercServices,
+                RAMusageMBTotal = temp.RAMusageMBTotal, RAMusagePercTotal = temp.RAMusagePercTotal, CPUusageDTs = temp.CPUusageDTs,
+                CPUusageServices = temp.CPUusageServices, CPUusageUnity = temp.CPUusageUnity, CPUusageTotal = temp.CPUusageTotal
             };
             testInformation.Add(testInfo);
         }
-
+        visualisationStatus.text = "Test Complete";
         csvWriter.WriteCSV(testInformation);
     }
     private async Task<EvaluationTestModel> GetInformation(string dataType, string informationType, string displayType, string digitalTwin, List<string> dtLevel,
@@ -448,15 +450,38 @@ public class MenuManager : MonoBehaviour
         float totalTime = stopwatch.ElapsedMilliseconds;
         stopwatch.Reset();
         dtStopwatch.Reset();
-        visStopwatch.Reset();        
-        var memoryUsageMB = memoryProfiler.ReturnMemoryReserved();//CalculateRAMUsageMB();
-        var memoryUsagePerc = ((float)memoryUsageMB / 65249.0f) * 100.0f;
-        var cpuUsage = cpuUnityCounter.NextValue();
-        var temp = "";
+        visStopwatch.Reset();
+        //var memoryUsageMB = memoryProfiler.ReturnMemoryReserved();//CalculateRAMUsageMB();
+        //var memoryUsagePerc = ((float)memoryUsageMB / 65249.0f) * 100.0f;
+        //var cpuUsage = cpuUnityCounter.NextValue();
+        //var temp = "";
+        MessageModel mes = new MessageModel { ServiceTag = "Usages" };
+        string temp = JsonConvert.SerializeObject(mes);
+        var resp = await myClient.sendMessageAsync(temp);
+        var totalRam = 65249.0f;
+        //var ram = tester.ReturnRAMUsages();
+        var ram = JsonConvert.DeserializeObject<List<float>>(resp);
+        
+        var memoryUsageMBDTs = ram[0];
+        var memoryUsagePercDTs = (float)((memoryUsageMBDTs / totalRam)*100);
+        var cpuUsageDTs = ram[1];
+        var memoryUsageMBService = ram[2];
+        var memoryUsagePercService = (float)((memoryUsageMBService / totalRam) * 100);
+        var cpuUsageService = ram[3];
+        var memoryUsageMBUnity = ram[4];
+        var memoryUsagePercUnity = (float)((memoryUsageMBUnity / totalRam) * 100);
+        var cpuUsageUnity = ram[5];
+        var ramTotalMB = memoryUsageMBDTs + memoryUsageMBService + memoryUsageMBUnity;
+        var ramTotalPerc = memoryUsagePercDTs + memoryUsagePercService + memoryUsagePercUnity;
+        var cpuTotal = cpuUsageDTs + cpuUsageService + cpuUsageUnity;
         mapSpawnner.ClearVisualisationObjects();
         EvaluationTestModel testInfo = new EvaluationTestModel { TotalTimeTaken = totalTime, DTResponseTimeTaken = dtResponse, 
-            VisualTimeTaken = visualTime, NumberOfDataPoints = DateList.Count, RAMusageMBUnity = memoryUsageMB,
-        RAMusagePercUnity = memoryUsagePerc, CPUusageUnity = cpuUsage };
+            VisualTimeTaken = visualTime, NumberOfDataPoints = DateList.Count, RAMusageMBUnity = memoryUsageMBUnity,
+            RAMusageMBDTs = memoryUsageMBDTs, RAMusageMBServices = memoryUsageMBService, RAMusageMBTotal = ramTotalMB,
+            RAMusagePercUnity = memoryUsagePercUnity, RAMusagePercDTs = memoryUsagePercDTs, RAMusagePercServices = memoryUsagePercService, 
+            RAMusagePercTotal = ramTotalPerc, CPUusageDTs = cpuUsageDTs, CPUusageServices = cpuUsageService, CPUusageUnity = cpuUsageUnity,
+            CPUusageTotal = cpuTotal
+        };
         return testInfo;
     }
     private string CreateMessage(string dataType, string informationType, string displayType, string digitalTwin, List<string> dtLevel,

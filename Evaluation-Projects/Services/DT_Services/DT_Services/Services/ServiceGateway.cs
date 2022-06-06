@@ -15,6 +15,7 @@ namespace Services
 {
     public class ServiceGateway : ServiceBaseClass
     {
+        TestService test = new TestService();
         private static LoadExcel excel = new LoadExcel();
         Communication.ServerSocket myServer = new Communication.ServerSocket();
         Communication.ClientSocket myClient = new Communication.ClientSocket();
@@ -22,6 +23,7 @@ namespace Services
         private List<Service> servicesList = new List<Service>();
         public void InitialiseServiceGateway()
         {
+            //var ram = test.ReturnRAMUsages();
             servicesList = excel.LoadServices();
             foreach (var service in servicesList)
             {
@@ -67,6 +69,12 @@ namespace Services
                         break;
                     }
                 }
+            }
+            else if(tempMessage.ServiceTag == "Usages")
+            {
+                var temp = await test.ReturnUsagesAsync();
+                var list = JsonConvert.SerializeObject(temp);
+                message = list;
             }
             return message;
         }

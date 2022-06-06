@@ -25,7 +25,7 @@ public class VR_Movement : MonoBehaviour
     {
         TryInitializeRH();
         TryInitializeLH();
-        UI.SetActive(isMenuDisplayed);
+        UI.SetActive(true);
     }
 
     void TryInitializeRH()
