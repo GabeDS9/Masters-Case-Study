@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XCVPrELaEd6dKUQ5bz0YHEjBDFHaF8ysHNqz6hiQAl8jqzNvErENuR82RWvawAPBi3mTn9bavFgzVbrcC+eOkw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\20935927\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

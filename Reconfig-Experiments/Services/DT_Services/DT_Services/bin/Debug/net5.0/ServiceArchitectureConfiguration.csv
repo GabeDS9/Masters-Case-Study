@@ -1,0 +1,4 @@
+Service_Name,IP_Address,Port,Location
+Service Gateway,127.0.0.1,9000,Local
+Directory Service,127.0.0.1,9001,Local
+Exploratory Service,127.0.0.1,9002,Local
