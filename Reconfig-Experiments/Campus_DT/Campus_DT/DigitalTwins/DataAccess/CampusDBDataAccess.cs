@@ -41,11 +41,19 @@ namespace DataAccess
             return energyMeterCollection.InsertOneAsync(energymeter);
         }
 
-        public async Task<List<EnergyMeterModel>> GetEnergyReading(string campus, string timestamp)
+        public async Task<List<EnergyMeterModel>> GetEnergyReading(string campus, string timestamp, string type)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == campus && c.Timestamp == timestamp));
-            return results.ToList();
+            if (type == null)
+            {
+                var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == campus && c.Timestamp == timestamp && (c.Type != "Day Max" || c.Type != "Month Max" || c.Type != "Year Max")));
+                return results.ToList();
+            }
+            else
+            {
+                var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == campus && c.Timestamp == timestamp && c.Type == type));
+                return results.ToList();
+            }
         }
         public Task UpdateEnergyMeter(EnergyMeterModel energyMeter)
         {

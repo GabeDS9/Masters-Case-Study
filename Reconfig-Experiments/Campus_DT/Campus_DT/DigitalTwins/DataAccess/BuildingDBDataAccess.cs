@@ -45,22 +45,39 @@ namespace DataAccess
             var filter = Builders<EnergyMeterModel>.Filter.Eq("Id", energyMeter.Id);
             return energyCollection.ReplaceOneAsync(filter, energyMeter, new ReplaceOptions { IsUpsert = true });
         }
-        public async Task<List<EnergyMeterModel>> GetBuildingEnergyReading(string building, string timestamp)
+        public async Task<List<EnergyMeterModel>> GetBuildingEnergyReading(string building, string timestamp, string type)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == building && c.Timestamp == timestamp));
-            return results.ToList();
+            if (type == null)
+            {
+                var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == building && c.Timestamp == timestamp && (c.Type != "Day Max" || c.Type != "Month Max" || c.Type != "Year Max")));
+                return results.ToList();
+            }
+            else
+            {
+                var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == building && c.Timestamp == timestamp && c.Type == type));
+                return results.ToList();
+            }
         }
-        public async Task<List<EnergyMeterModel>> GetEnergyMeterReading(int meter_id, string timestamp)
+        public async Task<List<EnergyMeterModel>> GetEnergyMeterReading(int meter_id, string timestamp, string type)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.Timestamp == timestamp));
-            return results.ToList();
+            if (type == null)
+            {
+                var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.Timestamp == timestamp && (c.Type != "Day Max" || c.Type != "Month Max" || c.Type != "Year Max")));
+                return results.ToList();
+            }
+            else
+            {
+                var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.Timestamp == timestamp && c.Type == type));
+                return results.ToList();
+            }
+           
         }
         public async Task<List<EnergyMeterModel>> GetLatestEnergyReading()
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.EnergyMeter_name == "Current"));
+            var results = await energymeterCollection.FindAsync(c => (c.Type == "Current"));
             return results.ToList();
         }
         public async Task DeleteDatabase(string dbName)

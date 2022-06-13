@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj": {}
+    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj": {
+    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
+        "projectUniqueName": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
         "projectName": "DT_Services",
-        "projectPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
+        "projectPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
         "packagesPath": "C:\\Users\\20935927\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\obj\\",
+        "outputPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Services\\DT_Services\\DT_Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\20935927\\AppData\\Roaming\\NuGet\\NuGet.Config",

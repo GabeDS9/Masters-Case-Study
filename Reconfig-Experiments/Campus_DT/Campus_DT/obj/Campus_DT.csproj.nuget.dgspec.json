@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj": {}
+    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj": {
+    "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
+        "projectUniqueName": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
         "projectName": "Campus_DT",
-        "projectPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
+        "projectPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
         "packagesPath": "C:\\Users\\20935927\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Campus_DT\\Campus_DT\\obj\\",
+        "outputPath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Campus_DT\\Campus_DT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\20935927\\AppData\\Roaming\\NuGet\\NuGet.Config",

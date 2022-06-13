@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "np3p4qho2HJv8gf+V7+k/UJ+bMhxu7gVfPAiMYK2zISGAE03rh02CKkOB2apWtz/G7Hn0B8KXAfNQI3yXgDQwg==",
+  "dgSpecHash": "1eQL7DkUUK5c7HIrUCiRbbpNWysCZBBvMZJTm4FP+Zi7y2egNU1Te+ladwixXTkK/4Ewwpz7rdpsoYZxwBchmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
+  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\20935927\\.nuget\\packages\\dnsclient\\1.6.0\\dnsclient.1.6.0.nupkg.sha512",
     "C:\\Users\\20935927\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",

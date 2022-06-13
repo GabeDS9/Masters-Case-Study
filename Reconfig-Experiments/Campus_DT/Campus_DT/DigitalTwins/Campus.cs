@@ -32,6 +32,9 @@ namespace Campus_DT
         private List<EnergyMeterModel> campusInitialEnergyDayReadings = new List<EnergyMeterModel>();
         private List<EnergyMeterModel> campusInitialEnergyMonthReadings = new List<EnergyMeterModel>();
         private List<EnergyMeterModel> campusInitialEnergyYearReadings = new List<EnergyMeterModel>();
+        private List<EnergyMeterModel> campusInitialMaxEnergyDayReadings = new List<EnergyMeterModel>();
+        private List<EnergyMeterModel> campusInitialMaxEnergyMonthReadings = new List<EnergyMeterModel>();
+        private List<EnergyMeterModel> campusInitialMaxEnergyYearReadings = new List<EnergyMeterModel>();
         private bool PrecinctsInitialised = false;
         public bool Initialised = false;
         private string prevEnergyTime;
@@ -111,6 +114,9 @@ namespace Campus_DT
             await CalculateInitialEnergyDayAverageAsync(startDate, endDate);
             await CalculateInitialEnergyMonthAverage(startDate, endDate);
             await CalculateInitialEnergyYearAverage(startDate, endDate);
+            await CalculateInitialEnergyDayMaxAsync(startDate, endDate);
+            await CalculateInitialEnergyMonthMaxAsync(startDate, endDate);
+            await CalculateInitialEnergyYearMaxAsync(startDate, endDate);
             prevEnergyTime = utilities.DecodeTimestamp(endDate, "Day");
         }
         public async Task CalculateInitialEnergyDayAverageAsync(string startDate, string endDate)
@@ -129,7 +135,7 @@ namespace Campus_DT
                     var response = await myClient.sendMessageAsync(temp, precinct.IP_Address, precinct.Port);
                     powerTot += double.Parse(response);
                 }
-                var tempCampusEnergy = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, powerTot, date);
+                var tempCampusEnergy = new EnergyMeterModel(Campus_name, 0, "Day Average", Latitude, Longitude, powerTot, date);
                 campusInitialEnergyDayReadings.Add(tempCampusEnergy);
                 powerTot = 0;
             }
@@ -150,7 +156,7 @@ namespace Campus_DT
                     var response = await myClient.sendMessageAsync(temp, precinct.IP_Address, precinct.Port);
                     powerTot += double.Parse(response);
                 }
-                var tempCampusEnergy = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, powerTot, date);
+                var tempCampusEnergy = new EnergyMeterModel(Campus_name, 0, "Month Average", Latitude, Longitude, powerTot, date);
                 campusInitialEnergyMonthReadings.Add(tempCampusEnergy);
                 powerTot = 0;
             }
@@ -171,8 +177,71 @@ namespace Campus_DT
                     var response = await myClient.sendMessageAsync(temp, precinct.IP_Address, precinct.Port);
                     powerTot += double.Parse(response);
                 }
-                var tempCampusEnergy = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, powerTot, date);
+                var tempCampusEnergy = new EnergyMeterModel(Campus_name, 0, "Year Average", Latitude, Longitude, powerTot, date);
                 campusInitialEnergyYearReadings.Add(tempCampusEnergy);
+                powerTot = 0;
+            }
+        }
+        public async Task CalculateInitialEnergyDayMaxAsync(string startDate, string endDate)
+        {
+            string type = "Day";
+            startDate = utilities.ChangeDateFormat(utilities.DecodeTimestamp(startDate, "Day"));
+            endDate = utilities.ChangeDateFormat(utilities.DecodeTimestamp(endDate, "Day"));
+            List<string> dateList = utilities.GenerateDateList(startDate, endDate, type);
+            double powerTot = 0;
+            foreach (var date in dateList)
+            {
+                foreach (var precinct in Precincts)
+                {
+                    MessageModel tempMes = new MessageModel { DataType = "Initialisation", MessageType = "Max", startDate = date, timePeriod = type };
+                    var temp = JsonConvert.SerializeObject(tempMes);
+                    var response = await myClient.sendMessageAsync(temp, precinct.IP_Address, precinct.Port);
+                    powerTot += double.Parse(response);
+                }
+                var tempPrecinctEnergy = new EnergyMeterModel(Campus_name, 0, "Day Max", Latitude, Longitude, powerTot, date);
+                campusInitialMaxEnergyDayReadings.Add(tempPrecinctEnergy);
+                powerTot = 0;
+            }
+        }
+        public async Task CalculateInitialEnergyMonthMaxAsync(string startDate, string endDate)
+        {
+            string type = "Month";
+            startDate = utilities.ChangeDateFormat(utilities.DecodeTimestamp(startDate, "Day"));
+            endDate = utilities.ChangeDateFormat(utilities.DecodeTimestamp(endDate, "Day"));
+            List<string> dateList = utilities.GenerateDateList(startDate, endDate, type);
+            double powerTot = 0;
+            foreach (var date in dateList)
+            {
+                foreach (var precinct in Precincts)
+                {
+                    MessageModel tempMes = new MessageModel { DataType = "Initialisation", MessageType = "Max", startDate = date, timePeriod = type };
+                    var temp = JsonConvert.SerializeObject(tempMes);
+                    var response = await myClient.sendMessageAsync(temp, precinct.IP_Address, precinct.Port);
+                    powerTot += double.Parse(response);
+                }
+                var tempPrecinctEnergy = new EnergyMeterModel(Campus_name, 0, "Month Max", Latitude, Longitude, powerTot, date);
+                campusInitialMaxEnergyMonthReadings.Add(tempPrecinctEnergy);
+                powerTot = 0;
+            }
+        }
+        public async Task CalculateInitialEnergyYearMaxAsync(string startDate, string endDate)
+        {
+            string type = "Year";
+            startDate = utilities.ChangeDateFormat(utilities.DecodeTimestamp(startDate, "Day"));
+            endDate = utilities.ChangeDateFormat(utilities.DecodeTimestamp(endDate, "Day"));
+            List<string> dateList = utilities.GenerateDateList(startDate, endDate, type);
+            double powerTot = 0;
+            foreach (var date in dateList)
+            {
+                foreach (var precinct in Precincts)
+                {
+                    MessageModel tempMes = new MessageModel { DataType = "Initialisation", MessageType = "Max", startDate = date, timePeriod = type };
+                    var temp = JsonConvert.SerializeObject(tempMes);
+                    var response = await myClient.sendMessageAsync(temp, precinct.IP_Address, precinct.Port);
+                    powerTot += double.Parse(response);
+                }
+                var tempPrecinctEnergy = new EnergyMeterModel(Campus_name, 0, "Year Max", Latitude, Longitude, powerTot, date);
+                campusInitialMaxEnergyYearReadings.Add(tempPrecinctEnergy);
                 powerTot = 0;
             }
         }
@@ -190,7 +259,19 @@ namespace Campus_DT
             {
                 await db.CreateEnergyReading(year);
             }
-            var tempCurrent = new EnergyMeterModel("Current", 0, Latitude, Longitude, latestCampusEnergy, "");
+            foreach (var day in campusInitialMaxEnergyDayReadings)
+            {
+                await db.CreateEnergyReading(day);
+            }
+            foreach (var month in campusInitialMaxEnergyMonthReadings)
+            {
+                await db.CreateEnergyReading(month);
+            }
+            foreach (var year in campusInitialMaxEnergyYearReadings)
+            {
+                await db.CreateEnergyReading(year);
+            }
+            var tempCurrent = new EnergyMeterModel("Current", 0, "Current Average", Latitude, Longitude, latestCampusEnergy, "");
             await db.CreateEnergyReading(tempCurrent);
             Console.WriteLine($"{Campus_name} DT has been initialised");
         }
@@ -231,7 +312,7 @@ namespace Campus_DT
                     response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
                     newDayPower += double.Parse(response);
                 }
-                var temp = await db.GetEnergyReading(Campus_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                var temp = await db.GetEnergyReading(Campus_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), null);
                 if (temp != null)
                 {
                     Console.WriteLine($"\nOld day value for energy for {Campus_name} {prevEnergyTime} - {temp[0].Power_Tot}");
@@ -248,15 +329,15 @@ namespace Campus_DT
                 }
                 else if (newDayEnergyData.Timestamp == null)
                 {
-                    var tempDayMeter = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, (double)newDayEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
-                    var tempMonthMeter = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, (double)newMonthEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
-                    var tempYearMeter = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, (double)newYearEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
+                    var tempDayMeter = new EnergyMeterModel(Campus_name, 0, "Day Average", Latitude, Longitude, (double)newDayEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                    var tempMonthMeter = new EnergyMeterModel(Campus_name, 0, "Month Average", Latitude, Longitude, (double)newMonthEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
+                    var tempYearMeter = new EnergyMeterModel(Campus_name, 0, "Year Average", Latitude, Longitude, (double)newYearEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
                     await db.CreateEnergyReading(tempDayMeter);
                     await db.CreateEnergyReading(tempMonthMeter);
                     await db.CreateEnergyReading(tempYearMeter);
                 }
                 _ = ResetUpdatedDataAvailableAsync();
-                temp = await db.GetEnergyReading(Campus_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                temp = await db.GetEnergyReading(Campus_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), null);
                 if (temp != null)
                 {
                     Console.WriteLine($"Updated day value for energy for {Campus_name} {tempDate} - {temp[0].Power_Tot}");
@@ -451,7 +532,7 @@ namespace Campus_DT
                     else if (DTLevel == "Campus")
                     {
                         var tempPrec = await ReturnLatestEnergyReadingAsync();
-                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempPrec, "Latest Reading");
+                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, "Current", Latitude, Longitude, tempPrec, "Latest Reading");
                         var tempEnergyList = new List<EnergyMeterModel>();
                         tempEnergyList.Add(temp);
                         var newList = GenerateInformationList(tempEnergyList);
@@ -476,10 +557,79 @@ namespace Campus_DT
                             }
                         }
                         var tempPrec = await ReturnLatestEnergyReadingAsync();
-                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempPrec, "Latest Reading");
+                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, "Current", Latitude, Longitude, tempPrec, "Latest Reading");
                         var tempEnergyList = new List<EnergyMeterModel>();
                         tempEnergyList.Add(temp);
                         var newList = GenerateInformationList(tempEnergyList);
+                        foreach (var item in newList)
+                        {
+                            informationDataList.Add(item);
+                        }
+                    }
+                }
+                if (type == "Max")
+                {
+                    if (DTLevel == "Building")
+                    {
+                        foreach (var precinct in Precincts)
+                        {
+                            MessageModel tempMes = new MessageModel {
+                                DataType = "Energy", MessageType = "Max", DisplayType = displayType, DTDetailLevel = DTDetailLevel,
+                                startDate = startDate, endDate = endDate, timePeriod = timePeriod
+                            };
+                            var mes = JsonConvert.SerializeObject(tempMes);
+                            var response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
+                            var infoList = JsonConvert.DeserializeObject<List<InformationModel>>(response);
+                            foreach (var item in infoList)
+                            {
+                                informationDataList.Add(item);
+                            }
+                        }
+                    }
+                    else if (DTLevel == "Precinct")
+                    {
+                        foreach (var precinct in Precincts)
+                        {
+                            MessageModel tempMes = new MessageModel {
+                                DataType = "Energy", MessageType = "Max", DisplayType = displayType, DTDetailLevel = DTDetailLevel,
+                                startDate = startDate, endDate = endDate, timePeriod = timePeriod
+                            };
+                            var mes = JsonConvert.SerializeObject(tempMes);
+                            var response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
+                            var infoList = JsonConvert.DeserializeObject<List<InformationModel>>(response);
+                            foreach (var item in infoList)
+                            {
+                                informationDataList.Add(item);
+                            }
+                        }
+                    }
+                    else if (DTLevel == "Campus")
+                    {
+                        var tempPrec = await ReturnCampusEnergyMaxesAsync(dateList, $"{timePeriod} Max");
+                        var newList = GenerateInformationList(tempPrec);
+                        foreach (var item in newList)
+                        {
+                            informationDataList.Add(item);
+                        }
+                    }
+                    else if (DTLevel == "All")
+                    {
+                        foreach (var precinct in Precincts)
+                        {
+                            MessageModel tempMes = new MessageModel {
+                                DataType = "Energy", MessageType = "Max", DisplayType = displayType, DTDetailLevel = DTDetailLevel,
+                                startDate = startDate, endDate = endDate, timePeriod = timePeriod
+                            };
+                            var mes = JsonConvert.SerializeObject(tempMes);
+                            var response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
+                            var infoList = JsonConvert.DeserializeObject<List<InformationModel>>(response);
+                            foreach (var item in infoList)
+                            {
+                                informationDataList.Add(item);
+                            }
+                        }
+                        var tempPrec = await ReturnCampusEnergyMaxesAsync(dateList, $"{timePeriod} Max");
+                        var newList = GenerateInformationList(tempPrec);
                         foreach (var item in newList)
                         {
                             informationDataList.Add(item);
@@ -494,7 +644,21 @@ namespace Campus_DT
             List<EnergyMeterModel> meterData = new List<EnergyMeterModel>();
             foreach (var date in dateList)
             {
-                var temp = await db.GetEnergyReading(Campus_name, date);
+                var temp = await db.GetEnergyReading(Campus_name, date, null);
+                if (temp.Count != 0)
+                {
+                    meterData.Add(temp[0]);
+                }
+            }
+
+            return meterData;
+        }
+        public async Task<List<EnergyMeterModel>> ReturnCampusEnergyMaxesAsync(List<string> dateList, string type)
+        {
+            List<EnergyMeterModel> meterData = new List<EnergyMeterModel>();
+            foreach (var date in dateList)
+            {
+                var temp = await db.GetEnergyReading(Campus_name, date, type);
                 if (temp.Count != 0)
                 {
                     meterData.Add(temp[0]);
@@ -528,7 +692,7 @@ namespace Campus_DT
                 currentNumberofTimestamps = (DateTime.Now.Day * 8640) + (DateTime.Now.Day * 288) + (DateTime.Now.Hour * 12) + (DateTime.Now.Minute / 5);
             }
 
-            var temp = await db.GetEnergyReading(Campus_name, prevTimestamp);
+            var temp = await db.GetEnergyReading(Campus_name, prevTimestamp, null);
             EnergyMeterModel result = null;
             if (temp.Count != 0)
             {
@@ -538,7 +702,7 @@ namespace Campus_DT
             }
             else if (temp.Count == 0)
             {
-                result = new EnergyMeterModel(null, 0, null, null, 0, null);
+                result = new EnergyMeterModel(null, 0, null, null, null, 0, null);
             }
 
             return result;
@@ -586,7 +750,7 @@ namespace Campus_DT
                     if (message.DisplayType == "Individual")
                     {
                         var tempEnergy = await ReturnLatestEnergyReadingAsync();
-                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, Latitude, Longitude, tempEnergy, "");
+                        EnergyMeterModel temp = new EnergyMeterModel(Campus_name, 0, "Current", Latitude, Longitude, tempEnergy, "");
                         List<EnergyMeterModel> tempEnergyList = new List<EnergyMeterModel>();
                         tempEnergyList.Add(temp);
                         List<InformationModel> tempList = GenerateInformationList(tempEnergyList);
@@ -607,7 +771,26 @@ namespace Campus_DT
                         string stDate = utilities.ChangeDateFormat(message.startDate);
                         string enDate = utilities.ChangeDateFormat(message.endDate);
                         var dateList = utilities.GenerateDateList(stDate, enDate, message.timePeriod);
-                        var temp = await ReturnEnergyAveragesAsync(dateList);
+                        var temp = await ReturnCampusEnergyMaxesAsync(dateList, $"{message.timePeriod} Max");
+                        var infoModelList = GenerateInformationList(temp);
+                        var response = JsonConvert.SerializeObject(infoModelList);
+                        return response;
+                    }
+                    else if (message.DisplayType == "Collective")
+                    {
+                        var infoModelList = await ReturnChildDTEnergyDataAsync(message.MessageType, message.DTDetailLevel, message.DisplayType, message.startDate, message.endDate, message.timePeriod);
+                        var tempMess = JsonConvert.SerializeObject(infoModelList);
+                        return tempMess;
+                    }
+                }
+                else if (message.MessageType == "Max")
+                {
+                    if (message.DisplayType == "Individual")
+                    {
+                        string stDate = utilities.ChangeDateFormat(message.startDate);
+                        string enDate = utilities.ChangeDateFormat(message.endDate);
+                        var dateList = utilities.GenerateDateList(stDate, enDate, message.timePeriod);
+                        var temp = await ReturnCampusEnergyMaxesAsync(dateList, message.timePeriod);
                         var infoModelList = GenerateInformationList(temp);
                         var response = JsonConvert.SerializeObject(infoModelList);
                         return response;

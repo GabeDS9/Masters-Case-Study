@@ -63,6 +63,7 @@ public class MenuManager : MonoBehaviour
     private bool AllLevelSelected = false;
     private bool EnergyDataFlag = false;
     private bool AllDataFlag = false;
+    private string serviceType = "";
 
     // Message parameters
     private string SelectedDT = "";
@@ -357,7 +358,7 @@ public class MenuManager : MonoBehaviour
         TimePeriodSelected = TimePeriod.options[TimePeriod.value].text;
         StartDateSelected = startDate.text;
         EndDateSelected = endDate.text;
-        InformationTypeSelected = "Averages";
+        InformationTypeSelected = serviceType;
         var message = CreateMessage();
         DisplayVisualisationUI();
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
@@ -409,5 +410,13 @@ public class MenuManager : MonoBehaviour
         {
             DateSelectNextButton.interactable = true;
         }        
+    }
+    public void AveragesSelected()
+    {
+        serviceType = "Averages";
+    }
+    public void MaxSelected()
+    {
+        serviceType = "Max";
     }
 }

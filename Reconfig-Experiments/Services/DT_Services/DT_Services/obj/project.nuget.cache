@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XCVPrELaEd6dKUQ5bz0YHEjBDFHaF8ysHNqz6hiQAl8jqzNvErENuR82RWvawAPBi3mTn9bavFgzVbrcC+eOkw==",
+  "dgSpecHash": "MPa/ll/C0Q3v9c+QDuhbGSyFUspk+0i8LrubEaxwRxlN81fqlaIzUl7rhJtqnvdFW/h9u/Hk0HTxCJUsjZU4rA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Reconfiguration Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
+  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Reconfig-Experiments\\Services\\DT_Services\\DT_Services\\DT_Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\20935927\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
