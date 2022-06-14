@@ -349,7 +349,7 @@ public class MenuManager : MonoBehaviour
         var message = CreateMessage();
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message);
-        mapSpawnner.PopulateData(response, null);
+        mapSpawnner.PopulateData(response, null, null);
         visualisationStatus.text = "Visualisation ready";
     }
     public async void GetInformation()
@@ -363,7 +363,7 @@ public class MenuManager : MonoBehaviour
         DisplayVisualisationUI();
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         var response = await myClient.sendMessageAsync(message);        
-        mapSpawnner.PopulateData(response, DateList);
+        mapSpawnner.PopulateData(response, DateList, serviceType);
         visualisationStatus.text = "Visualisation ready";
     }
     private string CreateMessage()
@@ -418,5 +418,9 @@ public class MenuManager : MonoBehaviour
     public void MaxSelected()
     {
         serviceType = "Max";
+    }
+    public void TotalSelected()
+    {
+        serviceType = "Total";
     }
 }

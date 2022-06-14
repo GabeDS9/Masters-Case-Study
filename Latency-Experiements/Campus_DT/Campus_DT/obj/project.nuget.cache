@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X56gqc0bT46ACgW6kRfk7Hgrw3+F39ICAh5MW9NKQrhK7qAlgYfAEytGpCnpkwBZqHofynVthe5qp3MQHljF1Q==",
+  "dgSpecHash": "0NHVH5beeObilyc6AtdNBrLBr3Iy7mSKqA/gqdNu1I25zY4zBHFRcL5Y0oPEvccJzsyvqhOQDxPHaJSoofdU2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Evaluation-Projects\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
+  "projectFilePath": "C:\\Users\\20935927\\Documents\\Masters-Case-Study\\Latency-Experiements\\Campus_DT\\Campus_DT\\Campus_DT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\20935927\\.nuget\\packages\\dnsclient\\1.6.0\\dnsclient.1.6.0.nupkg.sha512",
     "C:\\Users\\20935927\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",

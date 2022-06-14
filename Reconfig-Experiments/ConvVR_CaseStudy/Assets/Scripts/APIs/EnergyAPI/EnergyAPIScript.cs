@@ -58,12 +58,12 @@ public class EnergyAPIScript : APICaller
                     (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
                     if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
                     {
-                        tempEnergy += data.ptot_kw;
+                        tempEnergy += data.difference_imp_kwh;
                         count++;
                     }
 
                 }
-                dataList.Add(tempEnergy / count);
+                dataList.Add(tempEnergy / (count / 12));
                 prevYear = year;
                 prevMonth = month;
                 prevDay = day;
@@ -100,12 +100,12 @@ public class EnergyAPIScript : APICaller
                     (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
                     if ((year == tempYear) && (month == tempMonth))
                     {
-                        tempEnergy += data.ptot_kw;
+                        tempEnergy += data.difference_imp_kwh;
                         count++;
                     }
 
                 }
-                dataList.Add(tempEnergy / count);
+                dataList.Add(tempEnergy / (count / 12));
                 prevYear = year;
                 prevMonth = month;
             }
@@ -139,12 +139,12 @@ public class EnergyAPIScript : APICaller
                     (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
                     if ((year == tempYear) && (month == tempMonth))
                     {
-                        tempEnergy += data.ptot_kw;
+                        tempEnergy += data.difference_imp_kwh;
                         count++;
                     }
 
                 }
-                dataList.Add(tempEnergy / count);
+                dataList.Add(tempEnergy / (count/12));
                 prevYear = year;
             }
         }
@@ -300,6 +300,135 @@ public class EnergyAPIScript : APICaller
                 }
                 dataList.Add(maxEnergy);
                 maxEnergy = 0;
+                prevYear = year;
+            }
+        }
+        return dataList;
+    }
+    public async Task<List<double>> CalculateTotalAsync(int meterid, string startDate, string endDate, string maxType)
+    {
+        List<double> dataMaxes = new List<double>();
+        if (maxType == "Day")
+        {
+            dataMaxes = await CalculateDayTotalAsync(startDate, endDate, meterid);
+        }
+        else if (maxType == "Month")
+        {
+            dataMaxes = await CalculateMonthTotalAsync(startDate, endDate, meterid);
+        }
+        else if (maxType == "Year")
+        {
+            dataMaxes = await CalculateYearTotalAsync(startDate, endDate, meterid);
+        }
+        return dataMaxes;
+    }
+    private async Task<List<double>> CalculateDayTotalAsync(string startDate, string endDate, int meterid)
+    {
+        List<double> dataList = new List<double>();
+        var meterData = await GetMeterDataAsync(startDate, endDate, meterid);
+
+        int day, month, year, prevDay = 0, prevMonth = 0, prevYear = 0;
+        int startDay, startMonth, startYear;
+        (startYear, startMonth, startDay) = GetDate(startDate);
+        int endDay, endMonth, endYear;
+        (endYear, endMonth, endDay) = GetDate(endDate);
+        double totalEnergy = 0;
+
+        for (int i = 0; i < meterData.Count; i++)
+        {
+            (year, month, day) = GetDate(meterData[i].timestamp);
+
+            if (((year != prevYear) || (month != prevMonth) || (day != prevDay)) && ((year >= startYear) || (month >= startMonth) || (day >= startDay))
+                && ((year <= endYear) || (month <= endMonth) || (day <= endDay)))
+            {
+                foreach (var data in meterData)
+                {
+                    int tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
+                    {
+                        totalEnergy += data.difference_imp_kwh;
+                    }
+
+                }
+                dataList.Add(totalEnergy);
+                totalEnergy = 0;
+                prevYear = year;
+                prevMonth = month;
+                prevDay = day;
+            }
+        }
+        return dataList;
+    }
+    private async Task<List<double>> CalculateMonthTotalAsync(string startDate, string endDate, int meterid)
+    {
+        List<double> dataList = new List<double>();
+        var meterData = await GetMeterDataAsync(startDate, endDate, meterid);
+
+        int day, month, year, prevMonth = 0, prevYear = 0;
+        double totalEnergy = 0;
+        int startDay, startMonth, startYear;
+        (startYear, startMonth, startDay) = GetDate(startDate);
+        int endDay, endMonth, endYear;
+        (endYear, endMonth, endDay) = GetDate(endDate);
+        EnergyAverage tempData = new EnergyAverage();
+
+        for (int i = 0; i < meterData.Count; i++)
+        {
+            (year, month, day) = GetDate(meterData[i].timestamp);
+
+            if ((year != prevYear) || (month != prevMonth) && ((year >= startYear) || (month >= startMonth))
+                    && ((year <= endYear) || (month <= endMonth)))
+            {
+
+                foreach (var data in meterData)
+                {
+                    int tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth))
+                    {
+                        totalEnergy += data.difference_imp_kwh;
+                    }
+                }
+                dataList.Add(totalEnergy);
+                totalEnergy = 0;
+                prevYear = year;
+                prevMonth = month;
+            }
+        }
+        return dataList;
+    }
+    private async Task<List<double>> CalculateYearTotalAsync(string startDate, string endDate, int meterid)
+    {
+        List<double> dataList = new List<double>();
+        var meterData = await GetMeterDataAsync(startDate, endDate, meterid);
+
+        int day, month, year, prevYear = 0;
+        int startDay, startMonth, startYear;
+        (startYear, startMonth, startDay) = GetDate(startDate);
+        int endDay, endMonth, endYear;
+        (endYear, endMonth, endDay) = GetDate(endDate);
+        EnergyAverage tempData = new EnergyAverage();
+        double totalEnergy = 0;
+
+        for (int i = 0; i < meterData.Count; i++)
+        {
+            (year, month, day) = GetDate(meterData[i].timestamp);
+
+            if ((year != prevYear) && (year >= startYear) && (year <= endYear))
+            {
+
+                foreach (var data in meterData)
+                {
+                    int tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth))
+                    {
+                        totalEnergy += data.difference_imp_kwh;
+                    }
+                }
+                dataList.Add(totalEnergy);
+                totalEnergy = 0;
                 prevYear = year;
             }
         }

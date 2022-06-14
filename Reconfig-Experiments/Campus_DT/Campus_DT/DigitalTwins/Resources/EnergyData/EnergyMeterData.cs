@@ -25,5 +25,8 @@ public class EnergyMeterData
     public List<EnergyAverageData> day_max { get; set; }
     public List<EnergyAverageData> month_max { get; set; }
     public List<EnergyAverageData> year_max { get; set; }
+    public List<EnergyAverageData> day_tot { get; set; }
+    public List<EnergyAverageData> month_tot { get; set; }
+    public List<EnergyAverageData> year_tot { get; set; }
     public bool NewDataAvailable { get; set; }
 }

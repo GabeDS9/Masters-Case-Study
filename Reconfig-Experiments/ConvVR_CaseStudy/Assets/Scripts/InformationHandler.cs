@@ -374,6 +374,62 @@ public class InformationHandler : MonoBehaviour
             }
             return null;
         }
+        else if (InformationType == "Total")
+        {
+            foreach (var build in BuildingList)
+            {
+                if (build.ElementName == ElementSelected)
+                {
+                    var dateList = utilities.GenerateDateList(startDate, endDate, timePeriod);
+                    double[] totalData = new double[dateList.Count];
+                    foreach (var meter in build.ChildElements)
+                    {
+                        var tempData = await energyCaller.CalculateTotalAsync(int.Parse(meter), startDate, endDate, timePeriod);
+                        while (tempData.Count != totalData.Length)
+                        {
+                            if (tempData.Count > 1)
+                            {
+                                tempData.Add(tempData[0]);
+                            }
+                            else
+                            {
+                                tempData.Add(0);
+                            }
+                        }
+                        for (int i = 0; i < totalData.Length; i++)
+                        {
+                            if (tempData.Count > 0)
+                            {
+                                totalData[i] += tempData[i];
+                            }
+                            else
+                            {
+                                totalData[i] += 0;
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < totalData.Length; i++)
+                    {
+                        DataModel newData = new DataModel
+                        {
+                            DataType = DataType,
+                            ElementType = "Building",
+                            Element_Name = ElementSelected,
+                            Latitude = build.Latitude,
+                            Longitude = build.Longitude,
+                            Meter_ID = 0,
+                            Value = totalData[i],
+                            Timestamp = dateList[i]
+                        };
+                        dataModels.Add(newData);
+                    }
+
+                    return dataModels;
+                }
+            }
+            return null;
+        }
         else
         {
             return null;
@@ -675,7 +731,7 @@ public class InformationHandler : MonoBehaviour
                     }
                     if (!isData)
                     {
-                        var temp = await energyCaller.CalculateAveragesAsync(int.Parse(prec.ChildElements[0]), startDate, endDate, timePeriod);
+                        var temp = await energyCaller.CalculateMaxesAsync(int.Parse(prec.ChildElements[0]), startDate, endDate, timePeriod);
                         for (int i = 0; i < temp.Count; i++)
                         {
                             maxData[i] = temp[i];
@@ -691,6 +747,125 @@ public class InformationHandler : MonoBehaviour
                                 Longitude = prec.Longitude,
                                 Meter_ID = 0,
                                 Value = maxData[i],
+                                Timestamp = dateList[i]
+                            };
+                            dataModels.Add(newDat);
+                        }
+                        isData = true;
+                    }
+                }
+                return dataModels;
+            }
+            return null;
+        }
+        else if (InformationType == "Total")
+        {
+            List<string> dateList = utilities.GenerateDateList(startDate, endDate, timePeriod);
+            double[] totalData = new double[dateList.Count];
+            bool isData = true;
+            if (DisplayType == "Individual")
+            {
+                foreach (var prec in PrecinctList)
+                {
+                    if (prec.ElementName == ElementSelected)
+                    {
+                        foreach (var build in prec.ChildElements)
+                        {
+                            var tempData = await GetBuildingInformationAsync(DataType, InformationType, build, startDate, endDate, timePeriod, BuildingList);
+                            for (int i = 0; i < totalData.Length; i++)
+                            {
+                                totalData[i] += tempData[i].Value;
+                            }
+                        }
+                        if (totalData[0] == 0)
+                        {
+                            var temp = await energyCaller.CalculateMaxesAsync(int.Parse(prec.ChildElements[0]), startDate, endDate, timePeriod);
+                            for (int i = 0; i < temp.Count; i++)
+                            {
+                                totalData[i] = temp[i];
+                            }
+                        }
+                        for (int i = 0; i < totalData.Length; i++)
+                        {
+                            DataModel newData = new DataModel
+                            {
+                                DataType = DataType,
+                                ElementType = "Precinct",
+                                Element_Name = ElementSelected,
+                                Latitude = prec.Latitude,
+                                Longitude = prec.Longitude,
+                                Meter_ID = 0,
+                                Value = totalData[i],
+                                Timestamp = dateList[i]
+                            };
+                            dataModels.Add(newData);
+                        }
+                    }
+                }
+                return dataModels;
+            }
+            else if (DisplayType == "Collective")
+            {
+                foreach (var prec in PrecinctList)
+                {
+                    if (prec.ElementName == ElementSelected)
+                    {
+                        foreach (var date in dateList)
+                        {
+                            double tempTotalPower = 0;
+                            foreach (var build in prec.ChildElements)
+                            {
+                                foreach (var data in BuildingDataList)
+                                {
+                                    if (build == data.Element_Name)
+                                    {
+                                        if (date == data.Timestamp)
+                                        {
+                                            tempTotalPower += data.Value;
+                                        }
+                                    }
+                                }
+                            }
+                            if (tempTotalPower == 0)
+                            {
+                                isData = false;
+                                break;
+                            }
+                            if (isData)
+                            {
+                                DataModel newData = new DataModel
+                                {
+                                    DataType = DataType,
+                                    ElementType = "Precinct",
+                                    Element_Name = ElementSelected,
+                                    Latitude = prec.Latitude,
+                                    Longitude = prec.Longitude,
+                                    Meter_ID = 0,
+                                    Value = tempTotalPower,
+                                    Timestamp = date
+                                };
+                                dataModels.Add(newData);
+                            }
+                        }
+                    }
+                    if (!isData)
+                    {
+                        var temp = await energyCaller.CalculateTotalAsync(int.Parse(prec.ChildElements[0]), startDate, endDate, timePeriod);
+                        for (int i = 0; i < temp.Count; i++)
+                        {
+                            totalData[i] = temp[i];
+                        }
+                        for (int i = 0; i < totalData.Length; i++)
+                        {
+                            DataModel newDat = new DataModel
+                            {
+                                DataType = DataType,
+                                ElementType = "Precinct",
+                                Element_Name = ElementSelected,
+                                Latitude = prec.Latitude,
+                                Longitude = prec.Longitude,
+                                Meter_ID = 0,
+                                Value = totalData[i],
                                 Timestamp = dateList[i]
                             };
                             dataModels.Add(newDat);
@@ -935,6 +1110,90 @@ public class InformationHandler : MonoBehaviour
                                 Longitude = camp.Longitude,
                                 Meter_ID = 0,
                                 Value = tempMaxPower,
+                                Timestamp = date
+                            };
+                            dataModels.Add(newData);
+                        }
+                    }
+                }
+                return dataModels;
+            }
+            return null;
+        }
+        else if (InformationType == "Total")
+        {
+            List<string> dateList = utilities.GenerateDateList(startDate, endDate, timePeriod);
+            double[] totalData = new double[dateList.Count];
+            if (DisplayType == "Individual")
+            {
+                foreach (var camp in CampusList)
+                {
+                    if (camp.ElementName == ElementSelected)
+                    {
+                        foreach (var data in PrecinctDataList)
+                        {
+                            foreach (var prec in camp.ChildElements)
+                            {
+                                if (prec == data.Element_Name)
+                                {
+                                    var tempData = await GetPrecinctInformationAsync(DataType, InformationType, DisplayType, prec, startDate, endDate, timePeriod, BuildingList, PrecinctList);
+                                    for (int i = 0; i < totalData.Length; i++)
+                                    {
+                                        totalData[i] += tempData[i].Value;
+                                    }
+                                }
+                            }
+                        }
+                        for (int i = 0; i < totalData.Length; i++)
+                        {
+                            DataModel newData = new DataModel
+                            {
+                                DataType = DataType,
+                                ElementType = "Campus",
+                                Element_Name = ElementSelected,
+                                Latitude = camp.Latitude,
+                                Longitude = camp.Longitude,
+                                Meter_ID = 0,
+                                Value = totalData[i],
+                                Timestamp = dateList[i]
+                            };
+                            dataModels.Add(newData);
+                        }
+                    }
+                }
+                return dataModels;
+            }
+            else if (DisplayType == "Collective")
+            {
+                foreach (var camp in CampusList)
+                {
+                    if (camp.ElementName == ElementSelected)
+                    {
+                        foreach (var date in dateList)
+                        {
+                            double tempTotalPower = 0;
+                            foreach (var data in PrecinctDataList)
+                            {
+                                foreach (var prec in camp.ChildElements)
+                                {
+                                    if (prec == data.Element_Name)
+                                    {
+                                        if (date == data.Timestamp)
+                                        {
+                                            tempTotalPower += data.Value;
+                                        }
+                                    }
+                                }
+                            }
+                            DataModel newData = new DataModel
+                            {
+                                DataType = DataType,
+                                ElementType = "Campus",
+                                Element_Name = ElementSelected,
+                                Latitude = camp.Latitude,
+                                Longitude = camp.Longitude,
+                                Meter_ID = 0,
+                                Value = tempTotalPower,
                                 Timestamp = date
                             };
                             dataModels.Add(newData);

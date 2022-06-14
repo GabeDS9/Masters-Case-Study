@@ -24,19 +24,19 @@
 
         private List<VisualisationModel> myVisuals = new List<VisualisationModel>();
 
-        public void PopulateData(List<DataModel> Data, List<string> DateList)
+        public void PopulateData(List<DataModel> Data, List<string> DateList, string serviceType)
         {
             ClearVisualisationObjects();
             if (DateList != null)
             {
-                PopulateTimePeriodData(Data, DateList);
+                PopulateTimePeriodData(Data, DateList, serviceType);
             }
             else
             {
                 PopulateCurrentData(Data);
             }
         }
-        private void PopulateTimePeriodData(List<DataModel> Data, List<string> DateList)
+        private void PopulateTimePeriodData(List<DataModel> Data, List<string> DateList, string serviceType)
         {
             foreach (var data in Data)
             {
@@ -59,7 +59,18 @@
                 var infoInstance = Instantiate(VisualInfo);
                 var infoText = infoInstance.GetComponentInChildren<Text>();
                 var roundedData = (float)(Math.Round((decimal)data.Value, 3));
-                infoText.text = $"{data.Element_Name}\n{data.Timestamp}\n{roundedData} kWh";
+                if (serviceType == "Averages")
+                {
+                    infoText.text = $"{data.Element_Name}\n{data.Timestamp}\n{roundedData} kWh";
+                }
+                else if(serviceType == "Max")
+                {
+                    infoText.text = $"{data.Element_Name}\n{data.Timestamp}\nR {roundedData}";
+                }
+                else if (serviceType == "Total")
+                {
+                    infoText.text = $"{data.Element_Name}\n{data.Timestamp}\nTotal: {roundedData} kWh";
+                }
                 //Debug.Log(infoText.text);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 4, instance.transform.position.z); ;
 
@@ -98,7 +109,7 @@
 
                 var infoInstance = Instantiate(VisualInfo);
                 var infoText = infoInstance.GetComponentInChildren<Text>();
-                infoText.text = $"{data.Element_Name}\n{data.Timestamp}\n{data.Value} kWh";
+                infoText.text = $"{data.Element_Name}\n{data.Timestamp}\n{data.Value} kW";
 
                 float floatEnergy = (float)Math.Abs(data.Value);
                 float adjustedScalePos = floatEnergy / 10;

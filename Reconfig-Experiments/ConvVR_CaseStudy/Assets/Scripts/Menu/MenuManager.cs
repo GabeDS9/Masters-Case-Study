@@ -373,7 +373,7 @@ public class MenuManager : MonoBehaviour
         var response = await infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected,
             SelectedElement, DTLevelSelected, StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
         //Debug.Log($"{response[0].Element_Name} {response[0].Timestamp} {response[0].Value}");
-        mapSpawnner.PopulateData(response, null);
+        mapSpawnner.PopulateData(response, null, null);
         visualisationStatus.text = "Visualisation ready";
     }
     public async void GetInformation()
@@ -386,7 +386,7 @@ public class MenuManager : MonoBehaviour
         var response = await infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, SelectedElement, DTLevelSelected,
             StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
-        mapSpawnner.PopulateData(response, DateList);
+        mapSpawnner.PopulateData(response, DateList, serviceType);
         visualisationStatus.text = "Visualisation ready";
     }
     public void SetAllLevelFlag()
@@ -443,6 +443,10 @@ public class MenuManager : MonoBehaviour
     public void MaxServiceSelected()
     {
         serviceType = "Max";
+    }
+    public void TotalServiceSelected()
+    {
+        serviceType = "Total";
     }
     /*public GameObject MainMenu;
     public GameObject MeterMenu;
