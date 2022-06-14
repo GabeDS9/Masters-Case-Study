@@ -1,61 +1,61 @@
 Campus,Precinct,Reticulation,Building,Meter Name,Meter Type,meter_id,description,make,manufacturer,type,Serial Number,model,yard_number,Building_No,Floor,Room_No,Meter_Description,Latitude,Longitude,IP_Address,Port,Location,Starting date
-Stellenbosch University,-,-,-,-,Energy,-,-,-,-,-,-,-,-,-,-,-,-,-33.9328,18.8644,127.0.0.1,8000,Local,2022/06/12 00:00
-Stellenbosch University,Banghoek Toevoer,-,-,-,Energy,3037,Voertuigpoel Kiosk Hooftoevoer (Banhoek),Elster,Kocos,A1140,68508323,LiMo-DIN,-,-,-,-,-,-33.91667,18.91667,127.0.0.1,8002,Local,2022/06/12 00:00
-Stellenbosch University,Banghoek Toevoer,-,HIV Bestuur Gebou,-,Energy,3041,HIV Bestuur Gebou,Elster,Kocos,A1140,68508326,LiMo-DIN,-,-,-,-,-,-33.916675,18.916675,127.0.0.1,8003,Local,2022/06/12 00:00
-Stellenbosch University,Banghoek Toevoer,-,Language Centre,-,Energy,3040,Language Centre,Elster,Kocos,A1140,685083278,LiMo-DIN,-,-,-,-,-,-33.91668,18.91668,127.0.0.1,8004,Local,2022/06/12 00:00
-Stellenbosch University,Banghoek Toevoer,-,Matie Gemeenskapsdiens Luckhofskool,-,Energy,3038,Matie Gemeenskapsdiens Luckhofskool,Elster,Kocos,A1140,68508324,LiMo-DIN,-,-,-,-,-,-33.916685,18.916685,127.0.0.1,8005,Local,2022/06/12 00:00
-Stellenbosch University,Banghoek Toevoer,-,Voertuigpoel,-,Energy,3039,Voertuigpoel,Elster,Kocos,A1140,68508325,LiMo-DIN,-,-,-,-,-,-33.91669,18.91669,127.0.0.1,8006,Local,2022/06/12 00:00
-Stellenbosch University,Botmashoogte Toevoer,-,-,-,Energy,3758,Botmashoogte Toevoer,Elster,Kocos,A1140,38146936,LiMo R2,-,-,-,-,-,-33.9233,18.883,127.0.0.1,8008,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,-,-,Energy,3025,Coetzenburg 11 kV,Elster,Kocos,A1700,51500272,LiMo-DIN,306,745,1,1002,Coetzenburg 11kv,-33.93943714,18.86822311,127.0.0.1,8026,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Atletiek Stadion - VM Remainder,Energy,3903,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Cell C,Energy,2948,Coetzenburg Cell C,Elster,Kocos,A1140,98129682,LiMo R2,306/2,137,1,1010,Coetzenburg Cell C,-33.93906627,18.86919016,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Imaging Centre,Energy,2949,Coetzenburg Imaging Centre ,Elster,Kocos,A1140,98154635,LiMo R2,306/2,137,1,1010,Coetzenburg Imaging Centre,-33.93907239,18.86918982,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg MTN,Energy,2947,Coetzenburg MTN,Elster,Kocos,A1140,98129683,LiMo R2,306/2,137,1,1010,Coetzenburg MTN,-33.93906349,18.86919049,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Tennisbaan,Energy,2950,Coetzenburg Tennisbaan,Elster,Kocos,A1140,58500667,LiMo R2,306/2,137,1,1010,Coetzenburg Tennisbaan,-33.93906043,18.86918915,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Vodacom,Energy,2849,Coetzenburg Vodacom ,Elster,Kocos,A1140,68905747,LiMo R2,306/2,171,1,1002,Coetzenburg vodacom,-33.94064168,18.87085704,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Woonhuis 01,Energy,3965,Coetzenburg Woonhuis 01,Elster,Kocos,A1140,48101653,LiMo R2,306/1,904,1,Outside,Coetzenburg Woonhuis 01,-33.93853935,18.87088319,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,-,Energy,2964,Coetzenburg Atletiek Substasie,Elster,Kocos,A1140,58500468,LiMo R2,-,-,-,-,-,-33.9392406,18.86974998,127.0.0.1,8016,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Danie Craven Rugby Stadion,-,Energy,2955,Danie Craven Rugby Stadion,Elster,Kocos,A1140,88500423,LiMo R2,312,138,1,1020,Danie Craven Rugby Stadion,-33.94052152,18.87291597,127.0.0.1,8017,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Krieket Onderwaterhokkie Klubhuis,-,Energy,2954,Krieket Onderwaterhokkie Klubhuis,Elster,Kocos,A1140,78520566,LiMo R2,-,-,-,-,-,-33.93937052,18.87016984,127.0.0.1,8018,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportburo - Jannie Marais Klubhuis,-,Energy,2746,Sportburo - Jannie Marais Klubhuis,Elster,Kocos,A1140,58500447,LiMo R2,313,165,1,1003,Sportburo - Jannie Marais Klubhuis,-33.93854041,18.87367101,127.0.0.1,8019,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Gimnasium,Energy,2754,Sport Gimnasium,Elster,Kocos,A1140,58500444,LiMo R2,306/2,87,1,114,Sport gimnasium,-33.94129853,18.8717833,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Wetenskap - VM Remainder,Energy,3904,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,-,Energy,2753,Sportwetenskap Toevoer,Elster,Kocos,A1140,58500442,LiMo R2,306/2,87,1,114,Sportwetenskap toevoer,-33.94128796,18.87177592,127.0.0.1,8022,Local,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Coetzenburg Sentrum,Energy,2848,Coetzenburg Sentrum,Elster,Kocos,A1140,58500669,LiMo R2,306/2,171,1,1002,Coetzenburg sentrum,-33.94064548,18.87086475,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Swembadpompe,Energy,2639,Swembadpompe,Elster,Kocos,A1140,58500661,LiMo R2,306/2,171,1,1002,Swembad pompe,-33.94064265,18.87086229,-,0,-,2022/06/12 00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,-,Energy,2856,Swembad Minisub,Elster,Kocos,A1140,78520491,LiMo R2,306/2,0,1,Outside,Swembad minisub,-33.94067001,18.87089593,127.0.0.1,8025,Local,2022/06/12 00:00
--,Erica 11 kV,-,-,-,Energy,2739,Erica 11 kV,Elster,Kocos,A1700,51500260,LiMo-DIN,-,-,-,-,-,-33.93471243,18.87145327,127.0.0.1,8059,Local,2022/06/12 00:00
--,Erica 11 kV,-,Erica Koshuis,-,Energy,2731,Erica Koshuis,Elster,Kocos,A1140,68509072,LiMo R2,-,-,-,-,-,-33.9354,18.872,127.0.0.1,8027,Local,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Annex (Huismoles),Energy,3001,Heemstede Annex (Huismoles),Elster,Kocos,A1140,68509018,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hittepompe,Energy,2998,Heemstede Hittepompe,Elster,Kocos,A1140,68509014,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hooftoevoer - VM Remainder,Energy,5797,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Kombuis,Energy,2996,Heemstede Kombuis,Elster,Kocos,A1140,68509070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Lydia Hittepompe,Energy,3002,Huis Ten Bosch Lydia Hittepompe,Elster,Kocos,A1140,68509045,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3000,Huis Ten Bosch Kombuis,Elster,Kocos,A1140,68509028,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3138,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,2999,Huis Ten Bosch Toevoer,Elster,Kocos,A1140,68509029,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2958,Lydia Kombuis,Elster,Kocos,A1140,68509032,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,3137,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2959,Lydia Toevoer,Elster,Kocos,A1140,68509031,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Studente Gesondheid,Energy,3759,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,-,Energy,2997,Heemstede Hooftoevoer,Elster,Kocos,A1140,68509012,LiMo R2,-,-,-,-,-,-33.93514,18.86858,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Heatpump,Energy,7121,Western Cape - Metanoia - Heat pumps,Elster,Kocos,A1140,88500424,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Kombuis,Energy,2743,Metanoia Kombuis,Elster,Kocos,A1700,61501659,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Koshuis - VM Remainder,Energy,5455,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Metanoia Hooftoevoer,-,Energy,2742,Metanoia Hooftoevoer,Elster,Kocos,A1700,61501621,LiMo-DIN,-,-,-,-,-,-33.93272,18.87169,127.0.0.1,8044,Local,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva + Nerina Hittepompe,Energy,2960,Minerva+Nerina Hittepompe,Elster,Kocos,A1140,68509040,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva Kombuis,Energy,2736,Minerva Kombuis,Elster,Kocos,A1700,61501620,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva VM,Energy,5800,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,3003,Nerina Kombuis,Elster,Kocos,A1140,68509076,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,5910,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,2734,Nerina Toevoer,Elster,Kocos,A1140,68509074,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,-,Energy,2910,Minerva + Nerin Hoof Toevoer ,Elster,Kocos,A1140,68509041,LiMo R2,-,-,-,-,-,-33.93444665,18.87068557,127.0.0.1,8051,Local,2022/06/12 00:00
--,Erica 11 kV,-,Nemesia Koshuis,-,Energy,2909,Nemesia Koshuis,Elster,Kocos,A1140,68509068,LiMo R2,-,-,-,-,-,-33.93531878,18.87245308,127.0.0.1,8052,Local,2022/06/12 00:00
--,Erica 11 kV,-,Serruria Koshuis,-,Energy,2733,Serruria Koshuis,Elster,Kocos,A1140,68509046,LiMo R2,-,-,-,-,-,-33.93512735,18.87297651,127.0.0.1,8053,Local,2022/06/12 00:00
--,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Hittepompe,Energy,2969,Tienie Louw Hittepompe,Elster,Kocos,A1140,68500068,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis (Noodkrag),Energy,2953,Tienie Louw Kombuis (Noodkrag),Elster,Kocos,A1140,68500070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis Warmwater,Energy,2952,Tienie Louw Kombuis Warmwater,Elster,Kocos,A1140,68508327,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
--,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Woonstelle,Energy,2951,Tienie Louw Woonstelle,Elster,Kocos,A1140,68500069,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022/06/12 00:00
+Stellenbosch University,-,-,-,-,Energy,-,-,-,-,-,-,-,-,-,-,-,-,-33.9328,18.8644,127.0.0.1,8000,Local,2022-06-12  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,-,-,Energy,3037,Voertuigpoel Kiosk Hooftoevoer (Banhoek),Elster,Kocos,A1140,68508323,LiMo-DIN,-,-,-,-,-,-33.91667,18.91667,127.0.0.1,8002,Local,2022-06-12  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,HIV Bestuur Gebou,-,Energy,3041,HIV Bestuur Gebou,Elster,Kocos,A1140,68508326,LiMo-DIN,-,-,-,-,-,-33.916675,18.916675,127.0.0.1,8003,Local,2022-06-12  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,Language Centre,-,Energy,3040,Language Centre,Elster,Kocos,A1140,685083278,LiMo-DIN,-,-,-,-,-,-33.91668,18.91668,127.0.0.1,8004,Local,2022-06-12  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,Matie Gemeenskapsdiens Luckhofskool,-,Energy,3038,Matie Gemeenskapsdiens Luckhofskool,Elster,Kocos,A1140,68508324,LiMo-DIN,-,-,-,-,-,-33.916685,18.916685,127.0.0.1,8005,Local,2022-06-12  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,Voertuigpoel,-,Energy,3039,Voertuigpoel,Elster,Kocos,A1140,68508325,LiMo-DIN,-,-,-,-,-,-33.91669,18.91669,127.0.0.1,8006,Local,2022-06-12  00:00:00
+Stellenbosch University,Botmashoogte Toevoer,-,-,-,Energy,3758,Botmashoogte Toevoer,Elster,Kocos,A1140,38146936,LiMo R2,-,-,-,-,-,-33.9233,18.883,127.0.0.1,8008,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,-,-,Energy,3025,Coetzenburg 11 kV,Elster,Kocos,A1700,51500272,LiMo-DIN,306,745,1,1002,Coetzenburg 11kv,-33.93943714,18.86822311,127.0.0.1,8026,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Atletiek Stadion - VM Remainder,Energy,3903,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Cell C,Energy,2948,Coetzenburg Cell C,Elster,Kocos,A1140,98129682,LiMo R2,306/2,137,1,1010,Coetzenburg Cell C,-33.93906627,18.86919016,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Imaging Centre,Energy,2949,Coetzenburg Imaging Centre ,Elster,Kocos,A1140,98154635,LiMo R2,306/2,137,1,1010,Coetzenburg Imaging Centre,-33.93907239,18.86918982,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg MTN,Energy,2947,Coetzenburg MTN,Elster,Kocos,A1140,98129683,LiMo R2,306/2,137,1,1010,Coetzenburg MTN,-33.93906349,18.86919049,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Tennisbaan,Energy,2950,Coetzenburg Tennisbaan,Elster,Kocos,A1140,58500667,LiMo R2,306/2,137,1,1010,Coetzenburg Tennisbaan,-33.93906043,18.86918915,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Vodacom,Energy,2849,Coetzenburg Vodacom ,Elster,Kocos,A1140,68905747,LiMo R2,306/2,171,1,1002,Coetzenburg vodacom,-33.94064168,18.87085704,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Woonhuis 01,Energy,3965,Coetzenburg Woonhuis 01,Elster,Kocos,A1140,48101653,LiMo R2,306/1,904,1,Outside,Coetzenburg Woonhuis 01,-33.93853935,18.87088319,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,-,Energy,2964,Coetzenburg Atletiek Substasie,Elster,Kocos,A1140,58500468,LiMo R2,-,-,-,-,-,-33.9392406,18.86974998,127.0.0.1,8016,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Danie Craven Rugby Stadion,-,Energy,2955,Danie Craven Rugby Stadion,Elster,Kocos,A1140,88500423,LiMo R2,312,138,1,1020,Danie Craven Rugby Stadion,-33.94052152,18.87291597,127.0.0.1,8017,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Krieket Onderwaterhokkie Klubhuis,-,Energy,2954,Krieket Onderwaterhokkie Klubhuis,Elster,Kocos,A1140,78520566,LiMo R2,-,-,-,-,-,-33.93937052,18.87016984,127.0.0.1,8018,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportburo - Jannie Marais Klubhuis,-,Energy,2746,Sportburo - Jannie Marais Klubhuis,Elster,Kocos,A1140,58500447,LiMo R2,313,165,1,1003,Sportburo - Jannie Marais Klubhuis,-33.93854041,18.87367101,127.0.0.1,8019,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Gimnasium,Energy,2754,Sport Gimnasium,Elster,Kocos,A1140,58500444,LiMo R2,306/2,87,1,114,Sport gimnasium,-33.94129853,18.8717833,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Wetenskap - VM Remainder,Energy,3904,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,-,Energy,2753,Sportwetenskap Toevoer,Elster,Kocos,A1140,58500442,LiMo R2,306/2,87,1,114,Sportwetenskap toevoer,-33.94128796,18.87177592,127.0.0.1,8022,Local,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Coetzenburg Sentrum,Energy,2848,Coetzenburg Sentrum,Elster,Kocos,A1140,58500669,LiMo R2,306/2,171,1,1002,Coetzenburg sentrum,-33.94064548,18.87086475,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Swembadpompe,Energy,2639,Swembadpompe,Elster,Kocos,A1140,58500661,LiMo R2,306/2,171,1,1002,Swembad pompe,-33.94064265,18.87086229,-,0,-,2022-06-12  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,-,Energy,2856,Swembad Minisub,Elster,Kocos,A1140,78520491,LiMo R2,306/2,0,1,Outside,Swembad minisub,-33.94067001,18.87089593,127.0.0.1,8025,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,-,-,Energy,2739,Erica 11 kV,Elster,Kocos,A1700,51500260,LiMo-DIN,-,-,-,-,-,-33.93471243,18.87145327,127.0.0.1,8059,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,Erica Koshuis,-,Energy,2731,Erica Koshuis,Elster,Kocos,A1140,68509072,LiMo R2,-,-,-,-,-,-33.9354,18.872,127.0.0.1,8027,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Annex (Huismoles),Energy,3001,Heemstede Annex (Huismoles),Elster,Kocos,A1140,68509018,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hittepompe,Energy,2998,Heemstede Hittepompe,Elster,Kocos,A1140,68509014,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hooftoevoer - VM Remainder,Energy,5797,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Kombuis,Energy,2996,Heemstede Kombuis,Elster,Kocos,A1140,68509070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Lydia Hittepompe,Energy,3002,Huis Ten Bosch Lydia Hittepompe,Elster,Kocos,A1140,68509045,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3000,Huis Ten Bosch Kombuis,Elster,Kocos,A1140,68509028,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3138,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,2999,Huis Ten Bosch Toevoer,Elster,Kocos,A1140,68509029,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2958,Lydia Kombuis,Elster,Kocos,A1140,68509032,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,3137,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2959,Lydia Toevoer,Elster,Kocos,A1140,68509031,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Studente Gesondheid,Energy,3759,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,-,Energy,2997,Heemstede Hooftoevoer,Elster,Kocos,A1140,68509012,LiMo R2,-,-,-,-,-,-33.93514,18.86858,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Heatpump,Energy,7121,Western Cape - Metanoia - Heat pumps,Elster,Kocos,A1140,88500424,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Kombuis,Energy,2743,Metanoia Kombuis,Elster,Kocos,A1700,61501659,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Koshuis - VM Remainder,Energy,5455,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Metanoia Hooftoevoer,-,Energy,2742,Metanoia Hooftoevoer,Elster,Kocos,A1700,61501621,LiMo-DIN,-,-,-,-,-,-33.93272,18.87169,127.0.0.1,8044,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva + Nerina Hittepompe,Energy,2960,Minerva+Nerina Hittepompe,Elster,Kocos,A1140,68509040,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva Kombuis,Energy,2736,Minerva Kombuis,Elster,Kocos,A1700,61501620,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva VM,Energy,5800,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,3003,Nerina Kombuis,Elster,Kocos,A1140,68509076,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,5910,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,2734,Nerina Toevoer,Elster,Kocos,A1140,68509074,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,-,Energy,2910,Minerva + Nerin Hoof Toevoer ,Elster,Kocos,A1140,68509041,LiMo R2,-,-,-,-,-,-33.93444665,18.87068557,127.0.0.1,8051,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,Nemesia Koshuis,-,Energy,2909,Nemesia Koshuis,Elster,Kocos,A1140,68509068,LiMo R2,-,-,-,-,-,-33.93531878,18.87245308,127.0.0.1,8052,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,Serruria Koshuis,-,Energy,2733,Serruria Koshuis,Elster,Kocos,A1140,68509046,LiMo R2,-,-,-,-,-,-33.93512735,18.87297651,127.0.0.1,8053,Local,2022-06-12  00:00:00
+-,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Hittepompe,Energy,2969,Tienie Louw Hittepompe,Elster,Kocos,A1140,68500068,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis (Noodkrag),Energy,2953,Tienie Louw Kombuis (Noodkrag),Elster,Kocos,A1140,68500070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis Warmwater,Energy,2952,Tienie Louw Kombuis Warmwater,Elster,Kocos,A1140,68508327,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
+-,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Woonstelle,Energy,2951,Tienie Louw Woonstelle,Elster,Kocos,A1140,68500069,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-06-12  00:00:00
 -,Erica 11 kV,-,Tienie Louw Hooftoevoer,-,Energy,2970,Tienie Louw Hooftoevoer,Elster,Kocos,A1140,68500067,LiMo R2,-,-,-,-,-,-33.93483426,18.87178776,127.0.0.1,8058,Local,2022/06/12 00:00
 -,Helderberg 11 kV,-,-,-,Energy,3028,Helderberg 11 kV,Elster,Kocos,A1700,51500265,LiMo R2,-,-,-,-,-,-33.94015896,18.85937828,127.0.0.1,8063,Local,2022/06/12 00:00
 -,Helderberg 11 kV,-,Helderberg Hittepompe,-,Energy,2946,Helderberg Hittepompe,Elster,Kocos,A1140,68509007,LiMo R2,-,-,-,-,-,-33.94017,18.859384,127.0.0.1,8060,Local,2022/06/12 00:00

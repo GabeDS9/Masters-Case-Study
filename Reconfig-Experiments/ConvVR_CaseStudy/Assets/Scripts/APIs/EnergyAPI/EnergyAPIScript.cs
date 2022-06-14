@@ -167,6 +167,144 @@ public class EnergyAPIScript : APICaller
         }
         return dataAverages;
     }
+    public async Task<List<double>> CalculateMaxesAsync(int meterid, string startDate, string endDate, string maxType)
+    {
+        List<double> dataMaxes = new List<double>();
+        if (maxType == "Day")
+        {
+            dataMaxes = await CalculateDayMaxAsync(startDate, endDate, meterid);
+        }
+        else if (maxType == "Month")
+        {
+            dataMaxes = await CalculateMonthMaxAsync(startDate, endDate, meterid);
+        }
+        else if (maxType == "Year")
+        {
+            dataMaxes = await CalculateYearMaxAsync(startDate, endDate, meterid);
+        }
+        return dataMaxes;
+    }
+    private async Task<List<double>> CalculateDayMaxAsync(string startDate, string endDate, int meterid)
+    {
+        List<double> dataList = new List<double>();
+        var meterData = await GetMeterDataAsync(startDate, endDate, meterid);
+
+        int day, month, year, prevDay = 0, prevMonth = 0, prevYear = 0;
+        int startDay, startMonth, startYear;
+        (startYear, startMonth, startDay) = GetDate(startDate);
+        int endDay, endMonth, endYear;
+        (endYear, endMonth, endDay) = GetDate(endDate);
+        double maxEnergy = 0;
+
+        for (int i = 0; i < meterData.Count; i++)
+        {
+            (year, month, day) = GetDate(meterData[i].timestamp);
+
+            if (((year != prevYear) || (month != prevMonth) || (day != prevDay)) && ((year >= startYear) || (month >= startMonth) || (day >= startDay))
+                && ((year <= endYear) || (month <= endMonth) || (day <= endDay)))
+            {
+                foreach (var data in meterData)
+                {
+                    int tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth) && (day == tempDay))
+                    {
+                        if(data.ptot_kw > maxEnergy)
+                        {
+                            maxEnergy = data.ptot_kw;
+                        }
+                    }
+
+                }
+                dataList.Add(maxEnergy);
+                maxEnergy = 0;
+                prevYear = year;
+                prevMonth = month;
+                prevDay = day;
+            }
+        }
+        return dataList;
+    }
+    private async Task<List<double>> CalculateMonthMaxAsync(string startDate, string endDate, int meterid)
+    {
+        List<double> dataList = new List<double>();
+        var meterData = await GetMeterDataAsync(startDate, endDate, meterid);
+
+        int day, month, year, prevMonth = 0, prevYear = 0;
+        double maxEnergy = 0;
+        int startDay, startMonth, startYear;
+        (startYear, startMonth, startDay) = GetDate(startDate);
+        int endDay, endMonth, endYear;
+        (endYear, endMonth, endDay) = GetDate(endDate);
+        EnergyAverage tempData = new EnergyAverage();
+
+        for (int i = 0; i < meterData.Count; i++)
+        {
+            (year, month, day) = GetDate(meterData[i].timestamp);
+
+            if ((year != prevYear) || (month != prevMonth) && ((year >= startYear) || (month >= startMonth))
+                    && ((year <= endYear) || (month <= endMonth)))
+            {
+
+                foreach (var data in meterData)
+                {
+                    int tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth))
+                    {
+                        if (data.ptot_kw > maxEnergy)
+                        {
+                            maxEnergy = data.ptot_kw;
+                        }
+                    }
+                }
+                dataList.Add(maxEnergy);
+                maxEnergy = 0;
+                prevYear = year;
+                prevMonth = month;
+            }
+        }
+        return dataList;
+    }
+    private async Task<List<double>> CalculateYearMaxAsync(string startDate, string endDate, int meterid)
+    {
+        List<double> dataList = new List<double>();
+        var meterData = await GetMeterDataAsync(startDate, endDate, meterid);
+
+        int day, month, year, prevYear = 0;
+        int startDay, startMonth, startYear;
+        (startYear, startMonth, startDay) = GetDate(startDate);
+        int endDay, endMonth, endYear;
+        (endYear, endMonth, endDay) = GetDate(endDate);
+        EnergyAverage tempData = new EnergyAverage();
+        double maxEnergy = 0;
+
+        for (int i = 0; i < meterData.Count; i++)
+        {
+            (year, month, day) = GetDate(meterData[i].timestamp);
+
+            if ((year != prevYear) && (year >= startYear) && (year <= endYear))
+            {
+
+                foreach (var data in meterData)
+                {
+                    int tempDay, tempMonth, tempYear;
+                    (tempYear, tempMonth, tempDay) = GetDate(data.timestamp);
+                    if ((year == tempYear) && (month == tempMonth))
+                    {
+                        if (data.ptot_kw > maxEnergy)
+                        {
+                            maxEnergy = data.ptot_kw;
+                        }
+                    }
+                }
+                dataList.Add(maxEnergy);
+                maxEnergy = 0;
+                prevYear = year;
+            }
+        }
+        return dataList;
+    }
 }
 
 

@@ -59,6 +59,7 @@ public class MenuManager : MonoBehaviour
     private bool AllLevelSelected = false;
     private bool EnergyDataFlag = false;
     private bool AllDataFlag = false;
+    private string serviceType = "";
 
     private string SelectedElement;
     private List<string> DTLevelSelected = new List<string>();
@@ -381,7 +382,7 @@ public class MenuManager : MonoBehaviour
         TimePeriodSelected = TimePeriod.options[TimePeriod.value].text;
         StartDateSelected = startDate.text;
         EndDateSelected = endDate.text;
-        InformationTypeSelected = "Averages";
+        InformationTypeSelected = serviceType;
         var response = await infoHandler.GetInformationAsync(DataTypeSelected, InformationTypeSelected, DisplayTypeSelected, SelectedElement, DTLevelSelected,
             StartDateSelected, EndDateSelected, TimePeriodSelected, CampusList, PrecinctList, BuildingList);
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
@@ -434,6 +435,14 @@ public class MenuManager : MonoBehaviour
         {
             DateSelectNextButton.interactable = true;
         }
+    }
+    public void AverageServiceSelected()
+    {
+        serviceType = "Averages";
+    }
+    public void MaxServiceSelected()
+    {
+        serviceType = "Max";
     }
     /*public GameObject MainMenu;
     public GameObject MeterMenu;
@@ -705,5 +714,5 @@ public class MenuManager : MonoBehaviour
         EndCalendar.SetActive(false);
     }*/
 
-    
+
 }
