@@ -65,11 +65,15 @@
                 }
                 else if(serviceType == "Max")
                 {
-                    infoText.text = $"{data.Element_Name}\n{data.Timestamp}\nR {roundedData}";
+                    infoText.text = $"{data.Element_Name}\n{data.Timestamp}\n {roundedData} kW";
                 }
                 else if (serviceType == "Total")
                 {
                     infoText.text = $"{data.Element_Name}\n{data.Timestamp}\nTotal: {roundedData} kWh";
+                }
+                else if (serviceType == "Energy Cost")
+                {
+                    infoText.text = $"{data.Element_Name}\n{data.Timestamp}\nCost:\nR {roundedData}";
                 }
                 //Debug.Log(infoText.text);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 4, instance.transform.position.z); ;

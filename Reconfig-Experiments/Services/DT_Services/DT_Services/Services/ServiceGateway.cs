@@ -37,7 +37,7 @@ namespace Services
         private void StartGatewayServer(int port)
         {
             Console.WriteLine($"Service gateway service running");
-            myServer.SetupServer(port, this, null, null);
+            myServer.SetupServer(port, this, null, null, null);
         }
         public async Task<string> MessageHandlerAsync(string mes)
         {
@@ -61,6 +61,18 @@ namespace Services
                 foreach (var service in servicesList)
                 {
                     if (service.ServiceName == "Exploratory Service")
+                    {
+                        var response = await myClient.sendMessageAsync(mes, service.IP_Address, service.Port);
+                        message = response;
+                        break;
+                    }
+                }
+            }
+            else if (tempMessage.ServiceTag == "Energy Cost")
+            {
+                foreach (var service in servicesList)
+                {
+                    if (service.ServiceName == "Energy Cost Service")
                     {
                         var response = await myClient.sendMessageAsync(mes, service.IP_Address, service.Port);
                         message = response;

@@ -33,7 +33,7 @@ namespace Services
         private void StartServiceServer(int port)
         {
             Console.WriteLine($"Exploratory analytics service running");
-            myServer.SetupServer(port, null, null, this);
+            myServer.SetupServer(port, null, null, this, null);
         }
         public async Task<string> MessageHandlerAsync(string mes)
         {

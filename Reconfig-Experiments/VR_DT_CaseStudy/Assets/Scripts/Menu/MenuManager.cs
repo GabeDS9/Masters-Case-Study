@@ -346,7 +346,7 @@ public class MenuManager : MonoBehaviour
         StartDateSelected = "";
         EndDateSelected = "";
         InformationTypeSelected = "CurrentData";
-        var message = CreateMessage();
+        var message = CreateMessage("");
         DisplayVisualisationUI();
         var response = await myClient.sendMessageAsync(message);
         mapSpawnner.PopulateData(response, null, null);
@@ -359,18 +359,27 @@ public class MenuManager : MonoBehaviour
         StartDateSelected = startDate.text;
         EndDateSelected = endDate.text;
         InformationTypeSelected = serviceType;
-        var message = CreateMessage();
+        var message = CreateMessage(serviceType);
         DisplayVisualisationUI();
         var DateList = utils.GenerateDateList(StartDateSelected, EndDateSelected, TimePeriodSelected);
         var response = await myClient.sendMessageAsync(message);        
         mapSpawnner.PopulateData(response, DateList, serviceType);
         visualisationStatus.text = "Visualisation ready";
     }
-    private string CreateMessage()
+    private string CreateMessage(string serv)
     {
+        string service = "";
+        if(serv == "Energy Cost")
+        {
+            service = serv;
+        }
+        else
+        {
+            service = "Exploratory";
+        }
         var message = new MessageModel
         {
-            ServiceTag = "Exploratory",
+            ServiceTag = service,
             DataType = DataTypeSelected,
             InformationType = InformationTypeSelected,
             DisplayType = DisplayTypeSelected,
@@ -422,5 +431,9 @@ public class MenuManager : MonoBehaviour
     public void TotalSelected()
     {
         serviceType = "Total";
+    }
+    public void CostSelected()
+    {
+        serviceType = "Energy Cost";
     }
 }

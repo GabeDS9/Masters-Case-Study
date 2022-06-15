@@ -47,6 +47,7 @@ namespace Precinct_DT
         private bool EnergyDataAvailable = false;
         private double latestPrecinctEnergy = 0;
         private double mainLatestPrecinctEnergy = 0;
+        private double newEnergyUsed = 0;
 
         public bool Initialised = false;
         public bool NewEnergyDataAvailable = false;
@@ -716,6 +717,11 @@ namespace Precinct_DT
                         mes = JsonConvert.SerializeObject(tempMes);
                         response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
                         newDayPower += double.Parse(response);
+
+                        tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestUsage", startDate = dayDate };
+                        mes = JsonConvert.SerializeObject(tempMes);
+                        response = await myClient.sendMessageAsync(mes, building.IP_Address, building.Port);
+                        newEnergyUsed += double.Parse(response);
                     }
                     //var temp = await db.GetEnergyReading(Precinct_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), 0, null);
                     /*if (temp != null)
@@ -725,18 +731,29 @@ namespace Precinct_DT
                     var newDayEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Day");
                     var newMonthEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Month");
                     var newYearEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Year");
-
+                    var newDayTotalEnergy = await CalculateEnergyNewTotalAsync(precinctEnergyMeter.meterid, newEnergyUsed, precinctEnergyMeter.previous_timestamp, "Day Total");
+                    var newMonthTotalEnergy = await CalculateEnergyNewTotalAsync(precinctEnergyMeter.meterid, newEnergyUsed, precinctEnergyMeter.previous_timestamp, "Month Total");
+                    var newYearTotalEnergy = await CalculateEnergyNewTotalAsync(precinctEnergyMeter.meterid, newEnergyUsed, precinctEnergyMeter.previous_timestamp, "Year Total");
                     if (newDayEnergyData.Timestamp != null)
                     {
                         await db.UpdateEnergyMeter(newDayEnergyData);
                         await db.UpdateEnergyMeter(newMonthEnergyData);
                         await db.UpdateEnergyMeter(newYearEnergyData);
+                        await db.UpdateEnergyMeter(newDayTotalEnergy);
+                        await db.UpdateEnergyMeter(newMonthTotalEnergy);
+                        await db.UpdateEnergyMeter(newYearTotalEnergy);
                     }
                     else if (newDayEnergyData.Timestamp == null)
                     {
                         var tempDayMeter = new EnergyMeterModel(Precinct_name, 0, "Day Average", Latitude, Longitude, (double)newDayEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
                         var tempMonthMeter = new EnergyMeterModel(Precinct_name, 0, "Month Average", Latitude, Longitude, (double)newMonthEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
                         var tempYearMeter = new EnergyMeterModel(Precinct_name, 0, "Year Average", Latitude, Longitude, (double)newYearEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
+                        await db.CreateEnergyReading(tempDayMeter);
+                        await db.CreateEnergyReading(tempMonthMeter);
+                        await db.CreateEnergyReading(tempYearMeter);
+                        tempDayMeter = new EnergyMeterModel(Precinct_name, 0, "Day Total", Latitude, Longitude, (double)newDayTotalEnergy.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                        tempMonthMeter = new EnergyMeterModel(Precinct_name, 0, "Month Total", Latitude, Longitude, (double)newMonthTotalEnergy.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
+                        tempYearMeter = new EnergyMeterModel(Precinct_name, 0, "Year Total", Latitude, Longitude, (double)newYearTotalEnergy.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
                         await db.CreateEnergyReading(tempDayMeter);
                         await db.CreateEnergyReading(tempMonthMeter);
                         await db.CreateEnergyReading(tempYearMeter);
@@ -783,6 +800,8 @@ namespace Precinct_DT
                     precinctEnergyMeter.previous_timestamp = precinctEnergyMeter.latest_timestamp;
                     precinctEnergyMeter.latest_timestamp = tempData[tempData.Count - 1].timestamp;
                     precinctEnergyMeter.latest_power = tempData[tempData.Count - 1].ptot_kw;
+                    var data = tempData[tempData.Count - 1].difference_imp_kwh;
+                    newEnergyUsed += data;
                     /*var temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.previous_timestamp, "Day"));
                     if (temp != null)
                     {
@@ -791,11 +810,17 @@ namespace Precinct_DT
                     var newDayEnergyData = await CalculateEnergyNewAverageAsync(precinctEnergyMeter.meterid, precinctEnergyMeter.latest_power, precinctEnergyMeter.previous_timestamp, "Day");
                     var newMonthEnergyData = await CalculateEnergyNewAverageAsync(precinctEnergyMeter.meterid, precinctEnergyMeter.latest_power, precinctEnergyMeter.previous_timestamp, "Month");
                     var newYearEnergyData = await CalculateEnergyNewAverageAsync(precinctEnergyMeter.meterid, precinctEnergyMeter.latest_power, precinctEnergyMeter.previous_timestamp, "Year");
+                    var newDayTotalEnergy = await CalculateEnergyNewTotalAsync(precinctEnergyMeter.meterid, data, precinctEnergyMeter.previous_timestamp, "Day Total");
+                    var newMonthTotalEnergy = await CalculateEnergyNewTotalAsync(precinctEnergyMeter.meterid, data, precinctEnergyMeter.previous_timestamp, "Month Total");
+                    var newYearTotalEnergy = await CalculateEnergyNewTotalAsync(precinctEnergyMeter.meterid, data, precinctEnergyMeter.previous_timestamp, "Year Total");
                     if (newDayEnergyData.Timestamp != null)
                     {
                         await db.UpdateEnergyMeter(newDayEnergyData);
                         await db.UpdateEnergyMeter(newMonthEnergyData);
                         await db.UpdateEnergyMeter(newYearEnergyData);
+                        await db.UpdateEnergyMeter(newDayTotalEnergy);
+                        await db.UpdateEnergyMeter(newMonthTotalEnergy);
+                        await db.UpdateEnergyMeter(newYearTotalEnergy);
                     }
                     else if (newDayEnergyData.Timestamp == null)
                     {
@@ -1346,6 +1371,24 @@ namespace Precinct_DT
 
             return result;
         }
+        private async Task<EnergyMeterModel> CalculateEnergyNewTotalAsync(int meterid, double newPower, string prevTime, string type)
+        {
+            string prevTimestamp = utilities.DecodeTimestamp(prevTime, type);
+
+            var temp = await db.GetEnergyReading(Precinct_name, prevTimestamp, 0, type);
+            EnergyMeterModel result = null;
+            if (temp.Count != 0)
+            {
+                temp[0].Power_Tot += newPower;
+                result = temp[0];
+            }
+            else if (temp.Count == 0)
+            {
+                result = new EnergyMeterModel(null, 0, null, null, null, 0, null);
+            }
+
+            return result;
+        }
         private List<InformationModel> GenerateInformationList(List<EnergyMeterModel> energyList)
         {
             List<InformationModel> infoModelList = new List<InformationModel>();
@@ -1530,6 +1573,12 @@ namespace Precinct_DT
                 else if (message.MessageType == "LatestEnergy")
                 {
                     var energy = await ReturnPrecinctLatestEnergyReadingAsync();
+                    return energy.ToString();
+                }
+                else if (message.MessageType == "LatestUsage")
+                {
+                    var energy = newEnergyUsed;
+                    newEnergyUsed = 0;
                     return energy.ToString();
                 }
                 else if (message.MessageType == "NewEnergyDataStatus")

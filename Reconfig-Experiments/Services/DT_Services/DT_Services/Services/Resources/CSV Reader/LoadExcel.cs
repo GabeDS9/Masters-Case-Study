@@ -8,7 +8,7 @@ namespace Services
     public class LoadExcel
     {
         public List<DigitalTwin> digitalTwinsList = new List<DigitalTwin>();
-        public static List<Service> servicesList = new List<Service>();
+        private List<Service> servicesList = new List<Service>();
 
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 

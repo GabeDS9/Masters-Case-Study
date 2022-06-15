@@ -76,6 +76,13 @@
                 {
                     infoText.text = $"{data.DT_name}\n{data.Timestamp}\nTotal: {roundedData} kWh";
                 }
+                else if (serviceType == "Energy Cost")
+                {
+                    infoText.text = $"{data.DT_name}\n{data.Timestamp}\nCost:\nR {roundedData}";
+                    adjustedScalePos = instance.transform.localScale.y / 10;
+                    instance.transform.localScale = new Vector3(1, adjustedScalePos, 1);
+                    instance.transform.position = new Vector3(instance.transform.localPosition.x, adjustedScalePos / 2, instance.transform.localPosition.z);
+                }
                 //Debug.Log(infoText.text);
                 infoInstance.transform.position = new Vector3(instance.transform.position.x - 1, (adjustedScalePos / 2) + 5, instance.transform.position.z); ;
 

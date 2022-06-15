@@ -43,6 +43,7 @@ namespace Building_DT
         private string startingDate;
         private double latestBuildingEnergy = 0;
         private double mainLatestBuildingEnergy = 0;
+        private double newEnergyUsed = 0;
 
         Services_Communication.ClientSocket myClient = new Services_Communication.ClientSocket();
         Services_Communication.ServerSocket myServer = new Services_Communication.ServerSocket();
@@ -533,6 +534,7 @@ namespace Building_DT
                         item.latest_timestamp = tempData[tempData.Count - 1].timestamp;
                         item.latest_power = tempData[tempData.Count - 1].ptot_kw;
                         var data = tempData[tempData.Count - 1].difference_imp_kwh;
+                        newEnergyUsed += data;
                         /*var temp = await db.GetEnergyMeterReading(item.meterid, utilities.DecodeTimestamp(item.previous_timestamp, "Day"));
                         if (temp != null)
                         {
@@ -937,6 +939,12 @@ namespace Building_DT
                 else if (message.MessageType == "LatestEnergy")
                 {
                     var energy = await ReturnLatestBuildingEnergyAsync();
+                    return energy.ToString();
+                }
+                else if (message.MessageType == "LatestUsage")
+                {
+                    var energy = newEnergyUsed;
+                    newEnergyUsed = 0;
                     return energy.ToString();
                 }
                 else if (message.MessageType == "Averages")

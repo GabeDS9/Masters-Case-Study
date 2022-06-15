@@ -19,12 +19,14 @@ namespace Communication
         ServiceGateway myGateway = null;
         DirectoryService myDirectory = null;
         ExploratoryAnalyticsService myExplore = null;
+        EnergyCostService myEnergyCost = null;
 
-        public void SetupServer(int port, ServiceGateway gateway, DirectoryService directory, ExploratoryAnalyticsService explore)
+        public void SetupServer(int port, ServiceGateway gateway, DirectoryService directory, ExploratoryAnalyticsService explore, EnergyCostService cost)
         {
             myGateway = gateway;
             myDirectory = directory;
             myExplore = explore;
+            myEnergyCost = cost;
             server = new TcpListener(IPAddress.Any, port);
             server.Start();            
             CancellationTokenSource cancellationTokenSource = new();
@@ -73,6 +75,10 @@ namespace Communication
             else if(myExplore != null)
             {
                 message = await myExplore.MessageHandlerAsync(mes);
+            }
+            else if (myEnergyCost != null)
+            {
+                message = await myEnergyCost.MessageHandlerAsync(mes);
             }
             return message;
         }

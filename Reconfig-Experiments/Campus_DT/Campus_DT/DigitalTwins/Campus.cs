@@ -43,6 +43,7 @@ namespace Campus_DT
         private string prevEnergyTime;
         private bool EnergyDataAvailable = false;
         private double latestCampusEnergy = 0;
+        private double newEnergyUsed = 0;
 
         private LoadExcel excel = new LoadExcel();
 
@@ -392,27 +393,43 @@ namespace Campus_DT
                     mes = JsonConvert.SerializeObject(tempMes);
                     response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
                     newDayPower += double.Parse(response);
+
+                    tempMes = new MessageModel { DataType = "Operations", MessageType = "LatestUsage" };
+                    mes = JsonConvert.SerializeObject(tempMes);
+                    response = await myClient.sendMessageAsync(mes, precinct.IP_Address, precinct.Port);
+                    newEnergyUsed += double.Parse(response);
                 }
                 /*var temp = await db.GetEnergyReading(Campus_name, utilities.DecodeTimestamp(prevEnergyTime, "Day"), null);
                 if (temp != null)
                 {
                     Console.WriteLine($"\nOld day value for energy for {Campus_name} {prevEnergyTime} - {temp[0].Power_Tot}");
                 }*/
-                var newDayEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Day");
-                var newMonthEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Month");
-                var newYearEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Year");
-
+                var newDayEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Day Average");
+                var newMonthEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Month Average");
+                var newYearEnergyData = await CalculateEnergyNewAverageAsync(newDayPower, prevEnergyTime, "Year Average");
+                var newDayTotalEnergy = await CalculateEnergyNewTotalAsync(0, newEnergyUsed, prevEnergyTime, "Day Total");
+                var newMonthTotalEnergy = await CalculateEnergyNewTotalAsync(0, newEnergyUsed, prevEnergyTime, "Month Total");
+                var newYearTotalEnergy = await CalculateEnergyNewTotalAsync(0, newEnergyUsed, prevEnergyTime, "Year Total");
                 if (newDayEnergyData.Timestamp != null)
                 {
                     await db.UpdateEnergyMeter(newDayEnergyData);
                     await db.UpdateEnergyMeter(newMonthEnergyData);
                     await db.UpdateEnergyMeter(newYearEnergyData);
+                    await db.UpdateEnergyMeter(newDayTotalEnergy);
+                    await db.UpdateEnergyMeter(newMonthTotalEnergy);
+                    await db.UpdateEnergyMeter(newYearTotalEnergy);
                 }
                 else if (newDayEnergyData.Timestamp == null)
                 {
                     var tempDayMeter = new EnergyMeterModel(Campus_name, 0, "Day Average", Latitude, Longitude, (double)newDayEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
                     var tempMonthMeter = new EnergyMeterModel(Campus_name, 0, "Month Average", Latitude, Longitude, (double)newMonthEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
                     var tempYearMeter = new EnergyMeterModel(Campus_name, 0, "Year Average", Latitude, Longitude, (double)newYearEnergyData.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
+                    await db.CreateEnergyReading(tempDayMeter);
+                    await db.CreateEnergyReading(tempMonthMeter);
+                    await db.CreateEnergyReading(tempYearMeter);
+                    tempDayMeter = new EnergyMeterModel(Campus_name, 0, "Day Total", Latitude, Longitude, (double)newDayTotalEnergy.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Day"));
+                    tempMonthMeter = new EnergyMeterModel(Campus_name, 0, "Month Total", Latitude, Longitude, (double)newMonthTotalEnergy.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Month"));
+                    tempYearMeter = new EnergyMeterModel(Campus_name, 0, "Year Total", Latitude, Longitude, (double)newYearTotalEnergy.Power_Tot, utilities.DecodeTimestamp(prevEnergyTime, "Year"));
                     await db.CreateEnergyReading(tempDayMeter);
                     await db.CreateEnergyReading(tempMonthMeter);
                     await db.CreateEnergyReading(tempYearMeter);
@@ -848,6 +865,24 @@ namespace Campus_DT
             {
                 double newp = (double)((temp[0].Power_Tot * (currentNumberofTimestamps)) + newPower) / (currentNumberofTimestamps + 1);
                 temp[0].Power_Tot = newp;
+                result = temp[0];
+            }
+            else if (temp.Count == 0)
+            {
+                result = new EnergyMeterModel(null, 0, null, null, null, 0, null);
+            }
+
+            return result;
+        }
+        private async Task<EnergyMeterModel> CalculateEnergyNewTotalAsync(int meterid, double newPower, string prevTime, string type)
+        {
+            string prevTimestamp = utilities.DecodeTimestamp(prevTime, type);
+
+            var temp = await db.GetEnergyReading(Campus_name, prevTimestamp, type);
+            EnergyMeterModel result = null;
+            if (temp.Count != 0)
+            {
+                temp[0].Power_Tot += newPower;
                 result = temp[0];
             }
             else if (temp.Count == 0)

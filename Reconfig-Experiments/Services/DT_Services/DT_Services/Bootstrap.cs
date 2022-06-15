@@ -8,16 +8,16 @@ class Bootstrap
     static ServiceGateway serviceGateway = new ServiceGateway();
     static DirectoryService directoryService = new DirectoryService();
     static ExploratoryAnalyticsService exploratoryService = new ExploratoryAnalyticsService();
-
-    private List<Service> servicesList = new List<Service>();
-    private static LoadExcel excel = new LoadExcel();
+    static EnergyCostService energyCost = new EnergyCostService();
     public static void Main(string[] args)
     {
         Thread directoryThread = new Thread(directoryService.InitialiseDirectoryServiceAsync);
         Thread exploratoryThread = new Thread(exploratoryService.InitialiseExploratoryAnalyticsService);
+        Thread energyCostThread = new Thread(energyCost.InitialiseEnergyCostService);
 
         directoryThread.Start();
         exploratoryThread.Start();
+        energyCostThread.Start();
 
         serviceGateway.InitialiseServiceGateway();        
     }

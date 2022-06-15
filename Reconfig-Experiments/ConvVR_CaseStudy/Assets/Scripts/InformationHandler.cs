@@ -13,6 +13,8 @@ public class InformationHandler : MonoBehaviour
     private List<DataModel> BuildingDataList = new List<DataModel>();
     private List<DataModel> PrecinctDataList = new List<DataModel>();
     private List<DataModel> CampusDataList = new List<DataModel>();
+
+    private double energyCost = 1.209;
     public async Task<List<DataModel>> GetInformationAsync(string DataType, string InformationType, string DisplayType, string ElementSelected,
         List<string> ElementLevel, string startDate, string endDate, string timePeriod, List<ElementModel> CampusList,
         List<ElementModel> PrecinctList, List<ElementModel> BuildingList)
@@ -429,6 +431,23 @@ public class InformationHandler : MonoBehaviour
                 }
             }
             return null;
+        }
+        else if (InformationType == "Energy Cost")
+        {
+            List<DataModel> tempData = new List<DataModel>();
+            foreach (var build in BuildingList)
+            {
+                if (build.ElementName == ElementSelected)
+                {
+                    var BuildInfo = await GetBuildingInformationAsync(DataType, "Total", ElementSelected, startDate, endDate, timePeriod, BuildingList);
+                    foreach (var building in BuildInfo)
+                    {
+                        building.Value = building.Value * energyCost;
+                        tempData.Add(building);
+                    }
+                }
+            }
+            return tempData;
         }
         else
         {
@@ -877,6 +896,19 @@ public class InformationHandler : MonoBehaviour
             }
             return null;
         }
+        else if (InformationType == "Energy Cost")
+        {
+            List<DataModel> tempData = new List<DataModel>();
+            foreach (var prec in PrecinctList)
+            {
+                if (prec.ElementName == ElementSelected)
+                {
+                    var PrecInfo = await GetPrecinctInformationAsync(DataType, "Total", DisplayType, ElementSelected, startDate, endDate, timePeriod, BuildingList, PrecinctList);
+                    return PrecInfo;
+                }
+            }
+            return tempData;
+        }
         else
         {
             return null;
@@ -1203,6 +1235,19 @@ public class InformationHandler : MonoBehaviour
                 return dataModels;
             }
             return null;
+        }
+        else if (InformationType == "Energy Cost")
+        {
+            List<DataModel> tempData = new List<DataModel>();
+            foreach (var camp in CampusList)
+            {
+                if (camp.ElementName == ElementSelected)
+                {
+                    var CampInfo = await GetCampusInformationAsync(DataType, "Total", DisplayType, ElementSelected, startDate, endDate, timePeriod, BuildingList, PrecinctList, CampusList);
+                    return CampInfo;
+                }
+            }
+            return tempData;
         }
         else
         {

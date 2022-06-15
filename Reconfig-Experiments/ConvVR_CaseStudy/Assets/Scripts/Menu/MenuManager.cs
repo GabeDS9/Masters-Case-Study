@@ -448,6 +448,10 @@ public class MenuManager : MonoBehaviour
     {
         serviceType = "Total";
     }
+    public void CostServiceSelected()
+    {
+        serviceType = "Energy Cost";
+    }
     /*public GameObject MainMenu;
     public GameObject MeterMenu;
     public GameObject VisualisationMenu;
