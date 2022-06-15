@@ -71,8 +71,7 @@ namespace DataAccess
             {
                 var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.Timestamp == timestamp && c.Type == type));
                 return results.ToList();
-            }
-           
+            }           
         }
         public async Task<List<EnergyMeterModel>> GetLatestEnergyReading()
         {
