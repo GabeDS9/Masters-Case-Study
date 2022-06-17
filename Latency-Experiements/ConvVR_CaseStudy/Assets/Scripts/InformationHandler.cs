@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Newtonsoft.Json;
 using Utils;
+using DataAccess;
 
 public class InformationHandler : MonoBehaviour
 {
     private EnergyAPIScript energyCaller = new EnergyAPIScript();
     private Utilities utilities = new Utilities();
-
+    private DBDataAccess db = new DBDataAccess();
     private List<DataModel> BuildingDataList = new List<DataModel>();
     private List<DataModel> PrecinctDataList = new List<DataModel>();
     private List<DataModel> CampusDataList = new List<DataModel>();
@@ -239,10 +240,12 @@ public class InformationHandler : MonoBehaviour
                 {
                     foreach (var meter in build.ChildElements)
                     {
-                        var tempData = await energyCaller.GetCurrentEnergyDataAsync(int.Parse(meter));
+                        //var tempData = await energyCaller.GetCurrentEnergyDataAsync(int.Parse(meter));
+                        var tempData = await db.GetEnergyMeterReading(int.Parse(meter), "2022-05-01");
                         if (tempData.Count > 0)
                         {
-                            Ptot += tempData[tempData.Count - 1].ptot_kw;
+                            //Ptot += tempData[tempData.Count - 1].ptot_kw;
+                            Ptot += tempData[tempData.Count - 1].Power_Diff;
                         }
                     }
                     DataModel newData = new DataModel

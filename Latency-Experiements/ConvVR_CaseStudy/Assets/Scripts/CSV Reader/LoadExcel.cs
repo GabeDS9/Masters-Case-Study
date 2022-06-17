@@ -3,16 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using DataModels;
 
 public class LoadExcel : MonoBehaviour
 {
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
-    string ConfigurationFile = "";
+    string ConfigurationFile = "LargeDTArchitectureConfiguration";
     //string filename = "";
     void Start()
     {
         //ConfigurationFile = Application.dataPath + "/LargeDTArchitectureConfiguration.csv";
         ConfigurationFile = "LargeDTArchitectureConfiguration";
+    }
+    public List<EnergyMeter> LoadMeters()
+    {
+        List<EnergyMeter> meterList = new List<EnergyMeter>();
+        List<Dictionary<string, object>> data = CSVReader.Read(ConfigurationFile);
+
+        for (var i = 0; i < data.Count; i++)
+        {
+            if ((data[i]["Campus"].ToString() != "-") && (data[i]["Precinct"].ToString() != "-") && (data[i]["meter_id"].ToString() != "-"))
+            {
+                string name = "Energy_Meter";
+                string id = data[i]["meter_id"].ToString();
+
+                var tempBuilding = new EnergyMeter { MeterID = id, MeterName = name };
+                meterList.Add(tempBuilding);
+            }
+        }
+
+        return meterList;
     }
     public List<ElementModel> LoadBuildings()
     {

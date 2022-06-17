@@ -19,7 +19,7 @@ namespace DataAccess
             var db = client.GetDatabase(DatabaseName);
             return db.GetCollection<T>(collection);
         }
-        public Task CreateEnergyMeter(EnergyMeterModel energymeter)
+        public Task CreateEnergyReading(EnergyMeterModel energymeter)
         {
             var energyMeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
             return energyMeterCollection.InsertOneAsync(energymeter);
@@ -27,13 +27,13 @@ namespace DataAccess
         public async Task<List<EnergyMeterModel>> GetEnergyMeterReading(int meter_id, string timestamp)
         {
             var energymeterCollection = ConnectToMongo<EnergyMeterModel>(EnergyCollection);
-            var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.Timestamp == timestamp));
+            var results = await energymeterCollection.FindAsync(c => (c.Meter_ID == meter_id && c.TimestampDay == timestamp));
             return results.ToList();
         }
-        public async Task DeleteDatabase(string dbName)
+        public void DeleteDatabase(string dbName)
         {
             var client = new MongoClient(ConnectionString);
-            await client.DropDatabaseAsync(dbName);
+            Task.Run(() => client.DropDatabaseAsync(dbName));
         }
     }
 }

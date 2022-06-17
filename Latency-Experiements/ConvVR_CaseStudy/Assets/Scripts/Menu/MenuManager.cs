@@ -409,7 +409,7 @@ public class MenuManager : MonoBehaviour
         int numberOfDTs = numberOfCampuses + numberOfPrecincts + numberOfBuildings;
 
         string sDate = "2022-5-1";
-        string eDate = "2022-5-30";
+        string eDate = "2022-5-5";
         var DateList = utils.GenerateDateList(sDate, eDate, "Day");
         List<string> dtLevel = new List<string>();
         #region Tests
