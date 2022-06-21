@@ -409,7 +409,7 @@ public class MenuManager : MonoBehaviour
         int numberOfDTs = numberOfCampuses + numberOfPrecincts + numberOfBuildings;
 
         string sDate = "2022-5-1";
-        string eDate = "2022-5-5";
+        string eDate = "2022-5-30";
         var DateList = utils.GenerateDateList(sDate, eDate, "Day");
         List<string> dtLevel = new List<string>();
         #region Tests
@@ -434,7 +434,7 @@ public class MenuManager : MonoBehaviour
         csvWriter.WriteCSV(testInformation, 0);
         testInformation.Clear();
         dtLevel.Clear();
-        visualisationStatus.text = "Single DTI Test with single data point (Current Data) Complete";
+        UnityEngine.Debug.Log("Single DTI Test with single data point (Current Data) Complete");
         /* Multiple DTI Test with single data points (Current Data) */
         dtLevel.Add("Building");
         EvaluationTestModel temp = await GetInformation("Energy", "CurrentData", "Collective", "Stellenbosch University", dtLevel, "", "", "");
@@ -456,8 +456,8 @@ public class MenuManager : MonoBehaviour
         csvWriter.WriteCSV(testInformation, 1);
         testInformation.Clear();
         dtLevel.Clear();
-        visualisationStatus.text = "Multiple DTI Test with single data points (Current Data) Complete";
-        /* Single DT Test with multiple data points (Averages) 
+        UnityEngine.Debug.Log("Multiple DTI Test with single data points (Current Data) Complete");
+        /* Single DT Test with multiple data points (Averages) */
         dtLevel.Add("Building");
         foreach (var date in DateList)
         {
@@ -481,7 +481,7 @@ public class MenuManager : MonoBehaviour
         csvWriter.WriteCSV(testInformation, 2);
         testInformation.Clear();
         dtLevel.Clear();
-        visualisationStatus.text = "Single DT Test with multiple data points (Averages) Complete";
+        UnityEngine.Debug.Log("Single DT Test with multiple data points (Averages) Complete");
         /* Multiple DTIs Test with multiple data points (Averages) */
         dtLevel.Add("Building");
         foreach (var date in DateList)
@@ -506,7 +506,7 @@ public class MenuManager : MonoBehaviour
         csvWriter.WriteCSV(testInformation, 3);
         testInformation.Clear();
         dtLevel.Clear();
-        visualisationStatus.text = "Multiple DTIs Test with multiple data points (Averages) Complete";
+        UnityEngine.Debug.Log("Multiple DTIs Test with multiple data points (Averages) Complete");
         /* Aggregate Test with single data point (Current Data) */
         dtLevel.Add("Building");
         dtLevel.Add("Precinct");
@@ -530,7 +530,7 @@ public class MenuManager : MonoBehaviour
         csvWriter.WriteCSV(testInformation, 4);
         testInformation.Clear();
         dtLevel.Clear();
-        visualisationStatus.text = "Aggregate Test with single data point (Current Data) Complete";
+        UnityEngine.Debug.Log("Aggregate Test with single data point (Current Data) Complete");
         /* Aggregate Test with multiple data points (Averages) */
         dtLevel.Add("Building");
         dtLevel.Add("Precinct");

@@ -15,12 +15,12 @@ public class LocalStorage : MonoBehaviour
     DBDataAccess db = new DBDataAccess();
     private EnergyAPIScript energyCaller = new EnergyAPIScript();
     private string startDate = "2022-05-01";
-    private string endDate = "2022-05-05";
+    private string endDate = "2022-05-30";
 
-    private void Start()
+    /*private void Start()
     {
-        //StoreMeterDataAsync();
-    }
+        StoreMeterDataAsync();
+    }*/
     private async void StoreMeterDataAsync()
     {
         db.DeleteDatabase("Conv_Energy_Data");
