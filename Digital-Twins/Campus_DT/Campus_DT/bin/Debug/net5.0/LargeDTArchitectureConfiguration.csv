@@ -1,346 +1,346 @@
 Campus,Precinct,Reticulation,Building,Meter Name,Meter Type,meter_id,description,make,manufacturer,type,Serial Number,model,yard_number,Building_No,Floor,Room_No,Meter_Description,Latitude,Longitude,IP_Address,Port,Location,Starting date
-Stellenbosch University,-,-,-,-,Energy,-,-,-,-,-,-,-,-,-,-,-,-,-33.9328,18.8644,127.0.0.1,8000,Local,2022-03-01  00:00:00
-Stellenbosch University,Banghoek Toevoer,-,-,-,Energy,3037,Voertuigpoel Kiosk Hooftoevoer (Banhoek),Elster,Kocos,A1140,68508323,LiMo-DIN,-,-,-,-,-,-33.91667,18.91667,127.0.0.1,8007,Local,2022-03-01  00:00:00
-Stellenbosch University,Banghoek Toevoer,-,HIV Bestuur Gebou,-,Energy,3041,HIV Bestuur Gebou,Elster,Kocos,A1140,68508326,LiMo-DIN,-,-,-,-,-,-33.916675,18.916675,127.0.0.1,8003,Local,2022-03-01  00:00:00
-Stellenbosch University,Banghoek Toevoer,-,Language Centre,-,Energy,3040,Language Centre,Elster,Kocos,A1140,685083278,LiMo-DIN,-,-,-,-,-,-33.91668,18.91668,127.0.0.1,8004,Local,2022-03-01  00:00:00
-Stellenbosch University,Banghoek Toevoer,-,Matie Gemeenskapsdiens Luckhofskool,-,Energy,3038,Matie Gemeenskapsdiens Luckhofskool,Elster,Kocos,A1140,68508324,LiMo-DIN,-,-,-,-,-,-33.916685,18.916685,127.0.0.1,8005,Local,2022-03-01  00:00:00
-Stellenbosch University,Banghoek Toevoer,-,Voertuigpoel,-,Energy,3039,Voertuigpoel,Elster,Kocos,A1140,68508325,LiMo-DIN,-,-,-,-,-,-33.91669,18.91669,127.0.0.1,8006,Local,2022-03-01  00:00:00
-Stellenbosch University,Botmashoogte Toevoer,-,-,-,Energy,3758,Botmashoogte Toevoer,Elster,Kocos,A1140,38146936,LiMo R2,-,-,-,-,-,-33.9233,18.883,127.0.0.1,8008,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,-,-,Energy,3025,Coetzenburg 11 kV,Elster,Kocos,A1700,51500272,LiMo-DIN,306,745,1,1002,Coetzenburg 11kv,-33.93943714,18.86822311,127.0.0.1,8026,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Atletiek Stadion - VM Remainder,Energy,3903,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Cell C,Energy,2948,Coetzenburg Cell C,Elster,Kocos,A1140,98129682,LiMo R2,306/2,137,1,1010,Coetzenburg Cell C,-33.93906627,18.86919016,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Imaging Centre,Energy,2949,Coetzenburg Imaging Centre ,Elster,Kocos,A1140,98154635,LiMo R2,306/2,137,1,1010,Coetzenburg Imaging Centre,-33.93907239,18.86918982,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg MTN,Energy,2947,Coetzenburg MTN,Elster,Kocos,A1140,98129683,LiMo R2,306/2,137,1,1010,Coetzenburg MTN,-33.93906349,18.86919049,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Tennisbaan,Energy,2950,Coetzenburg Tennisbaan,Elster,Kocos,A1140,58500667,LiMo R2,306/2,137,1,1010,Coetzenburg Tennisbaan,-33.93906043,18.86918915,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Vodacom,Energy,2849,Coetzenburg Vodacom ,Elster,Kocos,A1140,68905747,LiMo R2,306/2,171,1,1002,Coetzenburg vodacom,-33.94064168,18.87085704,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Woonhuis 01,Energy,3965,Coetzenburg Woonhuis 01,Elster,Kocos,A1140,48101653,LiMo R2,306/1,904,1,Outside,Coetzenburg Woonhuis 01,-33.93853935,18.87088319,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,-,Energy,2964,Coetzenburg Atletiek Substasie,Elster,Kocos,A1140,58500468,LiMo R2,-,-,-,-,-,-33.9392406,18.86974998,127.0.0.1,8016,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Danie Craven Rugby Stadion,-,Energy,2955,Danie Craven Rugby Stadion,Elster,Kocos,A1140,88500423,LiMo R2,312,138,1,1020,Danie Craven Rugby Stadion,-33.94052152,18.87291597,127.0.0.1,8017,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Krieket Onderwaterhokkie Klubhuis,-,Energy,2954,Krieket Onderwaterhokkie Klubhuis,Elster,Kocos,A1140,78520566,LiMo R2,-,-,-,-,-,-33.93937052,18.87016984,127.0.0.1,8018,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportburo - Jannie Marais Klubhuis,-,Energy,2746,Sportburo - Jannie Marais Klubhuis,Elster,Kocos,A1140,58500447,LiMo R2,313,165,1,1003,Sportburo - Jannie Marais Klubhuis,-33.93854041,18.87367101,127.0.0.1,8019,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Gimnasium,Energy,2754,Sport Gimnasium,Elster,Kocos,A1140,58500444,LiMo R2,306/2,87,1,114,Sport gimnasium,-33.94129853,18.8717833,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Wetenskap - VM Remainder,Energy,3904,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,-,Energy,2753,Sportwetenskap Toevoer,Elster,Kocos,A1140,58500442,LiMo R2,306/2,87,1,114,Sportwetenskap toevoer,-33.94128796,18.87177592,127.0.0.1,8022,Local,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Coetzenburg Sentrum,Energy,2848,Coetzenburg Sentrum,Elster,Kocos,A1140,58500669,LiMo R2,306/2,171,1,1002,Coetzenburg sentrum,-33.94064548,18.87086475,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Swembadpompe,Energy,2639,Swembadpompe,Elster,Kocos,A1140,58500661,LiMo R2,306/2,171,1,1002,Swembad pompe,-33.94064265,18.87086229,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,-,Energy,2856,Swembad Minisub,Elster,Kocos,A1140,78520491,LiMo R2,306/2,0,1,Outside,Swembad minisub,-33.94067001,18.87089593,127.0.0.1,8025,Local,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,-,-,Energy,2739,Erica 11 kV,Elster,Kocos,A1700,51500260,LiMo-DIN,-,-,-,-,-,-33.93471243,18.87145327,127.0.0.1,8059,Local,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Erica Koshuis,-,Energy,2731,Erica Koshuis,Elster,Kocos,A1140,68509072,LiMo R2,-,-,-,-,-,-33.9354,18.872,127.0.0.1,8027,Local,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Annex (Huismoles),Energy,3001,Heemstede Annex (Huismoles),Elster,Kocos,A1140,68509018,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hittepompe,Energy,2998,Heemstede Hittepompe,Elster,Kocos,A1140,68509014,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hooftoevoer - VM Remainder,Energy,5797,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Kombuis,Energy,2996,Heemstede Kombuis,Elster,Kocos,A1140,68509070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Lydia Hittepompe,Energy,3002,Huis Ten Bosch Lydia Hittepompe,Elster,Kocos,A1140,68509045,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3000,Huis Ten Bosch Kombuis,Elster,Kocos,A1140,68509028,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3138,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,2999,Huis Ten Bosch Toevoer,Elster,Kocos,A1140,68509029,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2958,Lydia Kombuis,Elster,Kocos,A1140,68509032,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,3137,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2959,Lydia Toevoer,Elster,Kocos,A1140,68509031,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,Studente Gesondheid,Energy,3759,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Erica 11 kV,-,Heemstede Hooftoevoer,-,Energy,2997,Heemstede Hooftoevoer,Elster,Kocos,A1140,68509012,LiMo R2,-,-,-,-,-,-33.93514,18.86858,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Heatpump,Energy,7121,Western Cape - Metanoia - Heat pumps,Elster,Kocos,A1140,88500424,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Kombuis,Energy,2743,Metanoia Kombuis,Elster,Kocos,A1700,61501659,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Koshuis - VM Remainder,Energy,5455,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,-,Energy,2742,Metanoia Hooftoevoer,Elster,Kocos,A1700,61501621,LiMo-DIN,-,-,-,-,-,-33.93272,18.87169,127.0.0.1,8044,Local,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva + Nerina Hittepompe,Energy,2960,Minerva+Nerina Hittepompe,Elster,Kocos,A1140,68509040,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva Kombuis,Energy,2736,Minerva Kombuis,Elster,Kocos,A1700,61501620,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva VM,Energy,5800,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,3003,Nerina Kombuis,Elster,Kocos,A1140,68509076,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,5910,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,2734,Nerina Toevoer,Elster,Kocos,A1140,68509074,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,-,Energy,2910,Minerva + Nerin Hoof Toevoer ,Elster,Kocos,A1140,68509041,LiMo R2,-,-,-,-,-,-33.93444665,18.87068557,127.0.0.1,8051,Local,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Nemesia Koshuis,-,Energy,2909,Nemesia Koshuis,Elster,Kocos,A1140,68509068,LiMo R2,-,-,-,-,-,-33.93531878,18.87245308,127.0.0.1,8052,Local,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Serruria Koshuis,-,Energy,2733,Serruria Koshuis,Elster,Kocos,A1140,68509046,LiMo R2,-,-,-,-,-,-33.93512735,18.87297651,127.0.0.1,8053,Local,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Hittepompe,Energy,2969,Tienie Louw Hittepompe,Elster,Kocos,A1140,68500068,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis (Noodkrag),Energy,2953,Tienie Louw Kombuis (Noodkrag),Elster,Kocos,A1140,68500070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis Warmwater,Energy,2952,Tienie Louw Kombuis Warmwater,Elster,Kocos,A1140,68508327,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Woonstelle,Energy,2951,Tienie Louw Woonstelle,Elster,Kocos,A1140,68500069,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,-,Energy,2970,Tienie Louw Hooftoevoer,Elster,Kocos,A1140,68500067,LiMo R2,-,-,-,-,-,-33.93483426,18.87178776,127.0.0.1,8058,Local,2022-03-01  00:00:00
-Stellenbosch University,Helderberg 11 kV,-,-,-,Energy,3028,Helderberg 11 kV,Elster,Kocos,A1700,51500265,LiMo R2,-,-,-,-,-,-33.94015896,18.85937828,127.0.0.1,8063,Local,2022-03-01  00:00:00
-Stellenbosch University,Helderberg 11 kV,-,Helderberg Hittepompe,-,Energy,2946,Helderberg Hittepompe,Elster,Kocos,A1140,68509007,LiMo R2,-,-,-,-,-,-33.94017,18.859384,127.0.0.1,8060,Local,2022-03-01  00:00:00
-Stellenbosch University,Helderberg 11 kV,-,Helderberg Kombuis - Eetkamer,-,Energy,2735,Helderberg Kombuis (Eetkamer),Elster,Kocos,A1140,68509006,LiMo R2,-,-,-,-,-,-33.940175,18.85937,127.0.0.1,8061,Local,2022-03-01  00:00:00
-Stellenbosch University,Helderberg 11 kV,-,Helderberg Koshuis - VM Remainder,-,Energy,3139,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.940165,18.859365,127.0.0.1,8062,Local,2022-03-01  00:00:00
-Stellenbosch University,Huis Neethling,-,-,-,Energy,3027,Huis Neethling,Elster,Kocos,A1140,58508057,LiMo R2,-,-,-,-,-,-33.93644765,18.8697207,127.0.0.1,8064,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,-,-,Energy,2666,Ingenieurswese 11 kV,Elster,Kocos,A1700,51500309,LiMo R2,-,-,-,-,-,-33.92850795,18.86615108,127.0.0.1,8100,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Academia Oos,-,Energy,2923,Academia Oos,Elster,Kocos,A1700,51500268,LiMo R2,-,0,-,-,Academia  oos,-33.92660964,18.86951784,127.0.0.1,8065,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,Concordia Toevoer - VM Remainder,Energy,5796,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,Concordia WW,Energy,2942,Concordia WW,Elster,Kocos,A1140,68509042,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,-,Energy,2659,Concordia Toevoer,Elster,Kocos,A1140,68508109,LiMo R2,-,0,-,-,Concordia toevoer,-33.92625382,18.8684445,127.0.0.1,8069,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,Elektriese En Elektroniese Ing - VM Remainder,Energy,3905,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,PO Sauer (Bosbou),Energy,2643,Mondi Lab - PO Sauer,Elster,Kocos,A1140,68509023,LiMo R2,3385,10,1,1034,Mondi lab - PO Sauer,-33.92685924,18.86610288,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,PO Sauer (Bosbou),Energy,2655,PO Sauer (Bosbou),Elster,Kocos,A1140,58500465,LiMo R2,3385,104,1,E103B,PO Sauer (Bosbou),-33.92822605,18.86669839,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,-,Energy,2654,Elektriese En Elektroniese Ing,Elster,Kocos,A1700,61102035,LiMo R2,3385,104,1,E103B,Elektriese en elektroniese ingenieurswese,-33.92823421,18.86669861,127.0.0.1,8073,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Huis Mac Donald,-,Energy,2664,Huis Mac Donald,ELSTER,Kocos,A1140,68509075,LiMo R2,-,288,1,1008,Huis Macdonald,-33.92592833,18.8694305,127.0.0.1,8074,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-A,Energy,3616,DB-A,Elster,Kocos,A1140,38146611,LiMo R2,4854,104,1,199c,DB-A,-33.92872344,18.86585919,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-H,Energy,3614,DB-H,Elster,Kocos,A1140,38146603,LiMo R2,4854,104,1,199c,DB-H,-33.92870869,18.86582499,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-WW,Energy,3068,DB-WW,Elster,Kocos,A1140,58500438,LiMo R2,4854,104,1,199c,DB-WW,-33.92872872,18.8658431,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,General Engineering,Energy,3067,General Engineering,Elster,Kocos,A1140,58500432,LiMo R2,4854,104,1,199c,General Engineering,-33.92872149,18.86585181,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2775,CRSES,Elster,Kocos,A1140,68508005,LiMo R2,4854,108,4,K412,CRSES,-33.92902231,18.86600068,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2776,DB-MIH,Elster,Kocos,A1140,68508392,LiMo R2,4854,108,4,K413,DB-MIH,-33.92901535,18.86599011,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2677,Kennis PV Paneel,Elster,Kocos,A1140,18102149,LiMo R2,4854,108,4,K411,Kennis PV paneel,-33.92903969,18.86598307,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2665,Knowledge Centre,Elster,Kocos,A1140,68508391,LiMo R2,4854,108,1,K114A,Kennis sentrum toevoer,-33.9290115,18.8659938,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Reitzhall HVAC,Energy,3601,Reitzhall HVAC,Elster,Kocos,A1140,38146571,LiMo R2,4854,104,1,199c,Reitzhall HVAC,-33.92872149,18.86583974,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,SMDB Computer Centre,Energy,3617,SMDB Computer Centre,Elster,Kocos,A1140,38146602,LiMo R2,4854,104,1,199c,SMDB computer centre,-33.92872121,18.86582432,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,-,Energy,5638,Meganiese Ingenieurswese TRF 1,Elster,Kocos,A1140,48125304,LiMo R2,4854,104,1,199c,MEGANIESE ingenieurswese incomer 1,-33.92871927,18.86584209,127.0.0.1,8088,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,DB-G,Energy,3610,DB-G,Elster,Kocos,A1140,38146609,LiMo R2,4854,104,1,199c,DB-G,-33.92869803,18.86578934,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,DB-J,Energy,3612,DB-J,Elster,Kocos,A1140,38146604,LiMo R2,4854,104,1,199c,DB-J,-33.92870953,18.86579549,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,DB-K,Energy,3609,DB-K,Elster,Kocos,A1140,38146605,LiMo R2,4854,104,1,199C,DB-K,-33.92869553,18.86577928,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,6776,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,2878,NIEB Verkiller,Elster,Kocos,A1140,68509059,LiMo R2,4854,126,-,On roof,NIEB verkiller,-33.92935539,18.86575458,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,2881,NIEB HVAC,Elster,Kocos,A1140,78520208,LiMo R2,4854,126,1,B1016,NIEB HVAC,-33.92931628,18.86564819,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,3611,NIEB Hooftoevoer,Elster,Kocos,A1140,38146610,LiMo R2,4854,104,1,199c,Nieb hooftoevoer,-33.92870295,18.86579683,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,Process Engineering,Energy,3069,Process Engineering,Elster,Kocos,A1140,58500436,LiMo R2,4854,104,1,199c,Process Engineering,-33.92870183,18.86577671,-,0,-,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,-,Energy,6232,Meganiese Ingenieurswese TRF 2,Elster,Kocos,A1140,48124720,LiMo R2,4854,104,1,-,Meganiese ingenieurswese incomer 2,-33.92870573,18.86578744,127.0.0.1,8097,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Siviele Ingenieurswese (Substasie Skakelbord),-,Energy,2649,Siviele Ingenieurswese (Substasie Skakelbord),Elster,Kocos,A1700,51500274,LiMo R2,3385,104,1,S103A,Siviele ingenieurswese substasie skakelbord,-33.92796159,18.86581549,127.0.0.1,8098,Local,2022-03-01  00:00:00
-Stellenbosch University,Ingenieurswese 11 kV,-,Voedselwetenskap,-,Energy,2943,Voedselwetenskap,Elster,Kocos,A1140,68508103,LiMo R2,-,-,-,-,-,-33.9275,18.86583,127.0.0.1,8099,Local,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,-,-,Energy,2676,Instandhouding 11 kV,Elster,Kocos,A1700,51500263,LiMo R2,-,-,-,-,-,-33.92524294,18.86514925,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2941,IKT (UPS),Elster,Kocos,A1140,88500420,LiMo R2,-,0,-,-,-,-33.92475379,18.86551369,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2939,IKT (Warm Water 2),Elster,Kocos,A1140,78520209,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2940,IKT HVAC,Elster,Kocos,A1140,88501437,LiMo R2,7628,155,-1,8,IKT HVAC,-33.9247574,18.86551548,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2662,IKT Gebou,Elster,Kocos,A1140,98154636,LiMo R2,7628,152,1,K1011,IKT gebou,-33.92543487,18.86500809,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Instandhouding Kantoor (i),Energy,3976,Instandhouding Kantoor,Elster,Kocos,A1140,48101728,LiMo R2,7628,152,1,K1011,Instandhouding kantore,-33.92544201,18.86499597,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Launch Lab Main Incomer (i),Energy,6400,Launch Lab - Kitchen,Elster,Kocos,A1140,58108327,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Launch Lab Main Incomer (i),Energy,6378,Launch Lab - HVAC,Elster,Kocos,A1140,58108992,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Launch Lab Main Incomer (i),Energy,2663,Launch Lab - Main Incomer,Elster,Kocos,A1140,98154634,LiMo R2,-,152,1,K1011,Launch lab,-33.92543366,18.86500753,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Silver Trees,Energy,4195,Silver Trees,Elster,Kocos,AS220,33104281,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),-,Energy,2660,Instandhouding Toevoer,Elster,Kocos,A1140,68509063,LiMo R2,7628,152,1,K1011,Instandhouding,-33.92543849,18.86500435,-,0,-,2022-03-01  00:00:00
--,JC Smuts 11 kV,-,-,-,Energy,2642,JC Smuts 11 kV,Elster,Kocos,A1700,41505849,LiMo R2,-,-,-,-,-,-33.93072654,18.86571034,-,0,-,2022-03-01  00:00:00
--,JC Smuts 11 kV,-,JC Smuts Klaslokaal - Blok C,-,Energy,2668,JC Smuts Klaslokaal - Blok C ,Elster,Kocos,A1140,58500435,LiMo R2,-,-,-,-,-,-33.93101366,18.86590192,-,0,-,2022-03-01  00:00:00
--,JC Smuts 11 kV,-,JC Smuts Nagraads - Blok A,-,Energy,2669,JC Smuts Nagraads (Blok A),ELSTER,Kocos,A1140,58500439,LiMo R2,-,-,-,-,-,-33.93080446,18.8655425,-,0,-,2022-03-01  00:00:00
--,JC Smuts 11 kV,-,JC Smuts Verkillers,-,Energy,2777,JC Smuts Verkillers,Elster,Kocos,A1140,78520568,LiMo R2,-,-,-,-,-,-33.93081336,18.86571417,-,0,-,2022-03-01  00:00:00
--,JC Smuts 11 kV,-,JC Smuts Voorgraads - Blok B,-,Energy,3739,JC Smuts Voorgraads - Blok B,Elster,Kocos,A1140,48103105,LiMo R2,-,-,-,-,-,-33.93107152,18.86549959,-,0,-,2022-03-01  00:00:00
--,JC Smuts 11 kV,-,Merriman Laan 60 - Informasietegnologie,-,Energy,2670,Merriman Laan 60 - Informasietegnologie,Elster,Kocos,A1140,68509067,LiMo R2,-,-,-,-,-,-33.93080446,18.86588583,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,-,-,Energy,2708,Konservatorium 11 kV,Elster,Kocos,A1700,51500307,LiMo-DIN,-,-,-,-,-,-33.93412225,18.86613164,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Huis De Villiers Hooftoevoer,Energy,2729,Huis De Villiers Hittepompe,Elster,Kocos,A1140,68509016,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Huis De Villiers Hooftoevoer,Energy,3128,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Huis De Villiers Hooftoevoer,Energy,2728,Huis De Villiers Hooftoevoer,Elster,Kocos,A1140,68509015,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Konservatorium Sentrale Lugversorging,Energy,2841,Konservatorium Sentrale Lugversorging,Elster,Kocos,A1700,51500301,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Konservatorium vir Musiek - VM Remainder,Energy,3906,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3633,07 Bosman Straat ,Elster,Kocos,A1140,48101953,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3632,09 Bosman Straat,Elster,Kocos,A1140,48101954,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3634,11 Bosman Straat ,Elster,Kocos,A1140,48101952,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3623,15 Bosman Straat,Elster,Kocos,A1140,48101874,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3646,37 Bosman Straat,Elster,Kocos,A1140,48101947,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3638,06 Murray Straat ,Elster,Kocos,A1140,48101870,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3639,10 Murray Straat,Elster,Kocos,AS230,43110656,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3637,12A Murray Straat,Elster,Kocos,A1140,48101869,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3636,12B Murray Straat ,Elster,Kocos,A1140,48101950,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3635,14 Murray Straat ,Elster,Kocos,A1140,48101871,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3640,Taaldiens,Elster,Kocos,AS230,43105679,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3631,37 Victoria Straat ,Elster,Kocos,A1140,48101951,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3644,39 Victoria Straat,Elster,Kocos,A1140,48101948,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3645,41 Victoria Straat,Elster,Kocos,A1140,48101956,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3651,43 Victoria Straat,Elster,Kocos,A1140,48101941,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3643,45 Victoria Straat ,Elster,Kocos,A1140,48101949,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3641,49 Victoria Straat,Elster,Kocos,A1140,48101955,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,2709,Skuilhoek Kiosk,Elster,Kocos,A1700,48124712,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Konservatorium 11 kV,-,Konservatorium T1 & T2,-,Energy,2843,Konservatorium T1 & T2,Elster,Kocos,A1700,71500362,LiMo-DIN,-,-,-,-,-,-33.93444638,18.86601887,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,-,-,Energy,3380,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93845256,18.86392957,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,Kweekskool Argief,-,Energy,2759,Kweekskool Argief,ELSTER,Kocos,A1140,98132511,LiMo R2,-,-,-,-,-,-33.9395045,18.86370959,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,Kweekskool Attie van Wyk HVAC,-,Energy,2758,Kweekskool Attie van Wyk HVAC,ELSTER,Kocos,A1140,98132510,LiMo R2,-,-,-,-,-,-33.93870532,18.863767,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,Kweekskool Biblioteek,-,Energy,2757,Kweekskool Biblioteek ,ELSTER,Kocos,A1140,98132414,LiMo R2,-,-,-,-,-,-33.93857036,18.863767,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,Kweekskool Biblioteek HVAC,-,Energy,2756,Kweekskool Biblioteek HVAC,Elster,Kocos,A1140,98132512,LiMo R2,-,-,-,-,-,-33.93864975,18.86417529,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,Kweekskool Gebou,Kweekskool Kafeteria,Energy,2956,Kweekskool Kafeteria,Elster,Kocos,A1140,98132332,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Kweekskool Toevoer - VM Site Total,-,Kweekskool Gebou,-,Energy,2755,Kweekskool Gebou,Elster,Kocos,A1140,98102340,LiMo R2,-,-,-,-,-,-33.93868944,18.86417848,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,-,-,Energy,2716,Lettere 11 kV,ELSTER,Kocos,A1700,61102030,LiMo-DIN,6176,84,1,113,Lettere 11kv,-33.93225303,18.86081686,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Adam Small Mini-sub - VM,Adam Small Theatre Complex,Energy,6960,Adam Smal Theatre Complex Incomer,Elster,Kocos,A1140,78520563,LiMo R2,4040,28,1,1026,Adam small theatre complex incomer,-33.93413438,18.86083413,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Adam Small Mini-sub - VM,CL Marais Biblioteek,Energy,2741,CL Marais Biblioteek,Elster,Kocos,A1140,58500460,LiMo R2,4140,109,1,1007,Cl marais biblioteek,-33.93373553,18.86157146,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Adam Small Mini-sub - VM,Ou Hoof Gebou Toevoer,Energy,2740,Ou Hoof Gebou Toevoer,Elster,Kocos,A1140,58500459,LiMo R2,4140,109,1,1007,Ou hoof gebou toevoer,-33.93373548,18.86157023,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Adam Small Mini-sub - VM,-,Energy,6868,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93346461,18.86119817,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4200,Crozier Street 18: Law Clinic,Elster,Kocos,AS230,43110542,LiMo R2,-,0,-,-,Crozier  street 18: law clinic,-33.93301593,18.86105692,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4202,Crozier Street 20: Law Clinic,Elster,Kocos,AS230,43110639,LiMo R2,6176,0,-,Outside,Crozier street 20: law clinic,-33.93301899,18.86105742,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4201,Crozier Street 22: Law Clinic,Elster,Kocos,AS230,43110545,LiMo R2,6176,0,-,Outside,Crozier street 22: law clinic,-33.93301649,18.86106128,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4203,Crozier Street 24: Law Clinic,Elster,Kocos,AS230,43110635,LiMo R2,6176,0,-,-,Crozier street 24: law clinic,-33.93301983,18.86106144,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,2725,Joernalistiek - Nuwe Anneks (Crozierstr 26),Elster,Kocos,A1140,68900802,LiMo R2,6176,0,-,Outside,Joernalistiek - nuwe anneks (crozier st 26),-33.93301278,18.86105658,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,2726,Joernalistiek (Crozierstr 26),Elster,Kocos,A1140,68905743,LiMo R2,6176,0,-,Outside,Joernalistiek (crozier 26),-33.93301278,18.86105994,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,2760,Crozier Kiosk,Elster,Kocos,A1140,58500437,LiMo R2,7176,0,-,Outside,Crozier kiosk,-33.93272983,18.86143762,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,Crozierhof Woonstelle,Energy,2761,Crozierhof Woonstelle,Elster,Kocos,A1140,58500449,LiMo R2,6176,0,-,Outside,Crozier hoff woonstelle,-33.93273247,18.86143762,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,GG Cillie Main,Energy,6958,GG Cilliers - AC,Elster,Kocos,A1140,78520203,LiMo R2,6176,47,-1,3,Gg cilliers - ac,-33.93283568,18.8615567,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,GG Cillie Main,Energy,6957,GG Cilliers - Main Incomer,Elster,Kocos,A1140,78520205,LiMo R2,-,47,-1,3,Gg cilliers  - main incomer,-33.93282789,18.86155581,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,GG Cillie Mini-sub,-,Energy,5794,GG Cillie Mini-sub,Elster,Kocos,A1140,78520202,LiMo R2,6176,0,-,Outside,Gg cilliers minisub,-33.93272705,18.86143712,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere Cell C,Energy,2751,Lettere Cell C ,Elster,Kocos,A1140,88921108,LiMo R2,6176,84,1,113,Lettere Cell c,-33.93228827,18.86078154,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere en Sosiale Wetenskappe -  3de Vloer HVAC,Energy,3733,Lettere en Sosiale Wetenskappe -  3de Vloer HVAC,Elster,Kocos,A1140,48103100,LiMo R2,-,84,1,113,Lettere en sosiale wetenskappe - 3de vloer hvac,-33.93228827,18.86081999,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere en Sosiale Wetenskappe - AC Plantroom,Energy,3731,Lettere en Sosiale Wetenskappe - AC Plantroom,Elster,Kocos,A1140,48103097,LiMo R2,-,84,1,113,Letere en sosiale wetenskappe - ac plant room,-33.93228586,18.86080256,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere en Sosiale Wetenskappe - Ketel Kamer,Energy,3729,Lettere en Sosiale Wetenskappe - Ketel Kamer,Elster,Kocos,A1140,48103106,LiMo R2,6176,84,1,113,Lettere en sosiale wetenskappe - ketel kamer,-33.93228475,18.86078713,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere MTN,Energy,2749,Lettere MTN ,Elster,Kocos,A1140,68900799,LiMo R2,6176,84,1,113,Lettere  Mtn,-33.93228122,18.86077864,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere Vodacom,Energy,2750,Lettere  Vodacom ,Elster,Kocos,A1140,68900801,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Lettere 11 kV,-,Lettere Hoof Skakelbord,-,Energy,2747,Lettere Hoof Skakelbord,Elster,Kocos,A1700,51500300,LiMo-DIN,6176,84,1,112,Lettere hoof skakelbord,-33.93225693,18.86085441,-,0,-,2022-03-01  00:00:00
--,Lobelia Toevoer,-,-,-,Energy,3756,Lobelia Toevoer,Elster,Kocos,A1140,48103067,LiMo R2,-,-,-,-,-,-33.92878225,18.85873681,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,-,-,Energy,2656,LSS Toevoer 11kV,ELSTER,Kocos,A1700,51500264,LiMo R2,-,-,-,-,-,-33.93314723,18.86526595,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Admin A (Noord),-,Energy,2671,Admin A (Noord),Elster,Kocos,A1140,58500456,LiMo R2,-,-,-,-,-,-33.93318383,18.86293196,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Admin A (Suid),-,Energy,2647,Admin A (Suid),Elster,Kocos,A1140,58500453,LiMo R2,-,-,-,-,-,-33.93296153,18.86324455,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Admin Blok B,-,Energy,2646,Admin Blok B,ELSTER,Kocos,A1140,58500452,LiMo R2,-,-,-,-,-,-33.93360384,18.86323946,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Admin Blok C,-,Energy,2678,Admin Blok C,ELSTER,Kocos,A1140,58500434,LiMo R2,-,-,-,-,-,-33.93359855,18.86362223,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,AI Perold,-,Energy,2686,AI Perold,ELSTER,Kocos,A1140,58500480,LiMo R2,-,-,-,-,-,-33.93255803,18.86482222,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Bedryfsielkunde,-,Energy,2640,Bedryfsielkunde,Elster,Kocos,A1140,58500451,LiMo R2,-,-,-,-,-,-33.93169938,18.86415665,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,De Beers Gebou - Chemie,-,Energy,2685,De Beers Gebou - Chemie,ELSTER,Kocos,A1140,58500471,LiMo R2,-,-,-,-,-,-33.93166788,18.86619919,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Geologie/Kamer van Mynwese,-,Energy,2679,Geologie/Kamer van Mynwese,Elster,Kocos,A1140,58500470,LiMo R2,-,-,-,-,-,-33.93147044,18.86220976,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,Bedryfsielkunde Lugversorging,Energy,2684,Bedryfsielkunde Lugversorging,ELSTER,Kocos,A1140,58500475,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,JH Neethling - Chiller,Energy,5986,JH Neethling - Chiller ,Elster,Kocos,A1140,68508063,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,JH Neethling VM Remainder,Energy,6171,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,-,Energy,5845,JH Neethling Hooftoevoer,Elster,Kocos,A1140,78520562,LiMo R2,-,-,-,-,-,-33.93361427,18.86465887,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,JS Marais Toevoer,-,Energy,2641,JS Marais Toevoer,Elster,Kocos,A1140,58500472,LiMo R2,-,-,-,-,-,-33.93329996,18.86627083,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,LSS Meganiese Substasie,Sentrale Lugversorging,Energy,2644,Neelsie Sentrale Lugversorging,Elster,Kocos,A1700,51500202,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,LSS Meganiese Substasie,Visuele Kunste Lugreeling (Vanaf Studentesentrum),Energy,2844,Visuele Kunste Lugreeling (Vanaf Studentesentrum),Elster,Kocos,A1700,51500267,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,LSS Meganiese Substasie,-,Energy,2645,LSS Meganiese Substasie,Elster,Kocos,A1700,51500201,LiMo-DIN,-,-,-,-,-,-33.93236687,18.8661088,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Merensky Gebou,-,Energy,2683,Merensky Gebou,ELSTER,Kocos,A1140,58500431,LiMo R2,-,-,-,-,-,-33.93191013,18.86507998,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Natuurwetenskap Glashuis,-,Energy,2653,Natuurwetenskap Glashuis ,Elster,Kocos,A1140,68509011,LiMo R2,-,-,-,-,-,-33.93149447,18.86238764,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Cell C,Energy,2674,Cell C,ELSTER,Kocos,A1140,98129708,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Learning Commons,Energy,3417,Learning Commons,Elster,Kocos,A1140,38146941,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,MTN,Energy,2673,MTN,ELSTER,Kocos,A1140,98129706,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie MTN,Energy,3713,Neelsie MTN,Elster,Kocos,AS230,43105668,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3336,5.4 Kwikspar,Elster,Kocos,A1140,38146902,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3411,Bank 1 Nedbank,Elster,Kocos,A1140,38146939,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3513,G01 Tamaties,Elster,Kocos,A1140,38146923,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3514,G02 Neelsie Eiendomme,Elster,Kocos,A1140,38146929,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3515,G03 Knots Hair Salon,Elster,Kocos,A1140,38146924,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3516,G04A My Brew Shop,Elster,Kocos,A1140,38146926,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3578,G04B Stellies,Elster,Kocos,A1140,38146922,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3529,G05 Van Schaik Boekhandel,Elster,Kocos,A1140,38146931,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3530,G06 Mellin & Partners,Elster,Kocos,A1140,38146930,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3531,G07A Vakant,Elster,Kocos,A1140,38146925,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3549,G7B Sleutels & Tekens,Elster,Kocos,A1140,38146769,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3556,G8 - Matieshop,Elster,Kocos,A1140,38146906,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3552,G08A My Brew Kiosk,Elster,Kocos,A1140,38146935,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3532,G09 Unistat,Elster,Kocos,A1140,38146927,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3540,G10 Vakant,Elster,Kocos,A1140,38146763,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3553,G11B Romans Pizza,Elster,Kocos,A1140,38146968,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3576,G12 Pimp My Book,Elster,Kocos,A1140,38146966,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3579,G13 Pulp Cinema,Elster,Kocos,A1140,38146928,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3557,G14 Reisburo,Elster,Kocos,A1140,38146767,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3538,G15 Reisburo,Elster,Kocos,A1140,38146905,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3539,G16 Reisburo,Elster,Kocos,A1140,38146904,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3554,G17 Stelkor,Elster,Kocos,A1140,38146765,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3542,G18 Bliss,Elster,Kocos,A1140,38146768,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3545,G19 Amaboko,Elster,Kocos,A1140,38146770,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3546,G20 Cell Version,Elster,Kocos,A1140,38146766,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3548,G21 Poskantoor,Elster,Kocos,A1140,38146762,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3413,K8 Standard Bank,Elster,Kocos,A1140,38146908,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3343,K09 Vlambojant,Elster,Kocos,A1140,38146962,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3346,K10 NcaKos,Elster,Kocos,A1140,38146964,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3344,K11 Miriams Kitchen,Elster,Kocos,A1140,38146969,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3349,K12A Buzz Juice,Elster,Kocos,A1140,38146971,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3345,K12B Jeffs Place,Elster,Kocos,A1140,38146970,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3350,K12C Feathers,Elster,Kocos,A1140,38146963,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3340,K13A The High Stitching Tailor Shop,Elster,Kocos,A1140,38146910,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3337,K13B DCM,Elster,Kocos,A1140,38146911,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3339,K14 Vakant ,Elster,Kocos,A1140,38146903,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3351,K16 Java Junction,Elster,Kocos,A1140,38146938,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3412,K20 Absa Bank ,Elster,Kocos,A1140,38146907,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3414,K20A FNB Bank,Elster,Kocos,A1140,38146909,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,4219,Neelsie - Capitec,Elster,Kocos,A1140,48103081,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3847,Neelsie - Hutmakers,Elster,Kocos,A1140,48103077,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3416,Neelsie SRC Kantoor,Elster,Kocos,A1140,28100172,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,6879,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie UPS Pharga,Energy,3415,Neelsie UPS Pharga,Elster,Kocos,A1140,38146940,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Pharga DB,Energy,3418,Neelsie Pharga DB,Elster,Kocos,A1140,38146967,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Vodacom,Energy,2675,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Vodacom Roggebaai,Energy,3705,Vodacom Roggebaai ,Elster,Kocos,AS230,48105671,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,-,Energy,2687,Neelsie Studente Sentrum,ELSTER,Kocos,A1700,51500308,LiMo R2,-,-,-,-,-,-33.93250575,18.86538267,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,RW Wilcocks Toevoer,-,Energy,2672,RW Wilcocks Toevoer,Elster,Kocos,A1140,58500454,LiMo R2,-,-,-,-,-,-33.93350365,18.86278013,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,Natuurwetenskap,Energy,2652,Natuurwetenskap,Elster,Kocos,A1140,58500476,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,SU Biblioteek - VM Remainder,Energy,3909,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,SU Biblioteek (Sump pump),Energy,2944,SU Biblioteek (Sump pump) ,Elster,Kocos,A1140,78520201,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,-,Energy,2651,SU Biblioteek Hooftoevoer,Elster,Kocos,A1700,51500261,LiMo R2,-,-,-,-,-,-33.93309244,18.8640029,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Van der Sterr - VM Total,Van der Sterr HVAC,Energy,3535,Van der Sterr HVAC,Elster,Kocos,A1700,61501553,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Van der Sterr - VM Total,Van der Sterr Toevoer,Energy,3534,Van der Sterr Toevoer,Elster,Kocos,A1700,61501552,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Van der Sterr - VM Total,-,Energy,3775,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93277944,18.86727067,-,0,-,2022-03-01  00:00:00
--,LSS Toevoer 11kV,-,Visuele Kunste Toevoer,-,Energy,2657,Visuele Kunste Toevoer,ELSTER,Kocos,A1140,58500457,LiMo R2,-,-,-,-,-,-33.93385486,18.8668934,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,-,-,Energy,2911,Monica 11kV,Elster,Kocos,A1700,51500304,LiMo-DIN,-,-,-,-,-,-33.93550911,18.86521572,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Botanical Gardens,-,Energy,7282,Botanical Gardens,Elster,Kocos,A1140,48127360,LiMo R2,-,-,-,-,-,-33.93579026,18.86571104,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,3910,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,2915,Katjiepiering Restaurant,Elster,Kocos,A1140,88900738,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,7281,Ou Conserve Building,Elster,Kocos,A1140,48127334,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,2712,Botaniese Tuine Hoeftovoer,Elster,Kocos,A1140,58500668,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,2927,Harmonie Hittepompe,Elster,Kocos,A1140,68509037,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,2926,Harmonie Kombuis,Elster,Kocos,A1140,68509036,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,3125,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,2713,Harmonie Toevoer,Elster,Kocos,A1140,68509035,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Lombardi,Energy,2920,Lombardi MTN,Elster,Kocos,A1140,98129702,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Lombardi,Energy,2921,Lombardi Vodacom,Elster,Kocos,A1140,98129700,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Lombardi,Energy,2710,Lombardi  ,Elster,Kocos,A1140,58500458,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,3024,Monica Hittepompe,Elster,Kocos,A1140,68509038,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,2727,Monica Kombuis,Elster,Kocos,A1140,68509039,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,3126,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,2714,Monica Toevoer 1,Elster,Kocos,A1140,68509034,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Sasol Kuns Museum,Energy,2711,Sasol Kunsmuseum,Elster,Kocos,A1140,58500455,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,2737,Wilgenhof Hittepompe,Elster,Kocos,A1140,68509030,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,2738,Wilgenhof Kombuis,Elster,Kocos,A1140,68509004,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,3127,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,2715,Wilgenhof Hooftoevoer,Elster,Kocos,A1140,68509033,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Monica 11 kV,-,Monica Toevoer LV,-,Energy,4973,Monica Toevoer LV,Elster,Kocos,A1140,48122702,LiMo R2,-,-,-,-,-,-33.93522796,18.8647204,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,-,-,Energy,2919,Schumann 11 kV,Elster,Kocos,A1700,61501554,LiMo-DIN,-,-,-,-,-,-33.93231372,18.8659465,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Anorganiese Chemie,-,Energy,2667,Anorganiese Chemie,Elster,Kocos,A1140,58500674,LiMo R2,-,-,-,-,-,-33.93198125,18.86750991,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,CGW Schumann (LRP1),Schumann MTN,Energy,2918,Schumann MTN,Elster,Kocos,A1140,98102079,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,CGW Schumann (LRP1),Schumann Vodacom,Energy,2917,Schumann Vodacom,Elster,Kocos,A1140,98102070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,CGW Schumann (LRP1),-,Energy,2827,CGW Schumann,Elster,Kocos,A1140,78520569,LiMo R2,-,-,-,-,-,-33.93235804,18.86691267,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,CGW Schumann Gebou,-,Energy,2831,CGW Schumann Gebou,Elster,Kocos,A1140,68509058,LiMo R2,-,-,-,-,-,-33.93247605,18.8658074,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Chemie Skeikunde/Eerstejaars,-,Energy,2828,Chemie Skeikunde/Eerstejaars,Elster,Kocos,A1140,98132497,LiMo R2,-,-,-,-,-,-33.93203745,18.86678425,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Mike de Vries,-,Energy,2650,Mike de Vries,ELSTER,Kocos,A1140,58500477,LiMo R2,6176,84,1,113,Lettere  Vodacom,-33.932284,18.86077864,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Polimeerwetenskap,Plascon,Energy,2832,Plascon,Elster,Kocos,A1140,58501530,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Polimeerwetenskap,Polimeerwetenskap - VM Remainder,Energy,3060,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Polimeerwetenskap,-,Energy,2648,Polimeerwetenskap,Elster,Kocos,A1140,58500443,LiMo R2,-,-,-,-,-,-33.93274571,18.86628738,-,0,-,2022-03-01  00:00:00
--,Schumann 11 kV,-,Schuman HVAC,-,Energy,3169,Schuman HVAC,Elster,Kocos,A1140,38145326,LiMo R2,-,-,-,-,-,-33.93231354,18.86754529,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,-,-,Energy,2867,Simonsberg 11 kV,Elster,Kocos,A1700,51500262,LiMo-DIN,-,-,-,-,-,-33.93202863,18.87044366,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Aankope,-,Energy,2899,Aankope,Elster,Kocos,A1140,68509020,LiMo R2,-,-,-,-,-,-33.93233824,18.86903545,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Annex,Energy,3752,Dagbreek Annex,Elster,Kocos,A1140,88523225,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Hittepompe,Energy,2901,Dagbreek Hittepompe,Elster,Kocos,A1140,68509064,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Kombuis,Energy,2898,Dagbreek Kombuis,Elster,Kocos,A1140,68509025,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Oos,Energy,2870,Dagbreek Oos,Elster,Kocos,A1140,68509044,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Waskamer,Energy,2900,Dagbreek Waskamer,Elster,Kocos,A1140,68509024,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Wes,Energy,2869,Dagbreek Wes,Elster,Kocos,A1140,68509043,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Huis Visser Uitbreiding,Energy,2962,Huis Visser Uitbreiding  ,Elster,Kocos,A1140,88523224,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,-,Energy,3058,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93247895,18.86862797,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Eendrag Hittepompe,Energy,2945,Eendrag Hittepompe,Elster,Kocos,A1140,68509027,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Eendrag Kombuis,Energy,2874,Eendrag Kombuis,Elster,Kocos,A1140,68509022,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Eendrag Koshuis - VM Remainder,Energy,3061,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Ou Mutual Muurbalbane,Energy,2875,Ou Mutual Muurbalbane,Elster,Kocos,A1140,68509021,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Eendrag Hooftoevoer,-,Energy,2873,Eendrag Hooftoevoer,Elster,Kocos,A1140,68509026,LiMo R2,-,-,-,-,-,-33.93089714,18.87220786,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Cell C,Energy,6954,Helshoogte - Cell C,Elster,KoCos,A1140,48126706,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Emergency Main Meter,Energy,6951,Helshoogte - Emergency Main Meter,Elster,KoCos,A1140,48125267,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Laundry,Energy,6952,Helshoogte - Laundry,Elster,KoCos,A1140,48125269,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Main Kitchen,Energy,6950,Helshoogte - Main Kitchen,Elster,KoCos,A1140,48125270,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - MTN,Energy,6955,Helshoogte - MTN,Elster,KoCos,A1140,48125943,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Vodacom,Energy,6953,Helshoogte - Vodacom,Elster,KoCos,A1140,48125947,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Helshoogte - Main Incomer,-,Energy,6949,Hellshoogte - Main Incomer,Elster,KoCos,A1140,48125268,LiMo R1,-,-,-,-,-,-33.93120226,18.87102561,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,Huis Marais Koshuis - VM Remainder,Energy,3064,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,Huis Marais Visser Kombuis,Energy,2961,Huis Marais Visser Kombuis,Elster,Kocos,A1140,68509017,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,Huis Visser Koshuis,Energy,2957,Huis Visser Koshuis,Elster,Kocos,A1140,68509010,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,-,Energy,2897,Huis Marais Visser Toevoer,Elster,Kocos,A1140,68509019,LiMo R2,-,-,-,-,-,-33.93163204,18.86818376,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2896,Irene New Kitchen,Elster,Kocos,A1140,88523089,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2885,Irene Kitchen,Elster,Kocos,A1140,88502886,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2887,Irene Heat-pump,Elster,Kocos,A1140,18102595,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,3135,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2884,Irene Main DB at Irene,Elster,Kocos,A1140,68509047,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2894,Irene Main Supply (at Huis Russel Botman),Elster,Kocos,A1140,88524063,LiMo R2,15827,205,1,1011,Huis Rusell Botman,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,-,Energy,7119,Huis Russell Botman - Main Incomer,Elster,Kocos,A1140,88524062,LiMo R2,-,-,-,-,-,-33.93224123,18.87218104,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Majuba Hooftoevoer,Majuba Hittepompe,Energy,2872,Majuba Hittepompe,Elster,Kocos,A1140,68509062,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Majuba Hooftoevoer,Majuba Kombuis,Energy,3042,Majuba Kombuis,Elster,Kocos,A1140,68509073,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Majuba Hooftoevoer,Majuba Koshuis - VM Remainder,Energy,3065,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Majuba Hooftoevoer,-,Energy,2871,Majuba Hooftoevoer,Elster,Kocos,A1140,68509061,LiMo R2,-,-,-,-,-,-33.93272254,18.86981065,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,Simonsberg Hittepompe,Energy,2963,Simonsberg Hittepompe,Elster,Kocos,A1140,68509013,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,Simonsberg Kombuis,Energy,2882,Simonsberg Kombuis,Elster,Kocos,A1140,68509009,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,Simonsberg Koshuis - VM Remainder,Energy,3066,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,-,Energy,2876,Simonsberg Hooftoevoer,Elster,Kocos,A1140,68509008,LiMo R2,-,-,-,-,-,"-33.93142504341793, 18.87004118409002",18.87004118,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Sonop Hooftoevoer,Sonop Hittepompe,Energy,3080,Sonop Hittepompe,Elster,Kocos,A1140,58500673,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Sonop Hooftoevoer,Sonop Kombuis,Energy,2888,Sonop Kombuis New Generation-DB,Elster,Kocos,A1140,68509071,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Sonop Hooftoevoer,Sonop Koshuis - VM Remainder,Energy,3165,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Sonop Hooftoevoer,-,Energy,2902,Sonop,Elster,Kocos,A1140,68509069,LiMo R2,-,-,-,-,-,-33.93264305,18.87128369,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Wimbledon Gebou,Wimbledon Hittepompe,Energy,3079,Wimbledon Hittepompe,Elster,Kocos,A1140,68509003,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Simonsberg 11 kV,-,Wimbledon Gebou,-,Energy,2895,Wimbledon Gebou,Elster,Kocos,A1140,98124317,LiMo R2,-,-,-,-,-,-33.93210223,18.87203936,-,0,-,2022-03-01  00:00:00
--,STIAS Toevoer,-,-,-,Energy,2717,STIAS Toevoer,Elster,Kocos,A1140,58500677,LiMo R2,-,-,-,-,-,-33.93498546,18.8739945,-,0,-,2022-03-01  00:00:00
--,W.A.T Toevoer,-,-,-,Energy,3734,W.A.T Toevoer,Elster,Kocos,A1140,48103103,LiMo R2,-,-,-,-,-,-33.93005183,18.86244132,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,-,-,Energy,3026,Welgevallen 11 kV,Elster,Kocos,A1700,51500266,LiMo-DIN,-,-,-,-,-,-33.94188235,18.86679919,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,Paul van der Bijl -  VM Remainder,Energy,3914,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,Paul van der Bijl Glashuis en Lab,Energy,2719,Paul van der Bijl Glashuis en Lab,Elster,Kocos,A1140,58500666,LiMo R2,306,119,1,-,Paul van der Bijn Glashuis en Lab,-33.93986374,18.8671766,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,Wynkelder,Energy,2720,Wynkelder,ELSTER,Kocos,A1140,58500464,LiMo R2,306,119,1,-,Wynkelder,-33.93986096,18.86718062,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,-,Energy,2718,Paul van der Bijl Sub Toevoer,ELSTER,Kocos,A1140,58500448,LiMo R2,306,119,1,-,Paul van der Bijl Sub Toevoer,-33.93986244,18.86718364,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Toevoer Wintergraan Kantoor Blok 3 (B756),Energy,2723,Toevoer Wintergraan Kantoor Blok 3 (B756),Elster,Kocos,A1140,58500672,LiMo R2,306,760,1,1179,Toevoer Wintergraan Kantoor Blok 3,-33.94271888,18.86671493,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Toevoere Wintergraan Laboratorium 2 & Glas,Energy,2722,Wintergraan Laboratorium 2 & Glashuis,Elster,Kocos,A1140,58500671,LiMo R2,306,760,1,1179,Wintergraan Laboratorium 2 en Glashuis,-33.94271722,18.8667289,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen - Melkstal,Energy,3078,Welgevallen Melkstal,Elster,Kocos,A1140,78520565,LiMo R2,306,0,1,Outside,Welgevallen Melkstal,-33.94310152,18.8680671,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen - VM Remainder,Energy,3915,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen Unistel Akwakultuur WG 6,Energy,3077,Welgevallen Unistel Akwakultuur WG6,Elster,Kocos,A1140,68905748,LiMo R2,308,753,1,1145,Welgevallen Unistel Akwakultuur WG6,-33.94261421,18.86582756,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen Unistel Akwakultuur WG 7,Energy,3076,Welgevallen Unistel Akwakultuur WG7,Elster,Kocos,A1140,68905749,LiMo R2,308,753,1,1145,Welgevallen Unistel Akwakultuur WG7,-33.94264175,18.86570351,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,Wintergraan Kantoor Blok 4 (B757),Energy,2721,Wintergraan Kantoor Blok 4 (B757),Elster,Kocos,A1140,58500678,LiMo R2,306,760,1,1179,Wintergraan Kantoor Blok 4 (B757),-33.94272,18.86670554,-,0,-,2022-03-01  00:00:00
--,Welgevallen 11 kV,-,Welgevallen Substasie,-,Energy,2724,Welgevallen Substasie,Elster,Kocos,A1700,71504073,LiMo-DIN,306,760,1,1179,Welgevallen Substasie,-33.94272278,18.86670353,-,0,-,2022-03-01  00:00:00
+Stellenbosch University,-,-,-,-,Energy,-,-,-,-,-,-,-,-,-,-,-,-,-33.9328,18.8644,127.0.0.1,8000,Local,2022-08-01  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,-,-,Energy,3037,Voertuigpoel Kiosk Hooftoevoer (Banhoek),Elster,Kocos,A1140,68508323,LiMo-DIN,-,-,-,-,-,-33.91667,18.91667,127.0.0.1,8007,Local,2022-08-01  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,HIV Bestuur Gebou,-,Energy,3041,HIV Bestuur Gebou,Elster,Kocos,A1140,68508326,LiMo-DIN,-,-,-,-,-,-33.916675,18.916675,127.0.0.1,8003,Local,2022-08-01  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,Language Centre,-,Energy,3040,Language Centre,Elster,Kocos,A1140,685083278,LiMo-DIN,-,-,-,-,-,-33.91668,18.91668,127.0.0.1,8004,Local,2022-08-01  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,Matie Gemeenskapsdiens Luckhofskool,-,Energy,3038,Matie Gemeenskapsdiens Luckhofskool,Elster,Kocos,A1140,68508324,LiMo-DIN,-,-,-,-,-,-33.916685,18.916685,127.0.0.1,8005,Local,2022-08-01  00:00:00
+Stellenbosch University,Banghoek Toevoer,-,Voertuigpoel,-,Energy,3039,Voertuigpoel,Elster,Kocos,A1140,68508325,LiMo-DIN,-,-,-,-,-,-33.91669,18.91669,127.0.0.1,8006,Local,2022-08-01  00:00:00
+Stellenbosch University,Botmashoogte Toevoer,-,-,-,Energy,3758,Botmashoogte Toevoer,Elster,Kocos,A1140,38146936,LiMo R2,-,-,-,-,-,-33.9233,18.883,127.0.0.1,8008,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,-,-,Energy,3025,Coetzenburg 11 kV,Elster,Kocos,A1700,51500272,LiMo-DIN,306,745,1,1002,Coetzenburg 11kv,-33.93943714,18.86822311,127.0.0.1,8026,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Atletiek Stadion - VM Remainder,Energy,3903,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Cell C,Energy,2948,Coetzenburg Cell C,Elster,Kocos,A1140,98129682,LiMo R2,306/2,137,1,1010,Coetzenburg Cell C,-33.93906627,18.86919016,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Imaging Centre,Energy,2949,Coetzenburg Imaging Centre ,Elster,Kocos,A1140,98154635,LiMo R2,306/2,137,1,1010,Coetzenburg Imaging Centre,-33.93907239,18.86918982,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg MTN,Energy,2947,Coetzenburg MTN,Elster,Kocos,A1140,98129683,LiMo R2,306/2,137,1,1010,Coetzenburg MTN,-33.93906349,18.86919049,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Tennisbaan,Energy,2950,Coetzenburg Tennisbaan,Elster,Kocos,A1140,58500667,LiMo R2,306/2,137,1,1010,Coetzenburg Tennisbaan,-33.93906043,18.86918915,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Vodacom,Energy,2849,Coetzenburg Vodacom ,Elster,Kocos,A1140,68905747,LiMo R2,306/2,171,1,1002,Coetzenburg vodacom,-33.94064168,18.87085704,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,Coetzenburg Woonhuis 01,Energy,3965,Coetzenburg Woonhuis 01,Elster,Kocos,A1140,48101653,LiMo R2,306/1,904,1,Outside,Coetzenburg Woonhuis 01,-33.93853935,18.87088319,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Coetzenburg Atletiek Substasie,-,Energy,2964,Coetzenburg Atletiek Substasie,Elster,Kocos,A1140,58500468,LiMo R2,-,-,-,-,-,-33.9392406,18.86974998,127.0.0.1,8016,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Danie Craven Rugby Stadion,-,Energy,2955,Danie Craven Rugby Stadion,Elster,Kocos,A1140,88500423,LiMo R2,312,138,1,1020,Danie Craven Rugby Stadion,-33.94052152,18.87291597,127.0.0.1,8017,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Krieket Onderwaterhokkie Klubhuis,-,Energy,2954,Krieket Onderwaterhokkie Klubhuis,Elster,Kocos,A1140,78520566,LiMo R2,-,-,-,-,-,-33.93937052,18.87016984,127.0.0.1,8018,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportburo - Jannie Marais Klubhuis,-,Energy,2746,Sportburo - Jannie Marais Klubhuis,Elster,Kocos,A1140,58500447,LiMo R2,313,165,1,1003,Sportburo - Jannie Marais Klubhuis,-33.93854041,18.87367101,127.0.0.1,8019,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Gimnasium,Energy,2754,Sport Gimnasium,Elster,Kocos,A1140,58500444,LiMo R2,306/2,87,1,114,Sport gimnasium,-33.94129853,18.8717833,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,Sport Wetenskap - VM Remainder,Energy,3904,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Sportwetenskap Toevoer,-,Energy,2753,Sportwetenskap Toevoer,Elster,Kocos,A1140,58500442,LiMo R2,306/2,87,1,114,Sportwetenskap toevoer,-33.94128796,18.87177592,127.0.0.1,8022,Local,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Coetzenburg Sentrum,Energy,2848,Coetzenburg Sentrum,Elster,Kocos,A1140,58500669,LiMo R2,306/2,171,1,1002,Coetzenburg sentrum,-33.94064548,18.87086475,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,Swembadpompe,Energy,2639,Swembadpompe,Elster,Kocos,A1140,58500661,LiMo R2,306/2,171,1,1002,Swembad pompe,-33.94064265,18.87086229,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Coetzenburg 11 kV,-,Swembad Minisub,-,Energy,2856,Swembad Minisub,Elster,Kocos,A1140,78520491,LiMo R2,306/2,0,1,Outside,Swembad minisub,-33.94067001,18.87089593,127.0.0.1,8025,Local,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,-,-,Energy,2739,Erica 11 kV,Elster,Kocos,A1700,51500260,LiMo-DIN,-,-,-,-,-,-33.93471243,18.87145327,127.0.0.1,8059,Local,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Erica Koshuis,-,Energy,2731,Erica Koshuis,Elster,Kocos,A1140,68509072,LiMo R2,-,-,-,-,-,-33.9354,18.872,127.0.0.1,8027,Local,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Annex (Huismoles),Energy,3001,Heemstede Annex (Huismoles),Elster,Kocos,A1140,68509018,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hittepompe,Energy,2998,Heemstede Hittepompe,Elster,Kocos,A1140,68509014,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Hooftoevoer - VM Remainder,Energy,5797,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Heemstede Kombuis,Energy,2996,Heemstede Kombuis,Elster,Kocos,A1140,68509070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Lydia Hittepompe,Energy,3002,Huis Ten Bosch Lydia Hittepompe,Elster,Kocos,A1140,68509045,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3000,Huis Ten Bosch Kombuis,Elster,Kocos,A1140,68509028,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,3138,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Huis Ten Bosch Toevoer,Energy,2999,Huis Ten Bosch Toevoer,Elster,Kocos,A1140,68509029,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2958,Lydia Kombuis,Elster,Kocos,A1140,68509032,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,3137,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Lydia Toevoer,Energy,2959,Lydia Toevoer,Elster,Kocos,A1140,68509031,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,Studente Gesondheid,Energy,3759,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Erica 11 kV,-,Heemstede Hooftoevoer,-,Energy,2997,Heemstede Hooftoevoer,Elster,Kocos,A1140,68509012,LiMo R2,-,-,-,-,-,-33.93514,18.86858,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Heatpump,Energy,7121,Western Cape - Metanoia - Heat pumps,Elster,Kocos,A1140,88500424,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Kombuis,Energy,2743,Metanoia Kombuis,Elster,Kocos,A1700,61501659,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,Metanoia Koshuis - VM Remainder,Energy,5455,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Metanoia Hooftoevoer,-,Energy,2742,Metanoia Hooftoevoer,Elster,Kocos,A1700,61501621,LiMo-DIN,-,-,-,-,-,-33.93272,18.87169,127.0.0.1,8044,Local,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva + Nerina Hittepompe,Energy,2960,Minerva+Nerina Hittepompe,Elster,Kocos,A1140,68509040,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva Kombuis,Energy,2736,Minerva Kombuis,Elster,Kocos,A1700,61501620,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Minerva VM,Energy,5800,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,3003,Nerina Kombuis,Elster,Kocos,A1140,68509076,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,5910,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,Nerina Toevoer,Energy,2734,Nerina Toevoer,Elster,Kocos,A1140,68509074,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Minerva + Nerina Hoof Toevoer,-,Energy,2910,Minerva + Nerin Hoof Toevoer ,Elster,Kocos,A1140,68509041,LiMo R2,-,-,-,-,-,-33.93444665,18.87068557,127.0.0.1,8051,Local,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Nemesia Koshuis,-,Energy,2909,Nemesia Koshuis,Elster,Kocos,A1140,68509068,LiMo R2,-,-,-,-,-,-33.93531878,18.87245308,127.0.0.1,8052,Local,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Serruria Koshuis,-,Energy,2733,Serruria Koshuis,Elster,Kocos,A1140,68509046,LiMo R2,-,-,-,-,-,-33.93512735,18.87297651,127.0.0.1,8053,Local,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Hittepompe,Energy,2969,Tienie Louw Hittepompe,Elster,Kocos,A1140,68500068,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis (Noodkrag),Energy,2953,Tienie Louw Kombuis (Noodkrag),Elster,Kocos,A1140,68500070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Kombuis Warmwater,Energy,2952,Tienie Louw Kombuis Warmwater,Elster,Kocos,A1140,68508327,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,Tienie Louw Woonstelle,Energy,2951,Tienie Louw Woonstelle,Elster,Kocos,A1140,68500069,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Erica 11 kV,-,Tienie Louw Hooftoevoer,-,Energy,2970,Tienie Louw Hooftoevoer,Elster,Kocos,A1140,68500067,LiMo R2,-,-,-,-,-,-33.93483426,18.87178776,127.0.0.1,8058,Local,2022-08-01  00:00:00
+Stellenbosch University,Helderberg 11 kV,-,-,-,Energy,3028,Helderberg 11 kV,Elster,Kocos,A1700,51500265,LiMo R2,-,-,-,-,-,-33.94015896,18.85937828,127.0.0.1,8063,Local,2022-08-01  00:00:00
+Stellenbosch University,Helderberg 11 kV,-,Helderberg Hittepompe,-,Energy,2946,Helderberg Hittepompe,Elster,Kocos,A1140,68509007,LiMo R2,-,-,-,-,-,-33.94017,18.859384,127.0.0.1,8060,Local,2022-08-01  00:00:00
+Stellenbosch University,Helderberg 11 kV,-,Helderberg Kombuis - Eetkamer,-,Energy,2735,Helderberg Kombuis (Eetkamer),Elster,Kocos,A1140,68509006,LiMo R2,-,-,-,-,-,-33.940175,18.85937,127.0.0.1,8061,Local,2022-08-01  00:00:00
+Stellenbosch University,Helderberg 11 kV,-,Helderberg Koshuis - VM Remainder,-,Energy,3139,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.940165,18.859365,127.0.0.1,8062,Local,2022-08-01  00:00:00
+Stellenbosch University,Huis Neethling,-,-,-,Energy,3027,Huis Neethling,Elster,Kocos,A1140,58508057,LiMo R2,-,-,-,-,-,-33.93644765,18.8697207,127.0.0.1,8064,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,-,-,Energy,2666,Ingenieurswese 11 kV,Elster,Kocos,A1700,51500309,LiMo R2,-,-,-,-,-,-33.92850795,18.86615108,127.0.0.1,8100,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Academia Oos,-,Energy,2923,Academia Oos,Elster,Kocos,A1700,51500268,LiMo R2,-,0,-,-,Academia  oos,-33.92660964,18.86951784,127.0.0.1,8065,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,Concordia Toevoer - VM Remainder,Energy,5796,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,Concordia WW,Energy,2942,Concordia WW,Elster,Kocos,A1140,68509042,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Concordia Toevoer,-,Energy,2659,Concordia Toevoer,Elster,Kocos,A1140,68508109,LiMo R2,-,0,-,-,Concordia toevoer,-33.92625382,18.8684445,127.0.0.1,8069,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,Elektriese En Elektroniese Ing - VM Remainder,Energy,3905,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,PO Sauer (Bosbou),Energy,2643,Mondi Lab - PO Sauer,Elster,Kocos,A1140,68509023,LiMo R2,3385,10,1,1034,Mondi lab - PO Sauer,-33.92685924,18.86610288,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,PO Sauer (Bosbou),Energy,2655,PO Sauer (Bosbou),Elster,Kocos,A1140,58500465,LiMo R2,3385,104,1,E103B,PO Sauer (Bosbou),-33.92822605,18.86669839,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Elektriese En Elektroniese Ing,-,Energy,2654,Elektriese En Elektroniese Ing,Elster,Kocos,A1700,61102035,LiMo R2,3385,104,1,E103B,Elektriese en elektroniese ingenieurswese,-33.92823421,18.86669861,127.0.0.1,8073,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Huis Mac Donald,-,Energy,2664,Huis Mac Donald,ELSTER,Kocos,A1140,68509075,LiMo R2,-,288,1,1008,Huis Macdonald,-33.92592833,18.8694305,127.0.0.1,8074,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-A,Energy,3616,DB-A,Elster,Kocos,A1140,38146611,LiMo R2,4854,104,1,199c,DB-A,-33.92872344,18.86585919,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-H,Energy,3614,DB-H,Elster,Kocos,A1140,38146603,LiMo R2,4854,104,1,199c,DB-H,-33.92870869,18.86582499,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,DB-WW,Energy,3068,DB-WW,Elster,Kocos,A1140,58500438,LiMo R2,4854,104,1,199c,DB-WW,-33.92872872,18.8658431,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,General Engineering,Energy,3067,General Engineering,Elster,Kocos,A1140,58500432,LiMo R2,4854,104,1,199c,General Engineering,-33.92872149,18.86585181,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2775,CRSES,Elster,Kocos,A1140,68508005,LiMo R2,4854,108,4,K412,CRSES,-33.92902231,18.86600068,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2776,DB-MIH,Elster,Kocos,A1140,68508392,LiMo R2,4854,108,4,K413,DB-MIH,-33.92901535,18.86599011,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2677,Kennis PV Paneel,Elster,Kocos,A1140,18102149,LiMo R2,4854,108,4,K411,Kennis PV paneel,-33.92903969,18.86598307,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Knowledge Centre,Energy,2665,Knowledge Centre,Elster,Kocos,A1140,68508391,LiMo R2,4854,108,1,K114A,Kennis sentrum toevoer,-33.9290115,18.8659938,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,Reitzhall HVAC,Energy,3601,Reitzhall HVAC,Elster,Kocos,A1140,38146571,LiMo R2,4854,104,1,199c,Reitzhall HVAC,-33.92872149,18.86583974,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,SMDB Computer Centre,Energy,3617,SMDB Computer Centre,Elster,Kocos,A1140,38146602,LiMo R2,4854,104,1,199c,SMDB computer centre,-33.92872121,18.86582432,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 1,-,Energy,5638,Meganiese Ingenieurswese TRF 1,Elster,Kocos,A1140,48125304,LiMo R2,4854,104,1,199c,MEGANIESE ingenieurswese incomer 1,-33.92871927,18.86584209,127.0.0.1,8088,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,DB-G,Energy,3610,DB-G,Elster,Kocos,A1140,38146609,LiMo R2,4854,104,1,199c,DB-G,-33.92869803,18.86578934,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,DB-J,Energy,3612,DB-J,Elster,Kocos,A1140,38146604,LiMo R2,4854,104,1,199c,DB-J,-33.92870953,18.86579549,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,DB-K,Energy,3609,DB-K,Elster,Kocos,A1140,38146605,LiMo R2,4854,104,1,199C,DB-K,-33.92869553,18.86577928,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,6776,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,2878,NIEB Verkiller,Elster,Kocos,A1140,68509059,LiMo R2,4854,126,-,On roof,NIEB verkiller,-33.92935539,18.86575458,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,2881,NIEB HVAC,Elster,Kocos,A1140,78520208,LiMo R2,4854,126,1,B1016,NIEB HVAC,-33.92931628,18.86564819,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,NIEB Hooftoevoer,Energy,3611,NIEB Hooftoevoer,Elster,Kocos,A1140,38146610,LiMo R2,4854,104,1,199c,Nieb hooftoevoer,-33.92870295,18.86579683,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,Process Engineering,Energy,3069,Process Engineering,Elster,Kocos,A1140,58500436,LiMo R2,4854,104,1,199c,Process Engineering,-33.92870183,18.86577671,-,0,-,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Meganiese Ingenieurswese TRF 2,-,Energy,6232,Meganiese Ingenieurswese TRF 2,Elster,Kocos,A1140,48124720,LiMo R2,4854,104,1,-,Meganiese ingenieurswese incomer 2,-33.92870573,18.86578744,127.0.0.1,8097,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Siviele Ingenieurswese (Substasie Skakelbord),-,Energy,2649,Siviele Ingenieurswese (Substasie Skakelbord),Elster,Kocos,A1700,51500274,LiMo R2,3385,104,1,S103A,Siviele ingenieurswese substasie skakelbord,-33.92796159,18.86581549,127.0.0.1,8098,Local,2022-08-01  00:00:00
+Stellenbosch University,Ingenieurswese 11 kV,-,Voedselwetenskap,-,Energy,2943,Voedselwetenskap,Elster,Kocos,A1140,68508103,LiMo R2,-,-,-,-,-,-33.9275,18.86583,127.0.0.1,8099,Local,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,-,-,Energy,2676,Instandhouding 11 kV,Elster,Kocos,A1700,51500263,LiMo R2,-,-,-,-,-,-33.92524294,18.86514925,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2941,IKT (UPS),Elster,Kocos,A1140,88500420,LiMo R2,-,0,-,-,-,-33.92475379,18.86551369,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2939,IKT (Warm Water 2),Elster,Kocos,A1140,78520209,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2940,IKT HVAC,Elster,Kocos,A1140,88501437,LiMo R2,7628,155,-1,8,IKT HVAC,-33.9247574,18.86551548,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),IKT Gebou (i),Energy,2662,IKT Gebou,Elster,Kocos,A1140,98154636,LiMo R2,7628,152,1,K1011,IKT gebou,-33.92543487,18.86500809,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Instandhouding Kantoor (i),Energy,3976,Instandhouding Kantoor,Elster,Kocos,A1140,48101728,LiMo R2,7628,152,1,K1011,Instandhouding kantore,-33.92544201,18.86499597,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Launch Lab Main Incomer (i),Energy,6400,Launch Lab - Kitchen,Elster,Kocos,A1140,58108327,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Launch Lab Main Incomer (i),Energy,6378,Launch Lab - HVAC,Elster,Kocos,A1140,58108992,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Launch Lab Main Incomer (i),Energy,2663,Launch Lab - Main Incomer,Elster,Kocos,A1140,98154634,LiMo R2,-,152,1,K1011,Launch lab,-33.92543366,18.86500753,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),Silver Trees,Energy,4195,Silver Trees,Elster,Kocos,AS220,33104281,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Instandhouding 11 kV  (i),-,Instandhouding Toevoer (i),-,Energy,2660,Instandhouding Toevoer,Elster,Kocos,A1140,68509063,LiMo R2,7628,152,1,K1011,Instandhouding,-33.92543849,18.86500435,-,0,-,2022-08-01  00:00:00
+-,JC Smuts 11 kV,-,-,-,Energy,2642,JC Smuts 11 kV,Elster,Kocos,A1700,41505849,LiMo R2,-,-,-,-,-,-33.93072654,18.86571034,-,0,-,2022-08-01  00:00:00
+-,JC Smuts 11 kV,-,JC Smuts Klaslokaal - Blok C,-,Energy,2668,JC Smuts Klaslokaal - Blok C ,Elster,Kocos,A1140,58500435,LiMo R2,-,-,-,-,-,-33.93101366,18.86590192,-,0,-,2022-08-01  00:00:00
+-,JC Smuts 11 kV,-,JC Smuts Nagraads - Blok A,-,Energy,2669,JC Smuts Nagraads (Blok A),ELSTER,Kocos,A1140,58500439,LiMo R2,-,-,-,-,-,-33.93080446,18.8655425,-,0,-,2022-08-01  00:00:00
+-,JC Smuts 11 kV,-,JC Smuts Verkillers,-,Energy,2777,JC Smuts Verkillers,Elster,Kocos,A1140,78520568,LiMo R2,-,-,-,-,-,-33.93081336,18.86571417,-,0,-,2022-08-01  00:00:00
+-,JC Smuts 11 kV,-,JC Smuts Voorgraads - Blok B,-,Energy,3739,JC Smuts Voorgraads - Blok B,Elster,Kocos,A1140,48103105,LiMo R2,-,-,-,-,-,-33.93107152,18.86549959,-,0,-,2022-08-01  00:00:00
+-,JC Smuts 11 kV,-,Merriman Laan 60 - Informasietegnologie,-,Energy,2670,Merriman Laan 60 - Informasietegnologie,Elster,Kocos,A1140,68509067,LiMo R2,-,-,-,-,-,-33.93080446,18.86588583,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,-,-,Energy,2708,Konservatorium 11 kV,Elster,Kocos,A1700,51500307,LiMo-DIN,-,-,-,-,-,-33.93412225,18.86613164,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Huis De Villiers Hooftoevoer,Energy,2729,Huis De Villiers Hittepompe,Elster,Kocos,A1140,68509016,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Huis De Villiers Hooftoevoer,Energy,3128,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Huis De Villiers Hooftoevoer,Energy,2728,Huis De Villiers Hooftoevoer,Elster,Kocos,A1140,68509015,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Konservatorium Sentrale Lugversorging,Energy,2841,Konservatorium Sentrale Lugversorging,Elster,Kocos,A1700,51500301,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Konservatorium vir Musiek - VM Remainder,Energy,3906,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3633,07 Bosman Straat ,Elster,Kocos,A1140,48101953,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3632,09 Bosman Straat,Elster,Kocos,A1140,48101954,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3634,11 Bosman Straat ,Elster,Kocos,A1140,48101952,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3623,15 Bosman Straat,Elster,Kocos,A1140,48101874,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3646,37 Bosman Straat,Elster,Kocos,A1140,48101947,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3638,06 Murray Straat ,Elster,Kocos,A1140,48101870,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3639,10 Murray Straat,Elster,Kocos,AS230,43110656,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3637,12A Murray Straat,Elster,Kocos,A1140,48101869,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3636,12B Murray Straat ,Elster,Kocos,A1140,48101950,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3635,14 Murray Straat ,Elster,Kocos,A1140,48101871,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3640,Taaldiens,Elster,Kocos,AS230,43105679,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3631,37 Victoria Straat ,Elster,Kocos,A1140,48101951,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3644,39 Victoria Straat,Elster,Kocos,A1140,48101948,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3645,41 Victoria Straat,Elster,Kocos,A1140,48101956,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3651,43 Victoria Straat,Elster,Kocos,A1140,48101941,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3643,45 Victoria Straat ,Elster,Kocos,A1140,48101949,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,3641,49 Victoria Straat,Elster,Kocos,A1140,48101955,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,Skuilhoek Kiosk,Energy,2709,Skuilhoek Kiosk,Elster,Kocos,A1700,48124712,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Konservatorium 11 kV,-,Konservatorium T1 & T2,-,Energy,2843,Konservatorium T1 & T2,Elster,Kocos,A1700,71500362,LiMo-DIN,-,-,-,-,-,-33.93444638,18.86601887,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,-,-,Energy,3380,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93845256,18.86392957,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,Kweekskool Argief,-,Energy,2759,Kweekskool Argief,ELSTER,Kocos,A1140,98132511,LiMo R2,-,-,-,-,-,-33.9395045,18.86370959,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,Kweekskool Attie van Wyk HVAC,-,Energy,2758,Kweekskool Attie van Wyk HVAC,ELSTER,Kocos,A1140,98132510,LiMo R2,-,-,-,-,-,-33.93870532,18.863767,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,Kweekskool Biblioteek,-,Energy,2757,Kweekskool Biblioteek ,ELSTER,Kocos,A1140,98132414,LiMo R2,-,-,-,-,-,-33.93857036,18.863767,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,Kweekskool Biblioteek HVAC,-,Energy,2756,Kweekskool Biblioteek HVAC,Elster,Kocos,A1140,98132512,LiMo R2,-,-,-,-,-,-33.93864975,18.86417529,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,Kweekskool Gebou,Kweekskool Kafeteria,Energy,2956,Kweekskool Kafeteria,Elster,Kocos,A1140,98132332,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Kweekskool Toevoer - VM Site Total,-,Kweekskool Gebou,-,Energy,2755,Kweekskool Gebou,Elster,Kocos,A1140,98102340,LiMo R2,-,-,-,-,-,-33.93868944,18.86417848,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,-,-,Energy,2716,Lettere 11 kV,ELSTER,Kocos,A1700,61102030,LiMo-DIN,6176,84,1,113,Lettere 11kv,-33.93225303,18.86081686,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Adam Small Mini-sub - VM,Adam Small Theatre Complex,Energy,6960,Adam Smal Theatre Complex Incomer,Elster,Kocos,A1140,78520563,LiMo R2,4040,28,1,1026,Adam small theatre complex incomer,-33.93413438,18.86083413,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Adam Small Mini-sub - VM,CL Marais Biblioteek,Energy,2741,CL Marais Biblioteek,Elster,Kocos,A1140,58500460,LiMo R2,4140,109,1,1007,Cl marais biblioteek,-33.93373553,18.86157146,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Adam Small Mini-sub - VM,Ou Hoof Gebou Toevoer,Energy,2740,Ou Hoof Gebou Toevoer,Elster,Kocos,A1140,58500459,LiMo R2,4140,109,1,1007,Ou hoof gebou toevoer,-33.93373548,18.86157023,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Adam Small Mini-sub - VM,-,Energy,6868,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93346461,18.86119817,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4200,Crozier Street 18: Law Clinic,Elster,Kocos,AS230,43110542,LiMo R2,-,0,-,-,Crozier  street 18: law clinic,-33.93301593,18.86105692,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4202,Crozier Street 20: Law Clinic,Elster,Kocos,AS230,43110639,LiMo R2,6176,0,-,Outside,Crozier street 20: law clinic,-33.93301899,18.86105742,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4201,Crozier Street 22: Law Clinic,Elster,Kocos,AS230,43110545,LiMo R2,6176,0,-,Outside,Crozier street 22: law clinic,-33.93301649,18.86106128,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,4203,Crozier Street 24: Law Clinic,Elster,Kocos,AS230,43110635,LiMo R2,6176,0,-,-,Crozier street 24: law clinic,-33.93301983,18.86106144,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,2725,Joernalistiek - Nuwe Anneks (Crozierstr 26),Elster,Kocos,A1140,68900802,LiMo R2,6176,0,-,Outside,Joernalistiek - nuwe anneks (crozier st 26),-33.93301278,18.86105658,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,2726,Joernalistiek (Crozierstr 26),Elster,Kocos,A1140,68905743,LiMo R2,6176,0,-,Outside,Joernalistiek (crozier 26),-33.93301278,18.86105994,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozier Kiosk,Energy,2760,Crozier Kiosk,Elster,Kocos,A1140,58500437,LiMo R2,7176,0,-,Outside,Crozier kiosk,-33.93272983,18.86143762,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,Crozierhof Woonstelle,Energy,2761,Crozierhof Woonstelle,Elster,Kocos,A1140,58500449,LiMo R2,6176,0,-,Outside,Crozier hoff woonstelle,-33.93273247,18.86143762,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,GG Cillie Main,Energy,6958,GG Cilliers - AC,Elster,Kocos,A1140,78520203,LiMo R2,6176,47,-1,3,Gg cilliers - ac,-33.93283568,18.8615567,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,GG Cillie Main,Energy,6957,GG Cilliers - Main Incomer,Elster,Kocos,A1140,78520205,LiMo R2,-,47,-1,3,Gg cilliers  - main incomer,-33.93282789,18.86155581,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,GG Cillie Mini-sub,-,Energy,5794,GG Cillie Mini-sub,Elster,Kocos,A1140,78520202,LiMo R2,6176,0,-,Outside,Gg cilliers minisub,-33.93272705,18.86143712,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere Cell C,Energy,2751,Lettere Cell C ,Elster,Kocos,A1140,88921108,LiMo R2,6176,84,1,113,Lettere Cell c,-33.93228827,18.86078154,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere en Sosiale Wetenskappe -  3de Vloer HVAC,Energy,3733,Lettere en Sosiale Wetenskappe -  3de Vloer HVAC,Elster,Kocos,A1140,48103100,LiMo R2,-,84,1,113,Lettere en sosiale wetenskappe - 3de vloer hvac,-33.93228827,18.86081999,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere en Sosiale Wetenskappe - AC Plantroom,Energy,3731,Lettere en Sosiale Wetenskappe - AC Plantroom,Elster,Kocos,A1140,48103097,LiMo R2,-,84,1,113,Letere en sosiale wetenskappe - ac plant room,-33.93228586,18.86080256,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere en Sosiale Wetenskappe - Ketel Kamer,Energy,3729,Lettere en Sosiale Wetenskappe - Ketel Kamer,Elster,Kocos,A1140,48103106,LiMo R2,6176,84,1,113,Lettere en sosiale wetenskappe - ketel kamer,-33.93228475,18.86078713,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere MTN,Energy,2749,Lettere MTN ,Elster,Kocos,A1140,68900799,LiMo R2,6176,84,1,113,Lettere  Mtn,-33.93228122,18.86077864,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,Lettere Vodacom,Energy,2750,Lettere  Vodacom ,Elster,Kocos,A1140,68900801,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Lettere 11 kV,-,Lettere Hoof Skakelbord,-,Energy,2747,Lettere Hoof Skakelbord,Elster,Kocos,A1700,51500300,LiMo-DIN,6176,84,1,112,Lettere hoof skakelbord,-33.93225693,18.86085441,-,0,-,2022-08-01  00:00:00
+-,Lobelia Toevoer,-,-,-,Energy,3756,Lobelia Toevoer,Elster,Kocos,A1140,48103067,LiMo R2,-,-,-,-,-,-33.92878225,18.85873681,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,-,-,Energy,2656,LSS Toevoer 11kV,ELSTER,Kocos,A1700,51500264,LiMo R2,-,-,-,-,-,-33.93314723,18.86526595,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Admin A (Noord),-,Energy,2671,Admin A (Noord),Elster,Kocos,A1140,58500456,LiMo R2,-,-,-,-,-,-33.93318383,18.86293196,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Admin A (Suid),-,Energy,2647,Admin A (Suid),Elster,Kocos,A1140,58500453,LiMo R2,-,-,-,-,-,-33.93296153,18.86324455,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Admin Blok B,-,Energy,2646,Admin Blok B,ELSTER,Kocos,A1140,58500452,LiMo R2,-,-,-,-,-,-33.93360384,18.86323946,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Admin Blok C,-,Energy,2678,Admin Blok C,ELSTER,Kocos,A1140,58500434,LiMo R2,-,-,-,-,-,-33.93359855,18.86362223,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,AI Perold,-,Energy,2686,AI Perold,ELSTER,Kocos,A1140,58500480,LiMo R2,-,-,-,-,-,-33.93255803,18.86482222,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Bedryfsielkunde,-,Energy,2640,Bedryfsielkunde,Elster,Kocos,A1140,58500451,LiMo R2,-,-,-,-,-,-33.93169938,18.86415665,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,De Beers Gebou - Chemie,-,Energy,2685,De Beers Gebou - Chemie,ELSTER,Kocos,A1140,58500471,LiMo R2,-,-,-,-,-,-33.93166788,18.86619919,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Geologie/Kamer van Mynwese,-,Energy,2679,Geologie/Kamer van Mynwese,Elster,Kocos,A1140,58500470,LiMo R2,-,-,-,-,-,-33.93147044,18.86220976,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,Bedryfsielkunde Lugversorging,Energy,2684,Bedryfsielkunde Lugversorging,ELSTER,Kocos,A1140,58500475,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,JH Neethling - Chiller,Energy,5986,JH Neethling - Chiller ,Elster,Kocos,A1140,68508063,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,JH Neethling VM Remainder,Energy,6171,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,JH Neethling Hooftoevoer,-,Energy,5845,JH Neethling Hooftoevoer,Elster,Kocos,A1140,78520562,LiMo R2,-,-,-,-,-,-33.93361427,18.86465887,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,JS Marais Toevoer,-,Energy,2641,JS Marais Toevoer,Elster,Kocos,A1140,58500472,LiMo R2,-,-,-,-,-,-33.93329996,18.86627083,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,LSS Meganiese Substasie,Sentrale Lugversorging,Energy,2644,Neelsie Sentrale Lugversorging,Elster,Kocos,A1700,51500202,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,LSS Meganiese Substasie,Visuele Kunste Lugreeling (Vanaf Studentesentrum),Energy,2844,Visuele Kunste Lugreeling (Vanaf Studentesentrum),Elster,Kocos,A1700,51500267,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,LSS Meganiese Substasie,-,Energy,2645,LSS Meganiese Substasie,Elster,Kocos,A1700,51500201,LiMo-DIN,-,-,-,-,-,-33.93236687,18.8661088,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Merensky Gebou,-,Energy,2683,Merensky Gebou,ELSTER,Kocos,A1140,58500431,LiMo R2,-,-,-,-,-,-33.93191013,18.86507998,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Natuurwetenskap Glashuis,-,Energy,2653,Natuurwetenskap Glashuis ,Elster,Kocos,A1140,68509011,LiMo R2,-,-,-,-,-,-33.93149447,18.86238764,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Cell C,Energy,2674,Cell C,ELSTER,Kocos,A1140,98129708,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Learning Commons,Energy,3417,Learning Commons,Elster,Kocos,A1140,38146941,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,MTN,Energy,2673,MTN,ELSTER,Kocos,A1140,98129706,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie MTN,Energy,3713,Neelsie MTN,Elster,Kocos,AS230,43105668,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3336,5.4 Kwikspar,Elster,Kocos,A1140,38146902,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3411,Bank 1 Nedbank,Elster,Kocos,A1140,38146939,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3513,G01 Tamaties,Elster,Kocos,A1140,38146923,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3514,G02 Neelsie Eiendomme,Elster,Kocos,A1140,38146929,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3515,G03 Knots Hair Salon,Elster,Kocos,A1140,38146924,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3516,G04A My Brew Shop,Elster,Kocos,A1140,38146926,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3578,G04B Stellies,Elster,Kocos,A1140,38146922,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3529,G05 Van Schaik Boekhandel,Elster,Kocos,A1140,38146931,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3530,G06 Mellin & Partners,Elster,Kocos,A1140,38146930,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3531,G07A Vakant,Elster,Kocos,A1140,38146925,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3549,G7B Sleutels & Tekens,Elster,Kocos,A1140,38146769,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3556,G8 - Matieshop,Elster,Kocos,A1140,38146906,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3552,G08A My Brew Kiosk,Elster,Kocos,A1140,38146935,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3532,G09 Unistat,Elster,Kocos,A1140,38146927,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3540,G10 Vakant,Elster,Kocos,A1140,38146763,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3553,G11B Romans Pizza,Elster,Kocos,A1140,38146968,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3576,G12 Pimp My Book,Elster,Kocos,A1140,38146966,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3579,G13 Pulp Cinema,Elster,Kocos,A1140,38146928,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3557,G14 Reisburo,Elster,Kocos,A1140,38146767,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3538,G15 Reisburo,Elster,Kocos,A1140,38146905,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3539,G16 Reisburo,Elster,Kocos,A1140,38146904,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3554,G17 Stelkor,Elster,Kocos,A1140,38146765,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3542,G18 Bliss,Elster,Kocos,A1140,38146768,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3545,G19 Amaboko,Elster,Kocos,A1140,38146770,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3546,G20 Cell Version,Elster,Kocos,A1140,38146766,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3548,G21 Poskantoor,Elster,Kocos,A1140,38146762,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3413,K8 Standard Bank,Elster,Kocos,A1140,38146908,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3343,K09 Vlambojant,Elster,Kocos,A1140,38146962,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3346,K10 NcaKos,Elster,Kocos,A1140,38146964,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3344,K11 Miriams Kitchen,Elster,Kocos,A1140,38146969,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3349,K12A Buzz Juice,Elster,Kocos,A1140,38146971,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3345,K12B Jeffs Place,Elster,Kocos,A1140,38146970,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3350,K12C Feathers,Elster,Kocos,A1140,38146963,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3340,K13A The High Stitching Tailor Shop,Elster,Kocos,A1140,38146910,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3337,K13B DCM,Elster,Kocos,A1140,38146911,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3339,K14 Vakant ,Elster,Kocos,A1140,38146903,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3351,K16 Java Junction,Elster,Kocos,A1140,38146938,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3412,K20 Absa Bank ,Elster,Kocos,A1140,38146907,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3414,K20A FNB Bank,Elster,Kocos,A1140,38146909,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,4219,Neelsie - Capitec,Elster,Kocos,A1140,48103081,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3847,Neelsie - Hutmakers,Elster,Kocos,A1140,48103077,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,3416,Neelsie SRC Kantoor,Elster,Kocos,A1140,28100172,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie Tenants - VM,Energy,6879,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Neelsie UPS Pharga,Energy,3415,Neelsie UPS Pharga,Elster,Kocos,A1140,38146940,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Pharga DB,Energy,3418,Neelsie Pharga DB,Elster,Kocos,A1140,38146967,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Vodacom,Energy,2675,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,Vodacom Roggebaai,Energy,3705,Vodacom Roggebaai ,Elster,Kocos,AS230,48105671,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Neelsie Studente Sentrum,-,Energy,2687,Neelsie Studente Sentrum,ELSTER,Kocos,A1700,51500308,LiMo R2,-,-,-,-,-,-33.93250575,18.86538267,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,RW Wilcocks Toevoer,-,Energy,2672,RW Wilcocks Toevoer,Elster,Kocos,A1140,58500454,LiMo R2,-,-,-,-,-,-33.93350365,18.86278013,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,Natuurwetenskap,Energy,2652,Natuurwetenskap,Elster,Kocos,A1140,58500476,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,SU Biblioteek - VM Remainder,Energy,3909,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,SU Biblioteek (Sump pump),Energy,2944,SU Biblioteek (Sump pump) ,Elster,Kocos,A1140,78520201,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,SU Biblioteek Hooftoevoer,-,Energy,2651,SU Biblioteek Hooftoevoer,Elster,Kocos,A1700,51500261,LiMo R2,-,-,-,-,-,-33.93309244,18.8640029,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Van der Sterr - VM Total,Van der Sterr HVAC,Energy,3535,Van der Sterr HVAC,Elster,Kocos,A1700,61501553,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Van der Sterr - VM Total,Van der Sterr Toevoer,Energy,3534,Van der Sterr Toevoer,Elster,Kocos,A1700,61501552,LiMo-DIN,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Van der Sterr - VM Total,-,Energy,3775,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93277944,18.86727067,-,0,-,2022-08-01  00:00:00
+-,LSS Toevoer 11kV,-,Visuele Kunste Toevoer,-,Energy,2657,Visuele Kunste Toevoer,ELSTER,Kocos,A1140,58500457,LiMo R2,-,-,-,-,-,-33.93385486,18.8668934,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,-,-,Energy,2911,Monica 11kV,Elster,Kocos,A1700,51500304,LiMo-DIN,-,-,-,-,-,-33.93550911,18.86521572,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Botanical Gardens,-,Energy,7282,Botanical Gardens,Elster,Kocos,A1140,48127360,LiMo R2,-,-,-,-,-,-33.93579026,18.86571104,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,3910,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,2915,Katjiepiering Restaurant,Elster,Kocos,A1140,88900738,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,7281,Ou Conserve Building,Elster,Kocos,A1140,48127334,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Botaniese Tuine Hoeftovoer,Energy,2712,Botaniese Tuine Hoeftovoer,Elster,Kocos,A1140,58500668,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,2927,Harmonie Hittepompe,Elster,Kocos,A1140,68509037,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,2926,Harmonie Kombuis,Elster,Kocos,A1140,68509036,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,3125,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Harmonie Toevoer,Energy,2713,Harmonie Toevoer,Elster,Kocos,A1140,68509035,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Lombardi,Energy,2920,Lombardi MTN,Elster,Kocos,A1140,98129702,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Lombardi,Energy,2921,Lombardi Vodacom,Elster,Kocos,A1140,98129700,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Lombardi,Energy,2710,Lombardi  ,Elster,Kocos,A1140,58500458,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,3024,Monica Hittepompe,Elster,Kocos,A1140,68509038,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,2727,Monica Kombuis,Elster,Kocos,A1140,68509039,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,3126,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Monica Toevoer 1,Energy,2714,Monica Toevoer 1,Elster,Kocos,A1140,68509034,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Sasol Kuns Museum,Energy,2711,Sasol Kunsmuseum,Elster,Kocos,A1140,58500455,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,2737,Wilgenhof Hittepompe,Elster,Kocos,A1140,68509030,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,2738,Wilgenhof Kombuis,Elster,Kocos,A1140,68509004,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,3127,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,Wilgenhof Hooftoevoer,Energy,2715,Wilgenhof Hooftoevoer,Elster,Kocos,A1140,68509033,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Monica 11 kV,-,Monica Toevoer LV,-,Energy,4973,Monica Toevoer LV,Elster,Kocos,A1140,48122702,LiMo R2,-,-,-,-,-,-33.93522796,18.8647204,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,-,-,Energy,2919,Schumann 11 kV,Elster,Kocos,A1700,61501554,LiMo-DIN,-,-,-,-,-,-33.93231372,18.8659465,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Anorganiese Chemie,-,Energy,2667,Anorganiese Chemie,Elster,Kocos,A1140,58500674,LiMo R2,-,-,-,-,-,-33.93198125,18.86750991,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,CGW Schumann (LRP1),Schumann MTN,Energy,2918,Schumann MTN,Elster,Kocos,A1140,98102079,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,CGW Schumann (LRP1),Schumann Vodacom,Energy,2917,Schumann Vodacom,Elster,Kocos,A1140,98102070,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,CGW Schumann (LRP1),-,Energy,2827,CGW Schumann,Elster,Kocos,A1140,78520569,LiMo R2,-,-,-,-,-,-33.93235804,18.86691267,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,CGW Schumann Gebou,-,Energy,2831,CGW Schumann Gebou,Elster,Kocos,A1140,68509058,LiMo R2,-,-,-,-,-,-33.93247605,18.8658074,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Chemie Skeikunde/Eerstejaars,-,Energy,2828,Chemie Skeikunde/Eerstejaars,Elster,Kocos,A1140,98132497,LiMo R2,-,-,-,-,-,-33.93203745,18.86678425,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Mike de Vries,-,Energy,2650,Mike de Vries,ELSTER,Kocos,A1140,58500477,LiMo R2,6176,84,1,113,Lettere  Vodacom,-33.932284,18.86077864,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Polimeerwetenskap,Plascon,Energy,2832,Plascon,Elster,Kocos,A1140,58501530,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Polimeerwetenskap,Polimeerwetenskap - VM Remainder,Energy,3060,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Polimeerwetenskap,-,Energy,2648,Polimeerwetenskap,Elster,Kocos,A1140,58500443,LiMo R2,-,-,-,-,-,-33.93274571,18.86628738,-,0,-,2022-08-01  00:00:00
+-,Schumann 11 kV,-,Schuman HVAC,-,Energy,3169,Schuman HVAC,Elster,Kocos,A1140,38145326,LiMo R2,-,-,-,-,-,-33.93231354,18.86754529,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,-,-,Energy,2867,Simonsberg 11 kV,Elster,Kocos,A1700,51500262,LiMo-DIN,-,-,-,-,-,-33.93202863,18.87044366,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Aankope,-,Energy,2899,Aankope,Elster,Kocos,A1140,68509020,LiMo R2,-,-,-,-,-,-33.93233824,18.86903545,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Annex,Energy,3752,Dagbreek Annex,Elster,Kocos,A1140,88523225,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Hittepompe,Energy,2901,Dagbreek Hittepompe,Elster,Kocos,A1140,68509064,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Kombuis,Energy,2898,Dagbreek Kombuis,Elster,Kocos,A1140,68509025,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Oos,Energy,2870,Dagbreek Oos,Elster,Kocos,A1140,68509044,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Waskamer,Energy,2900,Dagbreek Waskamer,Elster,Kocos,A1140,68509024,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Dagbreek Wes,Energy,2869,Dagbreek Wes,Elster,Kocos,A1140,68509043,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,Huis Visser Uitbreiding,Energy,2962,Huis Visser Uitbreiding  ,Elster,Kocos,A1140,88523224,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Dagbreek Substasie - VM Total,-,Energy,3058,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-33.93247895,18.86862797,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Eendrag Hittepompe,Energy,2945,Eendrag Hittepompe,Elster,Kocos,A1140,68509027,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Eendrag Kombuis,Energy,2874,Eendrag Kombuis,Elster,Kocos,A1140,68509022,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Eendrag Koshuis - VM Remainder,Energy,3061,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Eendrag Hooftoevoer,Ou Mutual Muurbalbane,Energy,2875,Ou Mutual Muurbalbane,Elster,Kocos,A1140,68509021,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Eendrag Hooftoevoer,-,Energy,2873,Eendrag Hooftoevoer,Elster,Kocos,A1140,68509026,LiMo R2,-,-,-,-,-,-33.93089714,18.87220786,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Cell C,Energy,6954,Helshoogte - Cell C,Elster,KoCos,A1140,48126706,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Emergency Main Meter,Energy,6951,Helshoogte - Emergency Main Meter,Elster,KoCos,A1140,48125267,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Laundry,Energy,6952,Helshoogte - Laundry,Elster,KoCos,A1140,48125269,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Main Kitchen,Energy,6950,Helshoogte - Main Kitchen,Elster,KoCos,A1140,48125270,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - MTN,Energy,6955,Helshoogte - MTN,Elster,KoCos,A1140,48125943,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,Helshoogte - Vodacom,Energy,6953,Helshoogte - Vodacom,Elster,KoCos,A1140,48125947,LiMo R1,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Helshoogte - Main Incomer,-,Energy,6949,Hellshoogte - Main Incomer,Elster,KoCos,A1140,48125268,LiMo R1,-,-,-,-,-,-33.93120226,18.87102561,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,Huis Marais Koshuis - VM Remainder,Energy,3064,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,Huis Marais Visser Kombuis,Energy,2961,Huis Marais Visser Kombuis,Elster,Kocos,A1140,68509017,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,Huis Visser Koshuis,Energy,2957,Huis Visser Koshuis,Elster,Kocos,A1140,68509010,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Marais Visser Toevoer,-,Energy,2897,Huis Marais Visser Toevoer,Elster,Kocos,A1140,68509019,LiMo R2,-,-,-,-,-,-33.93163204,18.86818376,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2896,Irene New Kitchen,Elster,Kocos,A1140,88523089,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2885,Irene Kitchen,Elster,Kocos,A1140,88502886,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2887,Irene Heat-pump,Elster,Kocos,A1140,18102595,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,3135,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2884,Irene Main DB at Irene,Elster,Kocos,A1140,68509047,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,Irene Main Supply (at Russel Botman),Energy,2894,Irene Main Supply (at Huis Russel Botman),Elster,Kocos,A1140,88524063,LiMo R2,15827,205,1,1011,Huis Rusell Botman,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Huis Russel Botman - Main Incomer,-,Energy,7119,Huis Russell Botman - Main Incomer,Elster,Kocos,A1140,88524062,LiMo R2,-,-,-,-,-,-33.93224123,18.87218104,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Majuba Hooftoevoer,Majuba Hittepompe,Energy,2872,Majuba Hittepompe,Elster,Kocos,A1140,68509062,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Majuba Hooftoevoer,Majuba Kombuis,Energy,3042,Majuba Kombuis,Elster,Kocos,A1140,68509073,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Majuba Hooftoevoer,Majuba Koshuis - VM Remainder,Energy,3065,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Majuba Hooftoevoer,-,Energy,2871,Majuba Hooftoevoer,Elster,Kocos,A1140,68509061,LiMo R2,-,-,-,-,-,-33.93272254,18.86981065,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,Simonsberg Hittepompe,Energy,2963,Simonsberg Hittepompe,Elster,Kocos,A1140,68509013,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,Simonsberg Kombuis,Energy,2882,Simonsberg Kombuis,Elster,Kocos,A1140,68509009,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,Simonsberg Koshuis - VM Remainder,Energy,3066,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Simonsberg Hooftoevoer,-,Energy,2876,Simonsberg Hooftoevoer,Elster,Kocos,A1140,68509008,LiMo R2,-,-,-,-,-,"-33.93142504341793, 18.87004118409002",18.87004118,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Sonop Hooftoevoer,Sonop Hittepompe,Energy,3080,Sonop Hittepompe,Elster,Kocos,A1140,58500673,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Sonop Hooftoevoer,Sonop Kombuis,Energy,2888,Sonop Kombuis New Generation-DB,Elster,Kocos,A1140,68509071,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Sonop Hooftoevoer,Sonop Koshuis - VM Remainder,Energy,3165,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Sonop Hooftoevoer,-,Energy,2902,Sonop,Elster,Kocos,A1140,68509069,LiMo R2,-,-,-,-,-,-33.93264305,18.87128369,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Wimbledon Gebou,Wimbledon Hittepompe,Energy,3079,Wimbledon Hittepompe,Elster,Kocos,A1140,68509003,LiMo R2,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Simonsberg 11 kV,-,Wimbledon Gebou,-,Energy,2895,Wimbledon Gebou,Elster,Kocos,A1140,98124317,LiMo R2,-,-,-,-,-,-33.93210223,18.87203936,-,0,-,2022-08-01  00:00:00
+-,STIAS Toevoer,-,-,-,Energy,2717,STIAS Toevoer,Elster,Kocos,A1140,58500677,LiMo R2,-,-,-,-,-,-33.93498546,18.8739945,-,0,-,2022-08-01  00:00:00
+-,W.A.T Toevoer,-,-,-,Energy,3734,W.A.T Toevoer,Elster,Kocos,A1140,48103103,LiMo R2,-,-,-,-,-,-33.93005183,18.86244132,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,-,-,Energy,3026,Welgevallen 11 kV,Elster,Kocos,A1700,51500266,LiMo-DIN,-,-,-,-,-,-33.94188235,18.86679919,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,Paul van der Bijl -  VM Remainder,Energy,3914,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,Paul van der Bijl Glashuis en Lab,Energy,2719,Paul van der Bijl Glashuis en Lab,Elster,Kocos,A1140,58500666,LiMo R2,306,119,1,-,Paul van der Bijn Glashuis en Lab,-33.93986374,18.8671766,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,Wynkelder,Energy,2720,Wynkelder,ELSTER,Kocos,A1140,58500464,LiMo R2,306,119,1,-,Wynkelder,-33.93986096,18.86718062,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Paul van der Bijl Sub Toevoer,-,Energy,2718,Paul van der Bijl Sub Toevoer,ELSTER,Kocos,A1140,58500448,LiMo R2,306,119,1,-,Paul van der Bijl Sub Toevoer,-33.93986244,18.86718364,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Toevoer Wintergraan Kantoor Blok 3 (B756),Energy,2723,Toevoer Wintergraan Kantoor Blok 3 (B756),Elster,Kocos,A1140,58500672,LiMo R2,306,760,1,1179,Toevoer Wintergraan Kantoor Blok 3,-33.94271888,18.86671493,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Toevoere Wintergraan Laboratorium 2 & Glas,Energy,2722,Wintergraan Laboratorium 2 & Glashuis,Elster,Kocos,A1140,58500671,LiMo R2,306,760,1,1179,Wintergraan Laboratorium 2 en Glashuis,-33.94271722,18.8667289,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen - Melkstal,Energy,3078,Welgevallen Melkstal,Elster,Kocos,A1140,78520565,LiMo R2,306,0,1,Outside,Welgevallen Melkstal,-33.94310152,18.8680671,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen - VM Remainder,Energy,3915,VM,VM,VM,VM,VM,VM,-,-,-,-,-,-,-,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen Unistel Akwakultuur WG 6,Energy,3077,Welgevallen Unistel Akwakultuur WG6,Elster,Kocos,A1140,68905748,LiMo R2,308,753,1,1145,Welgevallen Unistel Akwakultuur WG6,-33.94261421,18.86582756,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Welgevallen Unistel Akwakultuur WG 7,Energy,3076,Welgevallen Unistel Akwakultuur WG7,Elster,Kocos,A1140,68905749,LiMo R2,308,753,1,1145,Welgevallen Unistel Akwakultuur WG7,-33.94264175,18.86570351,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,Wintergraan Kantoor Blok 4 (B757),Energy,2721,Wintergraan Kantoor Blok 4 (B757),Elster,Kocos,A1140,58500678,LiMo R2,306,760,1,1179,Wintergraan Kantoor Blok 4 (B757),-33.94272,18.86670554,-,0,-,2022-08-01  00:00:00
+-,Welgevallen 11 kV,-,Welgevallen Substasie,-,Energy,2724,Welgevallen Substasie,Elster,Kocos,A1700,71504073,LiMo-DIN,306,760,1,1179,Welgevallen Substasie,-33.94272278,18.86670353,-,0,-,2022-08-01  00:00:00
